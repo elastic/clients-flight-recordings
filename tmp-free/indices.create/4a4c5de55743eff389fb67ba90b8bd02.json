@@ -1,0 +1,55 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/tsdb/05_dimension_and_metric_in_non_tsdb_index.yml",
+  "name": "can't shadow metrics",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "deep": {
+              "properties": {
+                "deeper": {
+                  "properties": {
+                    "deepest": {
+                      "time_series_metric": "gauge",
+                      "type": "long"
+                    }
+                  }
+                }
+              }
+            },
+            "metric": {
+              "time_series_metric": "gauge",
+              "type": "long"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "number_of_shards": 2
+          }
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "71",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

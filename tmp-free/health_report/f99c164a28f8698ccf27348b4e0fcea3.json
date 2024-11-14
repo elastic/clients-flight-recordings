@@ -1,0 +1,65 @@
+{
+  "api": "health_report",
+  "file": "/test/free/health/40_diagnosis.yml",
+  "name": "Diagnosis",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "feature": "shards_availability"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "cluster_name": "elasticsearch-x86-64-rest-test",
+      "indicators": {
+        "shards_availability": {
+          "details": {
+            "creating_primaries": 0,
+            "creating_replicas": 0,
+            "initializing_primaries": 0,
+            "initializing_replicas": 0,
+            "restarting_primaries": 0,
+            "restarting_replicas": 0,
+            "started_primaries": 0,
+            "started_replicas": 0,
+            "unassigned_primaries": 1,
+            "unassigned_replicas": 0
+          },
+          "diagnosis": [
+            {
+              "action": "Check that the [index.routing.allocation.enable] index settings are set to [all].",
+              "affected_resources": {
+                "indices": [
+                  "red_index"
+                ]
+              },
+              "cause": "Elasticsearch isn't allowed to allocate some shards from these indices because allocation for those shards has been disabled at the index level.",
+              "help_url": "https://ela.st/fix-index-allocation",
+              "id": "elasticsearch:health:shards_availability:diagnosis:enable_index_allocations"
+            }
+          ],
+          "impacts": [
+            {
+              "description": "Cannot add data to 1 index [red_index]. Searches might return incomplete results.",
+              "id": "elasticsearch:health:shards_availability:impact:primary_unassigned",
+              "impact_areas": [
+                "ingest",
+                "search"
+              ],
+              "severity": 1
+            }
+          ],
+          "status": "red",
+          "symptom": "This cluster has 1 unavailable primary shard."
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}

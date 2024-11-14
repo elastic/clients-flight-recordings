@@ -1,0 +1,112 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/percentiles_hdr_metric.yml",
+  "name": "Negative values test",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "percentiles_int": {
+            "percentiles": {
+              "field": "int_field",
+              "hdr": {
+              }
+            }
+          }
+        }
+      },
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 1,
+        "failures": [
+          {
+            "index": "test_1",
+            "node": "1nZIc1ZARmemZjAz__DNLg",
+            "reason": {
+              "reason": "Negative values are not supported by HDR aggregation",
+              "type": "illegal_argument_exception"
+            },
+            "shard": 1
+          }
+        ],
+        "skipped": 0,
+        "successful": 4,
+        "total": 5
+      },
+      "aggregations": {
+        "hdr_percentiles#percentiles_int": {
+          "values": {
+            "1.0": 1,
+            "25.0": 1,
+            "5.0": 1,
+            "50.0": 51.0302734375,
+            "75.0": 101.0615234375,
+            "95.0": 151.1240234375,
+            "99.0": 151.1240234375
+          }
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "2",
+            "_index": "test_1",
+            "_score": 1,
+            "_source": {
+              "double_field": 51,
+              "int_field": 51,
+              "string_field": "foo"
+            }
+          },
+          {
+            "_id": "4",
+            "_index": "test_1",
+            "_score": 1,
+            "_source": {
+              "double_field": 151,
+              "int_field": 151,
+              "string_field": "foo"
+            }
+          },
+          {
+            "_id": "1",
+            "_index": "test_1",
+            "_score": 1,
+            "_source": {
+              "double_field": 1,
+              "int_field": 1,
+              "string_field": "foo"
+            }
+          },
+          {
+            "_id": "3",
+            "_index": "test_1",
+            "_score": 1,
+            "_source": {
+              "double_field": 101,
+              "int_field": 101,
+              "string_field": "foo"
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": 4
+      },
+      "timed_out": false,
+      "took": 7
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "api": "transform.get_transform",
+  "file": "/test/platinum/transform/transforms_crud.yml",
+  "name": "Test transform for export",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "exclude_generated": true,
+      "transform_id": "airline-transform"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "428",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "count": 1,
+      "transforms": [
+        {
+          "dest": {
+            "index": "dest-airline-data-by-airline-and-hour"
+          },
+          "id": "airline-transform",
+          "pivot": {
+            "aggregations": {
+              "avg_response": {
+                "avg": {
+                  "field": "responsetime"
+                }
+              },
+              "time.max": {
+                "max": {
+                  "field": "time"
+                }
+              },
+              "time.min": {
+                "min": {
+                  "field": "time"
+                }
+              }
+            },
+            "group_by": {
+              "airline": {
+                "terms": {
+                  "field": "airline"
+                }
+              },
+              "by-hour": {
+                "date_histogram": {
+                  "field": "time",
+                  "fixed_interval": "1h"
+                }
+              }
+            }
+          },
+          "settings": {
+          },
+          "source": {
+            "index": [
+              "airline-data"
+            ]
+          }
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}

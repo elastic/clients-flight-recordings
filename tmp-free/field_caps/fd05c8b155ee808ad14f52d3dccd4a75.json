@@ -1,0 +1,104 @@
+{
+  "api": "field_caps",
+  "file": "/test/free/tsdb/110_field_caps.yml",
+  "name": "field caps on mixed indices",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "fields": [
+        "metricset",
+        "k8s.pod.availability_zone",
+        "k8s.pod.network.tx",
+        "k8s.pod.network.rx"
+      ],
+      "index": "test_*"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "fields": {
+        "k8s": {
+          "object": {
+            "aggregatable": false,
+            "metadata_field": false,
+            "searchable": false,
+            "type": "object"
+          }
+        },
+        "k8s.pod": {
+          "object": {
+            "aggregatable": false,
+            "metadata_field": false,
+            "searchable": false,
+            "type": "object"
+          }
+        },
+        "k8s.pod.availability_zone": {
+          "short": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "non_dimension_indices": [
+              "test_non_time_series"
+            ],
+            "searchable": true,
+            "type": "short"
+          }
+        },
+        "k8s.pod.network": {
+          "object": {
+            "aggregatable": false,
+            "metadata_field": false,
+            "searchable": false,
+            "type": "object"
+          }
+        },
+        "k8s.pod.network.rx": {
+          "long": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "metric_conflicts_indices": [
+              "test_non_time_series",
+              "test_time_series"
+            ],
+            "searchable": true,
+            "type": "long"
+          }
+        },
+        "k8s.pod.network.tx": {
+          "long": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "metric_conflicts_indices": [
+              "test_non_time_series",
+              "test_time_series"
+            ],
+            "searchable": true,
+            "type": "long"
+          }
+        },
+        "metricset": {
+          "keyword": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "non_dimension_indices": [
+              "test_non_time_series"
+            ],
+            "searchable": true,
+            "type": "keyword"
+          }
+        }
+      },
+      "indices": [
+        "test_non_time_series",
+        "test_time_series"
+      ]
+    },
+    "statusCode": 200
+  }
+}

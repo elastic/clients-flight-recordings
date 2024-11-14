@@ -1,0 +1,113 @@
+{
+  "api": "ml.put_datafeed",
+  "file": "/test/platinum/ml/preview_datafeed.yml",
+  "name": "Test preview aggregation datafeed with doc_count",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggregations": {
+          "buckets": {
+            "aggregations": {
+              "airline": {
+                "aggregations": {
+                  "responsetime": {
+                    "sum": {
+                      "field": "responsetime"
+                    }
+                  }
+                },
+                "terms": {
+                  "field": "airline",
+                  "size": 100
+                }
+              },
+              "time": {
+                "max": {
+                  "field": "time"
+                }
+              }
+            },
+            "histogram": {
+              "field": "time",
+              "interval": 3600000
+            }
+          }
+        },
+        "indexes": "airline-data",
+        "job_id": "aggregation-doc-count-job"
+      },
+      "datafeed_id": "aggregation-doc-count-feed"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "715",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "aggregations": {
+        "buckets": {
+          "aggregations": {
+            "airline": {
+              "aggregations": {
+                "responsetime": {
+                  "sum": {
+                    "field": "responsetime"
+                  }
+                }
+              },
+              "terms": {
+                "field": "airline",
+                "size": 100
+              }
+            },
+            "time": {
+              "max": {
+                "field": "time"
+              }
+            }
+          },
+          "histogram": {
+            "field": "time",
+            "interval": 3600000
+          }
+        }
+      },
+      "authorization": {
+        "roles": [
+          "superuser"
+        ]
+      },
+      "chunking_config": {
+        "mode": "manual",
+        "time_span": "3600000000ms"
+      },
+      "datafeed_id": "aggregation-doc-count-feed",
+      "delayed_data_check_config": {
+        "enabled": true
+      },
+      "indices": [
+        "airline-data"
+      ],
+      "indices_options": {
+        "allow_no_indices": true,
+        "expand_wildcards": [
+          "open"
+        ],
+        "failure_store": "exclude",
+        "ignore_throttled": true,
+        "ignore_unavailable": false
+      },
+      "job_id": "aggregation-doc-count-job",
+      "query": {
+        "match_all": {
+        }
+      },
+      "query_delay": "89571ms",
+      "scroll_size": 1000
+    },
+    "statusCode": 200
+  }
+}

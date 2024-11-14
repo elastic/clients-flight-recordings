@@ -1,0 +1,93 @@
+{
+  "api": "security.has_privileges",
+  "file": "/test/platinum/privileges/20_has_application_privs.yml",
+  "name": "Test has_privileges with application-privileges",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "application": [
+          {
+            "application": "myapp",
+            "privileges": [
+              "action:login",
+              "version:1.0.3"
+            ],
+            "resources": [
+              "*"
+            ]
+          },
+          {
+            "application": "myapp",
+            "privileges": [
+              "data:read/log/raw",
+              "data:write/log/raw"
+            ],
+            "resources": [
+              "engineering/logs/*",
+              "product/logs/*"
+            ]
+          }
+        ],
+        "index": [
+          {
+            "names": [
+              "engineering-logs",
+              "product-logs"
+            ],
+            "privileges": [
+              "read",
+              "index",
+              "write"
+            ]
+          }
+        ]
+      }
+    },
+    "headers": {
+      "Authorization": "Basic ZW5nX3JlYWQ6czNjcjN0LXBAc3N3MHJk"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "411",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "application": {
+        "myapp": {
+          "*": {
+            "action:login": true,
+            "version:1.0.3": true
+          },
+          "engineering/logs/*": {
+            "data:read/log/raw": true,
+            "data:write/log/raw": false
+          },
+          "product/logs/*": {
+            "data:read/log/raw": false,
+            "data:write/log/raw": false
+          }
+        }
+      },
+      "cluster": {
+      },
+      "has_all_requested": false,
+      "index": {
+        "engineering-logs": {
+          "index": false,
+          "read": true,
+          "write": false
+        },
+        "product-logs": {
+          "index": false,
+          "read": false,
+          "write": false
+        }
+      },
+      "username": "eng_read"
+    },
+    "statusCode": 200
+  }
+}

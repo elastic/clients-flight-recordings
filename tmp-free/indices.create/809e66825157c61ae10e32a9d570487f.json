@@ -1,0 +1,66 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/search.query/10_match.yml",
+  "name": "match query with stacked stems",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "text": {
+              "analyzer": "index",
+              "search_analyzer": "search",
+              "type": "text"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "index": {
+                "filter": [
+                  "lowercase"
+                ],
+                "tokenizer": "standard"
+              },
+              "search": {
+                "filter": [
+                  "lowercase",
+                  "keyword_repeat",
+                  "porter_stem",
+                  "unique_stem"
+                ],
+                "rest_total_hits_as_int": true,
+                "tokenizer": "standard"
+              }
+            },
+            "filter": {
+              "unique_stem": {
+                "only_on_same_position": true,
+                "type": "unique"
+              }
+            }
+          },
+          "number_of_replicas": 1,
+          "number_of_shards": 1
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "71",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

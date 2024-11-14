@@ -1,0 +1,57 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/search.suggest/30_synonyms.yml",
+  "name": "suggestions with synonyms",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "field": {
+              "analyzer": "suggest_analyzer_synonyms",
+              "type": "completion"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "suggest_analyzer_synonyms": {
+                "filter": [
+                  "lowercase",
+                  "my_synonyms"
+                ],
+                "tokenizer": "standard",
+                "type": "custom"
+              }
+            },
+            "filter": {
+              "my_synonyms": {
+                "synonyms": [
+                  "foo,renamed"
+                ],
+                "type": "synonym"
+              }
+            }
+          }
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "71",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

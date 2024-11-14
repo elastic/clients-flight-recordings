@@ -1,0 +1,67 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/cluster.stats/10_basic.yml",
+  "name": "Usage stats with script-less runtime fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "bad_map": {
+              "type": "long"
+            },
+            "message": {
+              "fields": {
+                "text": {
+                  "type": "text"
+                }
+              },
+              "type": "keyword"
+            }
+          },
+          "runtime": {
+            "bad_map": {
+              "type": "double"
+            },
+            "message": {
+              "text": {
+                "type": "keyword"
+              }
+            },
+            "message_from_source": {
+              "type": "keyword"
+            }
+          }
+        }
+      },
+      "index": "sensor"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "173",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "reason": "No type specified for runtime field [message]",
+          "type": "mapper_parsing_exception"
+        },
+        "reason": "Failed to parse mapping: No type specified for runtime field [message]",
+        "root_cause": [
+          {
+            "reason": "No type specified for runtime field [message]",
+            "type": "mapper_parsing_exception"
+          }
+        ],
+        "type": "mapper_parsing_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

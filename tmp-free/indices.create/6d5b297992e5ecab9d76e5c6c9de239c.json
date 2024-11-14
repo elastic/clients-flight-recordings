@@ -1,0 +1,71 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/logsdb/10_settings.yml",
+  "name": "non-default sort settings",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "agent_id": {
+              "type": "keyword"
+            },
+            "http_method": {
+              "type": "keyword"
+            },
+            "message": {
+              "type": "text"
+            },
+            "process_id": {
+              "type": "integer"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mode": "logsdb",
+            "number_of_replicas": 0,
+            "number_of_shards": 2,
+            "sort": {
+              "field": [
+                "agent_id",
+                "@timestamp"
+              ],
+              "missing": [
+                "_last",
+                "_first"
+              ],
+              "mode": [
+                "max",
+                "max"
+              ],
+              "order": [
+                "asc",
+                "desc"
+              ]
+            }
+          }
+        }
+      },
+      "index": "test-sort"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "76",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test-sort",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

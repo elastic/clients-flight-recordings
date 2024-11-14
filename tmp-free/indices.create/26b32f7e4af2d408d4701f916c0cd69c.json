@@ -1,0 +1,59 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/search.query/50_queries_with_synonyms.yml",
+  "name": "Test common terms query with stacked tokens",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "field1": {
+              "analyzer": "syns",
+              "type": "text"
+            },
+            "field2": {
+              "analyzer": "syns",
+              "type": "text"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "syns": {
+                "filter": [
+                  "syns"
+                ],
+                "tokenizer": "standard"
+              }
+            },
+            "filter": {
+              "syns": {
+                "synonyms": [
+                  "quick,fast"
+                ],
+                "type": "synonym"
+              }
+            }
+          }
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "71",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

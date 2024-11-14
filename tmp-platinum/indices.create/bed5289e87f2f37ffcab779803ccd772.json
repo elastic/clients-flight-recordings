@@ -1,0 +1,50 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/analytics/100_tsdb.yml",
+  "name": "Auto date histogram on counter",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "data": {
+              "time_series_metric": "counter",
+              "type": "integer"
+            },
+            "dim": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "mode": "time_series",
+          "routing_path": [
+            "dim"
+          ],
+          "time_series": {
+            "start_time": "2023-01-01T00:00:00.000Z"
+          }
+        }
+      },
+      "index": "test2"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "64",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test2",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

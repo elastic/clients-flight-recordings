@@ -1,0 +1,75 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/tsdb/150_runtime_fields.yml",
+  "name": "tsdb_execute_painless_api",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "k8s": {
+              "properties": {
+                "pod": {
+                  "properties": {
+                    "ip": {
+                      "type": "ip"
+                    },
+                    "name": {
+                      "type": "keyword"
+                    },
+                    "network": {
+                      "properties": {
+                        "rx": {
+                          "type": "long"
+                        },
+                        "tx": {
+                          "type": "long"
+                        }
+                      }
+                    },
+                    "uid": {
+                      "time_series_dimension": true,
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "routing_path": [
+              "metricset",
+              "k8s.pod.uid"
+            ]
+          }
+        }
+      },
+      "index": "test_index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "73",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test_index",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

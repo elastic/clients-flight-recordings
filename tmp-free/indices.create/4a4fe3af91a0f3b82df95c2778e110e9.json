@@ -1,0 +1,48 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/cluster.stats/20_analysis_stats_synonyms.yml",
+  "name": "get cluster stats returns synonym sets stats",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "settings": {
+          "analysis": {
+            "filter": {
+              "a_repeated_synonyms_set_filter": {
+                "synonyms_set": "reused-synonym-set",
+                "type": "synonym"
+              },
+              "more_inline_filter": {
+                "synonyms": [
+                  "foo bar",
+                  "bar => baz"
+                ],
+                "type": "synonym"
+              },
+              "other_synonyms_filter": {
+                "synonyms_set": "a-different-synonym-set",
+                "type": "synonym"
+              }
+            }
+          }
+        }
+      },
+      "index": "test-index3"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "75",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test-index3",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

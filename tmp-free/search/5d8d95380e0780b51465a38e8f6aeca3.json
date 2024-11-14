@@ -1,0 +1,77 @@
+{
+  "api": "search",
+  "file": "/test/free/search/330_fetch_fields.yml",
+  "name": "Test ignores malformed values while returning valid ones",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "*"
+        ]
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_ignored": [
+              "number"
+            ],
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "number": [
+                1,
+                2,
+                "3",
+                "four",
+                5,
+                6
+              ]
+            },
+            "fields": {
+              "number": [
+                1,
+                2,
+                3,
+                5,
+                6
+              ]
+            },
+            "ignored_field_values": {
+              "number": [
+                "four"
+              ]
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}

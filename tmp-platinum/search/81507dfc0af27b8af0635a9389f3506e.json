@@ -1,0 +1,81 @@
+{
+  "api": "search",
+  "file": "/test/platinum/entsearch/rules/80_query_rules_retriever.yml",
+  "name": "query rules retriever supports explicit sort on score with secondary sort allowed",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "retriever": {
+          "rule": {
+            "match_criteria": {
+              "bar": "bar",
+              "foo": "foo"
+            },
+            "retriever": {
+              "standard": {
+                "query": {
+                  "query_string": {
+                    "query": "bar"
+                  }
+                },
+                "sort": [
+                  "_score",
+                  {
+                    "text": {
+                      "keyword": "asc"
+                    }
+                  }
+                ]
+              }
+            },
+            "ruleset_ids": "test-ruleset"
+          }
+        }
+      },
+      "index": "test-index1",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "688",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "caused_by": {
+            "caused_by": {
+              "caused_by": {
+                "reason": "[1:187] [field_sort] unknown field [keyword]",
+                "type": "x_content_parse_exception"
+              },
+              "reason": "[1:197] [standard] failed to parse field [sort]",
+              "type": "x_content_parse_exception"
+            },
+            "reason": "[1:197] [retriever] failed to parse field [standard]",
+            "type": "x_content_parse_exception"
+          },
+          "reason": "[1:197] [rule] failed to parse field [retriever]",
+          "type": "x_content_parse_exception"
+        },
+        "col": 197,
+        "line": 1,
+        "reason": "[1:197] [rule] failed to parse field [retriever]",
+        "root_cause": [
+          {
+            "col": 197,
+            "line": 1,
+            "reason": "[1:197] [rule] failed to parse field [retriever]",
+            "type": "parsing_exception"
+          }
+        ],
+        "type": "parsing_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

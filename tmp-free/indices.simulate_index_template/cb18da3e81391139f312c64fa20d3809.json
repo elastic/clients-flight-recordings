@@ -1,0 +1,60 @@
+{
+  "api": "indices.simulate_index_template",
+  "file": "/test/free/indices.simulate_index_template/10_basic.yml",
+  "name": "Simulate index template with lifecycle and include defaults",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "include_defaults": true,
+      "name": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "255",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "overlapping": [
+      ],
+      "template": {
+        "aliases": {
+        },
+        "lifecycle": {
+          "data_retention": "7d",
+          "enabled": true,
+          "rollover": {
+            "max_age": "1d [automatic]",
+            "max_primary_shard_docs": 200000000,
+            "max_primary_shard_size": "50gb",
+            "min_docs": 1
+          }
+        },
+        "mappings": {
+          "_data_stream_timestamp": {
+            "enabled": true
+          },
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "routing": {
+              "allocation": {
+                "include": {
+                  "_tier_preference": "data_hot"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}

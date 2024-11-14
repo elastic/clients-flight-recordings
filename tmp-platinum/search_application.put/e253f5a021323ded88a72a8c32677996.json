@@ -1,0 +1,77 @@
+{
+  "api": "search_application.put",
+  "file": "/test/platinum/entsearch/search/20_search_application_put.yml",
+  "name": "Create search application fails for unprivileged user",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "indices": [
+          "test-index1",
+          "test-index2"
+        ],
+        "template": {
+          "dictionary": {
+            "additionalProperties": false,
+            "properties": {
+              "query_string": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "query_string"
+            ]
+          },
+          "script": {
+            "source": {
+              "query": {
+                "query_string": {
+                  "query": "{{query_string}}"
+                }
+              }
+            }
+          }
+        }
+      },
+      "name": "test-search-application"
+    },
+    "headers": {
+      "Authorization": "Basic ZW50c2VhcmNoLXVucHJpdmlsZWdlZDplbnRzZWFyY2gtdW5wcml2aWxlZ2VkLXVzZXI="
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "607",
+      "content-type": "application/json",
+      "www-authenticate": "Basic realm=\"security\", charset=\"UTF-8\", Bearer realm=\"security\", ApiKey"
+    },
+    "payload": {
+      "error": {
+        "header": {
+          "WWW-Authenticate": [
+            "Basic realm=\"security\", charset=\"UTF-8\"",
+            "Bearer realm=\"security\"",
+            "ApiKey"
+          ]
+        },
+        "reason": "unable to authenticate user [entsearch-unprivileged] for REST request [/_application/search_application/test-search-application]",
+        "root_cause": [
+          {
+            "header": {
+              "WWW-Authenticate": [
+                "Basic realm=\"security\", charset=\"UTF-8\"",
+                "Bearer realm=\"security\"",
+                "ApiKey"
+              ]
+            },
+            "reason": "unable to authenticate user [entsearch-unprivileged] for REST request [/_application/search_application/test-search-application]",
+            "type": "security_exception"
+          }
+        ],
+        "type": "security_exception"
+      },
+      "status": 401
+    },
+    "statusCode": 401
+  }
+}

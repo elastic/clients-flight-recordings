@@ -1,0 +1,87 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/100_knn_nested_search.yml",
+  "name": "nested kNN search filtered",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "name"
+        ],
+        "knn": {
+          "field": "nested.vector",
+          "filter": {
+            "term": {
+              "name": "rabbit.jpg"
+            }
+          },
+          "k": 2,
+          "num_candidates": 3,
+          "query_vector": [
+            -0.5,
+            90,
+            -10,
+            14.8,
+            -156
+          ]
+        }
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "3",
+            "_index": "test",
+            "_score": 0.0021519717,
+            "_source": {
+              "name": "rabbit.jpg",
+              "nested": [
+                {
+                  "paragraph_id": 0,
+                  "vector": [
+                    0.5,
+                    111.3,
+                    -13,
+                    14.8,
+                    -156
+                  ]
+                }
+              ]
+            },
+            "fields": {
+              "name": [
+                "rabbit.jpg"
+              ]
+            }
+          }
+        ],
+        "max_score": 0.0021519717,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 6
+    },
+    "statusCode": 200
+  }
+}

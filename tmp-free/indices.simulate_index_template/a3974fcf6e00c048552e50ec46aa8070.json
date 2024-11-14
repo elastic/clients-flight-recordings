@@ -1,0 +1,78 @@
+{
+  "api": "indices.simulate_index_template",
+  "file": "/test/free/indices.simulate_index_template/10_basic.yml",
+  "name": "Simulate index template specifying a new template",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "composed_of": [
+          "ct"
+        ],
+        "index_patterns": "test*",
+        "priority": 15,
+        "template": {
+          "aliases": {
+            "test_alias": {
+            }
+          },
+          "settings": {
+            "index": {
+              "blocks": {
+                "write": true
+              }
+            }
+          }
+        }
+      },
+      "name": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "218",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "overlapping": [
+        {
+          "index_patterns": [
+            "test*"
+          ],
+          "name": "existing_test"
+        }
+      ],
+      "template": {
+        "aliases": {
+          "test_alias": {
+          }
+        },
+        "mappings": {
+          "properties": {
+            "ct_field": {
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "blocks": {
+              "write": "true"
+            },
+            "number_of_replicas": "2",
+            "routing": {
+              "allocation": {
+                "include": {
+                  "_tier_preference": "data_content"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}

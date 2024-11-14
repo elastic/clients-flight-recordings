@@ -1,0 +1,34 @@
+{
+  "api": "indices.create_data_stream",
+  "file": "/test/platinum/security/authz/50_data_streams.yml",
+  "name": "Test that create data stream is limited to authorized namespace",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "name": "outside_of_namespace"
+    },
+    "headers": {
+      "Authorization": "Basic dGVzdF91c2VyOngtcGFjay10ZXN0LXBhc3N3b3Jk"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "621",
+      "content-type": "application/json"
+    },
+    "payload": {
+      "error": {
+        "reason": "action [indices:admin/data_stream/create] is unauthorized for user [test_user] with effective roles [data_stream_ingest_role,data_stream_role] on indices [outside_of_namespace], this action is granted by the index privileges [create_index,manage,all]",
+        "root_cause": [
+          {
+            "reason": "action [indices:admin/data_stream/create] is unauthorized for user [test_user] with effective roles [data_stream_ingest_role,data_stream_role] on indices [outside_of_namespace], this action is granted by the index privileges [create_index,manage,all]",
+            "type": "security_exception"
+          }
+        ],
+        "type": "security_exception"
+      },
+      "status": 403
+    },
+    "statusCode": 403
+  }
+}

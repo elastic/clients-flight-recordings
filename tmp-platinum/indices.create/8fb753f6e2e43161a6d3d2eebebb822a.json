@@ -1,0 +1,54 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/ml/sparse_vector_search.yml",
+  "name": "Search on a nested sparse_vector field with dots in the field names and conflicting child fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "parent": {
+              "properties": {
+                "foo": {
+                  "bar": {
+                    "type": "sparse_vector"
+                  },
+                  "type": "sparse_vector"
+                }
+              },
+              "subobjects": false,
+              "type": "object"
+            }
+          }
+        }
+      },
+      "index": "index-with-sparse-vector3"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "407",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "reason": "unknown parameter [bar] on mapper [foo] of type [sparse_vector]",
+          "type": "mapper_parsing_exception"
+        },
+        "reason": "Failed to parse mapping: unknown parameter [bar] on mapper [foo] of type [sparse_vector]",
+        "root_cause": [
+          {
+            "reason": "unknown parameter [bar] on mapper [foo] of type [sparse_vector]",
+            "type": "mapper_parsing_exception"
+          }
+        ],
+        "type": "mapper_parsing_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "api": "field_caps",
+  "file": "/test/free/field_caps/40_time_series.yml",
+  "name": "Get time series field caps with conflicts",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "fields": [
+        "metricset",
+        "non_tsdb_field",
+        "k8s.pod.*"
+      ],
+      "index": [
+        "tsdb_index1",
+        "tsdb_index2"
+      ]
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "fields": {
+        "k8s": {
+          "object": {
+            "aggregatable": false,
+            "metadata_field": false,
+            "searchable": false,
+            "type": "object"
+          }
+        },
+        "k8s.pod": {
+          "object": {
+            "aggregatable": false,
+            "metadata_field": false,
+            "searchable": false,
+            "type": "object"
+          }
+        },
+        "k8s.pod.availability_zone": {
+          "short": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "searchable": true,
+            "time_series_dimension": true,
+            "type": "short"
+          }
+        },
+        "k8s.pod.ip": {
+          "ip": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "searchable": true,
+            "time_series_dimension": true,
+            "type": "ip"
+          }
+        },
+        "k8s.pod.name": {
+          "keyword": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "searchable": true,
+            "type": "keyword"
+          }
+        },
+        "k8s.pod.network": {
+          "object": {
+            "aggregatable": false,
+            "metadata_field": false,
+            "searchable": false,
+            "type": "object"
+          }
+        },
+        "k8s.pod.network.latency": {
+          "double": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "searchable": true,
+            "time_series_metric": "gauge",
+            "type": "double"
+          }
+        },
+        "k8s.pod.network.packets_dropped": {
+          "long": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "searchable": true,
+            "time_series_metric": "gauge",
+            "type": "long"
+          }
+        },
+        "k8s.pod.network.rx": {
+          "integer": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "metric_conflicts_indices": [
+              "tsdb_index1",
+              "tsdb_index2"
+            ],
+            "searchable": true,
+            "type": "integer"
+          }
+        },
+        "k8s.pod.network.tx": {
+          "long": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "metric_conflicts_indices": [
+              "tsdb_index1",
+              "tsdb_index2"
+            ],
+            "searchable": true,
+            "type": "long"
+          }
+        },
+        "k8s.pod.uid": {
+          "keyword": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "searchable": true,
+            "time_series_dimension": true,
+            "type": "keyword"
+          }
+        },
+        "metricset": {
+          "keyword": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "non_dimension_indices": [
+              "tsdb_index2"
+            ],
+            "searchable": true,
+            "type": "keyword"
+          }
+        },
+        "non_tsdb_field": {
+          "keyword": {
+            "aggregatable": true,
+            "metadata_field": false,
+            "searchable": true,
+            "type": "keyword"
+          }
+        }
+      },
+      "indices": [
+        "tsdb_index1",
+        "tsdb_index2"
+      ]
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/aggregations/time_series.yml",
+  "name": "Multiple indices _tsid vs _tsid hash sorting",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "gauge": {
+              "time_series_metric": "gauge",
+              "type": "double"
+            },
+            "key": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "mode": "time_series",
+          "number_of_shards": 1,
+          "routing_path": [
+            "key"
+          ],
+          "time_series": {
+            "end_time": "2022-05-31T23:59:59Z",
+            "start_time": "2021-05-01T00:00:00Z"
+          }
+        }
+      },
+      "index": "test-2"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "73",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test-2",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

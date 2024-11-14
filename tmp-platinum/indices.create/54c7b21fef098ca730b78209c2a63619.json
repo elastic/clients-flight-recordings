@@ -1,0 +1,78 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/aggregate-metrics/90_tsdb_mappings.yml",
+  "name": "aggregate_double_metric with time series mappings",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "k8s": {
+              "properties": {
+                "pod": {
+                  "properties": {
+                    "name": {
+                      "type": "keyword"
+                    },
+                    "network": {
+                      "properties": {
+                        "rx": {
+                          "default_metric": "max",
+                          "metrics": [
+                            "min",
+                            "max",
+                            "sum",
+                            "value_count"
+                          ],
+                          "time_series_metric": "gauge",
+                          "type": "aggregate_metric_double"
+                        },
+                        "tx": {
+                          "default_metric": "max",
+                          "metrics": [
+                            "min",
+                            "max",
+                            "sum",
+                            "value_count"
+                          ],
+                          "time_series_metric": "gauge",
+                          "type": "aggregate_metric_double"
+                        }
+                      }
+                    },
+                    "uid": {
+                      "time_series_dimension": true,
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          }
+        }
+      },
+      "index": "test_index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "69",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test_index",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

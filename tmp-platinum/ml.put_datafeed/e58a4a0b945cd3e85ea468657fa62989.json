@@ -1,0 +1,121 @@
+{
+  "api": "ml.put_datafeed",
+  "file": "/test/platinum/ml/preview_datafeed.yml",
+  "name": "Test preview multi metric aggregation datafeed with different summary count field",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggregations": {
+          "buckets": {
+            "aggregations": {
+              "airline": {
+                "aggs": {
+                  "event_rate": {
+                    "sum": {
+                      "field": "event_rate"
+                    }
+                  },
+                  "responsetime": {
+                    "sum": {
+                      "field": "responsetime"
+                    }
+                  }
+                },
+                "terms": {
+                  "field": "airline"
+                }
+              },
+              "time": {
+                "max": {
+                  "field": "time"
+                }
+              }
+            },
+            "histogram": {
+              "field": "time",
+              "interval": 3600000
+            }
+          }
+        },
+        "indexes": "airline-data",
+        "job_id": "aggregation-custom-multi-metric-summary-job"
+      },
+      "datafeed_id": "aggregation-custom-multi-metric-summary-feed"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "776",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "aggregations": {
+        "buckets": {
+          "aggregations": {
+            "airline": {
+              "aggs": {
+                "event_rate": {
+                  "sum": {
+                    "field": "event_rate"
+                  }
+                },
+                "responsetime": {
+                  "sum": {
+                    "field": "responsetime"
+                  }
+                }
+              },
+              "terms": {
+                "field": "airline"
+              }
+            },
+            "time": {
+              "max": {
+                "field": "time"
+              }
+            }
+          },
+          "histogram": {
+            "field": "time",
+            "interval": 3600000
+          }
+        }
+      },
+      "authorization": {
+        "roles": [
+          "superuser"
+        ]
+      },
+      "chunking_config": {
+        "mode": "manual",
+        "time_span": "3600000000ms"
+      },
+      "datafeed_id": "aggregation-custom-multi-metric-summary-feed",
+      "delayed_data_check_config": {
+        "enabled": true
+      },
+      "indices": [
+        "airline-data"
+      ],
+      "indices_options": {
+        "allow_no_indices": true,
+        "expand_wildcards": [
+          "open"
+        ],
+        "failure_store": "exclude",
+        "ignore_throttled": true,
+        "ignore_unavailable": false
+      },
+      "job_id": "aggregation-custom-multi-metric-summary-job",
+      "query": {
+        "match_all": {
+        }
+      },
+      "query_delay": "86935ms",
+      "scroll_size": 1000
+    },
+    "statusCode": 200
+  }
+}

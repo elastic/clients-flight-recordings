@@ -1,0 +1,50 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/search.vectors/60_dense_vector_dynamic_mapping.yml",
+  "name": "We respect values set in dynamic_templates for floats and dense vectors",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "dynamic_templates": [
+            {
+              "my_vector_template": {
+                "mapping": {
+                  "dims": 5,
+                  "index": true,
+                  "similarity": "cosine",
+                  "type": "dense_vector"
+                },
+                "match": "*dense_vector*"
+              }
+            },
+            {
+              "my_float_template": {
+                "mapping": {
+                  "type": "float"
+                },
+                "match": "*float*"
+              }
+            }
+          ]
+        }
+      },
+      "index": "my-dynamic-template-index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "88",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "my-dynamic-template-index",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

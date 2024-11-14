@@ -1,0 +1,60 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/synonyms/30_synonyms_delete.yml",
+  "name": "Delete synonym set - index uses the synonym set, so it can't be deleted",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "my_field": {
+              "search_analyzer": "my_analyzer1",
+              "type": "text"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "my_analyzer1": {
+                "filter": [
+                  "lowercase",
+                  "my_synonym_filter"
+                ],
+                "tokenizer": "standard",
+                "type": "custom"
+              }
+            },
+            "filter": {
+              "my_synonym_filter": {
+                "synonyms_set": "test-get-synonyms",
+                "type": "synonym_graph",
+                "updateable": true
+              }
+            }
+          },
+          "index": {
+            "number_of_replicas": 0,
+            "number_of_shards": 1
+          }
+        }
+      },
+      "index": "my_index1"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "73",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "my_index1",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

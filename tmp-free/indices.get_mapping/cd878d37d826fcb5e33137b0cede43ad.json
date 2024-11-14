@@ -1,0 +1,91 @@
+{
+  "api": "indices.get_mapping",
+  "file": "/test/free/suggest/30_context.yml",
+  "name": "Geo suggest should work",
+  "origin": "yaml",
+  "request": {
+    "args": {
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "test": {
+        "mappings": {
+          "properties": {
+            "location": {
+              "type": "geo_point"
+            },
+            "suggest_context": {
+              "analyzer": "simple",
+              "contexts": [
+                {
+                  "name": "color",
+                  "type": "CATEGORY"
+                }
+              ],
+              "max_input_length": 50,
+              "preserve_position_increments": true,
+              "preserve_separators": true,
+              "type": "completion"
+            },
+            "suggest_context_with_path": {
+              "analyzer": "simple",
+              "contexts": [
+                {
+                  "name": "color",
+                  "path": "color",
+                  "type": "CATEGORY"
+                }
+              ],
+              "max_input_length": 50,
+              "preserve_position_increments": true,
+              "preserve_separators": true,
+              "type": "completion"
+            },
+            "suggest_geo": {
+              "analyzer": "simple",
+              "contexts": [
+                {
+                  "name": "location",
+                  "precision": 5,
+                  "type": "GEO"
+                }
+              ],
+              "max_input_length": 50,
+              "preserve_position_increments": true,
+              "preserve_separators": true,
+              "type": "completion"
+            },
+            "suggest_multi_contexts": {
+              "analyzer": "simple",
+              "contexts": [
+                {
+                  "name": "location",
+                  "path": "location",
+                  "precision": 5,
+                  "type": "GEO"
+                },
+                {
+                  "name": "color",
+                  "path": "color",
+                  "type": "CATEGORY"
+                }
+              ],
+              "max_input_length": 50,
+              "preserve_position_increments": true,
+              "preserve_separators": true,
+              "type": "completion"
+            }
+          }
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}

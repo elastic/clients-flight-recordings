@@ -1,0 +1,60 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/tsdb/25_id_generation.yml",
+  "name": "routing_path matches object",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "dim": {
+              "properties": {
+                "foo": {
+                  "properties": {
+                    "uid": {
+                      "time_series_dimension": true,
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "number_of_replicas": 0,
+            "number_of_shards": 2,
+            "routing_path": [
+              "dim.*.uid"
+            ],
+            "time_series": {
+              "end_time": "2021-04-29T00:00:00Z",
+              "start_time": "2021-04-28T00:00:00Z"
+            }
+          }
+        }
+      },
+      "index": "routing_path_test_2"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "86",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "routing_path_test_2",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

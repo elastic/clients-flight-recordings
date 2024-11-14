@@ -1,0 +1,119 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/rollup/rollup_search.yml",
+  "name": "Obsolete BWC Timezone",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "_meta": {
+            "_rollup": {
+              "sensor": {
+                "cron": "* * * * * ?",
+                "groups": {
+                  "date_histogram": {
+                    "field": "timestamp",
+                    "interval": "5m",
+                    "time_zone": "Canada/Mountain"
+                  },
+                  "terms": {
+                    "fields": [
+                      "partition"
+                    ]
+                  }
+                },
+                "id": "tz",
+                "index_pattern": "tz",
+                "metrics": [
+                  {
+                    "field": "price",
+                    "metrics": [
+                      "max"
+                    ]
+                  }
+                ],
+                "page_size": 1000,
+                "rollup_index": "tz_rollup",
+                "timeout": "20s"
+              }
+            }
+          },
+          "properties": {
+            "_rollup": {
+              "id": {
+                "type": "keyword"
+              },
+              "version": {
+                "type": "long"
+              }
+            },
+            "partition": {
+              "terms": {
+                "_count": {
+                  "type": "long"
+                },
+                "value": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "price": {
+              "max": {
+                "value": {
+                  "type": "double"
+                }
+              }
+            },
+            "timestamp": {
+              "date_histogram": {
+                "_count": {
+                  "type": "long"
+                },
+                "interval": {
+                  "type": "keyword"
+                },
+                "time_zone": {
+                  "type": "keyword"
+                },
+                "timestamp": {
+                  "type": "date"
+                }
+              }
+            }
+          }
+        },
+        "settings": {
+          "number_of_replicas": 0,
+          "number_of_shards": 1
+        }
+      },
+      "index": "tz_rollup"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "329",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "reason": "No type specified for field [_rollup]",
+          "type": "mapper_parsing_exception"
+        },
+        "reason": "Failed to parse mapping: No type specified for field [_rollup]",
+        "root_cause": [
+          {
+            "reason": "No type specified for field [_rollup]",
+            "type": "mapper_parsing_exception"
+          }
+        ],
+        "type": "mapper_parsing_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

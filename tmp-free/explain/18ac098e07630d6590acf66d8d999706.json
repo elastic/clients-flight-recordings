@@ -1,0 +1,118 @@
+{
+  "api": "explain",
+  "file": "/test/free/explain/30_query_string.yml",
+  "name": "explain with query_string parameters",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "default_operator": "AND",
+      "id": "1",
+      "index": "test",
+      "q": "field:foo field:xyz"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "513",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "1",
+      "_index": "test",
+      "explanation": {
+        "description": "Failure to meet condition(s) of required/prohibited clause(s)",
+        "details": [
+          {
+            "description": "weight(field:foo in 0) [PerFieldSimilarity], result of:",
+            "details": [
+              {
+                "description": "score(freq=1.0), computed as boost * idf * tf from:",
+                "details": [
+                  {
+                    "description": "boost",
+                    "details": [
+                    ],
+                    "value": 2.2
+                  },
+                  {
+                    "description": "idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:",
+                    "details": [
+                      {
+                        "description": "n, number of documents containing term",
+                        "details": [
+                        ],
+                        "value": 1
+                      },
+                      {
+                        "description": "N, total number of documents with field",
+                        "details": [
+                        ],
+                        "value": 1
+                      }
+                    ],
+                    "value": 0.2876821
+                  },
+                  {
+                    "description": "tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:",
+                    "details": [
+                      {
+                        "description": "freq, occurrences of term within document",
+                        "details": [
+                        ],
+                        "value": 1
+                      },
+                      {
+                        "description": "k1, term saturation parameter",
+                        "details": [
+                        ],
+                        "value": 1.2
+                      },
+                      {
+                        "description": "b, length normalization parameter",
+                        "details": [
+                        ],
+                        "value": 0.75
+                      },
+                      {
+                        "description": "dl, length of field",
+                        "details": [
+                        ],
+                        "value": 2
+                      },
+                      {
+                        "description": "avgdl, average length of field",
+                        "details": [
+                        ],
+                        "value": 2
+                      }
+                    ],
+                    "value": 0.45454544
+                  }
+                ],
+                "value": 0.2876821
+              }
+            ],
+            "value": 0.2876821
+          },
+          {
+            "description": "no match on required clause (field:xyz)",
+            "details": [
+              {
+                "description": "no matching term",
+                "details": [
+                ],
+                "value": 0
+              }
+            ],
+            "value": 0
+          }
+        ],
+        "value": 0
+      },
+      "matched": false
+    },
+    "statusCode": 200
+  }
+}

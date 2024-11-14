@@ -1,0 +1,68 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/synonyms/110_synonyms_invalid.yml",
+  "name": "Reload index with an invalid synonym rule with lenient set to false",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "my_field": {
+              "search_analyzer": "my_analyzer",
+              "type": "text"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "my_analyzer": {
+                "filter": [
+                  "lowercase",
+                  "my_stop_filter",
+                  "my_synonym_filter"
+                ],
+                "tokenizer": "whitespace",
+                "type": "custom"
+              }
+            },
+            "filter": {
+              "my_stop_filter": {
+                "stopwords": [
+                  "baz"
+                ],
+                "type": "stop"
+              },
+              "my_synonym_filter": {
+                "lenient": false,
+                "synonyms_set": "set1",
+                "type": "synonym",
+                "updateable": true
+              }
+            }
+          },
+          "index": {
+            "number_of_replicas": 0,
+            "number_of_shards": 1
+          }
+        }
+      },
+      "index": "test_index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "73",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test_index",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

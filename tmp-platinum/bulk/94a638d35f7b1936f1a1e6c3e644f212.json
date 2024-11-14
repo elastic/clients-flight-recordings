@@ -1,0 +1,53 @@
+{
+  "api": "bulk",
+  "file": "/test/platinum/security/authz/11_delete_doc.yml",
+  "name": "Test deleting a document when not allowed",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"delete\": {\"_index\": \"only_read\" , \"_id\": \"1\"}}",
+        "{\"delete\": {\"_index\": \"only_read\" , \"_id\": \"1\"}}"
+      ]
+    },
+    "headers": {
+      "Authorization": "Basic dGVzdF91c2VyOngtcGFjay10ZXN0LXBhc3N3b3Jk"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "delete": {
+            "_id": "1",
+            "_index": "only_read",
+            "error": {
+              "reason": "action [indices:data/write/bulk[s]] is unauthorized for user [test_user] with effective roles [mixed_role] on indices [only_read], this action is granted by the index privileges [create_doc,create,delete,index,write,all]",
+              "type": "security_exception"
+            },
+            "status": 403
+          }
+        },
+        {
+          "delete": {
+            "_id": "1",
+            "_index": "only_read",
+            "error": {
+              "reason": "action [indices:data/write/bulk[s]] is unauthorized for user [test_user] with effective roles [mixed_role] on indices [only_read], this action is granted by the index privileges [create_doc,create,delete,index,write,all]",
+              "type": "security_exception"
+            },
+            "status": 403
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}

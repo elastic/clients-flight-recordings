@@ -1,0 +1,59 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/tsdb/140_routing_path.yml",
+  "name": "multi-value routing path field succeeds",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "tag": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            },
+            "uid": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            },
+            "voltage": {
+              "time_series_metric": "gauge",
+              "type": "double"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "routing_path": [
+              "uid",
+              "tag"
+            ],
+            "time_series": {
+              "end_time": "2021-04-29T00:00:00Z",
+              "start_time": "2021-04-28T00:00:00Z"
+            }
+          }
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "71",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

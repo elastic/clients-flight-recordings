@@ -1,0 +1,48 @@
+{
+  "api": "indices.get_mapping",
+  "file": "/test/free/indices.create/30_dynamic_template.yml",
+  "name": "Create index with dynamic_mappings, using lists for some match/unmatch sections",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "index": "test_index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "test_index": {
+        "mappings": {
+          "dynamic_templates": [
+            {
+              "mytemplate": {
+                "mapping": {
+                  "type": "keyword"
+                },
+                "match": [
+                  "*name",
+                  "user*"
+                ],
+                "path_match": [
+                  "name.*",
+                  "user.name.*"
+                ],
+                "path_unmatch": "*.middle",
+                "unmatch": [
+                  "*one",
+                  "two*"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/tsdb/20_mapping.yml",
+  "name": "top level wildcard dim object",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "dim": {
+              "properties": {
+                "metricset": {
+                  "time_series_dimension": true,
+                  "type": "keyword"
+                },
+                "uid": {
+                  "time_series_dimension": true,
+                  "type": "keyword"
+                }
+              }
+            },
+            "k8s": {
+              "properties": {
+                "pod": {
+                  "properties": {
+                    "availability_zone": {
+                      "time_series_dimension": true,
+                      "type": "short"
+                    },
+                    "ip": {
+                      "time_series_dimension": true,
+                      "type": "ip"
+                    },
+                    "name": {
+                      "type": "keyword"
+                    },
+                    "network": {
+                      "properties": {
+                        "latency": {
+                          "time_series_metric": "gauge",
+                          "type": "double"
+                        },
+                        "packets_dropped": {
+                          "time_series_metric": "gauge",
+                          "type": "long"
+                        },
+                        "rx": {
+                          "time_series_metric": "gauge",
+                          "type": "integer"
+                        },
+                        "tx": {
+                          "time_series_metric": "counter",
+                          "type": "long"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "number_of_replicas": 0,
+            "number_of_shards": 2,
+            "routing_path": [
+              "dim*"
+            ],
+            "time_series": {
+              "end_time": "2021-04-29T00:00:00Z",
+              "start_time": "2021-04-28T00:00:00Z"
+            }
+          }
+        }
+      },
+      "index": "tsdb_index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "73",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "tsdb_index",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

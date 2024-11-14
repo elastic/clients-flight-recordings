@@ -1,0 +1,59 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/synonyms/80_synonyms_from_index.yml",
+  "name": "Fail loading synonyms from index if synonyms_set doesn't exist",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "my_field": {
+              "search_analyzer": "my_analyzer",
+              "type": "text"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "my_analyzer": {
+                "filter": [
+                  "lowercase",
+                  "my_synonym_filter"
+                ],
+                "tokenizer": "standard",
+                "type": "custom"
+              }
+            },
+            "filter": {
+              "my_synonym_filter": {
+                "synonyms_set": "set_missing",
+                "type": "synonym",
+                "updateable": true
+              }
+            }
+          },
+          "index": {
+            "number_of_shards": 1
+          }
+        }
+      },
+      "index": "another_index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "82",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "another_index",
+      "shards_acknowledged": false
+    },
+    "statusCode": 200
+  }
+}

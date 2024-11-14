@@ -1,0 +1,74 @@
+{
+  "api": "ml.put_datafeed",
+  "file": "/test/platinum/ml/datafeeds_crud.yml",
+  "name": "Test put datafeed with aggregations",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "histogram_buckets": {
+            "aggs": {
+              "@timestamp": {
+                "max": {
+                  "field": "@timestamp"
+                }
+              },
+              "bytes_in_avg": {
+                "avg": {
+                  "field": "system.network.in.bytes"
+                }
+              },
+              "bytes_in_derivative": {
+                "derivative": {
+                  "buckets_path": "bytes_in_avg"
+                }
+              },
+              "non_negative_bytes": {
+                "bucket_script": {
+                  "buckets_path": {
+                    "bytes": "bytes_in_derivative"
+                  },
+                  "script": "params.bytes > 0 ? params.bytes : null"
+                }
+              }
+            },
+            "date_histogram": {
+              "field": "@timestamp",
+              "fixed_interval": "5m",
+              "min_doc_count": 0,
+              "time_zone": "UTC"
+            }
+          }
+        },
+        "indices": [
+          "index-foo"
+        ],
+        "job_id": "datafeeds-crud-1",
+        "max_empty_searches": -1
+      },
+      "datafeed_id": "test-datafeed-aggs-1"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "257",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "A datafeed [test-datafeed-1] already exists for job [datafeeds-crud-1]",
+        "root_cause": [
+          {
+            "reason": "A datafeed [test-datafeed-1] already exists for job [datafeeds-crud-1]",
+            "type": "status_exception"
+          }
+        ],
+        "type": "status_exception"
+      },
+      "status": 409
+    },
+    "statusCode": 409
+  }
+}

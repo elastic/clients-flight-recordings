@@ -1,0 +1,50 @@
+{
+  "api": "transform.put_transform",
+  "file": "/test/platinum/transform/transforms_unattended.yml",
+  "name": "Test unattended put and start",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "dest": {
+          "index": "dest-airline-data-by-airline-start-stop"
+        },
+        "pivot": {
+          "aggs": {
+            "avg_response": {
+              "avg": {
+                "field": "responsetime"
+              }
+            }
+          },
+          "group_by": {
+            "airline": {
+              "terms": {
+                "field": "airline"
+              }
+            }
+          }
+        },
+        "settings": {
+          "unattended": true
+        },
+        "source": {
+          "index": "airline-data"
+        }
+      },
+      "defer_validation": true,
+      "transform_id": "transform-unattended"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

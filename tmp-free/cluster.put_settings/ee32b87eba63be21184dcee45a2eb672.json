@@ -1,0 +1,50 @@
+{
+  "api": "cluster.put_settings",
+  "file": "/test/free/aggregations/scripted_metric_allow_list.yml",
+  "name": "inline combine_script must be allowed",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "persistent": {
+          "search": {
+            "aggs": {
+              "allowed_inline_metric_scripts": [
+                "state.transactions = []",
+                "state.transactions.add(doc.some_value.value)",
+                "long sum = 0; for (a in states) { sum += a } return sum"
+              ],
+              "only_allowed_metric_scripts": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "204",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "persistent": {
+        "search": {
+          "aggs": {
+            "allowed_inline_metric_scripts": [
+              "state.transactions = []",
+              "state.transactions.add(doc.some_value.value)",
+              "long sum = 0; for (a in states) { sum += a } return sum"
+            ],
+            "only_allowed_metric_scripts": "true"
+          }
+        }
+      },
+      "transient": {
+      }
+    },
+    "statusCode": 200
+  }
+}

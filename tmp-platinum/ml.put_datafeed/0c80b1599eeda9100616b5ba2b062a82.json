@@ -1,0 +1,70 @@
+{
+  "api": "ml.put_datafeed",
+  "file": "/test/platinum/ml/preview_datafeed.yml",
+  "name": "Test preview aggregation with runtime fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggregations": {
+          "buckets": {
+            "aggregations": {
+              "airline": {
+                "aggregations": {
+                  "responsetime_x_2": {
+                    "sum": {
+                      "field": "responsetime_x_2"
+                    }
+                  }
+                },
+                "terms": {
+                  "field": "airline",
+                  "size": 100
+                }
+              },
+              "time": {
+                "max": {
+                  "field": "time"
+                }
+              }
+            },
+            "histogram": {
+              "field": "time",
+              "interval": 3600000
+            }
+          }
+        },
+        "indexes": "airline-data",
+        "job_id": "runtime-field-aggregation-job",
+        "runtime_mappings": {
+          "responsetime_x_2": {
+            "script": "emit(doc['responsetime'].value * 2.0)",
+            "type": "double"
+          }
+        }
+      },
+      "datafeed_id": "aggregation-doc-count-feed"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "275",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "A datafeed with id [aggregation-doc-count-feed] already exists",
+        "root_cause": [
+          {
+            "reason": "A datafeed with id [aggregation-doc-count-feed] already exists",
+            "type": "resource_already_exists_exception"
+          }
+        ],
+        "type": "resource_already_exists_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

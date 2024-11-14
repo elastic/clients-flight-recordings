@@ -1,0 +1,39 @@
+{
+  "api": "ingest.put_pipeline",
+  "file": "/test/platinum/redact/10_redact_processor.yml",
+  "name": "Test put redact pipeline",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "processors": [
+          {
+            "redact": {
+              "field": "to_redact",
+              "pattern_definitions": {
+                "CREDIT_CARD": "\\d{4}[ -]\\d{4}[ -]\\d{4}[ -]\\d{4}"
+              },
+              "patterns": [
+                "%{EMAILADDRESS:EMAIL}",
+                "%{IP:IP_ADDRESS}",
+                "%{CREDIT_CARD:CREDIT_CARD}"
+              ]
+            }
+          }
+        ]
+      },
+      "id": "pipeline-using-a-redact-processor"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

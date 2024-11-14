@@ -1,0 +1,48 @@
+{
+  "api": "scripts_painless_execute",
+  "file": "/test/free/tsdb/150_runtime_fields.yml",
+  "name": "tsdb_execute_painless_api",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "context": "boolean_field",
+        "context_setup": {
+          "document": {
+            "@timestamp": "2021-04-28T18:51:03.142Z",
+            "k8s": {
+              "pod": {
+                "ip": "10.10.55.3",
+                "name": "dog",
+                "network": {
+                  "rx": 430605511,
+                  "tx": 111434595272
+                },
+                "uid": "df3145b3-0563-4d3b-a0f7-897eb2876ea9"
+              }
+            },
+            "metricset": "pod"
+          },
+          "index": "test_index"
+        },
+        "script": {
+          "source": "emit(doc['k8s.pod.network.tx'].value < 1000);"
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "44",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "result": [
+        false
+      ]
+    },
+    "statusCode": 200
+  }
+}

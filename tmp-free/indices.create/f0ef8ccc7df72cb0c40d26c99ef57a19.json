@@ -1,0 +1,81 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/tsdb/30_snapshot.yml",
+  "name": "Create a snapshot and then restore it",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "k8s": {
+              "properties": {
+                "pod": {
+                  "properties": {
+                    "ip": {
+                      "type": "ip"
+                    },
+                    "name": {
+                      "type": "keyword"
+                    },
+                    "network": {
+                      "properties": {
+                        "rx": {
+                          "type": "long"
+                        },
+                        "tx": {
+                          "type": "long"
+                        }
+                      }
+                    },
+                    "uid": {
+                      "time_series_dimension": true,
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "number_of_replicas": 0,
+            "number_of_shards": 2,
+            "routing_path": [
+              "metricset",
+              "k8s.pod.uid"
+            ],
+            "time_series": {
+              "end_time": "2021-04-29T00:00:00Z",
+              "start_time": "2021-04-28T00:00:00Z"
+            }
+          }
+        }
+      },
+      "index": "test_index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "73",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test_index",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

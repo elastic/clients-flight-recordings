@@ -1,0 +1,64 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/search.query/50_queries_with_synonyms.yml",
+  "name": "Test match query with synonyms - see #3881 for extensive description of the issue",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "text": {
+              "analyzer": "index",
+              "search_analyzer": "search",
+              "type": "text"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "index": {
+                "filter": "lowercase",
+                "tokenizer": "standard",
+                "type": "custom"
+              },
+              "search": {
+                "filter": [
+                  "lowercase",
+                  "synonym"
+                ],
+                "rest_total_hits_as_int": true,
+                "tokenizer": "standard",
+                "type": "custom"
+              }
+            },
+            "filter": {
+              "synonym": {
+                "synonyms": [
+                  "quick,fast"
+                ],
+                "type": "synonym"
+              }
+            }
+          }
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "71",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

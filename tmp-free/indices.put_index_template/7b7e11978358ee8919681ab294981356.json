@@ -1,0 +1,65 @@
+{
+  "api": "indices.put_index_template",
+  "file": "/test/free/indices.put_index_template/15_composition.yml",
+  "name": "Index template mapping merging",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "composed_of": [
+          "red",
+          "blue"
+        ],
+        "index_patterns": [
+          "purple-index"
+        ],
+        "template": {
+          "mappings": {
+            "properties": {
+              "nested": {
+                "include_in_root": true,
+                "type": "nested"
+              },
+              "object1": {
+                "purple": {
+                  "type": "integer"
+                }
+              },
+              "object2": {
+                "blue": {
+                  "type": "integer"
+                },
+                "purple": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "name": "blue"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "172",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "index_template [blue] invalid, cause [index template [blue] specifies component templates [red, blue] that do not exist]",
+        "root_cause": [
+          {
+            "reason": "index_template [blue] invalid, cause [index template [blue] specifies component templates [red, blue] that do not exist]",
+            "type": "invalid_index_template_exception"
+          }
+        ],
+        "type": "invalid_index_template_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "api": "transform.put_transform",
+  "file": "/test/platinum/transform/transforms_start_stop.yml",
+  "name": "Test start/stop with field alias",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "dest": {
+          "index": "airline-data-time-alias"
+        },
+        "pivot": {
+          "aggs": {
+            "avg_response": {
+              "avg": {
+                "field": "responsetime"
+              }
+            }
+          },
+          "group_by": {
+            "time": {
+              "date_histogram": {
+                "calendar_interval": "1m",
+                "field": "time_alias"
+              }
+            }
+          }
+        },
+        "source": {
+          "index": "airline-data"
+        }
+      },
+      "transform_id": "airline_via_field_alias"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "api": "indices.update_aliases",
+  "file": "/test/free/indices.update_aliases/40_must_exist.yml",
+  "name": "Partial success with must_exist == false",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "actions": [
+          {
+            "add": {
+              "aliases": "test_alias1",
+              "index": "test_index"
+            }
+          },
+          {
+            "remove": {
+              "aliases": "test_non_existing",
+              "index": "test_index",
+              "must_exist": false
+            }
+          }
+        ]
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "216",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "action_results": [
+        {
+          "action": {
+            "aliases": [
+              "test_alias1"
+            ],
+            "indices": [
+              "test_index"
+            ],
+            "type": "add"
+          },
+          "status": 200
+        },
+        {
+          "action": {
+            "aliases": [
+              "test_non_existing"
+            ],
+            "indices": [
+              "test_index"
+            ],
+            "type": "remove"
+          },
+          "error": {
+            "reason": "aliases [test_non_existing] missing",
+            "resource.id": "test_non_existing",
+            "resource.type": "aliases",
+            "type": "aliases_not_found_exception"
+          },
+          "status": 404
+        }
+      ],
+      "errors": true
+    },
+    "statusCode": 200
+  }
+}

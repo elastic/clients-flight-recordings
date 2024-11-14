@@ -1,0 +1,77 @@
+{
+  "api": "indices.put_index_template",
+  "file": "/test/free/index/92_metrics_auto_subobjects.yml",
+  "name": "Metrics object indexing with synthetic source",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "index_patterns": "test-*",
+        "template": {
+          "mappings": {
+            "_source": {
+              "mode": "synthetic"
+            },
+            "dynamic_templates": [
+              {
+                "no_subobjects": {
+                  "mapping": {
+                    "properties": {
+                      "host": {
+                        "name": {
+                          "type": "keyword"
+                        }
+                      }
+                    },
+                    "subobjects": "auto",
+                    "type": "object"
+                  },
+                  "match": "metrics"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "name": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "408",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "caused_by": {
+            "caused_by": {
+              "caused_by": {
+                "reason": "No type specified for field [host]",
+                "type": "mapper_parsing_exception"
+              },
+              "reason": "dynamic template [no_subobjects] has invalid content [{\"match\":\"metrics\",\"mapping\":{\"properties\":{\"host\":{\"name\":{\"type\":\"keyword\"}}},\"subobjects\":\"auto\",\"type\":\"object\"}}], attempted to validate it with the following match_mapping_type: [object, string, long, double, boolean, date, binary]",
+              "type": "illegal_argument_exception"
+            },
+            "reason": "Failed to parse mapping: dynamic template [no_subobjects] has invalid content [{\"match\":\"metrics\",\"mapping\":{\"properties\":{\"host\":{\"name\":{\"type\":\"keyword\"}}},\"subobjects\":\"auto\",\"type\":\"object\"}}], attempted to validate it with the following match_mapping_type: [object, string, long, double, boolean, date, binary]",
+            "type": "mapper_parsing_exception"
+          },
+          "reason": "invalid composite mappings for [test]",
+          "type": "illegal_argument_exception"
+        },
+        "reason": "composable template [test] template after composition is invalid",
+        "root_cause": [
+          {
+            "reason": "composable template [test] template after composition is invalid",
+            "type": "illegal_argument_exception"
+          }
+        ],
+        "type": "illegal_argument_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "api": "rollup.put_job",
+  "file": "/test/platinum/rollup/rollup_search.yml",
+  "name": "Rollup search via alias, multiple rollup indices match",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "cron": "*/30 * * * * ?",
+        "groups": {
+          "date_histogram": {
+            "calendar_interval": "1h",
+            "field": "timestamp"
+          },
+          "terms": {
+            "fields": [
+              "partition"
+            ]
+          }
+        },
+        "index_pattern": "bar",
+        "metrics": [
+          {
+            "field": "price",
+            "metrics": [
+              "max"
+            ]
+          }
+        ],
+        "page_size": 10,
+        "rollup_index": "bar_rollup"
+      },
+      "id": "bar"
+    },
+    "headers": {
+      "Authorization": "Basic eF9wYWNrX3Jlc3RfdXNlcjp4LXBhY2stdGVzdC1wYXNzd29yZA=="
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

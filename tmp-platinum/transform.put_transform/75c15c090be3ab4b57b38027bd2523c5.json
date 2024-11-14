@@ -1,0 +1,49 @@
+{
+  "api": "transform.put_transform",
+  "file": "/test/platinum/transform/transforms_start_stop.yml",
+  "name": "Test start transform with missing pipeline",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "description": "yaml test transform on airline-data",
+        "dest": {
+          "index": "airline-data-by-airline-pipeline",
+          "pipeline": "missing-transform-pipeline"
+        },
+        "pivot": {
+          "aggs": {
+            "avg_response": {
+              "avg": {
+                "field": "responsetime"
+              }
+            }
+          },
+          "group_by": {
+            "airline": {
+              "terms": {
+                "field": "airline"
+              }
+            }
+          }
+        },
+        "source": {
+          "index": "airline-data"
+        }
+      },
+      "defer_validation": true,
+      "transform_id": "airline-transform-with-missing-pipeline"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

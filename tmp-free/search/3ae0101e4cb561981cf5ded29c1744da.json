@@ -1,0 +1,146 @@
+{
+  "api": "search",
+  "file": "/test/free/suggest/40_typed_keys.yml",
+  "name": "Test typed keys parameter for suggesters",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "match_all": {
+          }
+        },
+        "suggest": {
+          "context_suggester": {
+            "completion": {
+              "contexts": {
+                "format": "ebook"
+              },
+              "field": "suggestions"
+            },
+            "prefix": "Elastic"
+          },
+          "phrase_suggester": {
+            "phrase": {
+              "field": "title"
+            }
+          },
+          "term_suggester": {
+            "term": {
+              "field": "title"
+            }
+          },
+          "text": "Elastic"
+        }
+      },
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "Um2kOZMBp_l20DdpQ875",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "suggestions": {
+                "contexts": {
+                  "format": "ebook"
+                },
+                "input": "ELK in Action"
+              },
+              "title": "Elasticsearch in Action"
+            }
+          },
+          {
+            "_id": "U22kOZMBp_l20DdpQ875",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "suggestions": {
+                "contexts": {
+                  "format": "ebook"
+                },
+                "input": [
+                  "Elasticsearch in Action"
+                ]
+              },
+              "title": "Elasticsearch - The Definitive Guide"
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": 2
+      },
+      "suggest": {
+        "completion#context_suggester": [
+          {
+            "length": 7,
+            "offset": 0,
+            "options": [
+              {
+                "_id": "U22kOZMBp_l20DdpQ875",
+                "_index": "test",
+                "_score": 1,
+                "_source": {
+                  "suggestions": {
+                    "contexts": {
+                      "format": "ebook"
+                    },
+                    "input": [
+                      "Elasticsearch in Action"
+                    ]
+                  },
+                  "title": "Elasticsearch - The Definitive Guide"
+                },
+                "contexts": {
+                  "format": [
+                    "ebook"
+                  ]
+                },
+                "text": "Elasticsearch in Action"
+              }
+            ],
+            "text": "Elastic"
+          }
+        ],
+        "phrase#phrase_suggester": [
+          {
+            "length": 7,
+            "offset": 0,
+            "options": [
+            ],
+            "text": "Elastic"
+          }
+        ],
+        "term#term_suggester": [
+          {
+            "length": 7,
+            "offset": 0,
+            "options": [
+            ],
+            "text": "Elastic"
+          }
+        ]
+      },
+      "timed_out": false,
+      "took": 6
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "api": "transform.put_transform",
+  "file": "/test/platinum/transform/transforms_crud.yml",
+  "name": "Test PUT continuous transform",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "dest": {
+          "index": "airline-data-by-airline-continuous"
+        },
+        "pivot": {
+          "aggs": {
+            "avg_response": {
+              "avg": {
+                "field": "responsetime"
+              }
+            }
+          },
+          "group_by": {
+            "airline": {
+              "terms": {
+                "field": "airline"
+              }
+            }
+          }
+        },
+        "source": {
+          "index": "airline-data"
+        },
+        "sync": {
+          "time": {
+            "delay": "90m",
+            "field": "time"
+          }
+        }
+      },
+      "transform_id": "airline-transform-continuous"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

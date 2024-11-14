@@ -1,0 +1,54 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/indices.analyze/10_synonyms.yml",
+  "name": "Synonym filter with char_filter",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "settings": {
+          "index": {
+            "analysis": {
+              "analyzer": {
+                "synonymAnalyzerWithCharfilter": {
+                  "char_filter": [
+                    "html_strip"
+                  ],
+                  "filter": [
+                    "synonym"
+                  ],
+                  "tokenizer": "whitespace"
+                }
+              },
+              "filter": {
+                "synonym": {
+                  "synonyms": [
+                    "<p>kimchy</p> => shay",
+                    "dude => <html>elasticsearch</html>",
+                    "<font>abides</font> => man!"
+                  ],
+                  "type": "synonym"
+                }
+              }
+            }
+          }
+        }
+      },
+      "index": "test_synonym_with_charfilter"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "94",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test_synonym_with_charfilter",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

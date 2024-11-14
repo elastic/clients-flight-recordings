@@ -1,0 +1,86 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/tsdb/05_dimension_and_metric_in_non_tsdb_index.yml",
+  "name": "add time series mappings",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "k8s": {
+              "properties": {
+                "pod": {
+                  "properties": {
+                    "availability_zone": {
+                      "time_series_dimension": true,
+                      "type": "short"
+                    },
+                    "ip": {
+                      "time_series_dimension": true,
+                      "type": "ip"
+                    },
+                    "name": {
+                      "type": "keyword"
+                    },
+                    "network": {
+                      "properties": {
+                        "latency": {
+                          "time_series_metric": "gauge",
+                          "type": "double"
+                        },
+                        "packets_dropped": {
+                          "time_series_metric": "gauge",
+                          "type": "long"
+                        },
+                        "rx": {
+                          "time_series_metric": "gauge",
+                          "type": "integer"
+                        },
+                        "tx": {
+                          "time_series_metric": "counter",
+                          "type": "long"
+                        }
+                      }
+                    },
+                    "uid": {
+                      "time_series_dimension": true,
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "number_of_shards": 2
+          }
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "71",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

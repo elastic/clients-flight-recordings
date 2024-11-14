@@ -1,0 +1,55 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/analysis-common/40_token_filters.yml",
+  "name": "pattern_replace_filter",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "pagerank": {
+              "normalizer": "my_normalizer",
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "filter": {
+              "replace_zeros": {
+                "all": true,
+                "pattern": "0+",
+                "replacement": "",
+                "type": "pattern_replace"
+              }
+            },
+            "normalizer": {
+              "my_normalizer": {
+                "filter": [
+                  "replace_zeros"
+                ],
+                "type": "custom"
+              }
+            }
+          }
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "71",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

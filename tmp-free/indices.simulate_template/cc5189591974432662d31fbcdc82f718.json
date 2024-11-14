@@ -1,0 +1,61 @@
+{
+  "api": "indices.simulate_template",
+  "file": "/test/free/indices.simulate_template/10_basic.yml",
+  "name": "Simulate template matches overlapping legacy and composable templates",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "name": "winning_v2_template"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "222",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "overlapping": [
+        {
+          "index_patterns": [
+            "test*",
+            "t1*"
+          ],
+          "name": "v1_template"
+        },
+        {
+          "index_patterns": [
+            "test*"
+          ],
+          "name": "v2_template"
+        }
+      ],
+      "template": {
+        "aliases": {
+        },
+        "mappings": {
+          "properties": {
+            "field": {
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "number_of_replicas": "0",
+            "number_of_shards": "1",
+            "routing": {
+              "allocation": {
+                "include": {
+                  "_tier_preference": "data_content"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}

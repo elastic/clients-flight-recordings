@@ -1,0 +1,81 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/search.query/30_ngram_highligthing.yml",
+  "name": "ngram highlighting",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "name": {
+              "analyzer": "name_index_analyzer",
+              "search_analyzer": "name_search_analyzer",
+              "term_vector": "with_positions_offsets",
+              "type": "text"
+            },
+            "name2": {
+              "analyzer": "name2_index_analyzer",
+              "search_analyzer": "name_search_analyzer",
+              "term_vector": "with_positions_offsets",
+              "type": "text"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "name2_index_analyzer": {
+                "filter": [
+                  "my_ngram"
+                ],
+                "tokenizer": "whitespace"
+              },
+              "name_index_analyzer": {
+                "tokenizer": "my_ngramt"
+              },
+              "name_search_analyzer": {
+                "tokenizer": "whitespace"
+              }
+            },
+            "filter": {
+              "my_ngram": {
+                "max_gram": 20,
+                "min_gram": 1,
+                "type": "ngram"
+              }
+            },
+            "tokenizer": {
+              "my_ngramt": {
+                "max_gram": 20,
+                "min_gram": 1,
+                "token_chars": "letter,digit",
+                "type": "ngram"
+              }
+            }
+          },
+          "index": {
+            "max_ngram_diff": 19
+          },
+          "number_of_replicas": 0,
+          "number_of_shards": 1
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "71",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

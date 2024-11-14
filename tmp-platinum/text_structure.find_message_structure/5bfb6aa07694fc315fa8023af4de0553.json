@@ -1,0 +1,143 @@
+{
+  "api": "text_structure.find_message_structure",
+  "file": "/test/platinum/text_structure/find_message_structure.yml",
+  "name": "Messages structure finder with JSON messages",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "messages": [
+          "{\"airline\": \"AAL\", \"responsetime\": 132.2046, \"sourcetype\": \"text-structure-test\", \"time\": 1403481600}",
+          "{\"airline\": \"JZA\", \"responsetime\": 990.4628, \"sourcetype\": \"text-structure-test\", \"time\": 1403481700}",
+          "{\"airline\": \"AAL\", \"responsetime\": 134.2046, \"sourcetype\": \"text-structure-test\", \"time\": 1403481800}"
+        ]
+      },
+      "timeout": "10s"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1479",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "charset": "UTF-8",
+      "ecs_compatibility": "disabled",
+      "field_stats": {
+        "airline": {
+          "cardinality": 2,
+          "count": 3,
+          "top_hits": [
+            {
+              "count": 2,
+              "value": "AAL"
+            },
+            {
+              "count": 1,
+              "value": "JZA"
+            }
+          ]
+        },
+        "responsetime": {
+          "cardinality": 3,
+          "count": 3,
+          "max_value": 990.4628,
+          "mean_value": 418.95733333333334,
+          "median_value": 134.2046,
+          "min_value": 132.2046,
+          "top_hits": [
+            {
+              "count": 1,
+              "value": 132.2046
+            },
+            {
+              "count": 1,
+              "value": 134.2046
+            },
+            {
+              "count": 1,
+              "value": 990.4628
+            }
+          ]
+        },
+        "sourcetype": {
+          "cardinality": 1,
+          "count": 3,
+          "top_hits": [
+            {
+              "count": 3,
+              "value": "text-structure-test"
+            }
+          ]
+        },
+        "time": {
+          "cardinality": 3,
+          "count": 3,
+          "earliest": "1403481600",
+          "latest": "1403481800",
+          "top_hits": [
+            {
+              "count": 1,
+              "value": "1403481600"
+            },
+            {
+              "count": 1,
+              "value": "1403481700"
+            },
+            {
+              "count": 1,
+              "value": "1403481800"
+            }
+          ]
+        }
+      },
+      "format": "ndjson",
+      "ingest_pipeline": {
+        "description": "Ingest pipeline created by text structure finder",
+        "processors": [
+          {
+            "date": {
+              "field": "time",
+              "formats": [
+                "UNIX"
+              ]
+            }
+          }
+        ]
+      },
+      "java_timestamp_formats": [
+        "UNIX"
+      ],
+      "joda_timestamp_formats": [
+        "UNIX"
+      ],
+      "mappings": {
+        "properties": {
+          "@timestamp": {
+            "type": "date"
+          },
+          "airline": {
+            "type": "keyword"
+          },
+          "responsetime": {
+            "type": "double"
+          },
+          "sourcetype": {
+            "type": "keyword"
+          },
+          "time": {
+            "format": "epoch_second",
+            "type": "date"
+          }
+        }
+      },
+      "need_client_timezone": false,
+      "num_lines_analyzed": 3,
+      "num_messages_analyzed": 3,
+      "sample_start": "{\"airline\": \"AAL\", \"responsetime\": 132.2046, \"sourcetype\": \"text-structure-test\", \"time\": 1403481600}\n{\"airline\": \"JZA\", \"responsetime\": 990.4628, \"sourcetype\": \"text-structure-test\", \"time\": 1403481700}\n",
+      "timestamp_field": "time"
+    },
+    "statusCode": 200
+  }
+}

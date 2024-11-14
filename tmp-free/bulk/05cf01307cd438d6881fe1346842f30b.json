@@ -1,0 +1,41 @@
+{
+  "api": "bulk",
+  "file": "/test/free/tsdb/90_unsupported_operations.yml",
+  "name": "update over _bulk",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"update\": {\"_id\": 1}}",
+        "{\"doc\":{\"@timestamp\": \"2021-04-28T18:03:24.467Z\", \"metricset\": \"pod\", \"k8s\": {\"pod\": {\"name\": \"dog\", \"uid\":\"df3145b3-0563-4d3b-a0f7-897eb2876ea9\", \"ip\": \"10.10.55.3\", \"network\": {\"tx\": 1434595272, \"rx\": 530605511}}}}}"
+      ],
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "update": {
+            "_id": "1",
+            "_index": "test",
+            "error": {
+              "reason": "update is not supported because the destination index [test] is in time series mode",
+              "type": "illegal_argument_exception"
+            },
+            "status": 400
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}

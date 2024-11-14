@@ -1,0 +1,61 @@
+{
+  "api": "transform.put_transform",
+  "file": "/test/platinum/transform/transforms_crud.yml",
+  "name": "Test PUT continuous transform without delay set",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "dest": {
+          "index": "airline-data-by-airline-continuous"
+        },
+        "pivot": {
+          "aggs": {
+            "avg_response": {
+              "avg": {
+                "field": "responsetime"
+              }
+            }
+          },
+          "group_by": {
+            "airline": {
+              "terms": {
+                "field": "airline"
+              }
+            }
+          }
+        },
+        "source": {
+          "index": "airline-data"
+        },
+        "sync": {
+          "time": {
+            "field": "time"
+          }
+        }
+      },
+      "transform_id": "airline-transform-continuous"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "277",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "Transform with id [airline-transform-continuous] already exists",
+        "root_cause": [
+          {
+            "reason": "Transform with id [airline-transform-continuous] already exists",
+            "type": "resource_already_exists_exception"
+          }
+        ],
+        "type": "resource_already_exists_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

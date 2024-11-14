@@ -1,0 +1,76 @@
+{
+  "api": "search",
+  "file": "/test/platinum/ml/learning_to_rank_rescorer.yml",
+  "name": "Test rescore with stored model and chained rescorers",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "rescore": [
+          {
+            "query": {
+              "rescore_query": {
+                "script_score": {
+                  "query": {
+                    "match_all": {
+                    }
+                  },
+                  "script": {
+                    "source": "return 4"
+                  }
+                }
+              }
+            },
+            "window_size": 4
+          },
+          {
+            "learning_to_rank": {
+              "model_id": "ltr-model"
+            },
+            "window_size": 3
+          },
+          {
+            "query": {
+              "rescore_query": {
+                "script_score": {
+                  "query": {
+                    "match_all": {
+                    }
+                  },
+                  "script": {
+                    "source": "return 20"
+                  }
+                }
+              }
+            },
+            "window_size": 2
+          }
+        ]
+      },
+      "index": "store",
+      "size": 5,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "401",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "Validation Failed: 1: rescorer [window_size] is too small and should be at least the value of [from + size: 4] but was [3];",
+        "root_cause": [
+          {
+            "reason": "Validation Failed: 1: rescorer [window_size] is too small and should be at least the value of [from + size: 4] but was [3];",
+            "type": "action_request_validation_exception"
+          }
+        ],
+        "type": "action_request_validation_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

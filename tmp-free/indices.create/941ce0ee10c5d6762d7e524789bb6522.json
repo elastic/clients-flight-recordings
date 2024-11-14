@@ -1,0 +1,50 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/tsdb/10_settings.yml",
+  "name": "check time_series default time bound value",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date_nanos"
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "routing_path": [
+              "metricset"
+            ],
+            "time_series": {
+              "end_time": "9999-12-31T23:59:59.999Z",
+              "start_time": "-9999-01-01T00:00:00Z"
+            }
+          }
+        }
+      },
+      "index": "test_index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "73",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test_index",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/cluster.stats/10_analysis_stats.yml",
+  "name": "get cluster stats returns analysis stats",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "description": {
+              "analyzer": "french",
+              "type": "text"
+            },
+            "message": {
+              "analyzer": "french",
+              "search_analyzer": "spanish",
+              "search_quote_analyzer": "german",
+              "type": "text"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "cust": {
+                "char_filter": [
+                  "html_strip"
+                ],
+                "filter": [
+                  "trim"
+                ],
+                "tokenizer": "keyword"
+              },
+              "en": {
+                "stopwords": "_english_",
+                "type": "standard"
+              }
+            },
+            "char_filter": {
+              "c": {
+                "mappings": [
+                  "a => b"
+                ],
+                "type": "mapping"
+              }
+            },
+            "filter": {
+              "st": {
+                "stopwords": [
+                  "a"
+                ],
+                "type": "stop"
+              },
+              "st2": {
+                "stopwords": [
+                  "b"
+                ],
+                "type": "stop"
+              }
+            },
+            "tokenizer": {
+              "tok": {
+                "pattern": ",",
+                "type": "pattern"
+              }
+            }
+          }
+        }
+      },
+      "index": "test-index1"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "75",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test-index1",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

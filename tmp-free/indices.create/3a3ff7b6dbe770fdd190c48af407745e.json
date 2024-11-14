@@ -1,0 +1,60 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/synonyms/80_synonyms_from_index.yml",
+  "name": "Load empty synonyms set from index for an analyzer",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "my_field": {
+              "search_analyzer": "my_analyzer",
+              "type": "text"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "my_analyzer": {
+                "filter": [
+                  "lowercase",
+                  "my_synonym_filter"
+                ],
+                "tokenizer": "standard",
+                "type": "custom"
+              }
+            },
+            "filter": {
+              "my_synonym_filter": {
+                "synonyms_set": "empty_set",
+                "type": "synonym",
+                "updateable": true
+              }
+            }
+          },
+          "index": {
+            "number_of_replicas": 0,
+            "number_of_shards": 1
+          }
+        }
+      },
+      "index": "empty_set_index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "78",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "empty_set_index",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

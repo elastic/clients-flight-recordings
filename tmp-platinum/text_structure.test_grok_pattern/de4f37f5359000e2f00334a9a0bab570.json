@@ -1,0 +1,51 @@
+{
+  "api": "text_structure.test_grok_pattern",
+  "file": "/test/platinum/text_structure/test_grok_pattern.yml",
+  "name": "Grok pattern with two named fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "grok_pattern": "%{WORD}.*%{WORD:first_name} %{WORD:last_name}!",
+        "text": [
+          "Hello   Dave Roberts!",
+          "this does not match"
+        ]
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "170",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "matches": [
+        {
+          "fields": {
+            "first_name": [
+              {
+                "length": 4,
+                "match": "Dave",
+                "offset": 8
+              }
+            ],
+            "last_name": [
+              {
+                "length": 7,
+                "match": "Roberts",
+                "offset": 13
+              }
+            ]
+          },
+          "matched": true
+        },
+        {
+          "matched": false
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}
