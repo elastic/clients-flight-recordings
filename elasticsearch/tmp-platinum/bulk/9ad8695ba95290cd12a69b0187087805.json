@@ -1,0 +1,65 @@
+{
+  "api": "bulk",
+  "file": "/test/platinum/security/authz/13_index_datemath.yml",
+  "name": "Test indexing documents with datemath, when permitted",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"index\": {\"_index\": \"<write-{now/M{YYYY.MM}}>\", \"_id\": \"2\"}}",
+        "{\"name\": \"doc2\"}",
+        "{\"index\": {\"_index\": \"<write-{now/d}>\", \"_id\": \"3\"}}",
+        "{\"name\": \"doc3\"}"
+      ]
+    },
+    "headers": {
+      "Authorization": "Basic dGVzdF91c2VyOngtcGFjay10ZXN0LXBhc3N3b3Jk"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": false,
+      "items": [
+        {
+          "index": {
+            "_id": "2",
+            "_index": "write-2024.11",
+            "_primary_term": 1,
+            "_seq_no": 0,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 1,
+            "result": "created",
+            "status": 201
+          }
+        },
+        {
+          "index": {
+            "_id": "3",
+            "_index": "write-2024.11.19",
+            "_primary_term": 1,
+            "_seq_no": 0,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 1,
+            "result": "created",
+            "status": 201
+          }
+        }
+      ],
+      "took": 400
+    },
+    "statusCode": 200
+  }
+}

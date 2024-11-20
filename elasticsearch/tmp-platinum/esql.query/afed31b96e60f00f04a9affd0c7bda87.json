@@ -1,0 +1,80 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/61_enrich_ip.yml",
+  "name": "IP text fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM events_text | ENRICH networks-policy ON ip_text | sort @timestamp | KEEP ip_text, name, department, message"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "10968235",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.0.0-abc7f58ad61ecf2d41dad5ec018011010da15fad \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-async-is-running": "?0"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "ip_text",
+          "type": "text"
+        },
+        {
+          "name": "name",
+          "type": "keyword"
+        },
+        {
+          "name": "department",
+          "type": "keyword"
+        },
+        {
+          "name": "message",
+          "type": "keyword"
+        }
+      ],
+      "took": 10,
+      "values": [
+        [
+          "10.100.0.21",
+          "Production",
+          "OPS",
+          "network connected"
+        ],
+        [
+          [
+            "10.100.0.21",
+            "10.101.0.107"
+          ],
+          [
+            "Production",
+            "QA"
+          ],
+          [
+            "OPS",
+            "Engineering"
+          ],
+          "sending messages"
+        ],
+        [
+          "10.101.0.107",
+          "QA",
+          "Engineering",
+          "network disconnected"
+        ],
+        [
+          "13.101.0.114",
+          null,
+          null,
+          "authentication failed"
+        ]
+      ]
+    },
+    "statusCode": 200
+  }
+}

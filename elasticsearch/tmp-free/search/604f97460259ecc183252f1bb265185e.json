@@ -1,0 +1,104 @@
+{
+  "api": "search",
+  "file": "/test/free/search.inner_hits/10_basic.yml",
+  "name": "Nested doc version and seqIDs",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "docvalue_fields": [
+          "_seq_no"
+        ],
+        "query": {
+          "nested": {
+            "inner_hits": {
+              "docvalue_fields": [
+                "_seq_no"
+              ],
+              "version": true
+            },
+            "path": "nested_field",
+            "query": {
+              "match_all": {
+              }
+            }
+          }
+        },
+        "version": true
+      },
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "nested_field": [
+                {
+                  "foo": "baz"
+                }
+              ]
+            },
+            "_version": 2,
+            "fields": {
+              "_seq_no": [
+                1
+              ]
+            },
+            "inner_hits": {
+              "nested_field": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "1",
+                      "_index": "test",
+                      "_nested": {
+                        "field": "nested_field",
+                        "offset": 0
+                      },
+                      "_score": 1,
+                      "_source": {
+                        "foo": "baz"
+                      },
+                      "_version": 2,
+                      "fields": {
+                        "_seq_no": [
+                          1
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 1,
+                  "total": 1
+                }
+              }
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": 1
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}

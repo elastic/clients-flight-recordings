@@ -1,0 +1,139 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/bucket_selector.yml",
+  "name": "gap_policy is skip",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "a": {
+            "aggs": {
+              "b": {
+                "sum": {
+                  "field": "b"
+                }
+              },
+              "gappy": {
+                "sum": {
+                  "field": "gappy"
+                }
+              },
+              "selector": {
+                "bucket_selector": {
+                  "buckets_path": {
+                    "b": "b",
+                    "gappy": "gappy"
+                  },
+                  "gap_policy": "skip",
+                  "script": "params.b < params.gappy"
+                }
+              }
+            },
+            "histogram": {
+              "field": "a",
+              "interval": 1
+            }
+          }
+        }
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "histogram#a": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": 2,
+              "sum#b": {
+                "value": 12
+              },
+              "sum#gappy": {
+                "value": 99
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 4,
+              "sum#b": {
+                "value": 82
+              },
+              "sum#gappy": {
+                "value": 98
+              }
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "4krkQ5MBTAOPFJ3ZGWGP",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "a": 2,
+              "b": 12,
+              "c": 21,
+              "gappy": 99
+            }
+          },
+          {
+            "_id": "40rkQ5MBTAOPFJ3ZGWGP",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "a": 3,
+              "b": 56,
+              "c": 12
+            }
+          },
+          {
+            "_id": "5ErkQ5MBTAOPFJ3ZGWGP",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "a": 4,
+              "b": 82,
+              "c": 13,
+              "gappy": 98
+            }
+          },
+          {
+            "_id": "5UrkQ5MBTAOPFJ3ZGWGP",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "a": 5,
+              "b": 12,
+              "c": 54
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 4
+        }
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}

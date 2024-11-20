@@ -1,0 +1,98 @@
+{
+  "api": "search",
+  "file": "/test/free/suggest/30_context.yml",
+  "name": "Category suggest context from path should work",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "suggest": {
+          "result": {
+            "completion": {
+              "contexts": {
+                "color": [
+                  "blue",
+                  "red"
+                ]
+              },
+              "field": "suggest_context_with_path"
+            },
+            "text": "foo"
+          }
+        }
+      },
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": 0
+      },
+      "suggest": {
+        "completion#result": [
+          {
+            "length": 3,
+            "offset": 0,
+            "options": [
+              {
+                "_id": "2",
+                "_index": "test",
+                "_score": 1,
+                "_source": {
+                  "color": "blue",
+                  "suggest_context_with_path": "Foo blue"
+                },
+                "contexts": {
+                  "color": [
+                    "blue"
+                  ]
+                },
+                "text": "Foo blue"
+              },
+              {
+                "_id": "1",
+                "_index": "test",
+                "_score": 1,
+                "_source": {
+                  "suggest_context_with_path": {
+                    "contexts": {
+                      "color": "red"
+                    },
+                    "input": "Foo red"
+                  }
+                },
+                "contexts": {
+                  "color": [
+                    "red"
+                  ]
+                },
+                "text": "Foo red"
+              }
+            ],
+            "text": "foo"
+          }
+        ]
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/41_knn_search_byte_quantized.yml",
+  "name": "kNN multi-field search with query",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "name"
+        ],
+        "knn": [
+          {
+            "field": "vector",
+            "k": 2,
+            "num_candidates": 3,
+            "query_vector": [
+              -0.5,
+              90,
+              -10,
+              14.8,
+              -156
+            ]
+          },
+          {
+            "field": "another_vector",
+            "k": 2,
+            "num_candidates": 3,
+            "query_vector": [
+              -0.5,
+              11,
+              0,
+              12,
+              111
+            ]
+          }
+        ],
+        "query": {
+          "term": {
+            "name": "cow.jpg"
+          }
+        }
+      },
+      "index": "hnsw_byte_quantized",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "3",
+            "_index": "hnsw_byte_quantized",
+            "_score": 1.0021603,
+            "_source": {
+              "another_vector": [
+                -0.5,
+                11,
+                0,
+                12,
+                111
+              ],
+              "name": "rabbit.jpg",
+              "vector": [
+                0.5,
+                111.3,
+                -13,
+                14.8,
+                -156
+              ]
+            },
+            "fields": {
+              "name": [
+                "rabbit.jpg"
+              ]
+            }
+          },
+          {
+            "_id": "1",
+            "_index": "hnsw_byte_quantized",
+            "_score": 0.9808291,
+            "_source": {
+              "another_vector": [
+                130,
+                115,
+                -1.02,
+                15.555,
+                -100
+              ],
+              "name": "cow.jpg",
+              "vector": [
+                230,
+                300.33,
+                -34.8988,
+                15.555,
+                -200
+              ]
+            },
+            "fields": {
+              "name": [
+                "cow.jpg"
+              ]
+            }
+          },
+          {
+            "_id": "2",
+            "_index": "hnsw_byte_quantized",
+            "_score": 0.011286348,
+            "_source": {
+              "another_vector": [
+                -0.5,
+                50,
+                -1,
+                1,
+                120
+              ],
+              "name": "moose.jpg",
+              "vector": [
+                -0.5,
+                100,
+                -13,
+                14.8,
+                -156
+              ]
+            },
+            "fields": {
+              "name": [
+                "moose.jpg"
+              ]
+            }
+          }
+        ],
+        "max_score": 1.0021603,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 3
+    },
+    "statusCode": 200
+  }
+}
