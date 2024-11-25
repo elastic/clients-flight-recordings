@@ -1,0 +1,138 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/190_knn_query-with-k-param.yml",
+  "name": "Function score query with knn query with k param",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "my_name"
+        ],
+        "query": {
+          "function_score": {
+            "boost_mode": "multiply",
+            "functions": [
+              {
+                "filter": {
+                  "match": {
+                    "my_name": "v1"
+                  }
+                },
+                "weight": 10
+              },
+              {
+                "filter": {
+                  "match": {
+                    "my_name": "v2"
+                  }
+                },
+                "weight": 100
+              }
+            ],
+            "query": {
+              "knn": {
+                "field": "my_vector",
+                "k": 5,
+                "query_vector": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            }
+          }
+        },
+        "size": 3
+      },
+      "index": "my_index",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "2",
+            "_index": "my_index",
+            "_score": 50,
+            "_source": {
+              "my_name": "v2",
+              "my_vector": [
+                1,
+                1,
+                1,
+                2
+              ]
+            },
+            "fields": {
+              "my_name": [
+                "v2"
+              ]
+            }
+          },
+          {
+            "_id": "1",
+            "_index": "my_index",
+            "_score": 10,
+            "_source": {
+              "my_name": "v1",
+              "my_vector": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "fields": {
+              "my_name": [
+                "v1"
+              ]
+            }
+          },
+          {
+            "_id": "4",
+            "_index": "my_index",
+            "_score": 10,
+            "_source": {
+              "my_name": "v2",
+              "my_vector": [
+                1,
+                1,
+                1,
+                4
+              ]
+            },
+            "fields": {
+              "my_name": [
+                "v2"
+              ]
+            }
+          }
+        ],
+        "max_score": 50,
+        "total": {
+          "relation": "eq",
+          "value": 5
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}

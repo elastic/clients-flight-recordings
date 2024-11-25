@@ -1,0 +1,86 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/auto_date_histogram.yml",
+  "name": "Auto date histogram on two indices with same field but different date type",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "auto_date_histogram": {
+            "auto_date_histogram": {
+              "buckets": 2,
+              "field": "date_field"
+            }
+          }
+        }
+      },
+      "index": [
+        "date_field_type_date",
+        "date_field_type_date_nanos"
+      ],
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "aggregations": {
+        "auto_date_histogram#auto_date_histogram": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": 1508468400000,
+              "key_as_string": "2017-10-20T03:00:00.000Z"
+            },
+            {
+              "doc_count": 1,
+              "key": 1508472000000,
+              "key_as_string": "2017-10-20T04:00:00.000Z"
+            }
+          ],
+          "interval": "1h"
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "date_field_type_date",
+            "_score": 1,
+            "_source": {
+              "date_field": "2017-10-20T03:08:45"
+            }
+          },
+          {
+            "_id": "2",
+            "_index": "date_field_type_date_nanos",
+            "_score": 1,
+            "_source": {
+              "date_field": "2017-10-20T04:10:15"
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 37
+    },
+    "statusCode": 200
+  }
+}
