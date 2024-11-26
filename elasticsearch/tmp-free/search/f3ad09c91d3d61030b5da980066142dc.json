@@ -1,0 +1,76 @@
+{
+  "api": "search",
+  "file": "/test/free/search/380_sort_segments_on_timestamp.yml",
+  "name": "Test that index segments are NOT sorted on timestamp field when @timestamp field is dynamically added",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          {
+            "field": "@timestamp",
+            "format": "yyyy-MM-dd"
+          }
+        ]
+      },
+      "index": "test_index2",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "3_SZaZMBpD8pp9FBIVBA",
+            "_index": "test_index2",
+            "_score": 1,
+            "_source": {
+              "@timestamp": "2021-08-01",
+              "foo": "bar1"
+            },
+            "fields": {
+              "@timestamp": [
+                "2021-08-01"
+              ]
+            }
+          },
+          {
+            "_id": "4PSZaZMBpD8pp9FBIVBe",
+            "_index": "test_index2",
+            "_score": 1,
+            "_source": {
+              "@timestamp": "2021-08-02",
+              "foo": "bar2"
+            },
+            "fields": {
+              "@timestamp": [
+                "2021-08-02"
+              ]
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}

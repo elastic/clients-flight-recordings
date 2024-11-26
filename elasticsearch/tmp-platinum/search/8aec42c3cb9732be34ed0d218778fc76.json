@@ -1,0 +1,101 @@
+{
+  "api": "search",
+  "file": "/test/platinum/analytics/top_metrics.yml",
+  "name": "inside terms",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "ip": {
+            "aggs": {
+              "tm": {
+                "top_metrics": {
+                  "metrics": {
+                    "field": "v"
+                  },
+                  "sort": {
+                    "date": "desc"
+                  }
+                }
+              }
+            },
+            "terms": {
+              "field": "ip"
+            }
+          }
+        }
+      },
+      "index": "test",
+      "size": 0,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "sterms#ip": {
+          "buckets": [
+            {
+              "doc_count": 2,
+              "key": "192.168.0.1",
+              "top_metrics#tm": {
+                "top": [
+                  {
+                    "metrics": {
+                      "v": 2
+                    },
+                    "sort": [
+                      "2020-01-01T02:01:01.000Z"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": "192.168.0.2",
+              "top_metrics#tm": {
+                "top": [
+                  {
+                    "metrics": {
+                      "v": 3
+                    },
+                    "sort": [
+                      "2020-01-01T02:01:01.000Z"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 9
+    },
+    "statusCode": 200
+  }
+}

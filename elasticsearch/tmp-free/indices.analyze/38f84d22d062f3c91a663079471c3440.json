@@ -1,0 +1,44 @@
+{
+  "api": "indices.analyze",
+  "file": "/test/free/analysis-common/50_char_filters.yml",
+  "name": "html_strip",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "char_filter": [
+          {
+            "escaped_tags": [
+              "xxx",
+              "yyy"
+            ],
+            "read_ahead": 1024,
+            "type": "html_strip"
+          }
+        ],
+        "text": "<html>test<yyy>foo</yyy></html>",
+        "tokenizer": "keyword"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "114",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "tokens": [
+        {
+          "end_offset": 31,
+          "position": 0,
+          "start_offset": 0,
+          "token": "\ntest<yyy>foo</yyy>\n",
+          "type": "word"
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}
