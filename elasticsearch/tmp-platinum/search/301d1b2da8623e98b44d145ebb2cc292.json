@@ -1,0 +1,73 @@
+{
+  "api": "search",
+  "file": "/test/platinum/analytics/top_metrics.yml",
+  "name": "sort by numeric script",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "tm": {
+            "top_metrics": {
+              "metrics": {
+                "field": "v"
+              },
+              "sort": {
+                "_script": {
+                  "script": {
+                    "source": "doc['s.keyword'].value.length()"
+                  },
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      "index": "test",
+      "size": 0,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "top_metrics#tm": {
+          "top": [
+            {
+              "metrics": {
+                "v": 3.1414999961853027
+              },
+              "sort": [
+                3
+              ]
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 11
+    },
+    "statusCode": 200
+  }
+}

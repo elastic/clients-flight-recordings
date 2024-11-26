@@ -1,0 +1,105 @@
+{
+  "api": "search",
+  "file": "/test/free/search/390_lookup_fields.yml",
+  "name": "Retrieve lookup fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "msg",
+          "location"
+        ],
+        "runtime_mappings": {
+          "location": {
+            "fetch_fields": [
+              "city",
+              "country"
+            ],
+            "input_field": "ip",
+            "target_field": "_id",
+            "target_index": "ip_locations",
+            "type": "lookup"
+          }
+        },
+        "sort": "ord"
+      },
+      "index": "logs",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "WvqaaZMBdjceBVS3ajSr",
+            "_index": "logs",
+            "_score": null,
+            "_source": {
+              "ip": "192.168.1.1",
+              "msg": "The first message",
+              "ord": 1
+            },
+            "fields": {
+              "location": [
+                {
+                  "city": [
+                    "Montreal"
+                  ],
+                  "country": [
+                    "Canada"
+                  ]
+                }
+              ],
+              "msg": [
+                "The first message"
+              ]
+            },
+            "sort": [
+              1
+            ]
+          },
+          {
+            "_id": "W_qaaZMBdjceBVS3ajTD",
+            "_index": "logs",
+            "_score": null,
+            "_source": {
+              "ip": "192.168.1.2",
+              "msg": "The second message",
+              "ord": 2
+            },
+            "fields": {
+              "msg": [
+                "The second message"
+              ]
+            },
+            "sort": [
+              2
+            ]
+          }
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 8
+    },
+    "statusCode": 200
+  }
+}
