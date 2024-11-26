@@ -1,0 +1,72 @@
+{
+  "api": "transform.get_transform",
+  "file": "/test/platinum/transform/transforms_update.yml",
+  "name": "Test update retention policy",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "transform_id": "updating-airline-transform"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "494",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "count": 1,
+      "transforms": [
+        {
+          "authorization": {
+            "roles": [
+              "superuser"
+            ]
+          },
+          "create_time": 1732644687596,
+          "description": "updated description",
+          "dest": {
+            "index": "new-destination"
+          },
+          "frequency": "5s",
+          "id": "updating-airline-transform",
+          "pivot": {
+            "aggregations": {
+              "avg_response": {
+                "avg": {
+                  "field": "responsetime"
+                }
+              }
+            },
+            "group_by": {
+              "airline": {
+                "terms": {
+                  "field": "airline"
+                }
+              }
+            }
+          },
+          "settings": {
+          },
+          "source": {
+            "index": [
+              "other-airline-data"
+            ],
+            "query": {
+              "match_all": {
+              }
+            }
+          },
+          "sync": {
+            "time": {
+              "delay": "120m",
+              "field": "time"
+            }
+          },
+          "version": "10.0.0"
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}

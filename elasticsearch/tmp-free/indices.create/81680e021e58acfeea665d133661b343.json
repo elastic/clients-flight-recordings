@@ -1,0 +1,65 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/indices.create/20_synthetic_source.yml",
+  "name": "synthetic_source with copy_to pointing to ambiguous field and subobjects auto",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "_source": {
+            "mode": "synthetic"
+          },
+          "properties": {
+            "a": {
+              "properties": {
+                "b": {
+                  "c": {
+                    "type": "keyword"
+                  },
+                  "properties": {
+                    "c": {
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "k": {
+              "copy_to": "a.b.c",
+              "type": "keyword"
+            }
+          },
+          "subobjects": "auto"
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "194",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "reason": "Mapping definition for [b] has unsupported parameters:  [c : {type=keyword}]",
+          "type": "mapper_parsing_exception"
+        },
+        "reason": "Failed to parse mapping: Mapping definition for [b] has unsupported parameters:  [c : {type=keyword}]",
+        "root_cause": [
+          {
+            "reason": "Mapping definition for [b] has unsupported parameters:  [c : {type=keyword}]",
+            "type": "mapper_parsing_exception"
+          }
+        ],
+        "type": "mapper_parsing_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}
