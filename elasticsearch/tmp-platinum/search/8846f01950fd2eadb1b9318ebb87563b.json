@@ -1,0 +1,151 @@
+{
+  "api": "search",
+  "file": "/test/platinum/analytics/nested_top_metrics_sort.yml",
+  "name": "terms order by top metrics null values",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "name": {
+            "aggs": {
+              "field_exists": {
+                "aggs": {
+                  "top_metrics": {
+                    "top_metrics": {
+                      "metrics": {
+                        "field": "null_date"
+                      },
+                      "size": 1,
+                      "sort": {
+                        "order_date": "desc"
+                      }
+                    }
+                  }
+                },
+                "filter": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "bool": {
+                          "minimum_should_match": 1,
+                          "should": [
+                            {
+                              "exists": {
+                                "field": "null_date"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "terms": {
+              "field": "name",
+              "order": {
+                "field_exists>top_metrics[null_date]": "desc"
+              },
+              "size": 5
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "test_order_by_top_metrics",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "sterms#name": {
+          "buckets": [
+            {
+              "doc_count": 2,
+              "filter#field_exists": {
+                "doc_count": 0,
+                "top_metrics#top_metrics": {
+                  "top": [
+                  ]
+                }
+              },
+              "key": "alice"
+            },
+            {
+              "doc_count": 1,
+              "filter#field_exists": {
+                "doc_count": 0,
+                "top_metrics#top_metrics": {
+                  "top": [
+                  ]
+                }
+              },
+              "key": "bob"
+            },
+            {
+              "doc_count": 1,
+              "filter#field_exists": {
+                "doc_count": 0,
+                "top_metrics#top_metrics": {
+                  "top": [
+                  ]
+                }
+              },
+              "key": "bruce"
+            },
+            {
+              "doc_count": 3,
+              "filter#field_exists": {
+                "doc_count": 0,
+                "top_metrics#top_metrics": {
+                  "top": [
+                  ]
+                }
+              },
+              "key": "charlie"
+            },
+            {
+              "doc_count": 3,
+              "filter#field_exists": {
+                "doc_count": 0,
+                "top_metrics#top_metrics": {
+                  "top": [
+                  ]
+                }
+              },
+              "key": "daniel"
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 6
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 16
+        }
+      },
+      "timed_out": false,
+      "took": 9
+    },
+    "statusCode": 200
+  }
+}
