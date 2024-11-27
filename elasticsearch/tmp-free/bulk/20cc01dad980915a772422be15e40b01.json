@@ -1,0 +1,54 @@
+{
+  "api": "bulk",
+  "file": "/test/free/update/35_if_seq_no.yml",
+  "name": "Update with if_seq_no",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        {
+          "update": {
+            "_id": "1",
+            "_index": "test_1",
+            "if_primary_term": 200,
+            "if_seq_no": 100
+          }
+        },
+        {
+          "doc": {
+            "foo": "baz"
+          }
+        }
+      ]
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "update": {
+            "_id": "1",
+            "_index": "test_1",
+            "error": {
+              "index": "test_1",
+              "index_uuid": "tE-6ITxVSkGdAYWlTfFL2A",
+              "reason": "[1]: version conflict, required seqNo [100], primary term [200]. current document has seqNo [1] and primary term [1]",
+              "shard": "0",
+              "type": "version_conflict_engine_exception"
+            },
+            "status": 409
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}

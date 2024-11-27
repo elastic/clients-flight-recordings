@@ -1,0 +1,75 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/64_enrich_int_match.yml",
+  "name": "decades",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM songs | EVAL decade = (10*FLOOR(year/10))::integer | ENRICH decades-policy ON decade | STATS count=COUNT(*) BY description | SORT count DESC, description ASC"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "26566349",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-8.17.0-c29de8a7f66f8d8385bf21c00642a05953cac019 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-async-is-running": "?0"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "count",
+          "type": "long"
+        },
+        {
+          "name": "description",
+          "type": "keyword"
+        }
+      ],
+      "took": 26,
+      "values": [
+        [
+          6,
+          "Swinging Sixties"
+        ],
+        [
+          2,
+          "Aughts"
+        ],
+        [
+          2,
+          "Decade of Greed"
+        ],
+        [
+          2,
+          "Digital Age"
+        ],
+        [
+          2,
+          "Fabulous Fifties"
+        ],
+        [
+          2,
+          "Me Decade"
+        ],
+        [
+          2,
+          "Nineties"
+        ],
+        [
+          1,
+          "Dirty Thirties"
+        ],
+        [
+          1,
+          "Roaring Twenties 2.0"
+        ]
+      ]
+    },
+    "statusCode": 200
+  }
+}

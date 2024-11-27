@@ -1,0 +1,75 @@
+{
+  "api": "transform.preview_transform",
+  "file": "/test/platinum/transform/preview_transforms.yml",
+  "name": "Test preview transform latest with search runtime fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "latest": {
+          "sort": "time-5m",
+          "unique_key": [
+            "airline"
+          ]
+        },
+        "source": {
+          "index": "airline-data",
+          "runtime_mappings": {
+            "time-5m": {
+              "script": "emit(doc['time'].value.toInstant().minus(5, ChronoUnit.MINUTES).toEpochMilli())",
+              "type": "date"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "470",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "generated_dest_index": {
+        "aliases": {
+        },
+        "mappings": {
+          "_meta": {
+            "_transform": {
+              "creation_date_in_millis": 1732689758550,
+              "transform": "transform-preview",
+              "version": {
+                "created": "10.0.0"
+              }
+            },
+            "created_by": "transform"
+          },
+          "properties": {
+          }
+        },
+        "settings": {
+          "index": {
+            "auto_expand_replicas": "0-1",
+            "number_of_shards": "1"
+          }
+        }
+      },
+      "preview": [
+        {
+          "airline": "bar",
+          "event_rate": 8,
+          "responsetime": 42,
+          "time": "2017-02-18T01:00:00Z"
+        },
+        {
+          "airline": "foo",
+          "event_rate": 7,
+          "responsetime": 42,
+          "time": "2017-02-18T01:01:00Z"
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}
