@@ -1,0 +1,81 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/composite.yml",
+  "name": "Terms source from part of sorted",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggregations": {
+          "test": {
+            "composite": {
+              "sources": [
+                {
+                  "keyword": {
+                    "terms": {
+                      "field": "keyword"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "index": "sorted_test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "composite#test": {
+          "after_key": {
+            "keyword": "foo"
+          },
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": {
+                "keyword": "foo"
+              }
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "2",
+            "_index": "sorted_test",
+            "_score": 1,
+            "_source": {
+              "keyword": "foo",
+              "long": 1
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
