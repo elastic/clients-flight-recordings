@@ -1,0 +1,72 @@
+{
+  "api": "search",
+  "file": "/test/platinum/entsearch/rules/40_rule_query_search.yml",
+  "name": "Verify rule query still works with legacy ruleset_id",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "rule": {
+            "match_criteria": {
+              "query_string": "search"
+            },
+            "organic": {
+              "query_string": {
+                "default_field": "text",
+                "query": "search"
+              }
+            },
+            "ruleset_id": "test-ruleset"
+          }
+        }
+      },
+      "index": "test-index1",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-8.16.2-581b9ab7c0bb47058d294d8821df335f1f3906d2 \"Using deprecated field [ruleset_id] in query rules, please use [ruleset_ids] instead\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "doc1",
+            "_index": "test-index1",
+            "_score": 1.7014122e+38,
+            "_source": {
+              "text": "elastic"
+            }
+          },
+          {
+            "_id": "doc4",
+            "_index": "test-index1",
+            "_score": 1.006046,
+            "_source": {
+              "text": "you know, for search"
+            }
+          }
+        ],
+        "max_score": 1.7014122e+38,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}
