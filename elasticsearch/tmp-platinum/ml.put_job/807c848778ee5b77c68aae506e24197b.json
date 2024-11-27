@@ -1,0 +1,98 @@
+{
+  "api": "ml.put_job",
+  "file": "/test/platinum/ml/jobs_crud.yml",
+  "name": "Test jobs with named and custom categorization_analyzer",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "analysis_config": {
+          "categorization_analyzer": {
+            "char_filter": [
+              "html_strip"
+            ],
+            "filter": [
+              "stop"
+            ],
+            "tokenizer": "classic"
+          },
+          "categorization_field_name": "some_category",
+          "detectors": [
+            {
+              "by_field_name": "airline",
+              "field_name": "responsetime",
+              "function": "mean"
+            },
+            {
+              "by_field_name": "mlcategory",
+              "function": "count"
+            }
+          ]
+        },
+        "data_description": {
+        }
+      },
+      "job_id": "jobs-crud-custom-categorization-analyzer-job"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "972",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "allow_lazy_open": false,
+      "analysis_config": {
+        "bucket_span": "5m",
+        "categorization_analyzer": {
+          "char_filter": [
+            "html_strip"
+          ],
+          "filter": [
+            "stop"
+          ],
+          "tokenizer": "classic"
+        },
+        "categorization_field_name": "some_category",
+        "detectors": [
+          {
+            "by_field_name": "airline",
+            "detector_description": "mean(responsetime) by airline",
+            "detector_index": 0,
+            "field_name": "responsetime",
+            "function": "mean"
+          },
+          {
+            "by_field_name": "mlcategory",
+            "detector_description": "count by mlcategory",
+            "detector_index": 1,
+            "function": "count"
+          }
+        ],
+        "influencers": [
+        ],
+        "model_prune_window": "30d",
+        "per_partition_categorization": {
+          "enabled": false
+        }
+      },
+      "analysis_limits": {
+        "categorization_examples_limit": 4,
+        "model_memory_limit": "1024mb"
+      },
+      "create_time": 1732728333982,
+      "daily_model_snapshot_retention_after_days": 1,
+      "data_description": {
+        "time_field": "time",
+        "time_format": "epoch_ms"
+      },
+      "job_id": "jobs-crud-custom-categorization-analyzer-job",
+      "job_type": "anomaly_detector",
+      "job_version": "12.0.0",
+      "model_snapshot_retention_days": 10,
+      "results_index_name": "shared"
+    },
+    "statusCode": 200
+  }
+}
