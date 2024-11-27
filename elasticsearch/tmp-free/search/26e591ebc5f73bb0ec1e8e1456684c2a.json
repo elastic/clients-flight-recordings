@@ -1,0 +1,173 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/top_hits.yml",
+  "name": "highlight",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "page": {
+            "aggs": {
+              "top_hits": {
+                "top_hits": {
+                  "highlight": {
+                    "fields": {
+                      "text": {
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "terms": {
+              "field": "page"
+            }
+          }
+        },
+        "query": {
+          "match": {
+            "text": "the"
+          }
+        }
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "lterms#page": {
+          "buckets": [
+            {
+              "doc_count": 2,
+              "key": 1,
+              "top_hits#top_hits": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "HJQYbZMBYuJpVOFlrKS0",
+                      "_index": "test",
+                      "_score": 0.14543022,
+                      "_source": {
+                        "page": 1,
+                        "text": "the quick brown fox"
+                      },
+                      "highlight": {
+                        "text": [
+                          "<em>the</em> quick brown fox"
+                        ]
+                      }
+                    },
+                    {
+                      "_id": "HZQYbZMBYuJpVOFlrKS0",
+                      "_index": "test",
+                      "_score": 0.13353139,
+                      "_source": {
+                        "page": 1,
+                        "text": "jumped over the lazy dog"
+                      },
+                      "highlight": {
+                        "text": [
+                          "jumped over <em>the</em> lazy dog"
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 0.14543022,
+                  "total": {
+                    "relation": "eq",
+                    "value": 2
+                  }
+                }
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 2,
+              "top_hits#top_hits": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "HpQYbZMBYuJpVOFlrKS0",
+                      "_index": "test",
+                      "_score": 0.12343238,
+                      "_source": {
+                        "page": 2,
+                        "text": "The vorpal blade went snicker-snack!"
+                      },
+                      "highlight": {
+                        "text": [
+                          "<em>The</em> vorpal blade went snicker-snack!"
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 0.12343238,
+                  "total": {
+                    "relation": "eq",
+                    "value": 1
+                  }
+                }
+              }
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "HJQYbZMBYuJpVOFlrKS0",
+            "_index": "test",
+            "_score": 0.14543022,
+            "_source": {
+              "page": 1,
+              "text": "the quick brown fox"
+            }
+          },
+          {
+            "_id": "HZQYbZMBYuJpVOFlrKS0",
+            "_index": "test",
+            "_score": 0.13353139,
+            "_source": {
+              "page": 1,
+              "text": "jumped over the lazy dog"
+            }
+          },
+          {
+            "_id": "HpQYbZMBYuJpVOFlrKS0",
+            "_index": "test",
+            "_score": 0.12343238,
+            "_source": {
+              "page": 2,
+              "text": "The vorpal blade went snicker-snack!"
+            }
+          }
+        ],
+        "max_score": 0.14543022,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 70
+    },
+    "statusCode": 200
+  }
+}

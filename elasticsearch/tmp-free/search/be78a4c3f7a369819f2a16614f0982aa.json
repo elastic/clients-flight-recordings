@@ -1,0 +1,170 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/bucket_script.yml",
+  "name": "calculate",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "a": {
+            "aggs": {
+              "b": {
+                "sum": {
+                  "field": "b"
+                }
+              },
+              "c": {
+                "sum": {
+                  "field": "c"
+                }
+              },
+              "d": {
+                "bucket_script": {
+                  "buckets_path": {
+                    "b": "b",
+                    "c": "c"
+                  },
+                  "script": "params.b + params.c"
+                }
+              }
+            },
+            "histogram": {
+              "field": "a",
+              "interval": 1
+            }
+          }
+        }
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "histogram#a": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": 2,
+              "simple_value#d": {
+                "value": 33
+              },
+              "sum#b": {
+                "value": 12
+              },
+              "sum#c": {
+                "value": 21
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 3,
+              "simple_value#d": {
+                "value": 68
+              },
+              "sum#b": {
+                "value": 56
+              },
+              "sum#c": {
+                "value": 12
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 4,
+              "simple_value#d": {
+                "value": 95
+              },
+              "sum#b": {
+                "value": 82
+              },
+              "sum#c": {
+                "value": 13
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 5,
+              "simple_value#d": {
+                "value": 66
+              },
+              "sum#b": {
+                "value": 12
+              },
+              "sum#c": {
+                "value": 54
+              }
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "ppQVbZMBYuJpVOFlx5ow",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "a": 2,
+              "b": 12,
+              "c": 21,
+              "gappy": 99
+            }
+          },
+          {
+            "_id": "p5QVbZMBYuJpVOFlx5ow",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "a": 3,
+              "b": 56,
+              "c": 12
+            }
+          },
+          {
+            "_id": "qJQVbZMBYuJpVOFlx5ow",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "a": 4,
+              "b": 82,
+              "c": 13,
+              "gappy": 98
+            }
+          },
+          {
+            "_id": "qZQVbZMBYuJpVOFlx5ow",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "a": 5,
+              "b": 12,
+              "c": 54
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 4
+        }
+      },
+      "timed_out": false,
+      "took": 32
+    },
+    "statusCode": 200
+  }
+}

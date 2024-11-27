@@ -1,0 +1,152 @@
+{
+  "api": "eql.search",
+  "file": "/test/platinum/eql/10_basic.yml",
+  "name": "Execute EQL sequence with custom format for timestamp field.",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          {
+            "field": "@timestamp",
+            "format": "yyyy"
+          },
+          {
+            "field": "day_of_week"
+          }
+        ],
+        "query": "sequence by user [process where user == \"SYSTEM\"] [process where true]"
+      },
+      "index": "eql_test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1075",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "hits": {
+        "sequences": [
+          {
+            "events": [
+              {
+                "_id": "1",
+                "_index": "eql_test",
+                "_source": {
+                  "@timestamp": "2020-02-03T12:34:56Z",
+                  "event": [
+                    {
+                      "category": "process"
+                    }
+                  ],
+                  "id": 123,
+                  "some_keyword": "longer than normal",
+                  "user": "SYSTEM",
+                  "valid": false
+                },
+                "fields": {
+                  "@timestamp": [
+                    "2020"
+                  ],
+                  "day_of_week": [
+                    "Monday"
+                  ]
+                }
+              },
+              {
+                "_id": "2",
+                "_index": "eql_test",
+                "_source": {
+                  "@timestamp": "2020-02-04T12:34:56Z",
+                  "event": [
+                    {
+                      "category": "process"
+                    }
+                  ],
+                  "id": 123,
+                  "user": "SYSTEM",
+                  "valid": true
+                },
+                "fields": {
+                  "@timestamp": [
+                    "2020"
+                  ],
+                  "day_of_week": [
+                    "Tuesday"
+                  ]
+                }
+              }
+            ],
+            "join_keys": [
+              "SYSTEM"
+            ]
+          },
+          {
+            "events": [
+              {
+                "_id": "2",
+                "_index": "eql_test",
+                "_source": {
+                  "@timestamp": "2020-02-04T12:34:56Z",
+                  "event": [
+                    {
+                      "category": "process"
+                    }
+                  ],
+                  "id": 123,
+                  "user": "SYSTEM",
+                  "valid": true
+                },
+                "fields": {
+                  "@timestamp": [
+                    "2020"
+                  ],
+                  "day_of_week": [
+                    "Tuesday"
+                  ]
+                }
+              },
+              {
+                "_id": "3",
+                "_index": "eql_test",
+                "_source": {
+                  "@timestamp": "2020-02-05T12:34:56Z",
+                  "event": [
+                    {
+                      "category": "process"
+                    }
+                  ],
+                  "id": 123,
+                  "user": "SYSTEM",
+                  "valid": true
+                },
+                "fields": {
+                  "@timestamp": [
+                    "2020"
+                  ],
+                  "day_of_week": [
+                    "Wednesday"
+                  ]
+                }
+              }
+            ],
+            "join_keys": [
+              "SYSTEM"
+            ]
+          }
+        ],
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "is_partial": false,
+      "is_running": false,
+      "timed_out": false,
+      "took": 8
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/160_union_types.yml",
+  "name": "load two indexes and group by converted client_ip",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM events_*_long | STATS count = COUNT(*) BY client_ip::ip | SORT count DESC, `client_ip::ip` ASC"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "10589914",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.0.0-4e3301530d16ff937fa835b42a108aee48203af5 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-async-is-running": "?0"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "count",
+          "type": "long"
+        },
+        {
+          "name": "client_ip::ip",
+          "type": "ip"
+        }
+      ],
+      "took": 10,
+      "values": [
+        [
+          8,
+          "172.21.3.15"
+        ],
+        [
+          2,
+          "172.21.0.5"
+        ],
+        [
+          2,
+          "172.21.2.113"
+        ],
+        [
+          2,
+          "172.21.2.162"
+        ]
+      ]
+    },
+    "statusCode": 200
+  }
+}

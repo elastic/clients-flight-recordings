@@ -1,0 +1,67 @@
+{
+  "api": "transform.get_transform",
+  "file": "/test/platinum/transform/transforms_crud.yml",
+  "name": "Test basic transform crud",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "from": 1,
+      "size": 1,
+      "transform_id": "airline-transform*"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "426",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "count": 2,
+      "transforms": [
+        {
+          "authorization": {
+            "roles": [
+              "superuser"
+            ]
+          },
+          "create_time": 1732704020449,
+          "dest": {
+            "index": "airline-data-by-airline-again",
+            "pipeline": "airline-pipeline"
+          },
+          "id": "airline-transform-dos",
+          "pivot": {
+            "aggregations": {
+              "avg_response": {
+                "avg": {
+                  "field": "responsetime"
+                }
+              }
+            },
+            "group_by": {
+              "airline": {
+                "terms": {
+                  "field": "airline"
+                }
+              }
+            }
+          },
+          "settings": {
+          },
+          "source": {
+            "index": [
+              "airline-data"
+            ],
+            "query": {
+              "match_all": {
+              }
+            }
+          },
+          "version": "10.0.0"
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}
