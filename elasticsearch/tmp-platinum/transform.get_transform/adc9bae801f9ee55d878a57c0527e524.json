@@ -1,0 +1,80 @@
+{
+  "api": "transform.get_transform",
+  "file": "/test/platinum/transform/transforms_crud.yml",
+  "name": "Test get all transforms when there are none",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "transform_id": "*"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "540",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "count": 1,
+      "transforms": [
+        {
+          "authorization": {
+            "roles": [
+              "superuser"
+            ]
+          },
+          "create_time": 1732791001125,
+          "dest": {
+            "index": "dest-airline-data-by-airline-and-hour"
+          },
+          "id": "airline-transform",
+          "pivot": {
+            "aggregations": {
+              "avg_response": {
+                "avg": {
+                  "field": "responsetime"
+                }
+              },
+              "time.max": {
+                "max": {
+                  "field": "time"
+                }
+              },
+              "time.min": {
+                "min": {
+                  "field": "time"
+                }
+              }
+            },
+            "group_by": {
+              "airline": {
+                "terms": {
+                  "field": "airline"
+                }
+              },
+              "by-hour": {
+                "date_histogram": {
+                  "field": "time",
+                  "fixed_interval": "1h"
+                }
+              }
+            }
+          },
+          "settings": {
+          },
+          "source": {
+            "index": [
+              "airline-data"
+            ],
+            "query": {
+              "match_all": {
+              }
+            }
+          },
+          "version": "10.0.0"
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}
