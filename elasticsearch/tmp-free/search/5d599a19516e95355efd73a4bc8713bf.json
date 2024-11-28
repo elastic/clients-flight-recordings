@@ -1,0 +1,101 @@
+{
+  "api": "search",
+  "file": "/test/free/search/112_field_collapsing_with_rescore.yml",
+  "name": "field collapsing and rescore with window_size",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "collapse": {
+          "field": "product_id"
+        },
+        "query": {
+          "bool": {
+            "filter": {
+              "match": {
+                "description": "tv"
+              }
+            },
+            "should": {
+              "script_score": {
+                "query": {
+                  "match_all": {
+                  }
+                },
+                "script": {
+                  "source": "doc['score'].value"
+                }
+              }
+            }
+          }
+        },
+        "rescore": {
+          "query": {
+            "query_weight": 0,
+            "rescore_query": {
+              "script_score": {
+                "query": {
+                  "match_all": {
+                  }
+                },
+                "script": {
+                  "source": "doc['popularity'].value"
+                }
+              }
+            },
+            "rescore_query_weight": 1
+          },
+          "window_size": 2
+        },
+        "size": 1
+      },
+      "index": "products",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "3",
+            "_index": "products",
+            "_routing": "10",
+            "_score": 50,
+            "_source": {
+              "description": "LED Smart TV 65",
+              "popularity": 50,
+              "product_id": "10",
+              "score": 10
+            },
+            "fields": {
+              "product_id": [
+                "10"
+              ]
+            }
+          }
+        ],
+        "max_score": 50,
+        "total": {
+          "relation": "eq",
+          "value": 5
+        }
+      },
+      "timed_out": false,
+      "took": 8
+    },
+    "statusCode": 200
+  }
+}
