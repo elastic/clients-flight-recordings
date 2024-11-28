@@ -1,0 +1,112 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/sampler.yml",
+  "name": "small shard_size",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "sample": {
+            "aggs": {
+              "max_number": {
+                "max": {
+                  "field": "number"
+                }
+              },
+              "min_number": {
+                "min": {
+                  "field": "number"
+                }
+              }
+            },
+            "sampler": {
+              "shard_size": 1
+            }
+          }
+        },
+        "query": {
+          "query_string": {
+            "query": "tags:kibana OR tags:javascript"
+          }
+        }
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "sampler#sample": {
+          "doc_count": 1,
+          "max#max_number": {
+            "value": 4
+          },
+          "min#min_number": {
+            "value": 4
+          }
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "kb8-cpMBzgS6-69cpVcR",
+            "_index": "test",
+            "_score": 1.2039728,
+            "_source": {
+              "number": 4,
+              "tags": "javascript"
+            }
+          },
+          {
+            "_id": "jr8-cpMBzgS6-69cpVcR",
+            "_index": "test",
+            "_score": 0.35667494,
+            "_source": {
+              "number": 1,
+              "tags": "kibana"
+            }
+          },
+          {
+            "_id": "j78-cpMBzgS6-69cpVcR",
+            "_index": "test",
+            "_score": 0.35667494,
+            "_source": {
+              "number": 2,
+              "tags": "kibana"
+            }
+          },
+          {
+            "_id": "kL8-cpMBzgS6-69cpVcR",
+            "_index": "test",
+            "_score": 0.35667494,
+            "_source": {
+              "number": 3,
+              "tags": "kibana"
+            }
+          }
+        ],
+        "max_score": 1.2039728,
+        "total": {
+          "relation": "eq",
+          "value": 4
+        }
+      },
+      "timed_out": false,
+      "took": 3
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "api": "enrich.put_policy",
+  "file": "/test/platinum/enrich/10_basic.yml",
+  "name": "Test using the deprecated elasticsearch_version field results in a warning",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "match": {
+          "elasticsearch_version": "any string here is acceptable",
+          "enrich_fields": [
+            "a",
+            "b"
+          ],
+          "indices": [
+            "bar*"
+          ],
+          "match_field": "baz"
+        }
+      },
+      "name": "policy-crud-warning"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "warning": "299 Elasticsearch-8.16.2-70a58d5aded9fe84b19607a9af210c87b8e538eb \"the [elasticsearch_version] field of an enrich policy has no effect and will be removed in Elasticsearch 9.0\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
