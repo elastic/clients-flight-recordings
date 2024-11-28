@@ -1,0 +1,188 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/composite.yml",
+  "name": "Nested then filter then nested then terms",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggregations": {
+          "courses": {
+            "aggregations": {
+              "highpass_filter": {
+                "aggregations": {
+                  "sessions": {
+                    "aggregations": {
+                      "names": {
+                        "composite": {
+                          "sources": [
+                            {
+                              "kw": {
+                                "terms": {
+                                  "field": "courses.sessions.semester"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "nested": {
+                      "path": "courses.sessions"
+                    }
+                  }
+                },
+                "filter": {
+                  "range": {
+                    "courses.credits": {
+                      "gt": 1
+                    }
+                  }
+                }
+              }
+            },
+            "nested": {
+              "path": "courses"
+            }
+          }
+        }
+      },
+      "index": "verynested",
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "nested#courses": {
+          "doc_count": 4,
+          "filter#highpass_filter": {
+            "doc_count": 3,
+            "nested#sessions": {
+              "composite#names": {
+                "after_key": {
+                  "kw": "spr2021"
+                },
+                "buckets": [
+                  {
+                    "doc_count": 3,
+                    "key": {
+                      "kw": "fall2020"
+                    }
+                  },
+                  {
+                    "doc_count": 3,
+                    "key": {
+                      "kw": "spr2021"
+                    }
+                  }
+                ]
+              },
+              "doc_count": 6
+            }
+          }
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "verynested",
+            "_score": 1,
+            "_source": {
+              "courses": [
+                {
+                  "credits": 3,
+                  "name": "Object Oriented Programming",
+                  "sessions": [
+                    {
+                      "semester": "spr2021",
+                      "students": 37
+                    },
+                    {
+                      "semester": "fall2020",
+                      "students": 45
+                    }
+                  ]
+                },
+                {
+                  "credits": 4,
+                  "name": "Theory of Computation",
+                  "sessions": [
+                    {
+                      "semester": "spr2021",
+                      "students": 19
+                    },
+                    {
+                      "semester": "fall2020",
+                      "students": 14
+                    }
+                  ]
+                }
+              ],
+              "department": "compsci",
+              "staff": 12
+            }
+          },
+          {
+            "_id": "2",
+            "_index": "verynested",
+            "_score": 1,
+            "_source": {
+              "courses": [
+                {
+                  "credits": 1,
+                  "name": "Precalculus",
+                  "sessions": [
+                    {
+                      "semester": "spr2021",
+                      "students": 100
+                    },
+                    {
+                      "semester": "fall2020",
+                      "students": 134
+                    }
+                  ]
+                },
+                {
+                  "credits": 3,
+                  "name": "Linear Algebra",
+                  "sessions": [
+                    {
+                      "semester": "spr2021",
+                      "students": 29
+                    },
+                    {
+                      "semester": "fall2020",
+                      "students": 23
+                    }
+                  ]
+                }
+              ],
+              "department": "math",
+              "staff": 20
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": 2
+      },
+      "timed_out": false,
+      "took": 12
+    },
+    "statusCode": 200
+  }
+}

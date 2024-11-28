@@ -1,0 +1,89 @@
+{
+  "api": "search",
+  "file": "/test/platinum/entsearch/rules/40_rule_query_search.yml",
+  "name": "Perform a rule query that matches complex rules",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "rule": {
+            "match_criteria": {
+              "query_string": "elastic and kibana are good for search"
+            },
+            "organic": {
+              "query_string": {
+                "default_field": "text",
+                "query": "elastic and kibana are good for search"
+              }
+            },
+            "ruleset_ids": [
+              "test-ruleset"
+            ]
+          }
+        }
+      },
+      "index": "test-index1",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "doc2",
+            "_index": "test-index1",
+            "_score": 1.7014124e+38,
+            "_source": {
+              "text": "kibana"
+            }
+          },
+          {
+            "_id": "doc3",
+            "_index": "test-index1",
+            "_score": 1.7014122e+38,
+            "_source": {
+              "text": "logstash"
+            }
+          },
+          {
+            "_id": "doc1",
+            "_index": "test-index1",
+            "_score": 2.0167708,
+            "_source": {
+              "text": "elastic"
+            }
+          },
+          {
+            "_id": "doc4",
+            "_index": "test-index1",
+            "_score": 2.012092,
+            "_source": {
+              "text": "you know, for search"
+            }
+          }
+        ],
+        "max_score": 1.7014124e+38,
+        "total": {
+          "relation": "eq",
+          "value": 4
+        }
+      },
+      "timed_out": false,
+      "took": 5
+    },
+    "statusCode": 200
+  }
+}

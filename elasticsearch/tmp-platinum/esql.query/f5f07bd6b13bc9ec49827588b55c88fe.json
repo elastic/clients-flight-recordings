@@ -1,0 +1,54 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/70_locale.yml",
+  "name": "Date format with Italian locale",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "locale": "it-IT",
+        "query": "FROM events | eval fixed_format = date_format(\"MMMM\", @timestamp), variable_format = date_format(format, @timestamp) | sort @timestamp | keep @timestamp, fixed_format, variable_format"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "15075929",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-8.18.0-421a38d813203a16c377d11ec00bb6042a7cd9a6 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-async-is-running": "?0"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "@timestamp",
+          "type": "date"
+        },
+        {
+          "name": "fixed_format",
+          "type": "keyword"
+        },
+        {
+          "name": "variable_format",
+          "type": "keyword"
+        }
+      ],
+      "took": 15,
+      "values": [
+        [
+          "2022-05-21T00:00:00.000Z",
+          "maggio",
+          "22"
+        ],
+        [
+          "2023-06-20T00:00:00.000Z",
+          "giugno",
+          "giugno"
+        ]
+      ]
+    },
+    "statusCode": 200
+  }
+}
