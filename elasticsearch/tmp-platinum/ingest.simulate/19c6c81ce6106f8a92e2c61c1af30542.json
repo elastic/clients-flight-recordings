@@ -1,0 +1,65 @@
+{
+  "api": "ingest.simulate",
+  "file": "/test/platinum/ml/inference_processor.yml",
+  "name": "Test simulate",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "docs": [
+          {
+            "_source": {
+              "field1": 1,
+              "field2": 2
+            }
+          }
+        ],
+        "pipeline": {
+          "processors": [
+            {
+              "inference": {
+                "inference_config": {
+                  "regression": {
+                    "results_field": "value"
+                  }
+                },
+                "model_id": "a-perfect-regression-model",
+                "target_field": "regression_field"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "231",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "docs": [
+        {
+          "doc": {
+            "_id": "_id",
+            "_index": "_index",
+            "_ingest": {
+              "timestamp": "2024-11-29T10:35:34.038297085Z"
+            },
+            "_source": {
+              "field1": 1,
+              "field2": 2,
+              "regression_field": {
+                "model_id": "a-perfect-regression-model",
+                "value": 42
+              }
+            },
+            "_version": "-3"
+          }
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}

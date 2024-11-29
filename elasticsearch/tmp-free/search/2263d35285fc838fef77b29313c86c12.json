@@ -1,0 +1,157 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/bucket_selector.yml",
+  "name": "prune no buckets",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "a": {
+            "aggs": {
+              "b": {
+                "sum": {
+                  "field": "b"
+                }
+              },
+              "c": {
+                "sum": {
+                  "field": "c"
+                }
+              },
+              "selector": {
+                "bucket_selector": {
+                  "buckets_path": {
+                    "b": "b"
+                  },
+                  "script": "params.b > 0"
+                }
+              }
+            },
+            "histogram": {
+              "field": "a",
+              "interval": 1
+            }
+          }
+        }
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "histogram#a": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": 2,
+              "sum#b": {
+                "value": 12
+              },
+              "sum#c": {
+                "value": 21
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 3,
+              "sum#b": {
+                "value": 56
+              },
+              "sum#c": {
+                "value": 12
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 4,
+              "sum#b": {
+                "value": 82
+              },
+              "sum#c": {
+                "value": 13
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 5,
+              "sum#b": {
+                "value": 12
+              },
+              "sum#c": {
+                "value": 54
+              }
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "JsFid5MBSbKpNji_qXFH",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "a": 2,
+              "b": 12,
+              "c": 21,
+              "gappy": 99
+            }
+          },
+          {
+            "_id": "J8Fid5MBSbKpNji_qXFH",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "a": 3,
+              "b": 56,
+              "c": 12
+            }
+          },
+          {
+            "_id": "KMFid5MBSbKpNji_qXFH",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "a": 4,
+              "b": 82,
+              "c": 13,
+              "gappy": 98
+            }
+          },
+          {
+            "_id": "KcFid5MBSbKpNji_qXFH",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "a": 5,
+              "b": 12,
+              "c": 54
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 4
+        }
+      },
+      "timed_out": false,
+      "took": 13
+    },
+    "statusCode": 200
+  }
+}
