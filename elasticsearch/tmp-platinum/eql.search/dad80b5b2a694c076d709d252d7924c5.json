@@ -1,0 +1,68 @@
+{
+  "api": "eql.search",
+  "file": "/test/platinum/data_streams/10_data_stream_resolvability.yml",
+  "name": "Verify data stream resolvability in EQL search API with sequences",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "sequence by user [process where user == \"SYSTEM\"] [file where file.name == \"sample.exe\"]"
+      },
+      "index": "simple-data-s*"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "508",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "hits": {
+        "sequences": [
+          {
+            "events": [
+              {
+                "_id": "1",
+                "_index": ".ds-simple-data-stream1-2024.11.29-000001",
+                "_source": {
+                  "@timestamp": "2020-02-03T12:34:56Z",
+                  "event": {
+                    "category": "process"
+                  },
+                  "user": "SYSTEM"
+                }
+              },
+              {
+                "_id": "2",
+                "_index": ".ds-simple-data-stream1-2024.11.29-000001",
+                "_source": {
+                  "@timestamp": "2020-02-03T12:35:00Z",
+                  "event": {
+                    "category": "file"
+                  },
+                  "file": {
+                    "name": "sample.exe"
+                  },
+                  "user": "SYSTEM"
+                }
+              }
+            ],
+            "join_keys": [
+              "SYSTEM"
+            ]
+          }
+        ],
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "is_partial": false,
+      "is_running": false,
+      "timed_out": false,
+      "took": 13
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "api": "search",
+  "file": "/test/platinum/spatial/60_geo_line.yml",
+  "name": "Test geo_line on multiple indices by grouping with filters",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "tracks": {
+            "aggs": {
+              "path": {
+                "geo_line": {
+                  "point": {
+                    "field": "location"
+                  },
+                  "sort": {
+                    "field": "date"
+                  }
+                }
+              }
+            },
+            "filters": {
+              "filters": {
+                "F1": {
+                  "term": {
+                    "entity": "e1"
+                  }
+                },
+                "F2": {
+                  "term": {
+                    "entity": "e2"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "size": 6
+      },
+      "index": [
+        "test1",
+        "test2"
+      ],
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "aggregations": {
+        "filters#tracks": {
+          "buckets": {
+            "F1": {
+              "doc_count": 4,
+              "geo_line#path": {
+                "geometry": {
+                  "coordinates": [
+                    [
+                      0.13,
+                      50.3
+                    ],
+                    [
+                      0.13,
+                      50.4
+                    ],
+                    [
+                      0.13,
+                      50.5
+                    ],
+                    [
+                      0.13,
+                      50.6
+                    ]
+                  ],
+                  "type": "LineString"
+                },
+                "properties": {
+                  "complete": true
+                },
+                "type": "Feature"
+              }
+            },
+            "F2": {
+              "doc_count": 3,
+              "geo_line#path": {
+                "geometry": {
+                  "coordinates": [
+                    [
+                      0.13,
+                      51.3
+                    ],
+                    [
+                      0.13,
+                      51.4
+                    ],
+                    [
+                      0.13,
+                      51.5
+                    ]
+                  ],
+                  "type": "LineString"
+                },
+                "properties": {
+                  "complete": true
+                },
+                "type": "Feature"
+              }
+            }
+          }
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "qy6Bd5MBZZnuD9r-Nv-6",
+            "_index": "test1",
+            "_score": 1,
+            "_source": {
+              "date": "2020-01-01T01:00:00.0Z",
+              "entity": "e1",
+              "location": {
+                "lat": 50.3,
+                "lon": 0.13
+              }
+            }
+          },
+          {
+            "_id": "rC6Bd5MBZZnuD9r-Nv-6",
+            "_index": "test1",
+            "_score": 1,
+            "_source": {
+              "date": "2020-01-01T01:00:01.0Z",
+              "entity": "e1",
+              "location": {
+                "lat": 50.4,
+                "lon": 0.13
+              }
+            }
+          },
+          {
+            "_id": "rS6Bd5MBZZnuD9r-Nv-6",
+            "_index": "test1",
+            "_score": 1,
+            "_source": {
+              "date": "2020-01-01T01:00:02.0Z",
+              "entity": "e1",
+              "location": {
+                "lat": 50.5,
+                "lon": 0.13
+              }
+            }
+          },
+          {
+            "_id": "ri6Bd5MBZZnuD9r-Nv-6",
+            "_index": "test1",
+            "_score": 1,
+            "_source": {
+              "date": "2020-01-01T01:00:03.0Z",
+              "entity": "e1",
+              "location": {
+                "lat": 50.6,
+                "lon": 0.13
+              }
+            }
+          },
+          {
+            "_id": "ry6Bd5MBZZnuD9r-Nv_F",
+            "_index": "test2",
+            "_score": 1,
+            "_source": {
+              "date": "2020-01-02T02:00:01.0Z",
+              "entity": "e2",
+              "location": {
+                "lat": 51.3,
+                "lon": 0.13
+              }
+            }
+          },
+          {
+            "_id": "sC6Bd5MBZZnuD9r-Nv_F",
+            "_index": "test2",
+            "_score": 1,
+            "_source": {
+              "date": "2020-01-02T02:00:02.0Z",
+              "entity": "e2",
+              "location": {
+                "lat": 51.4,
+                "lon": 0.13
+              }
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 7
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
