@@ -1,0 +1,125 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/pipeline.yml",
+  "name": "Max pipeline on percentiles tdigest agg with single percent metric value",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "the_max": {
+            "max_bucket": {
+              "buckets_path": "the_terms>the_percentiles"
+            }
+          },
+          "the_terms": {
+            "aggs": {
+              "the_percentiles": {
+                "percentiles": {
+                  "field": "int_field",
+                  "keyed": false,
+                  "percents": [
+                    99
+                  ]
+                }
+              }
+            },
+            "terms": {
+              "field": "int_field"
+            }
+          }
+        },
+        "size": 0
+      },
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "bucket_metric_value#the_max": {
+          "keys": [
+            "4"
+          ],
+          "value": 4
+        },
+        "lterms#the_terms": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": 1,
+              "tdigest_percentiles#the_percentiles": {
+                "values": [
+                  {
+                    "key": 99,
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 2,
+              "tdigest_percentiles#the_percentiles": {
+                "values": [
+                  {
+                    "key": 99,
+                    "value": 2
+                  }
+                ]
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 3,
+              "tdigest_percentiles#the_percentiles": {
+                "values": [
+                  {
+                    "key": 99,
+                    "value": 3
+                  }
+                ]
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 4,
+              "tdigest_percentiles#the_percentiles": {
+                "values": [
+                  {
+                    "key": 99,
+                    "value": 4
+                  }
+                ]
+              }
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": 4
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}
