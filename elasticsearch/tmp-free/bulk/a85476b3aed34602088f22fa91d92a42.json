@@ -1,0 +1,126 @@
+{
+  "api": "bulk",
+  "file": "/test/free/bulk/10_basic.yml",
+  "name": "When setting require_alias flag per request",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        {
+          "index": {
+            "_index": "new_index_not_created",
+            "require_alias": true
+          }
+        },
+        {
+          "f": 1
+        },
+        {
+          "index": {
+            "_index": "new_index_created"
+          }
+        },
+        {
+          "f": 2
+        },
+        {
+          "index": {
+            "_index": "test_require_alias",
+            "require_alias": true
+          }
+        },
+        {
+          "f": 3
+        },
+        {
+          "create": {
+            "_index": "test_require_alias"
+          }
+        },
+        {
+          "f": 4
+        }
+      ],
+      "refresh": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "index": {
+            "_id": null,
+            "_index": "new_index_not_created",
+            "error": {
+              "index": "new_index_not_created",
+              "index_uuid": "_na_",
+              "reason": "no such index [new_index_not_created] and [require_alias] request flag is [true] and [new_index_not_created] is not an alias",
+              "type": "index_not_found_exception"
+            },
+            "status": 404
+          }
+        },
+        {
+          "index": {
+            "_id": "-8pmd5MBMbDb9VCd2IpO",
+            "_index": "new_index_created",
+            "_primary_term": 1,
+            "_seq_no": 0,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 1,
+            "forced_refresh": true,
+            "result": "created",
+            "status": 201
+          }
+        },
+        {
+          "index": {
+            "_id": "_Mpmd5MBMbDb9VCd2IpO",
+            "_index": "backing_index",
+            "_primary_term": 1,
+            "_seq_no": 0,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 1,
+            "forced_refresh": true,
+            "result": "created",
+            "status": 201
+          }
+        },
+        {
+          "create": {
+            "_id": "_cpmd5MBMbDb9VCd2IpO",
+            "_index": "backing_index",
+            "_primary_term": 1,
+            "_seq_no": 1,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 1,
+            "forced_refresh": true,
+            "result": "created",
+            "status": 201
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}

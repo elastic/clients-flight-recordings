@@ -1,0 +1,100 @@
+{
+  "api": "msearch",
+  "file": "/test/platinum/security/authz/21_search_doc.yml",
+  "name": "Test search for documents when not allowed",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        {
+        },
+        {
+          "query": {
+            "term": {
+              "tag": "no-read"
+            }
+          }
+        },
+        {
+        },
+        {
+          "query": {
+            "term": {
+              "_index": "only_index"
+            }
+          }
+        },
+        {
+          "index": "only_delete"
+        },
+        {
+        }
+      ],
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    },
+    "headers": {
+      "Authorization": "Basic dGVzdF91c2VyOngtcGFjay10ZXN0LXBhc3N3b3Jk"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "responses": [
+        {
+          "_shards": {
+            "failed": 0,
+            "skipped": 0,
+            "successful": 3,
+            "total": 3
+          },
+          "hits": {
+            "hits": [
+            ],
+            "max_score": null,
+            "total": 0
+          },
+          "status": 200,
+          "timed_out": false,
+          "took": 0
+        },
+        {
+          "_shards": {
+            "failed": 0,
+            "skipped": 0,
+            "successful": 3,
+            "total": 3
+          },
+          "hits": {
+            "hits": [
+            ],
+            "max_score": null,
+            "total": 0
+          },
+          "status": 200,
+          "timed_out": false,
+          "took": 1
+        },
+        {
+          "error": {
+            "reason": "action [indices:data/read/search] is unauthorized for user [test_user] with effective roles [mixed_role] on indices [only_delete], this action is granted by the index privileges [read,all]",
+            "root_cause": [
+              {
+                "reason": "action [indices:data/read/search] is unauthorized for user [test_user] with effective roles [mixed_role] on indices [only_delete], this action is granted by the index privileges [read,all]",
+                "type": "security_exception"
+              }
+            ],
+            "type": "security_exception"
+          },
+          "status": 403
+        }
+      ],
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
