@@ -1,0 +1,165 @@
+{
+  "api": "search",
+  "file": "/test/free/search/115_multiple_field_collapsing.yml",
+  "name": "two levels fields collapsing",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "collapse": {
+          "field": "country",
+          "inner_hits": {
+            "collapse": {
+              "field": "city"
+            },
+            "name": "by_location",
+            "size": 3
+          }
+        },
+        "query": {
+          "match": {
+            "address": "victoria"
+          }
+        }
+      },
+      "index": "addresses",
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "8",
+            "_index": "addresses",
+            "_score": 0.07991494,
+            "_source": {
+              "address": "Victoria Station Victoria Arcade",
+              "city": "London",
+              "country": "UK"
+            },
+            "fields": {
+              "country": [
+                "UK"
+              ]
+            },
+            "inner_hits": {
+              "by_location": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "8",
+                      "_index": "addresses",
+                      "_score": 0.07991494,
+                      "_source": {
+                        "address": "Victoria Station Victoria Arcade",
+                        "city": "London",
+                        "country": "UK"
+                      },
+                      "fields": {
+                        "city": [
+                          "London"
+                        ]
+                      }
+                    },
+                    {
+                      "_id": "7",
+                      "_index": "addresses",
+                      "_score": 0.058567807,
+                      "_source": {
+                        "address": "75 Victoria street Westminster",
+                        "city": "Manchester",
+                        "country": "UK"
+                      },
+                      "fields": {
+                        "city": [
+                          "Manchester"
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 0.07991494,
+                  "total": 4
+                }
+              }
+            }
+          },
+          {
+            "_id": "1",
+            "_index": "addresses",
+            "_score": 0.06497644,
+            "_source": {
+              "address": "701 Victoria Avenue",
+              "city": "Saskatoon",
+              "country": "Canada"
+            },
+            "fields": {
+              "country": [
+                "Canada"
+              ]
+            },
+            "inner_hits": {
+              "by_location": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "1",
+                      "_index": "addresses",
+                      "_score": 0.06497644,
+                      "_source": {
+                        "address": "701 Victoria Avenue",
+                        "city": "Saskatoon",
+                        "country": "Canada"
+                      },
+                      "fields": {
+                        "city": [
+                          "Saskatoon"
+                        ]
+                      }
+                    },
+                    {
+                      "_id": "3",
+                      "_index": "addresses",
+                      "_score": 0.06497644,
+                      "_source": {
+                        "address": "350 Victoria St",
+                        "city": "Toronto",
+                        "country": "Canada"
+                      },
+                      "fields": {
+                        "city": [
+                          "Toronto"
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 0.06497644,
+                  "total": 4
+                }
+              }
+            }
+          }
+        ],
+        "max_score": 0.07991494,
+        "total": 8
+      },
+      "timed_out": false,
+      "took": 6
+    },
+    "statusCode": 200
+  }
+}

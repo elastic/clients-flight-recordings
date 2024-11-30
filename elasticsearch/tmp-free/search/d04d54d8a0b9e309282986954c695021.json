@@ -1,0 +1,67 @@
+{
+  "api": "search",
+  "file": "/test/free/search/200_ignore_malformed.yml",
+  "name": "ignored_field_values is returned by default",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "_source": false,
+        "fields": [
+          "my*"
+        ],
+        "query": {
+          "ids": {
+            "values": [
+              "3"
+            ]
+          }
+        }
+      },
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "3",
+            "_ignored": [
+              "my_date",
+              "my_ip"
+            ],
+            "_index": "test",
+            "_score": 1,
+            "ignored_field_values": {
+              "my_date": [
+                "bar"
+              ],
+              "my_ip": [
+                "quux"
+              ]
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": 1
+      },
+      "timed_out": false,
+      "took": 3
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/160_knn_query_missing_params.yml",
+  "name": "kNN search used in nested field - missing num_candidates",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "nested": {
+            "inner_hits": {
+              "_source": false,
+              "fields": [
+                "nested.paragraph_id"
+              ],
+              "size": 1
+            },
+            "path": "nested",
+            "query": {
+              "knn": {
+                "field": "nested.vector",
+                "query_vector": [
+                  -0.5,
+                  90,
+                  -10,
+                  14.8,
+                  -156
+                ]
+              }
+            }
+          }
+        },
+        "size": 1
+      },
+      "index": "knn_query_test_index",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "2",
+            "_index": "knn_query_test_index",
+            "_score": 0.004968944,
+            "_source": {
+              "category": "A",
+              "nested": [
+                {
+                  "paragraph_id": 2,
+                  "vector": [
+                    0,
+                    100,
+                    0,
+                    14.8,
+                    -156
+                  ]
+                }
+              ],
+              "vector": [
+                1,
+                0.5,
+                1
+              ]
+            },
+            "inner_hits": {
+              "nested": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "2",
+                      "_index": "knn_query_test_index",
+                      "_nested": {
+                        "field": "nested",
+                        "offset": 0
+                      },
+                      "_score": 0.004968944,
+                      "fields": {
+                        "nested": [
+                          {
+                            "paragraph_id": [
+                              "2"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 0.004968944,
+                  "total": {
+                    "relation": "eq",
+                    "value": 1
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "max_score": 0.004968944,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 3
+    },
+    "statusCode": 200
+  }
+}

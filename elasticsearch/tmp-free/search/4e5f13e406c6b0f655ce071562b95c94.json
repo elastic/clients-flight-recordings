@@ -1,0 +1,97 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/typed_keys.yml",
+  "name": "Test typed keys parameter for date_histogram aggregation and max_bucket pipeline aggregation",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggregations": {
+          "test_created_histogram": {
+            "aggregations": {
+              "test_deriv": {
+                "derivative": {
+                  "buckets_path": "test_sum"
+                }
+              },
+              "test_sum": {
+                "sum": {
+                  "field": "num"
+                }
+              }
+            },
+            "date_histogram": {
+              "calendar_interval": "month",
+              "field": "created"
+            }
+          },
+          "test_max_bucket": {
+            "max_bucket": {
+              "buckets_path": "test_created_histogram>test_sum"
+            }
+          }
+        },
+        "size": 0
+      },
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "bucket_metric_value#test_max_bucket": {
+          "keys": [
+            "2010-03-01T00:00:00.000Z",
+            "2010-04-01T00:00:00.000Z"
+          ],
+          "value": 3
+        },
+        "date_histogram#test_created_histogram": {
+          "buckets": [
+            {
+              "doc_count": 2,
+              "key": 1267401600000,
+              "key_as_string": "2010-03-01T00:00:00.000Z",
+              "sum#test_sum": {
+                "value": 3
+              }
+            },
+            {
+              "derivative#test_deriv": {
+                "value": 0
+              },
+              "doc_count": 1,
+              "key": 1270080000000,
+              "key_as_string": "2010-04-01T00:00:00.000Z",
+              "sum#test_sum": {
+                "value": 3
+              }
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": 3
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}

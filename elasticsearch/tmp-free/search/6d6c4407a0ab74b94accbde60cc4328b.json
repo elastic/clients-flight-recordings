@@ -1,0 +1,81 @@
+{
+  "api": "search",
+  "file": "/test/free/search/330_fetch_fields.yml",
+  "name": "Test unmapped field",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          {
+            "field": "f*",
+            "include_unmapped": true
+          }
+        ]
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "f1": "some text",
+              "f2": {
+                "a": "foo",
+                "b": "bar"
+              },
+              "f3": {
+                "c": "baz"
+              },
+              "f4": "some other text"
+            },
+            "fields": {
+              "f1": [
+                "some text"
+              ],
+              "f2.a": [
+                "foo"
+              ],
+              "f2.b": [
+                "bar"
+              ],
+              "f3.c": [
+                "baz"
+              ],
+              "f4": [
+                "some other text"
+              ]
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
