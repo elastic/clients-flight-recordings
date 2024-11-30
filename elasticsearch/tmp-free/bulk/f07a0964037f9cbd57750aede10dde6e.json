@@ -1,0 +1,52 @@
+{
+  "api": "bulk",
+  "file": "/test/free/bulk/80_cas.yml",
+  "name": "Compare And Swap Sequence Numbers",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        {
+          "index": {
+            "_id": "1",
+            "_index": "test_1",
+            "if_primary_term": 1,
+            "if_seq_no": 10000
+          }
+        },
+        {
+          "foo": "bar2"
+        }
+      ]
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "index": {
+            "_id": "1",
+            "_index": "test_1",
+            "error": {
+              "index": "test_1",
+              "index_uuid": "tgea9mG2TzC5tleodOXlbQ",
+              "reason": "[1]: version conflict, required seqNo [10000], primary term [1]. current document has seqNo [0] and primary term [1]",
+              "shard": "0",
+              "type": "version_conflict_engine_exception"
+            },
+            "status": 409
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/25_aggs_on_null.yml",
+  "name": "group on half missing",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "columnar": true,
+        "query": "FROM test,test2 | STATS med=median(never_null) BY missing | LIMIT 1"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "7741258",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-async-is-running": "?0"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "med",
+          "type": "double"
+        },
+        {
+          "name": "missing",
+          "type": "long"
+        }
+      ],
+      "took": 7,
+      "values": [
+        [
+          1.5
+        ],
+        [
+          null
+        ]
+      ]
+    },
+    "statusCode": 200
+  }
+}

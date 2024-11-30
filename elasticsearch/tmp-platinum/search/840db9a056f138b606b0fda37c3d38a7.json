@@ -1,0 +1,153 @@
+{
+  "api": "search",
+  "file": "/test/platinum/analytics/empty_field_metric.yml",
+  "name": "Basic test",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "the_terms": {
+            "aggs": {
+              "boxplot_agg": {
+                "boxplot": {
+                  "field": "double_field"
+                }
+              },
+              "string_stats_agg": {
+                "string_stats": {
+                  "field": "string_field"
+                }
+              },
+              "t_test_agg": {
+                "t_test": {
+                  "a": {
+                    "field": "double_field"
+                  },
+                  "b": {
+                    "field": "int_field"
+                  },
+                  "type": "paired"
+                }
+              }
+            },
+            "terms": {
+              "field": "terms_field",
+              "order": {
+                "_key": "asc"
+              }
+            }
+          }
+        }
+      },
+      "index": "test_1",
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "sterms#the_terms": {
+          "buckets": [
+            {
+              "boxplot#boxplot_agg": {
+                "lower": "NaN",
+                "max": "-Infinity",
+                "min": "Infinity",
+                "q1": "NaN",
+                "q2": "NaN",
+                "q3": "NaN",
+                "upper": "-Infinity"
+              },
+              "doc_count": 1,
+              "key": "bar",
+              "string_stats#string_stats_agg": {
+                "avg_length": null,
+                "count": 0,
+                "entropy": 0,
+                "max_length": null,
+                "min_length": null
+              },
+              "t_test#t_test_agg": {
+                "value": null
+              }
+            },
+            {
+              "boxplot#boxplot_agg": {
+                "lower": "NaN",
+                "max": "-Infinity",
+                "min": "Infinity",
+                "q1": "NaN",
+                "q2": "NaN",
+                "q3": "NaN",
+                "upper": "-Infinity"
+              },
+              "doc_count": 2,
+              "key": "foo",
+              "string_stats#string_stats_agg": {
+                "avg_length": null,
+                "count": 0,
+                "entropy": 0,
+                "max_length": null,
+                "min_length": null
+              },
+              "t_test#t_test_agg": {
+                "value": null
+              }
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "test_1",
+            "_score": 1,
+            "_source": {
+              "date_field": "2024-01-02",
+              "terms_field": "foo"
+            }
+          },
+          {
+            "_id": "2",
+            "_index": "test_1",
+            "_score": 1,
+            "_source": {
+              "date_field": "2024-01-02",
+              "terms_field": "foo"
+            }
+          },
+          {
+            "_id": "3",
+            "_index": "test_1",
+            "_score": 1,
+            "_source": {
+              "date_field": "2024-01-01",
+              "terms_field": "bar"
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": 3
+      },
+      "timed_out": false,
+      "took": 21
+    },
+    "statusCode": 200
+  }
+}

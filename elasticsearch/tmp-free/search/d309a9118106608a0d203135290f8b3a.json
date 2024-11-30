@@ -1,0 +1,148 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/top_hits.yml",
+  "name": "runtime fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "page": {
+            "aggs": {
+              "top_hits": {
+                "top_hits": {
+                }
+              }
+            },
+            "terms": {
+              "field": "page"
+            }
+          }
+        },
+        "fields": [
+          "runtime_field"
+        ],
+        "runtime_mappings": {
+          "runtime_field": {
+            "script": {
+              "lang": "painless",
+              "source": "emit(params['_source'].toString())"
+            },
+            "type": "keyword"
+          }
+        },
+        "size": 0
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "lterms#page": {
+          "buckets": [
+            {
+              "doc_count": 2,
+              "key": 1,
+              "top_hits#top_hits": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "-RmLfJMBj_2Po42V001g",
+                      "_index": "test",
+                      "_score": 1,
+                      "_source": {
+                        "page": 1,
+                        "text": "the quick brown fox"
+                      },
+                      "fields": {
+                        "runtime_field": [
+                          "{page=1, text=the quick brown fox}"
+                        ]
+                      }
+                    },
+                    {
+                      "_id": "-hmLfJMBj_2Po42V001g",
+                      "_index": "test",
+                      "_score": 1,
+                      "_source": {
+                        "page": 1,
+                        "text": "jumped over the lazy dog"
+                      },
+                      "fields": {
+                        "runtime_field": [
+                          "{page=1, text=jumped over the lazy dog}"
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 1,
+                  "total": {
+                    "relation": "eq",
+                    "value": 2
+                  }
+                }
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 2,
+              "top_hits#top_hits": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "-xmLfJMBj_2Po42V001g",
+                      "_index": "test",
+                      "_score": 1,
+                      "_source": {
+                        "page": 2,
+                        "text": "The vorpal blade went snicker-snack!"
+                      },
+                      "fields": {
+                        "runtime_field": [
+                          "{page=2, text=The vorpal blade went snicker-snack!}"
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 1,
+                  "total": {
+                    "relation": "eq",
+                    "value": 1
+                  }
+                }
+              }
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 18
+    },
+    "statusCode": 200
+  }
+}
