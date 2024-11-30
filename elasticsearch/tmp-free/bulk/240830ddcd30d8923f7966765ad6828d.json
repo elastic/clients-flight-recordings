@@ -1,0 +1,106 @@
+{
+  "api": "bulk",
+  "file": "/test/free/bulk/11_dynamic_templates.yml",
+  "name": "Dynamic templates",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        {
+          "index": {
+            "_id": "id_8",
+            "_index": "test_index",
+            "dynamic_templates": {
+              "foo_location": "bar_foo"
+            }
+          }
+        },
+        {
+          "foo_location": [
+            -71.34,
+            41.12
+          ]
+        },
+        {
+          "index": {
+            "_id": "id_9",
+            "_index": "test_index",
+            "dynamic_templates": {
+              "foo_location": "foo_bar"
+            }
+          }
+        },
+        {
+          "foo_location": "41.12,-71.34"
+        },
+        {
+          "index": {
+            "_id": "id_10",
+            "_index": "test_index",
+            "dynamic_templates": {
+              "new_location": "foo"
+            }
+          }
+        },
+        {
+          "location": "41.12,-71.34"
+        }
+      ],
+      "refresh": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "index": {
+            "_id": "id_8",
+            "_index": "test_index",
+            "error": {
+              "reason": "[1:17] Can't find dynamic template for dynamic template name [bar_foo] of field [foo_location]",
+              "type": "document_parsing_exception"
+            },
+            "status": 400
+          }
+        },
+        {
+          "index": {
+            "_id": "id_9",
+            "_index": "test_index",
+            "error": {
+              "reason": "[1:17] Can't find dynamic template for dynamic template name [foo_bar] of field [foo_location]",
+              "type": "document_parsing_exception"
+            },
+            "status": 400
+          }
+        },
+        {
+          "index": {
+            "_id": "id_10",
+            "_index": "test_index",
+            "_primary_term": 1,
+            "_seq_no": 7,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 1,
+            "forced_refresh": true,
+            "result": "created",
+            "status": 201
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}

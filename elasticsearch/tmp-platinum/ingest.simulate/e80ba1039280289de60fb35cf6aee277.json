@@ -1,0 +1,59 @@
+{
+  "api": "ingest.simulate",
+  "file": "/test/platinum/redact/10_redact_processor.yml",
+  "name": "Test custom start and end tokens",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "docs": [
+          {
+            "_source": {
+              "to_redact": "this-email@address.com will be redacted"
+            }
+          }
+        ],
+        "pipeline": {
+          "processors": [
+            {
+              "redact": {
+                "field": "to_redact",
+                "patterns": [
+                  "%{EMAILADDRESS:EMAIL}",
+                  "%{IP:IP_ADDRESS}"
+                ],
+                "prefix": "==*",
+                "suffix": "*=="
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "177",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "docs": [
+        {
+          "doc": {
+            "_id": "_id",
+            "_index": "_index",
+            "_ingest": {
+              "timestamp": "2024-11-30T10:36:27.09238505Z"
+            },
+            "_source": {
+              "to_redact": "==*EMAIL*== will be redacted"
+            },
+            "_version": "-3"
+          }
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}

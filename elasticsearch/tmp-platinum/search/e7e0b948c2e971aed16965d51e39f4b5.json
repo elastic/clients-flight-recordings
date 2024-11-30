@@ -1,0 +1,130 @@
+{
+  "api": "search",
+  "file": "/test/platinum/analytics/moving_percentiles.yml",
+  "name": "tdigest explicitly",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "histo": {
+            "aggs": {
+              "moving_percentiles": {
+                "moving_percentiles": {
+                  "buckets_path": "percentiles",
+                  "window": 2
+                }
+              },
+              "percentiles": {
+                "percentiles": {
+                  "field": "histogram",
+                  "keyed": false,
+                  "percents": [
+                    90
+                  ],
+                  "tdigest": {
+                  }
+                }
+              }
+            },
+            "date_histogram": {
+              "calendar_interval": "day",
+              "field": "timestamp"
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "foo",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "date_histogram#histo": {
+          "buckets": [
+            {
+              "doc_count": 3,
+              "key": 1483228800000,
+              "key_as_string": "2017-01-01T00:00:00.000Z",
+              "tdigest_percentiles#percentiles": {
+                "values": [
+                  {
+                    "key": 90,
+                    "value": 4
+                  }
+                ]
+              }
+            },
+            {
+              "doc_count": 2,
+              "key": 1483315200000,
+              "key_as_string": "2017-01-02T00:00:00.000Z",
+              "tdigest_percentiles#moving_percentiles": {
+                "values": [
+                  {
+                    "key": 90,
+                    "value": 4
+                  }
+                ]
+              },
+              "tdigest_percentiles#percentiles": {
+                "values": [
+                  {
+                    "key": 90,
+                    "value": 4
+                  }
+                ]
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 1483401600000,
+              "key_as_string": "2017-01-03T00:00:00.000Z",
+              "tdigest_percentiles#moving_percentiles": {
+                "values": [
+                  {
+                    "key": 90,
+                    "value": 4
+                  }
+                ]
+              },
+              "tdigest_percentiles#percentiles": {
+                "values": [
+                  {
+                    "key": 90,
+                    "value": 4
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 6
+        }
+      },
+      "timed_out": false,
+      "took": 3
+    },
+    "statusCode": 200
+  }
+}
