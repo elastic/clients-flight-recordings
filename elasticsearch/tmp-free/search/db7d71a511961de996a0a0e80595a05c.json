@@ -1,0 +1,95 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/filters_bucket.yml",
+  "name": "named filters with bucket sort test",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "the_filter": {
+            "aggs": {
+              "sort_by_the_max": {
+                "bucket_sort": {
+                  "sort": [
+                    {
+                      "the_max": "desc"
+                    }
+                  ]
+                }
+              },
+              "the_max": {
+                "max": {
+                  "field": "int_field"
+                }
+              }
+            },
+            "filters": {
+              "filters": {
+                "first_filter": {
+                  "match": {
+                    "int_field": 101
+                  }
+                },
+                "second_filter": {
+                  "match": {
+                    "int_field": 151
+                  }
+                }
+              },
+              "keyed": false
+            }
+          }
+        },
+        "size": 0
+      },
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "filters#the_filter": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": "second_filter",
+              "max#the_max": {
+                "value": 151
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": "first_filter",
+              "max#the_max": {
+                "value": 101
+              }
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": 4
+      },
+      "timed_out": false,
+      "took": 15
+    },
+    "statusCode": 200
+  }
+}
