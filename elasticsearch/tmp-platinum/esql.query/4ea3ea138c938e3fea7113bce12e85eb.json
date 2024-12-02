@@ -1,0 +1,59 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/160_union_types.yml",
+  "name": "load two indexes and aggregate converted client_ip",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM events_*_long | STATS count = COUNT(client_ip::ip) BY message | SORT count DESC, message ASC"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "8804021",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-8.16.2-70a58d5aded9fe84b19607a9af210c87b8e538eb \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-async-is-running": "?0"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "count",
+          "type": "long"
+        },
+        {
+          "name": "message",
+          "type": "keyword"
+        }
+      ],
+      "took": 8,
+      "values": [
+        [
+          6,
+          "Connection error"
+        ],
+        [
+          2,
+          "Connected to 10.1.0.1"
+        ],
+        [
+          2,
+          "Connected to 10.1.0.2"
+        ],
+        [
+          2,
+          "Connected to 10.1.0.3"
+        ],
+        [
+          2,
+          "Disconnected"
+        ]
+      ]
+    },
+    "statusCode": 200
+  }
+}
