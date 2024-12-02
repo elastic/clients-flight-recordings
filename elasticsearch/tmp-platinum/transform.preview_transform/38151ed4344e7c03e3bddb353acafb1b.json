@@ -1,0 +1,92 @@
+{
+  "api": "transform.preview_transform",
+  "file": "/test/platinum/transform/preview_transforms.yml",
+  "name": "Test preview continuous transform with no warnings",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "pivot": {
+          "aggs": {
+            "avg_response": {
+              "avg": {
+                "field": "responsetime"
+              }
+            }
+          },
+          "group_by": {
+            "airline": {
+              "terms": {
+                "field": "airline"
+              }
+            }
+          }
+        },
+        "source": {
+          "index": "airline-data",
+          "runtime_mappings": {
+            "time-10m": {
+              "script": "emit(doc['time'].value.toInstant().minus(10, ChronoUnit.MINUTES).toEpochMilli())",
+              "type": "date"
+            }
+          }
+        },
+        "sync": {
+          "time": {
+            "field": "time"
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "459",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "generated_dest_index": {
+        "aliases": {
+        },
+        "mappings": {
+          "_meta": {
+            "_transform": {
+              "creation_date_in_millis": 1733136965592,
+              "transform": "transform-preview",
+              "version": {
+                "created": "10.0.0"
+              }
+            },
+            "created_by": "transform"
+          },
+          "properties": {
+            "airline": {
+              "type": "keyword"
+            },
+            "avg_response": {
+              "type": "double"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "auto_expand_replicas": "0-1",
+            "number_of_shards": "1"
+          }
+        }
+      },
+      "preview": [
+        {
+          "airline": "bar",
+          "avg_response": 42
+        },
+        {
+          "airline": "foo",
+          "avg_response": 14.666666666666666
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}

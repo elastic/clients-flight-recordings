@@ -1,0 +1,64 @@
+{
+  "api": "search",
+  "file": "/test/platinum/versionfield/20_scripts.yml",
+  "name": "Filter script",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "script": {
+            "script": {
+              "source": "doc['version'].value.length() > 5"
+            }
+          }
+        }
+      },
+      "index": "test_index",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "test_index",
+            "_score": 1,
+            "_source": {
+              "version": "1.1.12"
+            }
+          },
+          {
+            "_id": "2",
+            "_index": "test_index",
+            "_score": 1,
+            "_source": {
+              "version": "2.0.0-beta"
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 7
+    },
+    "statusCode": 200
+  }
+}

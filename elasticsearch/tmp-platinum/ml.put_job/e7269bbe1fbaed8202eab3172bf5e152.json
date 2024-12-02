@@ -1,0 +1,88 @@
+{
+  "api": "ml.put_job",
+  "file": "/test/platinum/ml/jobs_crud.yml",
+  "name": "Test job with rule referencing missing filter",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "analysis_config": {
+          "detectors": [
+            {
+              "by_field_name": "country",
+              "custom_rules": [
+                {
+                  "actions": [
+                    "skip_result"
+                  ],
+                  "scope": {
+                    "country": {
+                      "filter_id": "safe_countries"
+                    }
+                  }
+                }
+              ],
+              "function": "count"
+            }
+          ]
+        },
+        "data_description": {
+        }
+      },
+      "job_id": "jobs-crud-rule-missing-filter"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "733",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "allow_lazy_open": false,
+      "analysis_config": {
+        "bucket_span": "5m",
+        "detectors": [
+          {
+            "by_field_name": "country",
+            "custom_rules": [
+              {
+                "actions": [
+                  "skip_result"
+                ],
+                "scope": {
+                  "country": {
+                    "filter_id": "safe_countries",
+                    "filter_type": "include"
+                  }
+                }
+              }
+            ],
+            "detector_description": "count by country",
+            "detector_index": 0,
+            "function": "count"
+          }
+        ],
+        "influencers": [
+        ],
+        "model_prune_window": "30d"
+      },
+      "analysis_limits": {
+        "categorization_examples_limit": 4,
+        "model_memory_limit": "1024mb"
+      },
+      "create_time": 1733136351647,
+      "daily_model_snapshot_retention_after_days": 1,
+      "data_description": {
+        "time_field": "time",
+        "time_format": "epoch_ms"
+      },
+      "job_id": "jobs-crud-rule-missing-filter",
+      "job_type": "anomaly_detector",
+      "job_version": "12.0.0",
+      "model_snapshot_retention_days": 10,
+      "results_index_name": "shared"
+    },
+    "statusCode": 200
+  }
+}
