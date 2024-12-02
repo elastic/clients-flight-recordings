@@ -1,0 +1,80 @@
+{
+  "api": "search",
+  "file": "/test/platinum/analytics/usage.yml",
+  "name": "Usage stats on analytics indices",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "histo": {
+            "aggs": {
+              "percent_of_total_users": {
+                "normalize": {
+                  "buckets_path": "total_users",
+                  "method": "percent_of_sum"
+                }
+              },
+              "total_users": {
+                "sum": {
+                  "field": "s"
+                }
+              }
+            },
+            "date_histogram": {
+              "calendar_interval": "day",
+              "field": "timestamp"
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "date_histogram#histo": {
+          "buckets": [
+            {
+              "doc_count": 3,
+              "key": 1483228800000,
+              "key_as_string": "2017-01-01T00:00:00.000Z",
+              "simple_value#percent_of_total_users": {
+                "value": 1
+              },
+              "sum#total_users": {
+                "value": 6
+              }
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}

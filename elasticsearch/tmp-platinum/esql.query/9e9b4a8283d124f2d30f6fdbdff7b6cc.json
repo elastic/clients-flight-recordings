@@ -1,0 +1,67 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/40_tsdb.yml",
+  "name": "cast counter then filter",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "from test | where k8s.pod.network.tx::long == 2005177954 and k8s.pod.network.rx::integer == 801479970 | sort @timestamp | limit 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "15264442",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-async-is-running": "?0"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "@timestamp",
+          "type": "date"
+        },
+        {
+          "name": "k8s.pod.ip",
+          "type": "ip"
+        },
+        {
+          "name": "k8s.pod.name",
+          "type": "keyword"
+        },
+        {
+          "name": "k8s.pod.network.rx",
+          "type": "counter_integer"
+        },
+        {
+          "name": "k8s.pod.network.tx",
+          "type": "counter_long"
+        },
+        {
+          "name": "k8s.pod.uid",
+          "type": "keyword"
+        },
+        {
+          "name": "metricset",
+          "type": "keyword"
+        }
+      ],
+      "took": 15,
+      "values": [
+        [
+          "2021-04-28T18:50:24.467Z",
+          "10.10.55.1",
+          "cat",
+          801479970,
+          2005177954,
+          "947e4ced-1786-4e53-9e0c-5c447e959507",
+          "pod"
+        ]
+      ]
+    },
+    "statusCode": 200
+  }
+}
