@@ -1,0 +1,332 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/terms.yml",
+  "name": "string profiler via global ordinals filters implementation",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "str_terms": {
+            "aggs": {
+              "max_number": {
+                "max": {
+                  "field": "number"
+                }
+              }
+            },
+            "terms": {
+              "collect_mode": "breadth_first",
+              "execution_hint": "global_ordinals",
+              "field": "str"
+            }
+          }
+        },
+        "profile": true,
+        "size": 0
+      },
+      "index": "test_1",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "sterms#str_terms": {
+          "buckets": [
+            {
+              "doc_count": 2,
+              "key": "sheep",
+              "max#max_number": {
+                "value": 3
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": "cow",
+              "max#max_number": {
+                "value": 1
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": "pig",
+              "max#max_number": {
+                "value": 1
+              }
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 4
+        }
+      },
+      "profile": {
+        "shards": [
+          {
+            "aggregations": [
+              {
+                "breakdown": {
+                  "build_aggregation": 87969,
+                  "build_aggregation_count": 1,
+                  "build_leaf_collector": 373637,
+                  "build_leaf_collector_count": 1,
+                  "collect": 0,
+                  "collect_count": 0,
+                  "initialize": 20213,
+                  "initialize_count": 1,
+                  "post_collection": 2388,
+                  "post_collection_count": 1,
+                  "reduce": 0,
+                  "reduce_count": 0
+                },
+                "children": [
+                  {
+                    "breakdown": {
+                      "build_aggregation": 8370,
+                      "build_aggregation_count": 1,
+                      "build_leaf_collector": 38946,
+                      "build_leaf_collector_count": 3,
+                      "collect": 47539,
+                      "collect_count": 4,
+                      "initialize": 1528,
+                      "initialize_count": 1,
+                      "post_collection": 549,
+                      "post_collection_count": 1,
+                      "reduce": 0,
+                      "reduce_count": 0
+                    },
+                    "debug": {
+                      "built_buckets": 3
+                    },
+                    "description": "max_number",
+                    "time_in_nanos": 96932,
+                    "type": "MaxAggregator"
+                  }
+                ],
+                "debug": {
+                  "built_buckets": 1,
+                  "delegate": "FilterByFilterAggregator",
+                  "delegate_debug": {
+                    "filters": [
+                      {
+                        "query": "str:cow",
+                        "segments_counted_in_constant_time": 0
+                      },
+                      {
+                        "query": "str:pig",
+                        "segments_counted_in_constant_time": 0
+                      },
+                      {
+                        "query": "str:sheep",
+                        "segments_counted_in_constant_time": 0
+                      }
+                    ],
+                    "segments_collected": 1,
+                    "segments_counted": 0,
+                    "segments_with_deleted_docs": 0,
+                    "segments_with_doc_count_field": 0
+                  }
+                },
+                "description": "str_terms",
+                "time_in_nanos": 484207,
+                "type": "StringTermsAggregatorFromFilters"
+              }
+            ],
+            "cluster": "(local)",
+            "id": "[yj9GK21KT8-8lIdtrKdCAw][test_1][0]",
+            "index": "test_1",
+            "node_id": "yj9GK21KT8-8lIdtrKdCAw",
+            "searches": [
+              {
+                "collector": [
+                  {
+                    "children": [
+                      {
+                        "name": "PartialHitCountCollector",
+                        "reason": "search_count",
+                        "time_in_nanos": 12489
+                      },
+                      {
+                        "name": "AggregatorCollector: [str_terms]",
+                        "reason": "aggregation",
+                        "time_in_nanos": 384110
+                      }
+                    ],
+                    "name": "QueryPhaseCollector",
+                    "reason": "search_query_phase",
+                    "time_in_nanos": 403984
+                  }
+                ],
+                "query": [
+                  {
+                    "breakdown": {
+                      "advance": 0,
+                      "advance_count": 0,
+                      "build_scorer": 0,
+                      "build_scorer_count": 0,
+                      "compute_max_score": 0,
+                      "compute_max_score_count": 0,
+                      "count_weight": 2962,
+                      "count_weight_count": 1,
+                      "create_weight": 18436,
+                      "create_weight_count": 1,
+                      "match": 0,
+                      "match_count": 0,
+                      "next_doc": 0,
+                      "next_doc_count": 0,
+                      "score": 0,
+                      "score_count": 0,
+                      "set_min_competitive_score": 0,
+                      "set_min_competitive_score_count": 0,
+                      "shallow_advance": 0,
+                      "shallow_advance_count": 0
+                    },
+                    "children": [
+                      {
+                        "breakdown": {
+                          "advance": 0,
+                          "advance_count": 0,
+                          "build_scorer": 0,
+                          "build_scorer_count": 0,
+                          "compute_max_score": 0,
+                          "compute_max_score_count": 0,
+                          "count_weight": 2346,
+                          "count_weight_count": 1,
+                          "create_weight": 6546,
+                          "create_weight_count": 1,
+                          "match": 0,
+                          "match_count": 0,
+                          "next_doc": 0,
+                          "next_doc_count": 0,
+                          "score": 0,
+                          "score_count": 0,
+                          "set_min_competitive_score": 0,
+                          "set_min_competitive_score_count": 0,
+                          "shallow_advance": 0,
+                          "shallow_advance_count": 0
+                        },
+                        "description": "*:*",
+                        "time_in_nanos": 8892,
+                        "type": "MatchAllDocsQuery"
+                      }
+                    ],
+                    "description": "ConstantScore(*:*)",
+                    "time_in_nanos": 21398,
+                    "type": "ConstantScoreQuery"
+                  },
+                  {
+                    "breakdown": {
+                      "advance": 0,
+                      "advance_count": 0,
+                      "build_scorer": 95885,
+                      "build_scorer_count": 2,
+                      "compute_max_score": 0,
+                      "compute_max_score_count": 0,
+                      "count_weight": 0,
+                      "count_weight_count": 0,
+                      "create_weight": 15308,
+                      "create_weight_count": 1,
+                      "match": 0,
+                      "match_count": 0,
+                      "next_doc": 1814,
+                      "next_doc_count": 2,
+                      "score": 0,
+                      "score_count": 0,
+                      "set_min_competitive_score": 0,
+                      "set_min_competitive_score_count": 0,
+                      "shallow_advance": 0,
+                      "shallow_advance_count": 0
+                    },
+                    "description": "str:cow",
+                    "time_in_nanos": 113007,
+                    "type": "TermQuery"
+                  },
+                  {
+                    "breakdown": {
+                      "advance": 0,
+                      "advance_count": 0,
+                      "build_scorer": 28899,
+                      "build_scorer_count": 2,
+                      "compute_max_score": 0,
+                      "compute_max_score_count": 0,
+                      "count_weight": 0,
+                      "count_weight_count": 0,
+                      "create_weight": 5622,
+                      "create_weight_count": 1,
+                      "match": 0,
+                      "match_count": 0,
+                      "next_doc": 1131,
+                      "next_doc_count": 2,
+                      "score": 0,
+                      "score_count": 0,
+                      "set_min_competitive_score": 0,
+                      "set_min_competitive_score_count": 0,
+                      "shallow_advance": 0,
+                      "shallow_advance_count": 0
+                    },
+                    "description": "str:pig",
+                    "time_in_nanos": 35652,
+                    "type": "TermQuery"
+                  },
+                  {
+                    "breakdown": {
+                      "advance": 0,
+                      "advance_count": 0,
+                      "build_scorer": 24981,
+                      "build_scorer_count": 2,
+                      "compute_max_score": 0,
+                      "compute_max_score_count": 0,
+                      "count_weight": 0,
+                      "count_weight_count": 0,
+                      "create_weight": 3942,
+                      "create_weight_count": 1,
+                      "match": 0,
+                      "match_count": 0,
+                      "next_doc": 2451,
+                      "next_doc_count": 3,
+                      "score": 0,
+                      "score_count": 0,
+                      "set_min_competitive_score": 0,
+                      "set_min_competitive_score_count": 0,
+                      "shallow_advance": 0,
+                      "shallow_advance_count": 0
+                    },
+                    "description": "str:sheep",
+                    "time_in_nanos": 31374,
+                    "type": "TermQuery"
+                  }
+                ],
+                "rewrite_time": 125173
+              }
+            ],
+            "shard_id": 0
+          }
+        ]
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
