@@ -1,0 +1,85 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/geo_distance.yml",
+  "name": "basic",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "distance": {
+            "geo_distance": {
+              "field": "location",
+              "origin": "POINT (-78.6382 35.7796)",
+              "ranges": [
+                {
+                  "to": 1000000
+                },
+                {
+                  "from": 1000000,
+                  "to": 5000000
+                },
+                {
+                  "from": 5000000
+                }
+              ]
+            }
+          }
+        },
+        "size": 0
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "geo_distance#distance": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "from": 0,
+              "key": "*-1000000.0",
+              "to": 1000000
+            },
+            {
+              "doc_count": 2,
+              "from": 1000000,
+              "key": "1000000.0-5000000.0",
+              "to": 5000000
+            },
+            {
+              "doc_count": 0,
+              "from": 5000000,
+              "key": "5000000.0-*"
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
