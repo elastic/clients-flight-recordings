@@ -1,0 +1,80 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/composite.yml",
+  "name": "Mixed ip and unmapped fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggregations": {
+          "test": {
+            "composite": {
+              "sources": [
+                {
+                  "f": {
+                    "terms": {
+                      "field": "f"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "index": "test_*",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "aggregations": {
+        "composite#test": {
+          "after_key": {
+            "f": "192.168.0.1"
+          },
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": {
+                "f": "192.168.0.1"
+              }
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "test_2",
+            "_score": 1,
+            "_source": {
+              "f": "192.168.0.1"
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}
