@@ -1,0 +1,92 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/100_knn_nested_search.yml",
+  "name": "nested kNN search with filter that might match nested docs",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "knn": {
+          "field": "paragraphs.vector",
+          "filter": {
+            "bool": {
+              "must_not": {
+                "exists": {
+                  "field": "publish_date"
+                }
+              }
+            }
+          },
+          "k": 10,
+          "num_candidates": 10,
+          "query_vector": [
+            1,
+            2
+          ]
+        }
+      },
+      "index": "nested_text",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "2",
+            "_index": "nested_text",
+            "_score": 0.9743162,
+            "_source": {
+              "paragraphs": [
+                {
+                  "text": "some text",
+                  "vector": [
+                    2,
+                    1
+                  ]
+                },
+                {
+                  "other_nested_thing": [
+                    {
+                      "text": "some text",
+                      "vector": [
+                        1,
+                        2
+                      ]
+                    }
+                  ],
+                  "text": "some text",
+                  "vector": [
+                    2,
+                    2
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "max_score": 0.9743162,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}
