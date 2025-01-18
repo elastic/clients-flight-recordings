@@ -1,0 +1,203 @@
+{
+  "api": "msearch",
+  "file": "/test/free/msearch/20_typed_keys.yml",
+  "name": "Multisearch test with typed_keys parameter for sampler and significant terms",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        {
+          "index": "test-*"
+        },
+        {
+          "aggs": {
+            "test_sampler": {
+              "aggs": {
+                "test_significant_terms": {
+                  "significant_terms": {
+                    "field": "name"
+                  }
+                }
+              },
+              "sampler": {
+                "shard_size": 200
+              }
+            }
+          },
+          "query": {
+            "match_all": {
+            }
+          },
+          "size": 0
+        },
+        {
+          "index": "test-*"
+        },
+        {
+          "aggs": {
+            "test_umterms": {
+              "terms": {
+                "field": "surname"
+              }
+            }
+          },
+          "query": {
+            "match_all": {
+            }
+          },
+          "size": 0
+        },
+        {
+          "index": "test-*"
+        },
+        {
+          "aggs": {
+            "test_sterms": {
+              "aggs": {
+                "test_umsignificant_terms": {
+                  "significant_terms": {
+                    "field": "surname"
+                  }
+                }
+              },
+              "terms": {
+                "field": "name"
+              }
+            }
+          },
+          "query": {
+            "match_all": {
+            }
+          },
+          "size": 0
+        }
+      ],
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "responses": [
+        {
+          "_shards": {
+            "failed": 0,
+            "skipped": 0,
+            "successful": 2,
+            "total": 2
+          },
+          "aggregations": {
+            "sampler#test_sampler": {
+              "doc_count": 5,
+              "sigsterms#test_significant_terms": {
+                "bg_count": 5,
+                "buckets": [
+                ],
+                "doc_count": 5
+              }
+            }
+          },
+          "hits": {
+            "hits": [
+            ],
+            "max_score": null,
+            "total": 5
+          },
+          "status": 200,
+          "timed_out": false,
+          "took": 2
+        },
+        {
+          "_shards": {
+            "failed": 0,
+            "skipped": 0,
+            "successful": 2,
+            "total": 2
+          },
+          "aggregations": {
+            "sterms#test_umterms": {
+              "buckets": [
+              ],
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0
+            }
+          },
+          "hits": {
+            "hits": [
+            ],
+            "max_score": null,
+            "total": 5
+          },
+          "status": 200,
+          "timed_out": false,
+          "took": 3
+        },
+        {
+          "_shards": {
+            "failed": 0,
+            "skipped": 0,
+            "successful": 2,
+            "total": 2
+          },
+          "aggregations": {
+            "sterms#test_sterms": {
+              "buckets": [
+                {
+                  "doc_count": 1,
+                  "key": "Jackie",
+                  "sigsterms#test_umsignificant_terms": {
+                    "buckets": [
+                    ]
+                  }
+                },
+                {
+                  "doc_count": 1,
+                  "key": "Natalie",
+                  "sigsterms#test_umsignificant_terms": {
+                    "buckets": [
+                    ]
+                  }
+                },
+                {
+                  "doc_count": 1,
+                  "key": "Ruth",
+                  "sigsterms#test_umsignificant_terms": {
+                    "buckets": [
+                    ]
+                  }
+                },
+                {
+                  "doc_count": 1,
+                  "key": "Stephanie",
+                  "sigsterms#test_umsignificant_terms": {
+                    "buckets": [
+                    ]
+                  }
+                }
+              ],
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0
+            }
+          },
+          "hits": {
+            "hits": [
+            ],
+            "max_score": null,
+            "total": 5
+          },
+          "status": 200,
+          "timed_out": false,
+          "took": 2
+        }
+      ],
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}
