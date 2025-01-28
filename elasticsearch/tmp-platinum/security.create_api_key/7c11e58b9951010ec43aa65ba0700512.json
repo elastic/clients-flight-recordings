@@ -1,0 +1,65 @@
+{
+  "api": "security.create_api_key",
+  "file": "/test/platinum/security/authz_api_keys/20_field_level_security.yml",
+  "name": "Retrieve documents with FLS",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "expiration": "1d",
+        "name": "test-fls",
+        "role_descriptors": {
+          "index_access": {
+            "indices": [
+              {
+                "field_security": {
+                  "grant": [
+                    "name"
+                  ]
+                },
+                "names": [
+                  "index_fls1"
+                ],
+                "privileges": [
+                  "read"
+                ]
+              },
+              {
+                "field_security": {
+                  "except": [
+                    "object.secret"
+                  ],
+                  "grant": [
+                    "*"
+                  ]
+                },
+                "names": [
+                  "index_fls2"
+                ],
+                "privileges": [
+                  "read",
+                  "monitor"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "182",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "api_key": "AaDhU61_QkWj5t9-YFqVRQ",
+      "encoded": "X1cyTnJKUUJSdndoTGFwRU00d2c6QWFEaFU2MV9Ra1dqNXQ5LVlGcVZSUQ==",
+      "expiration": 1738148122403,
+      "id": "_W2NrJQBRvwhLapEM4wg",
+      "name": "test-fls"
+    },
+    "statusCode": 200
+  }
+}
