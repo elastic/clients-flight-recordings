@@ -1,0 +1,43 @@
+{
+  "api": "bulk",
+  "file": "/test/platinum/security/authz/10_index_doc.yml",
+  "name": "Test indexing a document when not allowed",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"index\": {\"_index\": \"only_delete\", \"_id\": \"12\"}}",
+        "{\"name\": \"doc12\"}"
+      ],
+      "refresh": true
+    },
+    "headers": {
+      "Authorization": "Basic dGVzdF91c2VyOngtcGFjay10ZXN0LXBhc3N3b3Jk"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "index": {
+            "_id": "12",
+            "_index": "only_delete",
+            "error": {
+              "reason": "action [indices:data/write/index:op_type/index] is unauthorized for user [test_user] with effective roles [mixed_role] on indices [only_delete], this action is granted by the index privileges [create,index,write,all]",
+              "type": "security_exception"
+            },
+            "status": 403
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}
