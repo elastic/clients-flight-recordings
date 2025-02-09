@@ -1,0 +1,74 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/ip_range.yml",
+  "name": "IP range",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "ip_range": {
+            "ip_range": {
+              "field": "ip",
+              "ranges": [
+                {
+                  "mask": "::/24"
+                },
+                {
+                  "mask": "192.168.0.0/16"
+                }
+              ]
+            }
+          }
+        },
+        "size": 0
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "ip_range#ip_range": {
+          "buckets": [
+            {
+              "doc_count": 3,
+              "key": "::/24",
+              "to": "0:100::"
+            },
+            {
+              "doc_count": 2,
+              "from": "192.168.0.0",
+              "key": "192.168.0.0/16",
+              "to": "192.169.0.0"
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
