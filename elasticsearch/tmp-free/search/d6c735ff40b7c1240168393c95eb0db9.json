@@ -1,0 +1,83 @@
+{
+  "api": "search",
+  "file": "/test/free/tsdb/160_nested_fields.yml",
+  "name": "Create TSDB index with field of nested type",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "nested": {
+            "path": "courses",
+            "query": {
+              "bool": {
+                "must": [
+                  {
+                    "term": {
+                      "courses.name": "Object Oriented Programming"
+                    }
+                  },
+                  {
+                    "term": {
+                      "courses.credits": 3
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "A3ZO5efviUk-TBB0AAABeRX9aoA",
+            "_index": "test",
+            "_score": 2.2039728,
+            "_source": {
+              "@timestamp": "2021-04-28T01:00:00Z",
+              "courses": [
+                {
+                  "credits": 3,
+                  "name": "Object Oriented Programming"
+                },
+                {
+                  "credits": 4,
+                  "name": "Theory of Computation"
+                }
+              ],
+              "department": "compsci",
+              "staff": 12
+            }
+          }
+        ],
+        "max_score": 2.2039728,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
