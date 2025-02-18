@@ -1,0 +1,168 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/130_knn_query_nested_search.yml",
+  "name": "nested kNN search that returns diverse parents docs",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "name"
+        ],
+        "query": {
+          "nested": {
+            "path": "nested",
+            "query": {
+              "knn": {
+                "field": "nested.vector",
+                "num_candidates": 3,
+                "query_vector": [
+                  -0.5,
+                  90,
+                  -10,
+                  14.8,
+                  -156
+                ]
+              }
+            }
+          }
+        }
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "2",
+            "_index": "test",
+            "_score": 0.010180593,
+            "_source": {
+              "name": "moose.jpg",
+              "nested": [
+                {
+                  "paragraph_id": 0,
+                  "vector": [
+                    -0.5,
+                    100,
+                    -13,
+                    14.8,
+                    -156
+                  ]
+                },
+                {
+                  "paragraph_id": 2,
+                  "vector": [
+                    0,
+                    100,
+                    0,
+                    14.8,
+                    -156
+                  ]
+                },
+                {
+                  "paragraph_id": 3,
+                  "vector": [
+                    0,
+                    1,
+                    0,
+                    1.8,
+                    -15
+                  ]
+                }
+              ]
+            },
+            "fields": {
+              "name": [
+                "moose.jpg"
+              ]
+            }
+          },
+          {
+            "_id": "3",
+            "_index": "test",
+            "_score": 0.0020528377,
+            "_source": {
+              "name": "rabbit.jpg",
+              "nested": [
+                {
+                  "paragraph_id": 0,
+                  "vector": [
+                    0.5,
+                    111.3,
+                    -13,
+                    14.8,
+                    -156
+                  ]
+                }
+              ]
+            },
+            "fields": {
+              "name": [
+                "rabbit.jpg"
+              ]
+            }
+          },
+          {
+            "_id": "1",
+            "_index": "test",
+            "_score": 0.000013112146,
+            "_source": {
+              "name": "cow.jpg",
+              "nested": [
+                {
+                  "paragraph_id": 0,
+                  "vector": [
+                    230,
+                    300.33,
+                    -34.8988,
+                    15.555,
+                    -200
+                  ]
+                },
+                {
+                  "paragraph_id": 1,
+                  "vector": [
+                    240,
+                    300,
+                    -3,
+                    1,
+                    -20
+                  ]
+                }
+              ]
+            },
+            "fields": {
+              "name": [
+                "cow.jpg"
+              ]
+            }
+          }
+        ],
+        "max_score": 0.010180593,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 3
+    },
+    "statusCode": 200
+  }
+}
