@@ -1,0 +1,353 @@
+{
+  "api": "security.query_role",
+  "file": "/test/platinum/roles/50_remote_only.yml",
+  "name": "Test put remote role api",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "bool": {
+            "must_not": {
+              "term": {
+                "metadata._reserved": true
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "2809",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "count": 10,
+      "roles": [
+        {
+          "applications": [
+          ],
+          "cluster": [
+            "manage_token"
+          ],
+          "indices": [
+            {
+              "allow_restricted_indices": false,
+              "names": [
+                "index"
+              ],
+              "privileges": [
+                "all"
+              ]
+            }
+          ],
+          "metadata": {
+          },
+          "name": "api_key_grant_target_role",
+          "run_as": [
+          ],
+          "transient_metadata": {
+            "enabled": true
+          }
+        },
+        {
+          "applications": [
+          ],
+          "cluster": [
+          ],
+          "indices": [
+          ],
+          "metadata": {
+          },
+          "name": "api_key_grant_runas_role",
+          "run_as": [
+            "api_key_grant_target_user"
+          ],
+          "transient_metadata": {
+            "enabled": true
+          }
+        },
+        {
+          "applications": [
+          ],
+          "cluster": [
+            "grant_api_key"
+          ],
+          "indices": [
+          ],
+          "metadata": {
+          },
+          "name": "api_key_granter_role",
+          "run_as": [
+          ],
+          "transient_metadata": {
+            "enabled": true
+          }
+        },
+        {
+          "applications": [
+          ],
+          "cluster": [
+            "manage_own_api_key"
+          ],
+          "indices": [
+          ],
+          "metadata": {
+          },
+          "name": "user_role",
+          "run_as": [
+          ],
+          "transient_metadata": {
+            "enabled": true
+          }
+        },
+        {
+          "applications": [
+          ],
+          "cluster": [
+          ],
+          "indices": [
+            {
+              "allow_restricted_indices": false,
+              "names": [
+                "*"
+              ],
+              "privileges": [
+                "read"
+              ],
+              "query": "{\"match\":{\"marker\":\"test_1\"}}"
+            }
+          ],
+          "metadata": {
+          },
+          "name": "limitread",
+          "run_as": [
+          ],
+          "transient_metadata": {
+            "enabled": true
+          }
+        },
+        {
+          "applications": [
+          ],
+          "cluster": [
+          ],
+          "indices": [
+            {
+              "allow_restricted_indices": false,
+              "names": [
+                "*"
+              ],
+              "privileges": [
+                "read"
+              ]
+            }
+          ],
+          "metadata": {
+          },
+          "name": "readall",
+          "run_as": [
+          ],
+          "transient_metadata": {
+            "enabled": true
+          }
+        },
+        {
+          "applications": [
+          ],
+          "cluster": [
+            "manage_token"
+          ],
+          "indices": [
+            {
+              "allow_restricted_indices": false,
+              "names": [
+                "*"
+              ],
+              "privileges": [
+                "all"
+              ]
+            }
+          ],
+          "metadata": {
+          },
+          "name": "token_admin",
+          "run_as": [
+          ],
+          "transient_metadata": {
+            "enabled": true
+          }
+        },
+        {
+          "applications": [
+            {
+              "application": "app-dne",
+              "privileges": [
+                "all"
+              ],
+              "resources": [
+                "*"
+              ]
+            },
+            {
+              "application": "test-app",
+              "privileges": [
+                "dne"
+              ],
+              "resources": [
+                "*"
+              ]
+            },
+            {
+              "application": "test-app",
+              "privileges": [
+                "read"
+              ],
+              "resources": [
+                "object/2"
+              ]
+            }
+          ],
+          "cluster": [
+            "manage",
+            "manage_security"
+          ],
+          "global": {
+            "application": {
+              "manage": {
+                "applications": [
+                  "apps-*"
+                ]
+              }
+            },
+            "profile": {
+            },
+            "role": {
+            }
+          },
+          "indices": [
+            {
+              "allow_restricted_indices": false,
+              "names": [
+                "test-1-*",
+                "test-9-*"
+              ],
+              "privileges": [
+                "all"
+              ]
+            },
+            {
+              "allow_restricted_indices": false,
+              "field_security": {
+                "grant": [
+                  "apps-*"
+                ]
+              },
+              "names": [
+                "test-2-*"
+              ],
+              "privileges": [
+                "read"
+              ],
+              "query": "{\"term\":{\"apps\":true}}"
+            },
+            {
+              "allow_restricted_indices": false,
+              "names": [
+                "test-3-*",
+                "test-6-*"
+              ],
+              "privileges": [
+                "read",
+                "write"
+              ]
+            },
+            {
+              "allow_restricted_indices": false,
+              "field_security": {
+                "except": [
+                  "private-*"
+                ],
+                "grant": [
+                  "*"
+                ]
+              },
+              "names": [
+                "test-4-*"
+              ],
+              "privileges": [
+                "read"
+              ]
+            }
+          ],
+          "metadata": {
+          },
+          "name": "test-role-2",
+          "run_as": [
+            "app-*"
+          ],
+          "transient_metadata": {
+            "enabled": true
+          }
+        },
+        {
+          "applications": [
+          ],
+          "cluster": [
+            "cluster:admin/xpack/monitoring/bulk"
+          ],
+          "indices": [
+            {
+              "allow_restricted_indices": false,
+              "names": [
+                ".monitoring-*"
+              ],
+              "privileges": [
+                "read"
+              ]
+            }
+          ],
+          "metadata": {
+          },
+          "name": "logstash_agent_role",
+          "run_as": [
+          ],
+          "transient_metadata": {
+            "enabled": true
+          }
+        },
+        {
+          "applications": [
+          ],
+          "cluster": [
+            "monitor"
+          ],
+          "indices": [
+            {
+              "allow_restricted_indices": false,
+              "names": [
+                ".monitoring-*"
+              ],
+              "privileges": [
+                "read"
+              ]
+            }
+          ],
+          "metadata": {
+          },
+          "name": "unknown_agent_role",
+          "run_as": [
+          ],
+          "transient_metadata": {
+            "enabled": true
+          }
+        }
+      ],
+      "total": 21
+    },
+    "statusCode": 200
+  }
+}
