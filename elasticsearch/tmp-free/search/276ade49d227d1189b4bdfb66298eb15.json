@@ -1,0 +1,105 @@
+{
+  "api": "search",
+  "file": "/test/free/search/111_field_collapsing_with_max_score.yml",
+  "name": "Max score returned when there is sort and track_scores is true",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "collapse": {
+          "field": "user_id"
+        },
+        "query": {
+          "match": {
+            "comment": "Canada"
+          }
+        },
+        "sort": {
+          "user_id": "asc"
+        },
+        "track_scores": true
+      },
+      "index": "user_comments",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "user_comments",
+            "_score": 0.11030067,
+            "_source": {
+              "comment": "Canada is beautiful.",
+              "user_id": "user1"
+            },
+            "fields": {
+              "user_id": [
+                "user1"
+              ]
+            },
+            "sort": [
+              "user1"
+            ]
+          },
+          {
+            "_id": "3",
+            "_index": "user_comments",
+            "_score": 0.08817497,
+            "_source": {
+              "comment": "The capital of Canada is Ottawa.",
+              "user_id": "user2"
+            },
+            "fields": {
+              "user_id": [
+                "user2"
+              ]
+            },
+            "sort": [
+              "user2"
+            ]
+          },
+          {
+            "_id": "5",
+            "_index": "user_comments",
+            "_score": 0.11545089,
+            "_source": {
+              "comment": "Canada celebrates Canada Day on July 1st.",
+              "user_id": "user3"
+            },
+            "fields": {
+              "user_id": [
+                "user3"
+              ]
+            },
+            "sort": [
+              "user3"
+            ]
+          }
+        ],
+        "max_score": 0.11545089,
+        "total": {
+          "relation": "eq",
+          "value": 5
+        }
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}

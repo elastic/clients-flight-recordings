@@ -1,0 +1,101 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/max_bucket.yml",
+  "name": "format",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "@timestamp": {
+            "aggs": {
+              "v": {
+                "avg": {
+                  "field": "v"
+                }
+              }
+            },
+            "date_histogram": {
+              "field": "@timestamp",
+              "fixed_interval": "1h"
+            }
+          },
+          "d": {
+            "max_bucket": {
+              "buckets_path": "@timestamp>v",
+              "format": "0.00"
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "no_gaps",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "bucket_metric_value#d": {
+          "keys": [
+            "2022-01-01T01:00:00.000Z"
+          ],
+          "value": 2,
+          "value_as_string": "2.00"
+        },
+        "date_histogram#@timestamp": {
+          "buckets": [
+            {
+              "avg#v": {
+                "value": 1
+              },
+              "doc_count": 1,
+              "key": 1640995200000,
+              "key_as_string": "2022-01-01T00:00:00.000Z"
+            },
+            {
+              "avg#v": {
+                "value": 2
+              },
+              "doc_count": 1,
+              "key": 1640998800000,
+              "key_as_string": "2022-01-01T01:00:00.000Z"
+            },
+            {
+              "avg#v": {
+                "value": 1
+              },
+              "doc_count": 1,
+              "key": 1641002400000,
+              "key_as_string": "2022-01-01T02:00:00.000Z"
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
