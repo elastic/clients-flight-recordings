@@ -1,0 +1,40 @@
+{
+  "api": "bulk",
+  "file": "/test/free/bulk/10_basic.yml",
+  "name": "Return item-level error when no write index defined for an alias",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"index\": {\"_index\": \"test_index\"}}",
+        "{\"field\": \"test\"}"
+      ]
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "index": {
+            "_id": null,
+            "_index": "test_index",
+            "error": {
+              "reason": "no write index is defined for alias [test_index]. The write index may be explicitly disabled using is_write_index=false or the alias points to multiple indices without one being designated as a write index",
+              "type": "illegal_argument_exception"
+            },
+            "status": 400
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}
