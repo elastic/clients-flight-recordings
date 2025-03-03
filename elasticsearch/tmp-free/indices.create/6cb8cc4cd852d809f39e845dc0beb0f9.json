@@ -1,0 +1,63 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/logsdb/10_settings.yml",
+  "name": "routing path allowed in logs mode with routing on sort fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "agent_id": {
+              "type": "keyword"
+            },
+            "host.name": {
+              "type": "keyword"
+            },
+            "http_method": {
+              "type": "keyword"
+            },
+            "message": {
+              "type": "text"
+            },
+            "process_id": {
+              "type": "integer"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "logsdb": {
+              "route_on_sort_fields": true
+            },
+            "mode": "logsdb",
+            "number_of_replicas": 0,
+            "number_of_shards": 2,
+            "routing_path": [
+              "host.name",
+              "agent_id"
+            ]
+          }
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "71",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
