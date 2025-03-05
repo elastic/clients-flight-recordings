@@ -1,0 +1,79 @@
+{
+  "api": "search",
+  "file": "/test/free/search.inner_hits/10_basic.yml",
+  "name": "Inner hits with disabled _source",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "nested": {
+            "inner_hits": {
+            },
+            "path": "nested_field.sub_nested_field",
+            "query": {
+              "match_all": {
+              }
+            }
+          }
+        }
+      },
+      "index": "disabled_source",
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "disabled_source",
+            "_score": 1,
+            "inner_hits": {
+              "nested_field.sub_nested_field": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "1",
+                      "_index": "disabled_source",
+                      "_nested": {
+                        "_nested": {
+                          "field": "sub_nested_field",
+                          "offset": 0
+                        },
+                        "field": "nested_field",
+                        "offset": 0
+                      },
+                      "_score": 1
+                    }
+                  ],
+                  "max_score": 1,
+                  "total": 1
+                }
+              }
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": 1
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
