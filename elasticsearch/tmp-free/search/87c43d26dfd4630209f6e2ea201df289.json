@@ -1,0 +1,86 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/rare_terms.yml",
+  "name": "avg_bucket",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "str_terms": {
+            "aggs": {
+              "v": {
+                "sum": {
+                  "field": "v"
+                }
+              }
+            },
+            "rare_terms": {
+              "field": "str",
+              "max_doc_count": 2
+            }
+          },
+          "str_terms_avg_v": {
+            "avg_bucket": {
+              "buckets_path": "str_terms.v"
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "simple_value#str_terms_avg_v": {
+          "value": 7.5
+        },
+        "srareterms#str_terms": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": "baz",
+              "sum#v": {
+                "value": 6
+              }
+            },
+            {
+              "doc_count": 2,
+              "key": "bar",
+              "sum#v": {
+                "value": 9
+              }
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 6
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
