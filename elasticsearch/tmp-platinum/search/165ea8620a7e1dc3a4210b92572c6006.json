@@ -1,0 +1,48 @@
+{
+  "api": "search",
+  "file": "/test/platinum/ml/sparse_vector_search.yml",
+  "name": "Test sparse_vector search with a pruning configuration that only keeps pruned tokens",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "sparse_vector": {
+            "field": "ml.tokens",
+            "inference_id": "text_expansion_model",
+            "prune": true,
+            "pruning_config": {
+              "only_score_pruned_tokens": true,
+              "tokens_freq_ratio_threshold": 4,
+              "tokens_weight_threshold": 0.4
+            },
+            "query": "octopus comforter smells"
+          }
+        }
+      },
+      "index": "index-with-sparse-vector",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "257",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "[text_expansion_model] is stopping or stopped due to [by user request]",
+        "root_cause": [
+          {
+            "reason": "[text_expansion_model] is stopping or stopped due to [by user request]",
+            "type": "status_exception"
+          }
+        ],
+        "type": "status_exception"
+      },
+      "status": 409
+    },
+    "statusCode": 409
+  }
+}
