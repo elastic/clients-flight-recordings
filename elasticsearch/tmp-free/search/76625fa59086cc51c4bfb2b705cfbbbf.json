@@ -1,0 +1,132 @@
+{
+  "api": "search",
+  "file": "/test/free/search.retrievers/10_standard_retriever.yml",
+  "name": "standard retriever terminate after",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "name",
+          "count"
+        ],
+        "retriever": {
+          "standard": {
+            "filter": {
+              "bool": {
+                "must_not": {
+                  "match": {
+                    "name": "cow"
+                  }
+                }
+              }
+            },
+            "sort": [
+              {
+                "count": "asc"
+              }
+            ],
+            "terminate_after": 3
+          }
+        }
+      },
+      "index": "animals",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "4",
+            "_index": "animals",
+            "_score": null,
+            "_source": {
+              "color": "pink",
+              "count": 4,
+              "name": "pig",
+              "type": "domestic"
+            },
+            "fields": {
+              "count": [
+                4
+              ],
+              "name": [
+                "pig"
+              ]
+            },
+            "sort": [
+              4
+            ]
+          },
+          {
+            "_id": "5",
+            "_index": "animals",
+            "_score": null,
+            "_source": {
+              "color": "pink",
+              "count": 5,
+              "name": "pig pig",
+              "type": "domestic"
+            },
+            "fields": {
+              "count": [
+                5
+              ],
+              "name": [
+                "pig pig"
+              ]
+            },
+            "sort": [
+              5
+            ]
+          },
+          {
+            "_id": "6",
+            "_index": "animals",
+            "_score": null,
+            "_source": {
+              "color": "spotted",
+              "count": 6,
+              "name": "pig pig pig",
+              "type": "domestic"
+            },
+            "fields": {
+              "count": [
+                6
+              ],
+              "name": [
+                "pig pig pig"
+              ]
+            },
+            "sort": [
+              6
+            ]
+          }
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "terminated_early": true,
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
