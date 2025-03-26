@@ -1,0 +1,90 @@
+{
+  "api": "search",
+  "file": "/test/free/search.highlight/60_unified_matched_fields.yml",
+  "name": "Highlight based on multiple masked fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "highlight": {
+          "fields": {
+            "title": {
+              "matched_fields": [
+                "title.ngram",
+                "title.english"
+              ]
+            }
+          }
+        },
+        "query": {
+          "query_string": {
+            "fields": [
+              "title^5",
+              "title.ngram",
+              "title.english"
+            ],
+            "query": "dan with star"
+          }
+        }
+      },
+      "index": "index1",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "2",
+            "_index": "index1",
+            "_score": 4.649041,
+            "_source": {
+              "body": "Dancing with the Stars is a popular TV show",
+              "title": "dance with star"
+            },
+            "highlight": {
+              "title": [
+                "<em>dance</em> <em>with</em> <em>star</em>"
+              ]
+            }
+          },
+          {
+            "_id": "1",
+            "_index": "index1",
+            "_score": 0.9807231,
+            "_source": {
+              "body": "Dancing with the Stars is a popular TV show",
+              "title": "dancing with the stars"
+            },
+            "highlight": {
+              "title": [
+                "<em>dancing</em> <em>with</em> the <em>stars</em>"
+              ]
+            }
+          }
+        ],
+        "max_score": 4.649041,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 14
+    },
+    "statusCode": 200
+  }
+}
