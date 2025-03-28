@@ -1,0 +1,74 @@
+{
+  "api": "search",
+  "file": "/test/platinum/analytics/multi_terms.yml",
+  "name": "shard_size parameter",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "genres_and_products": {
+            "multi_terms": {
+              "shard_size": 1,
+              "size": 1,
+              "terms": [
+                {
+                  "field": "genre"
+                },
+                {
+                  "field": "product"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "index": "products*",
+      "size": 0,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "aggregations": {
+        "multi_terms#genres_and_products": {
+          "buckets": [
+            {
+              "doc_count": 2,
+              "key": [
+                "dance",
+                "Product D"
+              ],
+              "key_as_string": "dance|Product D"
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 12
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 15
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
