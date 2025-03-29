@@ -1,0 +1,101 @@
+{
+  "api": "search",
+  "file": "/test/free/search.retrievers/10_standard_retriever.yml",
+  "name": "standard retriever min score",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "name",
+          "count"
+        ],
+        "retriever": {
+          "standard": {
+            "min_score": 1.5,
+            "query": {
+              "script_score": {
+                "query": {
+                  "match": {
+                    "name": "cow"
+                  }
+                },
+                "script": {
+                  "source": " $('count', -1)"
+                }
+              }
+            }
+          }
+        }
+      },
+      "index": "animals",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "3",
+            "_index": "animals",
+            "_score": 3,
+            "_source": {
+              "color": "spotted",
+              "count": 3,
+              "name": "cow cow cow",
+              "type": "domestic"
+            },
+            "fields": {
+              "count": [
+                3
+              ],
+              "name": [
+                "cow cow cow"
+              ]
+            }
+          },
+          {
+            "_id": "2",
+            "_index": "animals",
+            "_score": 2,
+            "_source": {
+              "color": "spotted",
+              "count": 2,
+              "name": "cow cow",
+              "type": "domestic"
+            },
+            "fields": {
+              "count": [
+                2
+              ],
+              "name": [
+                "cow cow"
+              ]
+            }
+          }
+        ],
+        "max_score": 3,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 12
+    },
+    "statusCode": 200
+  }
+}
