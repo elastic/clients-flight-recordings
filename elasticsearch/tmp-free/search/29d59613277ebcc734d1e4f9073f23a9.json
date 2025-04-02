@@ -1,0 +1,85 @@
+{
+  "api": "search",
+  "file": "/test/free/search/330_fetch_fields.yml",
+  "name": "Test ignore malformed",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "integer"
+        ],
+        "sort": [
+          "keyword"
+        ]
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "test",
+            "_score": null,
+            "_source": {
+              "integer": 42,
+              "keyword": "a"
+            },
+            "fields": {
+              "integer": [
+                42
+              ]
+            },
+            "sort": [
+              "a"
+            ]
+          },
+          {
+            "_id": "2",
+            "_ignored": [
+              "integer"
+            ],
+            "_index": "test",
+            "_score": null,
+            "_source": {
+              "integer": "not an integer",
+              "keyword": "b"
+            },
+            "ignored_field_values": {
+              "integer": [
+                "not an integer"
+              ]
+            },
+            "sort": [
+              "b"
+            ]
+          }
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
