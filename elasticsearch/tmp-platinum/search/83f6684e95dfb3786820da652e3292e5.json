@@ -1,0 +1,81 @@
+{
+  "api": "search",
+  "file": "/test/platinum/entsearch/rules/40_rule_query_search.yml",
+  "name": "Multi-index search with missing documents does not error",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "retriever": {
+          "rule": {
+            "match_criteria": {
+              "foo": "bar"
+            },
+            "retriever": {
+              "standard": {
+                "query": {
+                  "query_string": {
+                    "query": "patio or balcony"
+                  }
+                }
+              }
+            },
+            "ruleset_ids": "catio-ruleset"
+          }
+        }
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 4,
+        "total": 4
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "2",
+            "_index": "test-index-001",
+            "_score": 1.7014122e+38,
+            "_source": {
+              "text": "catio"
+            }
+          },
+          {
+            "_id": "1",
+            "_index": "test-index-001",
+            "_score": 0.6931471,
+            "_source": {
+              "text": "patio"
+            }
+          },
+          {
+            "_id": "3",
+            "_index": "test-index-002",
+            "_score": 0.6931471,
+            "_source": {
+              "text": "balcony"
+            }
+          }
+        ],
+        "max_score": 1.7014122e+38,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 22
+    },
+    "statusCode": 200
+  }
+}
