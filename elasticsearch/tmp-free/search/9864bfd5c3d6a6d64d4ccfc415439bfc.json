@@ -1,0 +1,82 @@
+{
+  "api": "search",
+  "file": "/test/free/search.highlight/10_unified.yml",
+  "name": "Basic multi_match query",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "highlight": {
+          "fields": {
+            "*": {
+            }
+          },
+          "type": "unified"
+        },
+        "query": {
+          "multi_match": {
+            "fields": [
+              "text*"
+            ],
+            "query": "quick brown fox"
+          }
+        }
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "test",
+            "_score": 0.970927,
+            "_source": {
+              "nested": {
+                "text": "The quick brown fox is brown."
+              },
+              "text": "The quick brown fox is brown.",
+              "vectors": [
+                1,
+                2
+              ]
+            },
+            "highlight": {
+              "text": [
+                "The <em>quick</em> <em>brown</em> <em>fox</em> is <em>brown</em>."
+              ],
+              "text.fvh": [
+                "The <em>quick</em> <em>brown</em> <em>fox</em> is <em>brown</em>."
+              ],
+              "text.postings": [
+                "The <em>quick</em> <em>brown</em> <em>fox</em> is <em>brown</em>."
+              ]
+            }
+          }
+        ],
+        "max_score": 0.970927,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 11
+    },
+    "statusCode": 200
+  }
+}
