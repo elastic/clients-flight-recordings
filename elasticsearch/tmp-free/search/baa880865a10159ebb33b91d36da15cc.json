@@ -1,0 +1,114 @@
+{
+  "api": "search",
+  "file": "/test/free/search.retrievers/10_standard_retriever.yml",
+  "name": "standard retriever filter no query",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "name",
+          "count"
+        ],
+        "retriever": {
+          "standard": {
+            "filter": [
+              {
+                "match": {
+                  "name": "cow"
+                }
+              },
+              {
+                "range": {
+                  "count": {
+                    "gt": 1,
+                    "lt": 4
+                  }
+                }
+              }
+            ],
+            "sort": [
+              {
+                "count": "desc"
+              }
+            ]
+          }
+        }
+      },
+      "index": "animals",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "3",
+            "_index": "animals",
+            "_score": null,
+            "_source": {
+              "color": "spotted",
+              "count": 3,
+              "name": "cow cow cow",
+              "type": "domestic"
+            },
+            "fields": {
+              "count": [
+                3
+              ],
+              "name": [
+                "cow cow cow"
+              ]
+            },
+            "sort": [
+              3
+            ]
+          },
+          {
+            "_id": "2",
+            "_index": "animals",
+            "_score": null,
+            "_source": {
+              "color": "spotted",
+              "count": 2,
+              "name": "cow cow",
+              "type": "domestic"
+            },
+            "fields": {
+              "count": [
+                2
+              ],
+              "name": [
+                "cow cow"
+              ]
+            },
+            "sort": [
+              2
+            ]
+          }
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
