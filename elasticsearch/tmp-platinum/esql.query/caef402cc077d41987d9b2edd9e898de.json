@@ -1,0 +1,239 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/120_profile.yml",
+  "name": "avg 8.14 or after",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "columnar": true,
+        "profile": true,
+        "query": "FROM test | STATS AVG(data) | LIMIT 1"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "9121193",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-async-is-running": "?0"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "AVG(data)",
+          "type": "double"
+        }
+      ],
+      "profile": {
+        "drivers": [
+          {
+            "cpu_nanos": 338962,
+            "iterations": 2,
+            "operators": [
+              {
+                "operator": "LuceneSourceOperator[maxPageSize = 21845, remainingDocs = 2147483607]",
+                "status": {
+                  "current": 2147483647,
+                  "pages_emitted": 1,
+                  "processed_queries": [
+                    "*:*"
+                  ],
+                  "processed_shards": [
+                    "test:0"
+                  ],
+                  "processed_slices": 1,
+                  "processing_nanos": 93339,
+                  "slice_index": 0,
+                  "slice_max": 0,
+                  "slice_min": 0,
+                  "total_slices": 1
+                }
+              },
+              {
+                "operator": "ValuesSourceReaderOperator[fields = [data]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 74408,
+                  "readers_built": {
+                    "data:column_at_a_time:BlockDocValuesReader.SingletonLongs": 1
+                  }
+                }
+              },
+              {
+                "operator": "AggregationOperator[aggregators=[Aggregator[aggregatorFunction=SumLongAggregatorFunction[channels=[1]], mode=INITIAL], Aggregator[aggregatorFunction=CountAggregatorFunction[channels=[1]], mode=INITIAL]]]",
+                "status": {
+                  "aggregation_finish_nanos": 32501,
+                  "aggregation_nanos": 26821,
+                  "pages_processed": 1
+                }
+              },
+              {
+                "operator": "ExchangeSinkOperator",
+                "status": {
+                  "pages_accepted": 1
+                }
+              }
+            ],
+            "sleeps": {
+              "counts": {
+              },
+              "first": [
+              ],
+              "last": [
+              ]
+            },
+            "start_millis": 1744712927420,
+            "stop_millis": 1744712927421,
+            "took_nanos": 609939
+          },
+          {
+            "cpu_nanos": 102749,
+            "iterations": 4,
+            "operators": [
+              {
+                "operator": "ExchangeSourceOperator",
+                "status": {
+                  "pages_emitted": 1,
+                  "pages_waiting": 0
+                }
+              },
+              {
+                "operator": "ExchangeSinkOperator",
+                "status": {
+                  "pages_accepted": 1
+                }
+              }
+            ],
+            "sleeps": {
+              "counts": {
+                "exchange empty": 2
+              },
+              "first": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1744712927420,
+                  "wake_millis": 1744712927421
+                },
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1744712927421,
+                  "wake_millis": 1744712927422
+                }
+              ],
+              "last": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1744712927420,
+                  "wake_millis": 1744712927421
+                },
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1744712927421,
+                  "wake_millis": 1744712927422
+                }
+              ]
+            },
+            "start_millis": 1744712927420,
+            "stop_millis": 1744712927422,
+            "took_nanos": 1948572
+          },
+          {
+            "cpu_nanos": 247176,
+            "iterations": 4,
+            "operators": [
+              {
+                "operator": "ExchangeSourceOperator",
+                "status": {
+                  "pages_emitted": 1,
+                  "pages_waiting": 0
+                }
+              },
+              {
+                "operator": "AggregationOperator[aggregators=[Aggregator[aggregatorFunction=SumLongAggregatorFunction[channels=[0, 1]], mode=FINAL], Aggregator[aggregatorFunction=CountAggregatorFunction[channels=[2, 3]], mode=FINAL]]]",
+                "status": {
+                  "aggregation_finish_nanos": 50280,
+                  "aggregation_nanos": 30897,
+                  "pages_processed": 1
+                }
+              },
+              {
+                "operator": "ProjectOperator[projection = [0, 1]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 5849
+                }
+              },
+              {
+                "operator": "LimitOperator[limit = 0/1]",
+                "status": {
+                  "limit": 1,
+                  "limit_remaining": 0,
+                  "pages_processed": 1
+                }
+              },
+              {
+                "operator": "EvalOperator[evaluator=DivDoublesEvaluator[lhs=CastLongToDoubleEvaluator[v=Attribute[channel=0]], rhs=CastLongToDoubleEvaluator[v=Attribute[channel=1]]]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 46558
+                }
+              },
+              {
+                "operator": "ProjectOperator[projection = [2]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 3043
+                }
+              },
+              {
+                "operator": "OutputOperator[columns = [AVG(data)]]"
+              }
+            ],
+            "sleeps": {
+              "counts": {
+                "exchange empty": 2
+              },
+              "first": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1744712927418,
+                  "wake_millis": 1744712927422
+                },
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1744712927422,
+                  "wake_millis": 1744712927423
+                }
+              ],
+              "last": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1744712927418,
+                  "wake_millis": 1744712927422
+                },
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1744712927422,
+                  "wake_millis": 1744712927423
+                }
+              ]
+            },
+            "start_millis": 1744712927418,
+            "stop_millis": 1744712927423,
+            "took_nanos": 4891016
+          }
+        ]
+      },
+      "took": 9,
+      "values": [
+        [
+          1.5
+        ]
+      ]
+    },
+    "statusCode": 200
+  }
+}
