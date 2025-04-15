@@ -1,0 +1,319 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/significant_text.yml",
+  "name": "profile",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "class": {
+            "aggs": {
+              "sig_text": {
+                "significant_text": {
+                  "field": "text"
+                }
+              }
+            },
+            "terms": {
+              "field": "class"
+            }
+          }
+        },
+        "profile": true,
+        "size": 0
+      },
+      "index": "goodbad",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "sterms#class": {
+          "buckets": [
+            {
+              "doc_count": 4,
+              "key": "bad",
+              "sigsterms#sig_text": {
+                "bg_count": 7,
+                "buckets": [
+                  {
+                    "bg_count": 5,
+                    "doc_count": 4,
+                    "key": "bad",
+                    "score": 0.39999999999999997
+                  }
+                ],
+                "doc_count": 4
+              }
+            },
+            {
+              "doc_count": 3,
+              "key": "good",
+              "sigsterms#sig_text": {
+                "bg_count": 7,
+                "buckets": [
+                  {
+                    "bg_count": 4,
+                    "doc_count": 3,
+                    "key": "good",
+                    "score": 0.75
+                  }
+                ],
+                "doc_count": 3
+              }
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 7
+        }
+      },
+      "profile": {
+        "shards": [
+          {
+            "aggregations": [
+              {
+                "breakdown": {
+                  "build_aggregation": 430340,
+                  "build_aggregation_count": 1,
+                  "build_leaf_collector": 1457125,
+                  "build_leaf_collector_count": 1,
+                  "collect": 0,
+                  "collect_count": 0,
+                  "initialize": 20232,
+                  "initialize_count": 1,
+                  "post_collection": 3675,
+                  "post_collection_count": 1,
+                  "reduce": 0,
+                  "reduce_count": 0
+                },
+                "children": [
+                  {
+                    "breakdown": {
+                      "build_aggregation": 206246,
+                      "build_aggregation_count": 1,
+                      "build_leaf_collector": 18822,
+                      "build_leaf_collector_count": 2,
+                      "collect": 1138923,
+                      "collect_count": 7,
+                      "initialize": 3039,
+                      "initialize_count": 1,
+                      "post_collection": 1045,
+                      "post_collection_count": 1,
+                      "reduce": 0,
+                      "reduce_count": 0
+                    },
+                    "debug": {
+                      "built_buckets": 2,
+                      "chars_fetched": 33,
+                      "collect_analyzed_count": 9,
+                      "collect_analyzed_ns": 73411,
+                      "collection_strategy": "analyze text from _source",
+                      "extract_count": 7,
+                      "extract_ns": 46188,
+                      "result_strategy": "significant_terms",
+                      "total_buckets": 4,
+                      "values_fetched": 7
+                    },
+                    "description": "sig_text",
+                    "time_in_nanos": 1368075,
+                    "type": "MapStringTermsAggregator"
+                  }
+                ],
+                "debug": {
+                  "built_buckets": 1,
+                  "delegate": "FilterByFilterAggregator",
+                  "delegate_debug": {
+                    "filters": [
+                      {
+                        "query": "class:bad",
+                        "segments_counted_in_constant_time": 0
+                      },
+                      {
+                        "query": "class:good",
+                        "segments_counted_in_constant_time": 0
+                      }
+                    ],
+                    "segments_collected": 1,
+                    "segments_counted": 0,
+                    "segments_with_deleted_docs": 0,
+                    "segments_with_doc_count_field": 0
+                  }
+                },
+                "description": "class",
+                "time_in_nanos": 1911372,
+                "type": "StringTermsAggregatorFromFilters"
+              }
+            ],
+            "cluster": "(local)",
+            "id": "[Gam5_MLGRdWJTjY0LbpktQ][goodbad][0]",
+            "index": "goodbad",
+            "node_id": "Gam5_MLGRdWJTjY0LbpktQ",
+            "searches": [
+              {
+                "collector": [
+                  {
+                    "children": [
+                      {
+                        "name": "PartialHitCountCollector",
+                        "reason": "search_count",
+                        "time_in_nanos": 13165
+                      },
+                      {
+                        "name": "AggregatorCollector: [class]",
+                        "reason": "aggregation",
+                        "time_in_nanos": 1468667
+                      }
+                    ],
+                    "name": "QueryPhaseCollector",
+                    "reason": "search_query_phase",
+                    "time_in_nanos": 1488498
+                  }
+                ],
+                "query": [
+                  {
+                    "breakdown": {
+                      "advance": 0,
+                      "advance_count": 0,
+                      "build_scorer": 0,
+                      "build_scorer_count": 0,
+                      "compute_max_score": 0,
+                      "compute_max_score_count": 0,
+                      "count_weight": 3156,
+                      "count_weight_count": 1,
+                      "create_weight": 7525,
+                      "create_weight_count": 1,
+                      "match": 0,
+                      "match_count": 0,
+                      "next_doc": 0,
+                      "next_doc_count": 0,
+                      "score": 0,
+                      "score_count": 0,
+                      "set_min_competitive_score": 0,
+                      "set_min_competitive_score_count": 0,
+                      "shallow_advance": 0,
+                      "shallow_advance_count": 0
+                    },
+                    "children": [
+                      {
+                        "breakdown": {
+                          "advance": 0,
+                          "advance_count": 0,
+                          "build_scorer": 0,
+                          "build_scorer_count": 0,
+                          "compute_max_score": 0,
+                          "compute_max_score_count": 0,
+                          "count_weight": 2510,
+                          "count_weight_count": 1,
+                          "create_weight": 734,
+                          "create_weight_count": 1,
+                          "match": 0,
+                          "match_count": 0,
+                          "next_doc": 0,
+                          "next_doc_count": 0,
+                          "score": 0,
+                          "score_count": 0,
+                          "set_min_competitive_score": 0,
+                          "set_min_competitive_score_count": 0,
+                          "shallow_advance": 0,
+                          "shallow_advance_count": 0
+                        },
+                        "description": "*:*",
+                        "time_in_nanos": 3244,
+                        "type": "MatchAllDocsQuery"
+                      }
+                    ],
+                    "description": "ConstantScore(*:*)",
+                    "time_in_nanos": 10681,
+                    "type": "ConstantScoreQuery"
+                  },
+                  {
+                    "breakdown": {
+                      "advance": 0,
+                      "advance_count": 0,
+                      "build_scorer": 96994,
+                      "build_scorer_count": 2,
+                      "compute_max_score": 0,
+                      "compute_max_score_count": 0,
+                      "count_weight": 0,
+                      "count_weight_count": 0,
+                      "create_weight": 14204,
+                      "create_weight_count": 1,
+                      "match": 0,
+                      "match_count": 0,
+                      "next_doc": 13818,
+                      "next_doc_count": 5,
+                      "score": 0,
+                      "score_count": 0,
+                      "set_min_competitive_score": 0,
+                      "set_min_competitive_score_count": 0,
+                      "shallow_advance": 0,
+                      "shallow_advance_count": 0
+                    },
+                    "description": "class:bad",
+                    "time_in_nanos": 125016,
+                    "type": "TermQuery"
+                  },
+                  {
+                    "breakdown": {
+                      "advance": 0,
+                      "advance_count": 0,
+                      "build_scorer": 81391,
+                      "build_scorer_count": 2,
+                      "compute_max_score": 0,
+                      "compute_max_score_count": 0,
+                      "count_weight": 0,
+                      "count_weight_count": 0,
+                      "create_weight": 10593,
+                      "create_weight_count": 1,
+                      "match": 0,
+                      "match_count": 0,
+                      "next_doc": 4546,
+                      "next_doc_count": 4,
+                      "score": 0,
+                      "score_count": 0,
+                      "set_min_competitive_score": 0,
+                      "set_min_competitive_score_count": 0,
+                      "shallow_advance": 0,
+                      "shallow_advance_count": 0
+                    },
+                    "description": "class:good",
+                    "time_in_nanos": 96530,
+                    "type": "TermQuery"
+                  }
+                ],
+                "rewrite_time": 86815
+              }
+            ],
+            "shard_id": 0
+          }
+        ]
+      },
+      "timed_out": false,
+      "took": 5
+    },
+    "statusCode": 200
+  }
+}
