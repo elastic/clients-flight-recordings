@@ -1,0 +1,70 @@
+{
+  "api": "search",
+  "file": "/test/platinum/entsearch/rules/40_rule_query_search.yml",
+  "name": "Perform a rule query with an organic query that must be rewritten to another query type",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "rule": {
+            "match_criteria": {
+              "foo": "bar"
+            },
+            "organic": {
+              "sparse_vector": {
+                "field": "ml.tokens",
+                "inference_id": "text_expansion_model",
+                "query": "octopus comforter smells"
+              }
+            },
+            "ruleset_ids": [
+              "combined-ruleset"
+            ]
+          }
+        }
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 3,
+        "total": 3
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "pinned_doc1",
+            "_index": "test-index-with-sparse-vector",
+            "_score": 1.7014122e+38,
+            "_source": {
+              "ml.tokens": {
+                "doc": 1,
+                "pinned": 1,
+                "unrelated": 1
+              },
+              "source_text": "unrelated pinned doc"
+            }
+          }
+        ],
+        "max_score": 1.7014122e+38,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 107
+    },
+    "statusCode": 200
+  }
+}
