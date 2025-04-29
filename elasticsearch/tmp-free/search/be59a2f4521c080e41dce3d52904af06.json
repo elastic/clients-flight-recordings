@@ -1,0 +1,97 @@
+{
+  "api": "search",
+  "file": "/test/free/search.retrievers/30_rescorer_retriever.yml",
+  "name": "Rescorer retriever basic",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "retriever": {
+          "rescorer": {
+            "rescore": {
+              "query": {
+                "query_weight": 0,
+                "rescore_query": {
+                  "rank_feature": {
+                    "field": "features.second_stage",
+                    "linear": {
+                    }
+                  }
+                }
+              },
+              "window_size": 10
+            },
+            "retriever": {
+              "standard": {
+                "query": {
+                  "rank_feature": {
+                    "field": "features.first_stage",
+                    "linear": {
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "size": 2
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "test",
+            "_score": 10,
+            "_source": {
+              "available": true,
+              "features": {
+                "first_stage": 1,
+                "second_stage": 10
+              },
+              "group": 1
+            }
+          },
+          {
+            "_id": "2",
+            "_index": "test",
+            "_score": 9,
+            "_source": {
+              "available": false,
+              "features": {
+                "first_stage": 2,
+                "second_stage": 9
+              },
+              "group": 1
+            }
+          }
+        ],
+        "max_score": 10,
+        "total": {
+          "relation": "eq",
+          "value": 10
+        }
+      },
+      "timed_out": false,
+      "took": 10
+    },
+    "statusCode": 200
+  }
+}
