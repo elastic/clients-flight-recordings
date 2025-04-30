@@ -1,0 +1,77 @@
+{
+  "api": "search",
+  "file": "/test/free/tsdb/40_search.yml",
+  "name": "fetch a metric",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          {
+            "field": "k8s.pod.network.tx"
+          }
+        ],
+        "query": {
+          "query_string": {
+            "query": "+@timestamp:\"2021-04-28T18:51:04.467Z\" +k8s.pod.name:cat"
+          }
+        }
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "cZZNs7B9sSWsyrL5AAABeRnSA5M",
+            "_index": "test",
+            "_score": 1.6931472,
+            "_source": {
+              "@timestamp": "2021-04-28T18:51:04.467Z",
+              "k8s": {
+                "pod": {
+                  "ip": "10.10.55.2",
+                  "name": "cat",
+                  "network": {
+                    "rx": 803685721,
+                    "tx": 2012916202
+                  },
+                  "uid": "947e4ced-1786-4e53-9e0c-5c447e959507"
+                }
+              },
+              "metricset": "pod"
+            },
+            "fields": {
+              "k8s.pod.network.tx": [
+                2012916202
+              ]
+            }
+          }
+        ],
+        "max_score": 1.6931472,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
