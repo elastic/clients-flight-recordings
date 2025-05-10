@@ -1,0 +1,103 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/filters_bucket.yml",
+  "name": "Filtered test",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "the_filter": {
+            "aggs": {
+              "the_avg": {
+                "avg": {
+                  "field": "int_field"
+                }
+              }
+            },
+            "filters": {
+              "filters": {
+                "first_filter": {
+                  "match": {
+                    "int_field": 101
+                  }
+                },
+                "second_filter": {
+                  "match": {
+                    "int_field": 151
+                  }
+                }
+              }
+            }
+          }
+        },
+        "query": {
+          "constant_score": {
+            "filter": {
+              "range": {
+                "int_field": {
+                  "gte": 110
+                }
+              }
+            }
+          }
+        }
+      },
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "filters#the_filter": {
+          "buckets": {
+            "first_filter": {
+              "avg#the_avg": {
+                "value": null
+              },
+              "doc_count": 0
+            },
+            "second_filter": {
+              "avg#the_avg": {
+                "value": 151
+              },
+              "doc_count": 1
+            }
+          }
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "4",
+            "_index": "test_1",
+            "_score": 1,
+            "_source": {
+              "double_field": 151,
+              "int_field": 151,
+              "string_field": "foo"
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": 1
+      },
+      "timed_out": false,
+      "took": 5
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "api": "bulk",
+  "file": "/test/free/bulk/40_source.yml",
+  "name": "Source filtering",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{ \"update\": { \"_index\": \"test_index\", \"_id\": \"test_id_1\", \"_source\": true } }\n{ \"doc\": { \"foo\": \"baz\" } }\n{ \"update\": { \"_index\": \"test_index\", \"_id\": \"test_id_2\" } }\n{ \"_source\": true, \"doc\": { \"foo\": \"quux\" } }\n"
+      ],
+      "refresh": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": false,
+      "items": [
+        {
+          "update": {
+            "_id": "test_id_1",
+            "_index": "test_index",
+            "_primary_term": 1,
+            "_seq_no": 3,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 2,
+            "forced_refresh": true,
+            "get": {
+              "_primary_term": 1,
+              "_seq_no": 3,
+              "_source": {
+                "bar": "foo",
+                "foo": "baz"
+              },
+              "found": true
+            },
+            "result": "updated",
+            "status": 200
+          }
+        },
+        {
+          "update": {
+            "_id": "test_id_2",
+            "_index": "test_index",
+            "_primary_term": 1,
+            "_seq_no": 4,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 2,
+            "forced_refresh": true,
+            "get": {
+              "_primary_term": 1,
+              "_seq_no": 4,
+              "_source": {
+                "bar": "pux",
+                "foo": "quux"
+              },
+              "found": true
+            },
+            "result": "updated",
+            "status": 200
+          }
+        }
+      ],
+      "took": 200
+    },
+    "statusCode": 200
+  }
+}
