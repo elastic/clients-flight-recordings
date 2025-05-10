@@ -1,0 +1,109 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/190_knn_query-with-k-param.yml",
+  "name": "Aggregations with collected number of docs depends on k param",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "my_agg": {
+            "terms": {
+              "field": "my_name",
+              "order": {
+                "_key": "asc"
+              }
+            }
+          }
+        },
+        "query": {
+          "knn": {
+            "field": "my_vector",
+            "k": 5,
+            "query_vector": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "size": 2
+      },
+      "index": "my_index",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "sterms#my_agg": {
+          "buckets": [
+            {
+              "doc_count": 3,
+              "key": "v1"
+            },
+            {
+              "doc_count": 2,
+              "key": "v2"
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "my_index",
+            "_score": 1,
+            "_source": {
+              "my_name": "v1",
+              "my_vector": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          },
+          {
+            "_id": "2",
+            "_index": "my_index",
+            "_score": 0.5,
+            "_source": {
+              "my_name": "v2",
+              "my_vector": [
+                1,
+                1,
+                1,
+                2
+              ]
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 5
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
