@@ -1,0 +1,80 @@
+{
+  "api": "search",
+  "file": "/test/platinum/analytics/usage.yml",
+  "name": "Usage stats on analytics indices",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "m_terms": {
+            "multi_terms": {
+              "terms": [
+                {
+                  "field": "timestamp"
+                },
+                {
+                  "field": "str.keyword"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "index": "test",
+      "size": 0,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "multi_terms#m_terms": {
+          "buckets": [
+            {
+              "doc_count": 2,
+              "key": [
+                "2017-01-01T05:00:00.000Z",
+                "a"
+              ],
+              "key_as_string": "2017-01-01T05:00:00.000Z|a"
+            },
+            {
+              "doc_count": 1,
+              "key": [
+                "2017-01-01T05:00:00.000Z",
+                "b"
+              ],
+              "key_as_string": "2017-01-01T05:00:00.000Z|b"
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
