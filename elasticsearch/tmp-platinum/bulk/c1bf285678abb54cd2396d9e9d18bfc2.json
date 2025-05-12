@@ -1,0 +1,89 @@
+{
+  "api": "bulk",
+  "file": "/test/platinum/security/authz/11_delete_doc.yml",
+  "name": "Test bulk delete and index documents when only some are allowed",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"index\" : {\"_index\": \"only_delete\", \"_id\": \"11\"}}",
+        "{\"name\"  : \"doc11\"}",
+        "{\"delete\": {\"_index\": \"only_delete\", \"_id\": \"7\"}}",
+        "{\"index\" : {\"_index\": \"only_index\", \"_id\": \"12\"}}",
+        "{\"name\"  : \"doc12\"}",
+        "{\"delete\": {\"_index\": \"only_index\", \"_id\": \"2\"}}"
+      ]
+    },
+    "headers": {
+      "Authorization": "Basic dGVzdF91c2VyOngtcGFjay10ZXN0LXBhc3N3b3Jk"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "index": {
+            "_id": "11",
+            "_index": "only_delete",
+            "error": {
+              "reason": "action [indices:data/write/index:op_type/index] is unauthorized for user [test_user] with effective roles [mixed_role] on indices [only_delete], this action is granted by the index privileges [create,index,write,all]",
+              "type": "security_exception"
+            },
+            "status": 403
+          }
+        },
+        {
+          "delete": {
+            "_id": "7",
+            "_index": "only_delete",
+            "_primary_term": 1,
+            "_seq_no": 5,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 2,
+            "result": "deleted",
+            "status": 200
+          }
+        },
+        {
+          "index": {
+            "_id": "12",
+            "_index": "only_index",
+            "_primary_term": 1,
+            "_seq_no": 1,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 1,
+            "result": "created",
+            "status": 201
+          }
+        },
+        {
+          "delete": {
+            "_id": "2",
+            "_index": "only_index",
+            "error": {
+              "reason": "action [indices:data/write/delete] is unauthorized for user [test_user] with effective roles [mixed_role] on indices [only_index], this action is granted by the index privileges [delete,write,all]",
+              "type": "security_exception"
+            },
+            "status": 403
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}
