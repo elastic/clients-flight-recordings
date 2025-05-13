@@ -1,0 +1,77 @@
+{
+  "api": "search",
+  "file": "/test/free/search/140_pre_filter_search_shards.yml",
+  "name": "pre_filter_shard_size with shards that have no hit",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "idx_terms": {
+            "terms": {
+              "field": "_index",
+              "min_doc_count": 0
+            }
+          }
+        },
+        "query": {
+          "range": {
+            "created_at": {
+              "gte": "2016-02-01",
+              "lt": "2018-02-01"
+            }
+          }
+        },
+        "size": 0
+      },
+      "pre_filter_shard_size": 1,
+      "rest_total_hits_as_int": true,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 3,
+        "total": 3
+      },
+      "aggregations": {
+        "sterms#idx_terms": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": "index_2"
+            },
+            {
+              "doc_count": 1,
+              "key": "index_3"
+            },
+            {
+              "doc_count": 0,
+              "key": "index_1"
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": 2
+      },
+      "timed_out": false,
+      "took": 3
+    },
+    "statusCode": 200
+  }
+}
