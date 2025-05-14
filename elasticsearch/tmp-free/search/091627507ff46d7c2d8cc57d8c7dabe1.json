@@ -1,0 +1,106 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/filters_bucket.yml",
+  "name": "cache hits",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "itemsNotify": {
+            "aggs": {
+              "mentions": {
+                "terms": {
+                  "field": "mentions"
+                }
+              }
+            },
+            "filters": {
+              "filters": {
+                "lookup": {
+                  "terms": {
+                    "mentions": {
+                      "id": "foo|bar|baz0",
+                      "index": "test",
+                      "path": "notifications"
+                    }
+                  }
+                },
+                "std": {
+                  "terms": {
+                    "mentions": [
+                      "abc"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "index": "test",
+      "preference": "hit-same-shard-copy",
+      "request_cache": true,
+      "rest_total_hits_as_int": true,
+      "size": 0,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "filters#itemsNotify": {
+          "buckets": {
+            "lookup": {
+              "doc_count": 1,
+              "sterms#mentions": {
+                "buckets": [
+                  {
+                    "doc_count": 1,
+                    "key": "abc"
+                  }
+                ],
+                "doc_count_error_upper_bound": 0,
+                "sum_other_doc_count": 0
+              }
+            },
+            "std": {
+              "doc_count": 1,
+              "sterms#mentions": {
+                "buckets": [
+                  {
+                    "doc_count": 1,
+                    "key": "abc"
+                  }
+                ],
+                "doc_count_error_upper_bound": 0,
+                "sum_other_doc_count": 0
+              }
+            }
+          }
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": 2
+      },
+      "timed_out": false,
+      "took": 3
+    },
+    "statusCode": 200
+  }
+}
