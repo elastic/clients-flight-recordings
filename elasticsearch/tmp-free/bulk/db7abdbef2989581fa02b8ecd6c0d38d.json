@@ -1,0 +1,62 @@
+{
+  "api": "bulk",
+  "file": "/test/free/index/80_date_nanos.yml",
+  "name": "date_nanos requires dates after 1970 and before 2262",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{ \"index\" : { \"_index\" : \"date_ns\", \"_id\" : \"date_ns_1\" } }",
+        "{\"date\" : \"1969-10-28T12:12:12.123456789Z\" }",
+        "{ \"index\" : { \"_index\" : \"date_ns\", \"_id\" : \"date_ns_2\" } }",
+        "{\"date\" : \"2263-10-29T12:12:12.123456789Z\" }"
+      ],
+      "refresh": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "index": {
+            "_id": "date_ns_1",
+            "_index": "date_ns",
+            "error": {
+              "caused_by": {
+                "reason": "date[1969-10-28T12:12:12.123456789Z] is before the epoch in 1970 and cannot be stored in nanosecond resolution",
+                "type": "illegal_argument_exception"
+              },
+              "reason": "[1:11] failed to parse field [date] of type [date_nanos] in document with id 'date_ns_1'. Preview of field's value: '1969-10-28T12:12:12.123456789Z'",
+              "type": "document_parsing_exception"
+            },
+            "status": 400
+          }
+        },
+        {
+          "index": {
+            "_id": "date_ns_2",
+            "_index": "date_ns",
+            "error": {
+              "caused_by": {
+                "reason": "date[2263-10-29T12:12:12.123456789Z] is after 2262-04-11T23:47:16.854775807 and cannot be stored in nanosecond resolution",
+                "type": "illegal_argument_exception"
+              },
+              "reason": "[1:11] failed to parse field [date] of type [date_nanos] in document with id 'date_ns_2'. Preview of field's value: '2263-10-29T12:12:12.123456789Z'",
+              "type": "document_parsing_exception"
+            },
+            "status": 400
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}
