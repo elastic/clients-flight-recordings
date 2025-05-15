@@ -1,0 +1,108 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/ip_range.yml",
+  "name": "IP Range avg_bucket",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "range": {
+            "aggs": {
+              "v": {
+                "sum": {
+                  "field": "v"
+                }
+              }
+            },
+            "ip_range": {
+              "field": "ip",
+              "ranges": [
+                {
+                  "to": "192.168.0.0"
+                },
+                {
+                  "from": "192.168.0.0",
+                  "to": "192.169.0.0"
+                },
+                {
+                  "from": "192.169.0.0"
+                }
+              ]
+            }
+          },
+          "range_avg_v": {
+            "avg_bucket": {
+              "buckets_path": "range.v"
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "ip_range#range": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": "*-192.168.0.0",
+              "sum#v": {
+                "value": 1
+              },
+              "to": "192.168.0.0"
+            },
+            {
+              "doc_count": 2,
+              "from": "192.168.0.0",
+              "key": "192.168.0.0-192.169.0.0",
+              "sum#v": {
+                "value": 5
+              },
+              "to": "192.169.0.0"
+            },
+            {
+              "doc_count": 0,
+              "from": "192.169.0.0",
+              "key": "192.169.0.0-*",
+              "sum#v": {
+                "value": 0
+              }
+            }
+          ]
+        },
+        "simple_value#range_avg_v": {
+          "value": 3
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
