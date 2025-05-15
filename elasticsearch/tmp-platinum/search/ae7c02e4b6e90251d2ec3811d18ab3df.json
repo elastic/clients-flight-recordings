@@ -1,0 +1,75 @@
+{
+  "api": "search",
+  "file": "/test/platinum/analytics/multi_terms.yml",
+  "name": "show_term_doc_count_error parameter",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "genres_and_products": {
+            "multi_terms": {
+              "show_term_doc_count_error": true,
+              "size": 1,
+              "terms": [
+                {
+                  "field": "genre"
+                },
+                {
+                  "field": "product"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "index": "products*",
+      "size": 0,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "aggregations": {
+        "multi_terms#genres_and_products": {
+          "buckets": [
+            {
+              "doc_count": 3,
+              "doc_count_error_upper_bound": 0,
+              "key": [
+                "rock",
+                "Product A"
+              ],
+              "key_as_string": "rock|Product A"
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 11
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 15
+        }
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}
