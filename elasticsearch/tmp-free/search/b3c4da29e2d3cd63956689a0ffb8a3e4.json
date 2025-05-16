@@ -1,0 +1,58 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/scripted_metric.yml",
+  "name": "scripted transaction sum",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "profit": {
+            "scripted_metric": {
+              "combine_script": "long profit = 0;\nfor (t in state.transactions) {\n  profit += t;\n}\nreturn profit\n",
+              "init_script": "state.transactions = []\n",
+              "map_script": "state.transactions.add(\n  doc.transaction.value == 'sale'\n    ? doc.amount.value\n    : -1 * doc.amount.value\n)\n",
+              "reduce_script": "long profit = 0;\nfor (t in states) {\n  profit += t;\n}\nreturn profit\n"
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "aggregations": {
+        "scripted_metric#profit": {
+          "value": 170
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 4
+        }
+      },
+      "timed_out": false,
+      "took": 47
+    },
+    "statusCode": 200
+  }
+}
