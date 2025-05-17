@@ -1,0 +1,79 @@
+{
+  "api": "bulk",
+  "file": "/test/free/tsdb/130_position_fields.yml",
+  "name": "multi-valued fields unsupported",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"index\" : {}}\n{\"@timestamp\": \"2023-01-01T12:00:00Z\", \"city\": \"Rock\", \"name\": \"On\", \"location\": {\"lat\": 13.0, \"lon\" : 34.0} }\n{\"index\" : {}}\n{\"@timestamp\": \"2023-01-01T12:00:00Z\", \"city\": \"Hey\", \"name\": \"There\", \"location\": [{\"lat\": 13.0, \"lon\" : 34.0}] }\n{\"index\" : {}}\n{\"@timestamp\": \"2023-01-01T12:00:00Z\", \"city\": \"Boo\", \"name\": \"Hoo\", \"location\": [{\"lat\": 13.0, \"lon\" : 34.0}, {\"lat\": 14.0, \"lon\" : 35.0}] }\n"
+      ],
+      "index": "locations",
+      "refresh": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "index": {
+            "_id": "wc62Czumhvr5r_8hAAABhW0z9gA",
+            "_index": "locations",
+            "_primary_term": 1,
+            "_seq_no": 6,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 1,
+            "forced_refresh": true,
+            "result": "created",
+            "status": 201
+          }
+        },
+        {
+          "index": {
+            "_id": "Y-giuYP2W4kFFwKNAAABhW0z9gA",
+            "_index": "locations",
+            "_primary_term": 1,
+            "_seq_no": 7,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 1,
+            "forced_refresh": true,
+            "result": "created",
+            "status": 201
+          }
+        },
+        {
+          "index": {
+            "_id": null,
+            "_index": "locations",
+            "error": {
+              "caused_by": {
+                "reason": "field type for [location] does not accept more than single value",
+                "type": "parse_exception"
+              },
+              "reason": "[1:112] failed to parse: field type for [location] does not accept more than single value",
+              "type": "document_parsing_exception"
+            },
+            "status": 400
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}

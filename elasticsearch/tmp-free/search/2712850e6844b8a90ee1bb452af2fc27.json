@@ -1,0 +1,122 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/45_knn_search_byte.yml",
+  "name": "kNN search plus query",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "name"
+        ],
+        "knn": {
+          "field": "vector",
+          "k": 2,
+          "num_candidates": 3,
+          "query_vector": [
+            127,
+            -128,
+            0,
+            1,
+            -1
+          ]
+        },
+        "query": {
+          "term": {
+            "name": "rabbit.jpg"
+          }
+        }
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "2",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "name": "moose.jpg",
+              "vector": [
+                127,
+                -128,
+                0,
+                1,
+                -1
+              ]
+            },
+            "fields": {
+              "name": [
+                "moose.jpg"
+              ]
+            }
+          },
+          {
+            "_id": "3",
+            "_index": "test",
+            "_score": 0.9808291,
+            "_source": {
+              "name": "rabbit.jpg",
+              "vector": [
+                5,
+                4,
+                3,
+                2,
+                127
+              ]
+            },
+            "fields": {
+              "name": [
+                "rabbit.jpg"
+              ]
+            }
+          },
+          {
+            "_id": "1",
+            "_index": "test",
+            "_score": 0.69373,
+            "_source": {
+              "name": "cow.jpg",
+              "vector": [
+                2,
+                -1,
+                1,
+                4,
+                -3
+              ]
+            },
+            "fields": {
+              "name": [
+                "cow.jpg"
+              ]
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
