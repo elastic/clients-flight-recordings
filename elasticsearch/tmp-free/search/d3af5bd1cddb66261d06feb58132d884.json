@@ -1,0 +1,84 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/range.yml",
+  "name": "Float range",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "float_range": {
+            "range": {
+              "field": "float",
+              "ranges": [
+                {
+                  "to": 6
+                },
+                {
+                  "from": 6,
+                  "to": 10.6
+                },
+                {
+                  "from": 10.6
+                }
+              ]
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "range#float_range": {
+          "buckets": [
+            {
+              "doc_count": 3,
+              "key": "*-6.0",
+              "to": 6
+            },
+            {
+              "doc_count": 0,
+              "from": 6,
+              "key": "6.0-10.6",
+              "to": 10.6
+            },
+            {
+              "doc_count": 0,
+              "from": 10.6,
+              "key": "10.6-*"
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 4
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
