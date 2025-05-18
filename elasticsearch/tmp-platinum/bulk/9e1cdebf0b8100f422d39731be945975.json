@@ -1,0 +1,60 @@
+{
+  "api": "bulk",
+  "file": "/test/platinum/security/authz/12_index_alias.yml",
+  "name": "Test bulk indexing into an alias when only some are allowed",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"index\": {\"_index\": \"can_read_1\", \"_id\": \"13\"}}",
+        "{\"name\": \"doc13\"}",
+        "{\"index\": {\"_index\": \"can_write_1\", \"_id\": \"14\"}}",
+        "{\"name\": \"doc14\"}"
+      ]
+    },
+    "headers": {
+      "Authorization": "Basic dGVzdF91c2VyOngtcGFjay10ZXN0LXBhc3N3b3Jk"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "index": {
+            "_id": "13",
+            "_index": "can_read_1",
+            "error": {
+              "reason": "action [indices:data/write/bulk[s]] is unauthorized for user [test_user] with effective roles [mixed_role] on indices [can_read_1], this action is granted by the index privileges [create_doc,create,delete,index,write,all]",
+              "type": "security_exception"
+            },
+            "status": 403
+          }
+        },
+        {
+          "index": {
+            "_id": "14",
+            "_index": "write_index_1",
+            "_primary_term": 1,
+            "_seq_no": 0,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 1,
+            "result": "created",
+            "status": 201
+          }
+        }
+      ],
+      "took": 200
+    },
+    "statusCode": 200
+  }
+}
