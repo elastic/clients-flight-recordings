@@ -1,0 +1,84 @@
+{
+  "api": "search",
+  "file": "/test/platinum/entsearch/rules/80_query_rules_retriever.yml",
+  "name": "query rules retriever combined with rrf and pagination",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "from": 1,
+        "retriever": {
+          "rule": {
+            "match_criteria": {
+              "bar": "bar",
+              "foo": "foo"
+            },
+            "retriever": {
+              "rrf": {
+                "retrievers": [
+                  {
+                    "standard": {
+                      "query": {
+                        "query_string": {
+                          "query": "bar"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "standard": {
+                      "query": {
+                        "query_string": {
+                          "query": "baz"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "ruleset_ids": "test-ruleset"
+          }
+        },
+        "size": 1
+      },
+      "index": "test-index1",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "foo2",
+            "_index": "test-index1",
+            "_score": 1.7014122e+38,
+            "_source": {
+              "text": "foo2 - second pinned doc for foo"
+            }
+          }
+        ],
+        "max_score": 1.7014124e+38,
+        "total": {
+          "relation": "eq",
+          "value": 4
+        }
+      },
+      "timed_out": false,
+      "took": 8
+    },
+    "statusCode": 200
+  }
+}
