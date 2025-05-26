@@ -1,0 +1,141 @@
+{
+  "api": "mtermvectors",
+  "file": "/test/free/mtermvectors/10_basic.yml",
+  "name": "Tests index not found error in item",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "docs": [
+          {
+            "_id": "testing_document",
+            "_index": "testidx"
+          },
+          {
+            "_id": "testing_document",
+            "_index": "wrong_idx"
+          }
+        ]
+      },
+      "term_statistics": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-encoding": "gzip",
+      "content-length": "404",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "docs": [
+        {
+          "_id": "testing_document",
+          "_index": "testidx",
+          "_version": 1,
+          "found": true,
+          "term_vectors": {
+            "text": {
+              "field_statistics": {
+                "doc_count": 1,
+                "sum_doc_freq": 5,
+                "sum_ttf": 6
+              },
+              "terms": {
+                "brown": {
+                  "doc_freq": 1,
+                  "term_freq": 2,
+                  "tokens": [
+                    {
+                      "end_offset": 15,
+                      "position": 2,
+                      "start_offset": 10
+                    },
+                    {
+                      "end_offset": 28,
+                      "position": 5,
+                      "start_offset": 23
+                    }
+                  ],
+                  "ttf": 2
+                },
+                "fox": {
+                  "doc_freq": 1,
+                  "term_freq": 1,
+                  "tokens": [
+                    {
+                      "end_offset": 19,
+                      "position": 3,
+                      "start_offset": 16
+                    }
+                  ],
+                  "ttf": 1
+                },
+                "is": {
+                  "doc_freq": 1,
+                  "term_freq": 1,
+                  "tokens": [
+                    {
+                      "end_offset": 22,
+                      "position": 4,
+                      "start_offset": 20
+                    }
+                  ],
+                  "ttf": 1
+                },
+                "quick": {
+                  "doc_freq": 1,
+                  "term_freq": 1,
+                  "tokens": [
+                    {
+                      "end_offset": 9,
+                      "position": 1,
+                      "start_offset": 4
+                    }
+                  ],
+                  "ttf": 1
+                },
+                "the": {
+                  "doc_freq": 1,
+                  "term_freq": 1,
+                  "tokens": [
+                    {
+                      "end_offset": 3,
+                      "position": 0,
+                      "start_offset": 0
+                    }
+                  ],
+                  "ttf": 1
+                }
+              }
+            }
+          },
+          "took": 0
+        },
+        {
+          "_id": "testing_document",
+          "_index": "wrong_idx",
+          "error": {
+            "index": "wrong_idx",
+            "index_uuid": "_na_",
+            "reason": "no such index [wrong_idx]",
+            "resource.id": "wrong_idx",
+            "resource.type": "index_or_alias",
+            "root_cause": [
+              {
+                "index": "wrong_idx",
+                "index_uuid": "_na_",
+                "reason": "no such index [wrong_idx]",
+                "resource.id": "wrong_idx",
+                "resource.type": "index_or_alias",
+                "type": "index_not_found_exception"
+              }
+            ],
+            "type": "index_not_found_exception"
+          }
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}
