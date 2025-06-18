@@ -1,0 +1,275 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/120_profile.yml",
+  "name": "avg 8.14 or after",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "columnar": true,
+        "profile": true,
+        "query": "FROM test | STATS AVG(data) | LIMIT 1"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "10755634",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-async-is-running": "?0"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "AVG(data)",
+          "type": "double"
+        }
+      ],
+      "documents_found": 40,
+      "is_partial": false,
+      "profile": {
+        "drivers": [
+          {
+            "cluster_name": "elasticsearch-x86-64-rest-test",
+            "cpu_nanos": 520130,
+            "description": "data",
+            "documents_found": 40,
+            "iterations": 2,
+            "node_name": "instance",
+            "operators": [
+              {
+                "operator": "LuceneSourceOperator[shards = [test:0], maxPageSize = 21845, remainingDocs = 2147483607]",
+                "status": {
+                  "current": 2147483647,
+                  "pages_emitted": 1,
+                  "partitioning_strategies": {
+                    "test:0": "SHARD"
+                  },
+                  "process_nanos": 112528,
+                  "processed_queries": [
+                    "*:*"
+                  ],
+                  "processed_shards": [
+                    "test:0"
+                  ],
+                  "processed_slices": 1,
+                  "rows_emitted": 40,
+                  "slice_index": 0,
+                  "slice_max": 0,
+                  "slice_min": 0,
+                  "total_slices": 1
+                }
+              },
+              {
+                "operator": "ValuesSourceReaderOperator[fields = [data]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 99621,
+                  "readers_built": {
+                    "data:column_at_a_time:BlockDocValuesReader.SingletonLongs": 1
+                  },
+                  "rows_emitted": 40,
+                  "rows_received": 40,
+                  "values_loaded": 40
+                }
+              },
+              {
+                "operator": "AggregationOperator[aggregators=[Aggregator[aggregatorFunction=SumLongAggregatorFunction[channels=[1]], mode=INITIAL], Aggregator[aggregatorFunction=CountAggregatorFunction[channels=[1]], mode=INITIAL]]]",
+                "status": {
+                  "aggregation_finish_nanos": 34730,
+                  "aggregation_nanos": 35051,
+                  "pages_processed": 1,
+                  "rows_emitted": 1,
+                  "rows_received": 40
+                }
+              },
+              {
+                "operator": "ExchangeSinkOperator",
+                "status": {
+                  "pages_received": 1,
+                  "rows_received": 1
+                }
+              }
+            ],
+            "sleeps": {
+              "counts": {
+              },
+              "first": [
+              ],
+              "last": [
+              ]
+            },
+            "start_millis": 1750249489843,
+            "stop_millis": 1750249489844,
+            "took_nanos": 730331,
+            "values_loaded": 40
+          },
+          {
+            "cluster_name": "elasticsearch-x86-64-rest-test",
+            "cpu_nanos": 102472,
+            "description": "node_reduce",
+            "documents_found": 0,
+            "iterations": 1,
+            "node_name": "instance",
+            "operators": [
+              {
+                "operator": "ExchangeSourceOperator",
+                "status": {
+                  "pages_emitted": 1,
+                  "pages_waiting": 0,
+                  "rows_emitted": 1
+                }
+              },
+              {
+                "operator": "ExchangeSinkOperator",
+                "status": {
+                  "pages_received": 1,
+                  "rows_received": 1
+                }
+              }
+            ],
+            "sleeps": {
+              "counts": {
+              },
+              "first": [
+              ],
+              "last": [
+              ]
+            },
+            "start_millis": 1750249489845,
+            "stop_millis": 1750249489845,
+            "took_nanos": 239392,
+            "values_loaded": 0
+          },
+          {
+            "cluster_name": "elasticsearch-x86-64-rest-test",
+            "cpu_nanos": 237339,
+            "description": "final",
+            "documents_found": 0,
+            "iterations": 4,
+            "node_name": "instance",
+            "operators": [
+              {
+                "operator": "ExchangeSourceOperator",
+                "status": {
+                  "pages_emitted": 1,
+                  "pages_waiting": 0,
+                  "rows_emitted": 1
+                }
+              },
+              {
+                "operator": "AggregationOperator[aggregators=[Aggregator[aggregatorFunction=SumLongAggregatorFunction[channels=[0, 1]], mode=FINAL], Aggregator[aggregatorFunction=CountAggregatorFunction[channels=[2, 3]], mode=FINAL]]]",
+                "status": {
+                  "aggregation_finish_nanos": 31716,
+                  "aggregation_nanos": 27918,
+                  "pages_processed": 1,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "ProjectOperator[projection = [0, 1]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 6517,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "LimitOperator[limit = 0/1]",
+                "status": {
+                  "limit": 1,
+                  "limit_remaining": 0,
+                  "pages_processed": 1,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "EvalOperator[evaluator=DivDoublesEvaluator[lhs=CastLongToDoubleEvaluator[v=Attribute[channel=0]], rhs=CastLongToDoubleEvaluator[v=Attribute[channel=1]]]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 42803,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "ProjectOperator[projection = [2]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 3886,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "OutputOperator[columns = [AVG(data)]]"
+              }
+            ],
+            "sleeps": {
+              "counts": {
+                "exchange empty": 2
+              },
+              "first": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1750249489840,
+                  "thread_name": "elasticsearch[instance][esql_worker][T#3]",
+                  "wake_millis": 1750249489845
+                },
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1750249489845,
+                  "thread_name": "elasticsearch[instance][esql_worker][T#1]",
+                  "wake_millis": 1750249489846
+                }
+              ],
+              "last": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1750249489840,
+                  "thread_name": "elasticsearch[instance][esql_worker][T#3]",
+                  "wake_millis": 1750249489845
+                },
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1750249489845,
+                  "thread_name": "elasticsearch[instance][esql_worker][T#1]",
+                  "wake_millis": 1750249489846
+                }
+              ]
+            },
+            "start_millis": 1750249489840,
+            "stop_millis": 1750249489846,
+            "took_nanos": 5956446,
+            "values_loaded": 0
+          }
+        ],
+        "planning": {
+          "start_millis": 1750249489835,
+          "stop_millis": 1750249489839,
+          "took_millis": 4,
+          "took_nanos": 4268411
+        },
+        "query": {
+          "start_millis": 1750249489835,
+          "stop_millis": 1750249489846,
+          "took_millis": 11,
+          "took_nanos": 10755634
+        }
+      },
+      "took": 10,
+      "values": [
+        [
+          1.5
+        ]
+      ],
+      "values_loaded": 40
+    },
+    "statusCode": 200
+  }
+}
