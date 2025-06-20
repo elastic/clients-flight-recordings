@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.1.0-SNAPSHOT`  
-Elasticsearch build hash: `8555c16290ff226ff195f0e937fb6d1d6a25a1e2`
+Elasticsearch build hash: `9e19b85783784d9568072225e956156ed9483306`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 560 | 525 (93.8%) | 35 (6.3%) | 131 (23.4%) | 20 (3.6%) |
+| 560 | 526 (93.9%) | 34 (6.1%) | 131 (23.4%) | 20 (3.6%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 475 | 445 (93.7%) | 30 (6.3%) | 108 | 6 |
+| `stable` | 475 | 446 (93.9%) | 29 (6.1%) | 108 | 6 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 61 | 59 (96.7%) | 2 (3.3%) | 23 | 14 |
 
@@ -44,7 +44,6 @@ Elasticsearch build hash: `8555c16290ff226ff195f0e937fb6d1d6a25a1e2`
 | `cluster.stats` | :red_circle: | 27/27 | 0/27 | stable | undefined |  |
 | `xpack.usage` | :red_circle: | 41/41 | 2/37 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 76/76 | 57/76 | stable | undefined |  |
-| `snapshot.get` | :red_circle: | 13/16 | 16/16 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 26/26 | 7/26 | stable | undefined |  |
 | `indices.delete_alias` | :red_circle: | 12/12 | 5/12 | stable | undefined |  |
 | `indices.put_alias` | :red_circle: | 58/58 | 20/58 | stable | undefined |  |
@@ -54,7 +53,7 @@ Elasticsearch build hash: `8555c16290ff226ff195f0e937fb6d1d6a25a1e2`
 | `indices.rollover` | :red_circle: | 27/27 | 2/27 | stable | undefined |  |
 | `snapshot.get_repository` | :red_circle: | 19/19 | 7/19 | stable | undefined |  |
 | `indices.simulate_template` | :red_circle: | 5/5 | 4/5 | stable | undefined |  |
-| **Summary** | :red_circle: | 97.6% | 90.2% | | | |
+| **Summary** | :red_circle: | 97.7% | 90.2% | | | |
 
 </details>
 
@@ -892,14 +891,14 @@ Elasticsearch build hash: `8555c16290ff226ff195f0e937fb6d1d6a25a1e2`
 | `create_repository` | :red_circle: | 24/29 | 29/29 | stable | undefined |  |
 | `delete` | :red_circle: | 22/24 | 24/24 | stable | undefined |  |
 | `delete_repository` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
-| `get` | :red_circle: | 13/16 | 16/16 | stable | undefined |  |
+| `get` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `get_repository` | :red_circle: | 19/19 | 7/19 | stable | undefined |  |
 | `repository_analyze` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `repository_verify_integrity` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `restore` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `status` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `verify_repository` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| **Summary** | :red_circle: | 93.1% | 91.7% | | | |
+| **Summary** | :red_circle: | 95.2% | 91.7% | | | |
 
 [Back to top](#Summary)
 
