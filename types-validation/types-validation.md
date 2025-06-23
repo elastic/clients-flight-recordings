@@ -1,20 +1,20 @@
 ## Summary
 
 Elasticsearch version: `9.1.0-SNAPSHOT`  
-Elasticsearch build hash: `6a1a862aea0e572097a12d7e1f3b00e0a106b940`
+Elasticsearch build hash: `41f69810dfe4251388ea06d30effbdfd28b808bf`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 560 | 526 (93.9%) | 34 (6.1%) | 131 (23.4%) | 20 (3.6%) |
+| 560 | 526 (93.9%) | 34 (6.1%) | 108 (19.3%) | 20 (3.6%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 475 | 446 (93.9%) | 29 (6.1%) | 108 | 6 |
+| `stable` | 475 | 446 (93.9%) | 29 (6.1%) | 100 | 6 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 61 | 59 (96.7%) | 2 (3.3%) | 23 | 14 |
+| `experimental` | 61 | 59 (96.7%) | 2 (3.3%) | 8 | 14 |
 
 </details>
 
@@ -189,7 +189,7 @@ Elasticsearch build hash: `6a1a862aea0e572097a12d7e1f3b00e0a106b940`
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 69/69 | 20/20 | stable | undefined |  |
 | `search` | :red_circle: | 2117/2151 | 2151/2151 | stable | undefined |  |
-| `search_mvt` | :green_circle: | 34/34 | Missing test | stable | undefined |  |
+| `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
 | `terms_enum` | :green_circle: | 47/47 | 47/47 | stable | undefined |  |
@@ -367,8 +367,8 @@ Elasticsearch build hash: `6a1a862aea0e572097a12d7e1f3b00e0a106b940`
 | `async_query_get` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `async_query_stop` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_query` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
-| `list_queries` | :green_circle: | 1/1 | Missing test | experimental | undefined |  |
-| `query` | :green_circle: | 317/317 | Missing test | stable | undefined |  |
+| `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
+| `query` | :green_circle: | 317/317 | 0/0 | stable | undefined |  |
 | **Summary** | :green_circle: | 100% | 0% | | | |
 
 [Back to top](#Summary)
