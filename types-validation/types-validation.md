@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `8.19.0-SNAPSHOT`  
-Elasticsearch build hash: `f92f481620cda6d8c498708469690070edfd67d6`
+Elasticsearch build hash: `3d71f74c57ad5b751441abd8c946003ad0709431`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 559 | 516 (92.3%) | 43 (7.7%) | 103 (18.4%) | 24 (4.3%) |
+| 562 | 519 (92.3%) | 43 (7.7%) | 103 (18.3%) | 27 (4.8%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 476 | 438 (92%) | 38 (8%) | 96 | 11 |
+| `stable` | 479 | 441 (92.1%) | 38 (7.9%) | 96 | 14 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 59 | 57 (96.6%) | 2 (3.4%) | 7 | 13 |
 
@@ -98,6 +98,7 @@ Elasticsearch build hash: `f92f481620cda6d8c498708469690070edfd67d6`
 - [`snapshot`](#snapshot)
 - [`sql`](#sql)
 - [`ssl`](#ssl)
+- [`streams`](#streams)
 - [`synonyms`](#synonyms)
 - [`tasks`](#tasks)
 - [`text_structure`](#text_structure)
@@ -109,7 +110,7 @@ Elasticsearch build hash: `f92f481620cda6d8c498708469690070edfd67d6`
 
 ## Report
 
-:construction: 27.9% namespaces have failures, and the namespace with the most failures is [`simulate`](#simulate) with 100% failures.
+:construction: 27.3% namespaces have failures, and the namespace with the most failures is [`simulate`](#simulate) with 100% failures.
 
 ### _internal
 
@@ -922,6 +923,17 @@ Elasticsearch build hash: `f92f481620cda6d8c498708469690070edfd67d6`
 | --- | --- | --- | --- | --- | --- | --- |
 | `certificates` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | **Summary** | :green_circle: | 100% | 100% | | | |
+
+[Back to top](#Summary)
+
+### streams
+
+| API | Status | Request | Response | Stability | Visibility | Meta |
+| --- | --- | --- | --- | --- | --- | --- |
+| `logs_disable` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
+| `logs_enable` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
+| `status` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
+| **Summary** | :orange_circle: | 0% | 0% | | | |
 
 [Back to top](#Summary)
 
