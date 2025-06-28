@@ -1,0 +1,59 @@
+{
+  "api": "search",
+  "file": "/test/platinum/inference/30_semantic_text_inference.yml",
+  "name": "Multi-fields support",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "highlight": {
+          "fields": {
+            "field": {
+              "sparse": {
+                "number_of_fragments": 2,
+                "type": "semantic"
+              }
+            }
+          }
+        },
+        "query": {
+          "semantic": {
+            "field": "field.sparse",
+            "query": "you know, for testing"
+          }
+        }
+      },
+      "index": "test-multi-index",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "449",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "caused_by": {
+            "reason": "[1:112] [highlight_field] unknown field [sparse]",
+            "type": "x_content_parse_exception"
+          },
+          "reason": "[1:121] [fields] failed to parse field [field]",
+          "type": "x_content_parse_exception"
+        },
+        "reason": "[1:121] [highlight] failed to parse field [fields]",
+        "root_cause": [
+          {
+            "reason": "[1:112] [highlight_field] unknown field [sparse]",
+            "type": "x_content_parse_exception"
+          }
+        ],
+        "type": "x_content_parse_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}
