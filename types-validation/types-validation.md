@@ -43,7 +43,7 @@ Elasticsearch build hash: `a85a8ac6bb50c15cae9e69cac606d982bea362aa`
 | `indices.stats` | :red_circle: | 125/125 | 30/124 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1246/1306 | 1306/1306 | stable | undefined |  |
 | `cluster.stats` | :red_circle: | 27/27 | 0/27 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 41/41 | 1/37 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 41/41 | 2/37 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 76/76 | 57/76 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 26/26 | 7/26 | stable | undefined |  |
 | `indices.delete_alias` | :red_circle: | 12/12 | 5/12 | stable | undefined |  |
@@ -1023,8 +1023,8 @@ Elasticsearch build hash: `a85a8ac6bb50c15cae9e69cac606d982bea362aa`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 41/41 | 1/37 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 12.2% | | | |
+| `usage` | :red_circle: | 41/41 | 2/37 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 14.6% | | | |
 
 [Back to top](#Summary)
 
