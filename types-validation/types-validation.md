@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `8.19.0-SNAPSHOT`  
-Elasticsearch build hash: `4859624ff606e21b73847c4bba5871b2804f816d`
+Elasticsearch build hash: `d11943ab9f4d3382211a5b2a4c5ae8d287f9a8cf`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 562 | 519 (92.3%) | 43 (7.7%) | 101 (18%) | 27 (4.8%) |
+| 564 | 521 (92.4%) | 43 (7.6%) | 101 (17.9%) | 29 (5.1%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 479 | 441 (92.1%) | 38 (7.9%) | 94 | 14 |
+| `stable` | 481 | 443 (92.1%) | 38 (7.9%) | 94 | 16 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 59 | 57 (96.6%) | 2 (3.4%) | 7 | 13 |
 
@@ -514,10 +514,12 @@ Elasticsearch build hash: `4859624ff606e21b73847c4bba5871b2804f816d`
 | `put` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
 | `put_alibabacloud` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_amazonbedrock` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| `put_amazonsagemaker` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
 | `put_anthropic` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_azureaistudio` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_azureopenai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_cohere` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| `put_deepseek` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
 | `put_elasticsearch` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_elser` | :white_circle: | Missing test | Missing test | stable | undefined | deprecated |
 | `put_googleaistudio` | :white_circle: | Missing test | Missing test | stable | undefined |  |
@@ -533,7 +535,7 @@ Elasticsearch build hash: `4859624ff606e21b73847c4bba5871b2804f816d`
 | `stream_completion` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `text_embedding` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `update` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| **Summary** | :green_circle: | 100% | 100% | | | |
+| **Summary** | :orange_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
 
