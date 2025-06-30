@@ -5,14 +5,14 @@ Elasticsearch build hash: `7b59ee7985343d1331901b8339654399d5e4782f`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 564 | 529 (93.8%) | 35 (6.2%) | 106 (18.8%) | 24 (4.3%) |
+| 566 | 531 (93.8%) | 35 (6.2%) | 106 (18.7%) | 26 (4.6%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 479 | 449 (93.7%) | 30 (6.3%) | 98 | 10 |
+| `stable` | 481 | 451 (93.8%) | 30 (6.2%) | 98 | 12 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 61 | 59 (96.7%) | 2 (3.3%) | 8 | 14 |
 
@@ -516,10 +516,12 @@ Elasticsearch build hash: `7b59ee7985343d1331901b8339654399d5e4782f`
 | `put` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
 | `put_alibabacloud` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_amazonbedrock` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| `put_amazonsagemaker` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
 | `put_anthropic` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_azureaistudio` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_azureopenai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_cohere` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| `put_deepseek` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
 | `put_elasticsearch` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_elser` | :white_circle: | Missing test | Missing test | stable | undefined | deprecated |
 | `put_googleaistudio` | :white_circle: | Missing test | Missing test | stable | undefined |  |
@@ -535,7 +537,7 @@ Elasticsearch build hash: `7b59ee7985343d1331901b8339654399d5e4782f`
 | `stream_completion` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `text_embedding` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `update` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| **Summary** | :green_circle: | 100% | 100% | | | |
+| **Summary** | :orange_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
 
