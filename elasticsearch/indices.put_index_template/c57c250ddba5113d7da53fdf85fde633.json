@@ -1,0 +1,41 @@
+{
+  "api": "indices.put_index_template",
+  "file": "/test/free/data_stream/190_failure_store_redirection.yml",
+  "name": "Failure redirects to correct failure store when index loop is detected",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "data_stream": {
+        },
+        "index_patterns": "destination-*",
+        "template": {
+          "data_stream_options": {
+            "failure_store": {
+              "enabled": true
+            }
+          },
+          "settings": {
+            "index": {
+              "default_pipeline": "send_back_to_original"
+            },
+            "number_of_replicas": 1,
+            "number_of_shards": 1
+          }
+        }
+      },
+      "name": "destination_logs_template"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

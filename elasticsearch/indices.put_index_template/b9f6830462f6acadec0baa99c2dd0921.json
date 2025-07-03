@@ -1,0 +1,89 @@
+{
+  "api": "indices.put_index_template",
+  "file": "/test/free/data_stream/150_tsdb.yml",
+  "name": "non string dimension fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "data_stream": {
+        },
+        "index_patterns": [
+          "k9s*"
+        ],
+        "template": {
+          "mappings": {
+            "dynamic_templates": [
+              {
+                "counter_metric": {
+                  "mapping": {
+                    "time_series_metric": "counter",
+                    "type": "integer"
+                  }
+                }
+              },
+              {
+                "ip_attributes": {
+                  "mapping": {
+                    "type": "ip"
+                  },
+                  "match_mapping_type": "string",
+                  "path_match": "*.ip"
+                }
+              },
+              {
+                "strings_as_keywords": {
+                  "mapping": {
+                    "type": "keyword"
+                  },
+                  "match_mapping_type": "string"
+                }
+              },
+              {
+                "double_as_double": {
+                  "mapping": {
+                    "type": "double"
+                  },
+                  "match_mapping_type": "double"
+                }
+              }
+            ],
+            "properties": {
+              "attributes": {
+                "dynamic": true,
+                "priority": 0,
+                "time_series_dimension": true,
+                "type": "passthrough"
+              },
+              "metrics": {
+                "priority": 1,
+                "type": "passthrough"
+              }
+            }
+          },
+          "settings": {
+            "index": {
+              "mode": "time_series",
+              "number_of_shards": 1,
+              "time_series": {
+                "start_time": "2023-08-31T13:03:08.138Z"
+              }
+            }
+          }
+        }
+      },
+      "name": "my-dynamic-template"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
