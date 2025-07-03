@@ -1,0 +1,90 @@
+{
+  "api": "indices.put_index_template",
+  "file": "/test/free/data_stream/150_tsdb.yml",
+  "name": "TSDB failures go to failure store",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "data_stream": {
+        },
+        "index_patterns": [
+          "fs-k8s*"
+        ],
+        "template": {
+          "data_stream_options": {
+            "failure_store": {
+              "enabled": true
+            }
+          },
+          "mappings": {
+            "properties": {
+              "@timestamp": {
+                "type": "date"
+              },
+              "k8s": {
+                "properties": {
+                  "pod": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "name": {
+                        "type": "keyword"
+                      },
+                      "network": {
+                        "properties": {
+                          "rx": {
+                            "type": "long"
+                          },
+                          "tx": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "uid": {
+                        "time_series_dimension": true,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "metricset": {
+                "time_series_dimension": true,
+                "type": "keyword"
+              }
+            }
+          },
+          "settings": {
+            "index": {
+              "mode": "time_series",
+              "number_of_replicas": 1,
+              "number_of_shards": 2,
+              "routing_path": [
+                "metricset",
+                "time_series_dimension"
+              ],
+              "time_series": {
+                "end_time": "2021-04-29T00:00:00Z",
+                "start_time": "2021-04-28T00:00:00Z"
+              }
+            }
+          }
+        }
+      },
+      "name": "my-template2"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
