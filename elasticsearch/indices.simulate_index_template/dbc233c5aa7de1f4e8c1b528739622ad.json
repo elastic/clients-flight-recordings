@@ -1,0 +1,53 @@
+{
+  "api": "indices.simulate_index_template",
+  "file": "/test/free/data_stream/180_simulate_existing_data_stream.yml",
+  "name": "Simulate an index with the same name as a data stream that already exists",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "name": "myds"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "310",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "overlapping": [
+      ],
+      "template": {
+        "aliases": {
+        },
+        "mappings": {
+          "_data_stream_timestamp": {
+            "enabled": true
+          },
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "field": {
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "number_of_replicas": "0",
+            "number_of_shards": "1",
+            "routing": {
+              "allocation": {
+                "include": {
+                  "_tier_preference": "data_hot"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}
