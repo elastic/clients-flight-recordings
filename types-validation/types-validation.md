@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.1.0-SNAPSHOT`  
-Elasticsearch build hash: `1e1b882ffea1d8c9f9d46a792fca42fb13ad0704`
+Elasticsearch build hash: `a1af0bcdefc1571cdba0843402f7cbbf450c2cef`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 566 | 523 (92.4%) | 43 (7.6%) | 95 (16.8%) | 25 (4.4%) |
+| 566 | 523 (92.4%) | 43 (7.6%) | 95 (16.8%) | 24 (4.2%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 481 | 443 (92.1%) | 38 (7.9%) | 87 | 11 |
+| `stable` | 481 | 443 (92.1%) | 38 (7.9%) | 87 | 10 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 61 | 59 (96.7%) | 2 (3.3%) | 8 | 14 |
 
@@ -487,7 +487,7 @@ Elasticsearch build hash: `1e1b882ffea1d8c9f9d46a792fca42fb13ad0704`
 | `recovery` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `refresh` | :green_circle: | 301/301 | 301/301 | stable | undefined |  |
 | `reload_search_analyzers` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| `remove_block` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
+| `remove_block` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `resolve_cluster` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
 | `resolve_index` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `rollover` | :red_circle: | 52/52 | 2/52 | stable | undefined |  |
