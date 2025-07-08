@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `8.18.4-SNAPSHOT`  
-Elasticsearch build hash: `838984bea2f346ed70fcb65198e83f2f2ec6b6fa`
+Elasticsearch build hash: `e16f459688aa97d67c6f34f4ef4ca8ca36282a40`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -35,7 +35,7 @@ Elasticsearch build hash: `838984bea2f346ed70fcb65198e83f2f2ec6b6fa`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `search` | :red_circle: | 2195/2255 | 2255/2255 | stable | undefined |  |
-| `index` | :red_circle: | 1332/1334 | 1312/1336 | stable | undefined |  |
+| `index` | :red_circle: | 1334/1334 | 1312/1336 | stable | undefined |  |
 | `indices.get_alias` | :red_circle: | 93/93 | 81/93 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 154/154 | 150/154 | stable | undefined |  |
 | `watcher.put_watch` | :red_circle: | 29/38 | 38/38 | stable | undefined |  |
@@ -173,7 +173,7 @@ Elasticsearch build hash: `838984bea2f346ed70fcb65198e83f2f2ec6b6fa`
 | `get_script_languages` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_source` | :green_circle: | 18/18 | 18/18 | stable | undefined |  |
 | `health_report` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
-| `index` | :red_circle: | 1332/1334 | 1312/1336 | stable | undefined |  |
+| `index` | :red_circle: | 1334/1334 | 1312/1336 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `knn_search` | :green_circle: | 4/4 | 4/4 | experimental | undefined | deprecated |
 | `mget` | :green_circle: | 51/51 | 50/50 | stable | undefined |  |
