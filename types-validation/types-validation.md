@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.1.0-SNAPSHOT`  
-Elasticsearch build hash: `84cc587bbdddff3eb6651c846c50c523b7c15568`
+Elasticsearch build hash: `87c906eb60c88c2c31ed32f408b53e4e5d8bb1ba`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -35,7 +35,7 @@ Elasticsearch build hash: `84cc587bbdddff3eb6651c846c50c523b7c15568`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `search` | :red_circle: | 2324/2367 | 2367/2367 | stable | undefined |  |
-| `index` | :red_circle: | 1379/1381 | 1356/1383 | stable | undefined |  |
+| `index` | :red_circle: | 1381/1381 | 1356/1383 | stable | undefined |  |
 | `security.authenticate` | :red_circle: | 30/30 | 25/30 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 203/203 | 193/203 | stable | undefined |  |
 | `watcher.put_watch` | :red_circle: | 29/38 | 38/38 | stable | undefined |  |
@@ -174,7 +174,7 @@ Elasticsearch build hash: `84cc587bbdddff3eb6651c846c50c523b7c15568`
 | `get_script_languages` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_source` | :green_circle: | 18/18 | 18/18 | stable | undefined |  |
 | `health_report` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
-| `index` | :red_circle: | 1379/1381 | 1356/1383 | stable | undefined |  |
+| `index` | :red_circle: | 1381/1381 | 1356/1383 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `knn_search` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `mget` | :green_circle: | 51/51 | 50/50 | stable | undefined |  |
@@ -268,7 +268,7 @@ Elasticsearch build hash: `84cc587bbdddff3eb6651c846c50c523b7c15568`
 | `exists_component_template` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_component_template` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `get_settings` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
-| `health` | :green_circle: | 174/174 | 174/174 | stable | undefined |  |
+| `health` | :green_circle: | 175/175 | 175/175 | stable | undefined |  |
 | `info` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `pending_tasks` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `post_voting_config_exclusions` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
