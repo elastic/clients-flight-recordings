@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.0.4-SNAPSHOT`  
-Elasticsearch build hash: `bbd85ec47264fd97bed067f8159be9f39602c98a`
+Elasticsearch build hash: `16429d0cebe36906894a9ccfb13a104e0179c23d`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ Elasticsearch build hash: `bbd85ec47264fd97bed067f8159be9f39602c98a`
 | `indices.stats` | :red_circle: | 116/116 | 30/115 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1170/1215 | 1215/1215 | stable | undefined |  |
 | `cluster.stats` | :red_circle: | 27/27 | 0/27 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 59/68 | 68/68 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 76/76 | 57/76 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 26/26 | 7/26 | stable | undefined |  |
@@ -1003,8 +1003,8 @@ Elasticsearch build hash: `bbd85ec47264fd97bed067f8159be9f39602c98a`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 11.9% | | | |
+| `usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 14.3% | | | |
 
 [Back to top](#Summary)
 
