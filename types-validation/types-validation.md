@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.1.0-SNAPSHOT`  
-Elasticsearch build hash: `72bd4d9f5bc7a4e5ebbc1cc9e8f5831ea08489a0`
+Elasticsearch build hash: `13938c690b05e012cde239328861f2e6681682e7`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -178,7 +178,7 @@ Elasticsearch build hash: `72bd4d9f5bc7a4e5ebbc1cc9e8f5831ea08489a0`
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `knn_search` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `mget` | :green_circle: | 51/51 | 50/50 | stable | undefined |  |
-| `msearch` | :green_circle: | 17/17 | 16/16 | stable | undefined |  |
+| `msearch` | :green_circle: | 18/18 | 17/17 | stable | undefined |  |
 | `msearch_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `mtermvectors` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
 | `open_point_in_time` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
