@@ -1,0 +1,174 @@
+{
+  "api": "watcher.execute_watch",
+  "file": "/test/platinum/watcher/execute_watch/80_foreach.yml",
+  "name": "Test execute watch api with foreach action",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "watch": {
+          "actions": {
+            "log_hits": {
+              "foreach": "ctx.payload.hits.hits",
+              "logging": {
+                "text": "Logging {{ctx.payload.key}}"
+              }
+            }
+          },
+          "input": {
+            "simple": {
+              "hits": {
+                "hits": [
+                  {
+                    "key": "first"
+                  },
+                  {
+                    "key": "second"
+                  },
+                  {
+                    "key": "third"
+                  }
+                ]
+              }
+            }
+          },
+          "trigger": {
+            "schedule": {
+              "cron": "0 0 0 1 * ? 2099"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1499",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "_inlined__804f753d-c28d-4fc7-bd02-f2ec2af66434-2025-07-22T10:56:13.210644646Z",
+      "watch_record": {
+        "@timestamp": "2025-07-22T10:56:13.210628509Z",
+        "condition": {
+          "always": {
+          }
+        },
+        "input": {
+          "simple": {
+            "hits": {
+              "hits": [
+                {
+                  "key": "first"
+                },
+                {
+                  "key": "second"
+                },
+                {
+                  "key": "third"
+                }
+              ]
+            }
+          }
+        },
+        "messages": [
+        ],
+        "node": "DJZFbk_fTLC5t6Y2A29jHw",
+        "result": {
+          "actions": [
+            {
+              "foreach": [
+                {
+                  "logging": {
+                    "logged_text": "Logging first"
+                  }
+                },
+                {
+                  "logging": {
+                    "logged_text": "Logging second"
+                  }
+                },
+                {
+                  "logging": {
+                    "logged_text": "Logging third"
+                  }
+                }
+              ],
+              "id": "log_hits",
+              "max_iterations": 100,
+              "number_of_actions_executed": 3,
+              "status": "success",
+              "type": "logging"
+            }
+          ],
+          "condition": {
+            "met": true,
+            "status": "success",
+            "type": "always"
+          },
+          "execution_duration": 1,
+          "execution_time": "2025-07-22T10:56:13.210Z",
+          "input": {
+            "payload": {
+              "hits": {
+                "hits": [
+                  {
+                    "key": "first"
+                  },
+                  {
+                    "key": "second"
+                  },
+                  {
+                    "key": "third"
+                  }
+                ]
+              }
+            },
+            "status": "success",
+            "type": "simple"
+          }
+        },
+        "state": "executed",
+        "status": {
+          "actions": {
+            "log_hits": {
+              "ack": {
+                "state": "ackable",
+                "timestamp": "2025-07-22T10:56:13.210Z"
+              },
+              "last_execution": {
+                "successful": true,
+                "timestamp": "2025-07-22T10:56:13.210Z"
+              },
+              "last_successful_execution": {
+                "successful": true,
+                "timestamp": "2025-07-22T10:56:13.210Z"
+              }
+            }
+          },
+          "execution_state": "executed",
+          "last_checked": "2025-07-22T10:56:13.210Z",
+          "last_met_condition": "2025-07-22T10:56:13.210Z",
+          "state": {
+            "active": true,
+            "timestamp": "2025-07-22T10:56:13.210Z"
+          },
+          "version": -1
+        },
+        "trigger_event": {
+          "manual": {
+            "schedule": {
+              "scheduled_time": "2025-07-22T10:56:13.210Z"
+            }
+          },
+          "triggered_time": "2025-07-22T10:56:13.210Z",
+          "type": "manual"
+        },
+        "user": "elastic",
+        "watch_id": "_inlined_"
+      }
+    },
+    "statusCode": 200
+  }
+}
