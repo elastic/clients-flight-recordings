@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.1.0-SNAPSHOT`  
-Elasticsearch build hash: `d44f8a39c637e337c5a9589e7e8c812590fa4ada`
+Elasticsearch build hash: `1f2866fc845e2891d5653967e27ce5b5613fa37f`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 566 | 522 (92.2%) | 44 (7.8%) | 92 (16.3%) | 24 (4.2%) |
+| 567 | 523 (92.2%) | 44 (7.8%) | 93 (16.4%) | 24 (4.2%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 481 | 442 (91.9%) | 39 (8.1%) | 84 | 10 |
+| `stable` | 482 | 443 (91.9%) | 39 (8.1%) | 85 | 10 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 61 | 59 (96.7%) | 2 (3.3%) | 8 | 14 |
 
@@ -521,6 +521,7 @@ Elasticsearch build hash: `d44f8a39c637e337c5a9589e7e8c812590fa4ada`
 | `put_azureaistudio` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_azureopenai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_cohere` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| `put_custom` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_deepseek` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_elasticsearch` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_elser` | :white_circle: | Missing test | Missing test | stable | undefined | deprecated |
