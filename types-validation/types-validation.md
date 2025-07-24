@@ -1,18 +1,18 @@
 ## Summary
 
-Elasticsearch version: `8.18.4-SNAPSHOT`  
-Elasticsearch build hash: `8de6d668045c72d3c27f35fb40b3747187c061c5`
+Elasticsearch version: `8.18.5-SNAPSHOT`  
+Elasticsearch build hash: `fb4407d567cd5316676bda1037c7cafdf825ea02`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 554 | 503 (90.8%) | 51 (9.2%) | 91 (16.4%) | 19 (3.4%) |
+| 555 | 504 (90.8%) | 51 (9.2%) | 91 (16.4%) | 20 (3.6%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 471 | 425 (90.2%) | 46 (9.8%) | 84 | 6 |
+| `stable` | 472 | 426 (90.3%) | 46 (9.7%) | 84 | 7 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 59 | 57 (96.6%) | 2 (3.4%) | 7 | 13 |
 
@@ -512,6 +512,7 @@ Elasticsearch build hash: `8de6d668045c72d3c27f35fb40b3747187c061c5`
 | `put_azureaistudio` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_azureopenai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_cohere` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| `put_custom` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
 | `put_elasticsearch` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_elser` | :white_circle: | Missing test | Missing test | stable | undefined | deprecated |
 | `put_googleaistudio` | :white_circle: | Missing test | Missing test | stable | undefined |  |
@@ -527,7 +528,7 @@ Elasticsearch build hash: `8de6d668045c72d3c27f35fb40b3747187c061c5`
 | `stream_completion` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `text_embedding` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `update` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| **Summary** | :green_circle: | 100% | 100% | | | |
+| **Summary** | :orange_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
 

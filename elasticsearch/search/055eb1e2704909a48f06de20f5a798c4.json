@@ -1,0 +1,67 @@
+{
+  "api": "search",
+  "file": "/test/free/data_stream/190_failure_store_redirection.yml",
+  "name": "Failure redirects to original failure store during index change if self referenced",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "index": ".fs-logs-foobar-*",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "lc_tO5gB0-cVysZCCXtZ",
+            "_index": ".fs-logs-foobar-2025.07.24-000001",
+            "_score": 1,
+            "_source": {
+              "@timestamp": "2025-07-24T10:14:06.826Z",
+              "document": {
+                "index": "logs-foobar",
+                "source": {
+                  "@timestamp": "2020-12-12",
+                  "object": {
+                    "data": {
+                      "field": "someValue"
+                    }
+                  }
+                }
+              },
+              "error": {
+                "message": "Failed to generate the source document for ingest pipeline [failing_pipeline] for document [logs-elsewhere/null]",
+                "pipeline": "failing_pipeline",
+                "pipeline_trace": [
+                  "failing_pipeline"
+                ],
+                "stack_trace": "j.l.IllegalArgumentException: Failed to generate the source document for ingest pipeline [failing_pipeline] for document [logs-elsewhere/null]\n\tat o.e.i.IngestService.lambda$executePipelines$8(IngestService.java:1021)\n\tat o.e.i.IngestService.lambda$executePipeline$10(IngestService.java:1122)\n\t... 16 more\nCaused by: j.l.IllegalArgumentException: Iterable object is self-referencing itself\n\tat o.e.c.u.CollectionUtils.addToAncestorsOrThrow(CollectionUtils.java:155)\n\tat o.e.c.u.CollectionUtils.ensureNoSelfReferences(CollectionUtils.java:128)\n\t... 24 more\n",
+                "type": "illegal_argument_exception"
+              }
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
