@@ -1,0 +1,80 @@
+{
+  "api": "search",
+  "file": "/test/platinum/inference/47_semantic_text_knn.yml",
+  "name": "knn query against incompatible dense_vector and semantic_text fields using query vectors returns the matching semantic vectors and failures for incompatible dims",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "knn": {
+            "field": "inference_field",
+            "k": 10,
+            "num_candidates": 100,
+            "query_vector": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          }
+        }
+      },
+      "index": [
+        "test-semantic-text-index",
+        "test-incompatible-dense-vector-index"
+      ],
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 1,
+        "failures": [
+          {
+            "index": "test-incompatible-dense-vector-index",
+            "node": "uGdOfJ-fROGxxebE4Nt3Iw",
+            "reason": {
+              "caused_by": {
+                "reason": "The query vector has a different number of dimensions [10] than the document vectors [3].",
+                "type": "illegal_argument_exception"
+              },
+              "index": "test-incompatible-dense-vector-index",
+              "index_uuid": "xG1OEQECR9-nHZOV58A8OQ",
+              "reason": "failed to create query: The query vector has a different number of dimensions [10] than the document vectors [3].",
+              "type": "query_shard_exception"
+            },
+            "shard": 0
+          }
+        ],
+        "skipped": 0,
+        "successful": 1,
+        "total": 2
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 0
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
