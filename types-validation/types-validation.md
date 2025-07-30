@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.1.0-SNAPSHOT`  
-Elasticsearch build hash: `dd3fedcab58ca81d9ae6d26780fe138100d5af42`
+Elasticsearch build hash: `9804bad344e2ead11ba02b138c1996bb6091226e`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 567 | 523 (92.2%) | 44 (7.8%) | 93 (16.4%) | 24 (4.2%) |
+| 567 | 523 (92.2%) | 44 (7.8%) | 94 (16.6%) | 23 (4.1%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 482 | 443 (91.9%) | 39 (8.1%) | 85 | 10 |
+| `stable` | 482 | 443 (91.9%) | 39 (8.1%) | 86 | 9 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 61 | 59 (96.7%) | 2 (3.3%) | 8 | 14 |
 
@@ -516,7 +516,7 @@ Elasticsearch build hash: `dd3fedcab58ca81d9ae6d26780fe138100d5af42`
 | `put` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
 | `put_alibabacloud` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_amazonbedrock` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `put_amazonsagemaker` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
+| `put_amazonsagemaker` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_anthropic` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_azureaistudio` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_azureopenai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
@@ -538,7 +538,7 @@ Elasticsearch build hash: `dd3fedcab58ca81d9ae6d26780fe138100d5af42`
 | `stream_completion` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `text_embedding` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `update` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| **Summary** | :orange_circle: | 100% | 100% | | | |
+| **Summary** | :green_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
 

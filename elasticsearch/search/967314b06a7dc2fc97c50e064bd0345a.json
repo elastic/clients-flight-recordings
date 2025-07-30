@@ -1,0 +1,85 @@
+{
+  "api": "search",
+  "file": "/test/platinum/ml/bucket_count_ks_test_agg.yml",
+  "name": "Test bucket count ks test bucket agg simple",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "good": {
+            "aggs": {
+              "bucket_ks": {
+                "bucket_count_ks_test": {
+                  "alternative": [
+                    "less"
+                  ],
+                  "buckets_path": "ranged_cost>_count"
+                }
+              },
+              "ranged_cost": {
+                "range": {
+                  "field": "cost",
+                  "ranges": [
+                    {
+                      "from": 200
+                    },
+                    {
+                      "from": 200,
+                      "to": 300
+                    },
+                    {
+                      "from": 300
+                    }
+                  ]
+                }
+              }
+            },
+            "terms": {
+              "field": "product",
+              "size": 10
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "store",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "sterms#good": {
+          "buckets": [
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 0
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
