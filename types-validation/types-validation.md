@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.2.0-SNAPSHOT`  
-Elasticsearch build hash: `1a655a57dbf6aba639b9a6ac9758f78afcb5691d`
+Elasticsearch build hash: `375d7bb564352e4d1eba22dc7acdfdd9558a0637`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 569 | 521 (91.6%) | 48 (8.4%) | 94 (16.5%) | 23 (4%) |
+| 569 | 520 (91.4%) | 49 (8.6%) | 94 (16.5%) | 23 (4%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 484 | 441 (91.1%) | 43 (8.9%) | 86 | 9 |
+| `stable` | 484 | 440 (90.9%) | 44 (9.1%) | 86 | 9 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 61 | 59 (96.7%) | 2 (3.3%) | 8 | 14 |
 
@@ -51,7 +51,7 @@ Elasticsearch build hash: `1a655a57dbf6aba639b9a6ac9758f78afcb5691d`
 | `indices.update_aliases` | :red_circle: | 33/33 | 7/33 | stable | undefined |  |
 | `indices.put_alias` | :red_circle: | 60/60 | 20/60 | stable | undefined |  |
 | `indices.put_settings` | :red_circle: | 56/58 | 58/58 | stable | undefined |  |
-| `cluster.put_component_template` | :red_circle: | 32/36 | 36/36 | stable | undefined |  |
+| `cluster.put_component_template` | :red_circle: | 34/38 | 38/38 | stable | undefined |  |
 | `indices.put_template` | :red_circle: | 45/46 | 46/46 | stable | undefined | deprecated |
 | `nodes.stats` | :red_circle: | 58/58 | 21/58 | stable | undefined |  |
 | **Summary** | :red_circle: | 98% | 95.1% | | | |
@@ -266,19 +266,19 @@ Elasticsearch build hash: `1a655a57dbf6aba639b9a6ac9758f78afcb5691d`
 | `delete_component_template` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `delete_voting_config_exclusions` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `exists_component_template` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `get_component_template` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
+| `get_component_template` | :red_circle: | 14/14 | 4/14 | stable | undefined |  |
 | `get_settings` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
 | `health` | :green_circle: | 209/209 | 209/209 | stable | undefined |  |
 | `info` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `pending_tasks` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `post_voting_config_exclusions` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
-| `put_component_template` | :red_circle: | 32/36 | 36/36 | stable | undefined |  |
+| `put_component_template` | :red_circle: | 34/38 | 38/38 | stable | undefined |  |
 | `put_settings` | :green_circle: | 62/62 | 61/61 | stable | undefined |  |
 | `remote_info` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `reroute` | :green_circle: | 8/8 | 7/7 | stable | undefined |  |
 | `state` | :green_circle: | 84/84 | 83/83 | stable | undefined |  |
 | `stats` | :green_circle: | 27/27 | 27/27 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.2% | 100% | | | |
+| **Summary** | :red_circle: | 99.2% | 97.9% | | | |
 
 [Back to top](#Summary)
 
