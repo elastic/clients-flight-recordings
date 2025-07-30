@@ -1,0 +1,190 @@
+{
+  "api": "watcher.execute_watch",
+  "file": "/test/platinum/watcher/execute_watch/20_transform.yml",
+  "name": "Test execute watch api with configured search transform",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "watch": {
+          "actions": {
+            "indexme": {
+              "index": {
+                "doc_id": "my-id",
+                "index": "my_test_index"
+              }
+            }
+          },
+          "condition": {
+            "always": {
+            }
+          },
+          "input": {
+            "simple": {
+              "foo": "bar"
+            }
+          },
+          "transform": {
+            "search": {
+              "request": {
+                "body": {
+                  "query": {
+                    "match_all": {
+                    }
+                  }
+                },
+                "indices": [
+                  "my_test_index"
+                ]
+              }
+            }
+          },
+          "trigger": {
+            "schedule": {
+              "cron": "0 0 0 1 * ? 2099"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1714",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "_inlined__c8366253-e630-4341-87af-ff4c019eba5c-2025-07-30T10:57:40.51137366Z",
+      "watch_record": {
+        "@timestamp": "2025-07-30T10:57:40.511351996Z",
+        "condition": {
+          "always": {
+          }
+        },
+        "input": {
+          "simple": {
+            "foo": "bar"
+          }
+        },
+        "messages": [
+        ],
+        "node": "eXW53cnWQUW-vG7soXtlQg",
+        "result": {
+          "actions": [
+            {
+              "id": "indexme",
+              "index": {
+                "response": {
+                  "created": true,
+                  "id": "my-id",
+                  "index": "my_test_index",
+                  "result": "created",
+                  "version": 1
+                }
+              },
+              "status": "success",
+              "type": "index"
+            }
+          ],
+          "condition": {
+            "met": true,
+            "status": "success",
+            "type": "always"
+          },
+          "execution_duration": 34,
+          "execution_time": "2025-07-30T10:57:40.511Z",
+          "input": {
+            "payload": {
+              "foo": "bar"
+            },
+            "status": "success",
+            "type": "simple"
+          },
+          "transform": {
+            "payload": {
+              "_shards": {
+                "failed": 0,
+                "skipped": 0,
+                "successful": 1,
+                "total": 1
+              },
+              "hits": {
+                "hits": [
+                  {
+                    "_id": "my_id",
+                    "_index": "my_test_index",
+                    "_score": 1,
+                    "_source": {
+                      "key": "value"
+                    }
+                  }
+                ],
+                "max_score": 1,
+                "total": 1
+              },
+              "timed_out": false,
+              "took": 0
+            },
+            "search": {
+              "request": {
+                "body": {
+                  "query": {
+                    "match_all": {
+                    }
+                  }
+                },
+                "indices": [
+                  "my_test_index"
+                ],
+                "rest_total_hits_as_int": true,
+                "search_type": "query_then_fetch"
+              }
+            },
+            "status": "success",
+            "type": "search"
+          }
+        },
+        "state": "executed",
+        "status": {
+          "actions": {
+            "indexme": {
+              "ack": {
+                "state": "ackable",
+                "timestamp": "2025-07-30T10:57:40.511Z"
+              },
+              "last_execution": {
+                "successful": true,
+                "timestamp": "2025-07-30T10:57:40.511Z"
+              },
+              "last_successful_execution": {
+                "successful": true,
+                "timestamp": "2025-07-30T10:57:40.511Z"
+              }
+            }
+          },
+          "execution_state": "executed",
+          "last_checked": "2025-07-30T10:57:40.511Z",
+          "last_met_condition": "2025-07-30T10:57:40.511Z",
+          "state": {
+            "active": true,
+            "timestamp": "2025-07-30T10:57:40.511Z"
+          },
+          "version": -1
+        },
+        "trigger_event": {
+          "manual": {
+            "schedule": {
+              "scheduled_time": "2025-07-30T10:57:40.511Z"
+            }
+          },
+          "triggered_time": "2025-07-30T10:57:40.511Z",
+          "type": "manual"
+        },
+        "user": "elastic",
+        "watch_id": "_inlined_"
+      }
+    },
+    "statusCode": 200
+  }
+}
