@@ -1,0 +1,71 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/100_knn_nested_search.yml",
+  "name": "Filter on nested fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "_source": false,
+        "knn": {
+          "boost": 2,
+          "field": "nested.vector",
+          "filter": {
+            "match": {
+              "nested": {
+                "language": "FR"
+              }
+            }
+          },
+          "inner_hits": {
+            "_source": false,
+            "fields": [
+              "nested.paragraph_id",
+              "nested.language"
+            ],
+            "size": 3
+          },
+          "k": 3,
+          "query_vector": [
+            -0.5,
+            90,
+            -10,
+            14.8,
+            -156
+          ]
+        }
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "344",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "col": 144,
+          "line": 1,
+          "reason": "[match] query does not support [language]",
+          "type": "parsing_exception"
+        },
+        "reason": "[1:144] [knn] failed to parse field [filter]",
+        "root_cause": [
+          {
+            "col": 144,
+            "line": 1,
+            "reason": "[match] query does not support [language]",
+            "type": "parsing_exception"
+          }
+        ],
+        "type": "x_content_parse_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}
