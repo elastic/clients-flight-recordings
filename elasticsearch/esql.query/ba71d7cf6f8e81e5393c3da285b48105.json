@@ -1,0 +1,61 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/220_explain.yml",
+  "name": "explainQuery",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "EXPLAIN (from test | where color == \"red\" | eval b = 20)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "3555402",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.1.1-04cbfc050e556907647fbefa8eb50a1344347de9 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-async-is-running": "?0"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "role",
+          "type": "keyword"
+        },
+        {
+          "name": "type",
+          "type": "keyword"
+        },
+        {
+          "name": "plan",
+          "type": "keyword"
+        }
+      ],
+      "documents_found": 0,
+      "is_partial": false,
+      "took": 3,
+      "values": [
+        [
+          "coordinator",
+          "parsedPlan",
+          "Eval[[20[INTEGER] AS b#1567]]\n\\_Filter[?color == red[KEYWORD]]\n  \\_UnresolvedRelation[test]"
+        ],
+        [
+          "coordinator",
+          "optimizedLogicalPlan",
+          "Eval[[20[INTEGER] AS b#1567]]\n\\_Limit[1000[INTEGER],false]\n  \\_Filter[color{f}#1571 == red[KEYWORD]]\n    \\_EsRelation[test][color{f}#1571, color.keyword{f}#1572, description{f..]"
+        ],
+        [
+          "coordinator",
+          "optimizedPhysicalPlan",
+          "EvalExec[[20[INTEGER] AS b#1567]]\n\\_LimitExec[1000[INTEGER],200]\n  \\_ExchangeExec[[color{f}#1571, color.keyword{f}#1572, description{f}#1573, description.keyword{f}#1574],false]\n    \\_FragmentExec[filter=null, estimatedRowSize=4, reducer=[], fragment=[<>\nProject[[color{f}#1571, color.keyword{f}#1572, description{f}#1573, description.keyword{f}#1574]]\n\\_Limit[1000[INTEGER],false]\n  \\_Filter[color{f}#1571 == red[KEYWORD]]\n    \\_EsRelation[test][color{f}#1571, color.keyword{f}#1572, description{f..]<>]]"
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}
