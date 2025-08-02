@@ -1,0 +1,65 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/inference/10_semantic_text_field_mapping_bwc.yml",
+  "name": "Updating sparse vector index options",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "semantic_field": {
+              "index_options": {
+                "sparse_vector": {
+                  "prune": true,
+                  "pruning_config": {
+                    "tokens_freq_ratio_threshold": 1,
+                    "tokens_weight_threshold": 1
+                  }
+                }
+              },
+              "inference_id": "sparse-inference-id",
+              "type": "semantic_text"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mapping": {
+              "semantic_text": {
+                "use_legacy_format": false
+              }
+            }
+          },
+          "number_of_shards": 1
+        }
+      },
+      "index": "test-index-options"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "518",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "reason": "Model settings must be set to validate index options for inference ID [sparse-inference-id]",
+          "type": "illegal_argument_exception"
+        },
+        "reason": "Failed to parse mapping: Model settings must be set to validate index options for inference ID [sparse-inference-id]",
+        "root_cause": [
+          {
+            "reason": "Failed to parse mapping: Model settings must be set to validate index options for inference ID [sparse-inference-id]",
+            "type": "mapper_parsing_exception"
+          }
+        ],
+        "type": "mapper_parsing_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}
