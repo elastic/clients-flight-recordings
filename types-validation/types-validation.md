@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.2.0-SNAPSHOT`  
-Elasticsearch build hash: `829fb56b986acb0b47b9be7aabc5c7b6e6d7f59d`
+Elasticsearch build hash: `76dac086a74baaa3bf382e70f89454de82945f70`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 569 | 520 (91.4%) | 49 (8.6%) | 94 (16.5%) | 23 (4%) |
+| 571 | 522 (91.4%) | 49 (8.6%) | 96 (16.8%) | 23 (4%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 484 | 440 (90.9%) | 44 (9.1%) | 86 | 9 |
+| `stable` | 486 | 442 (90.9%) | 44 (9.1%) | 88 | 9 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 61 | 59 (96.7%) | 2 (3.3%) | 8 | 14 |
 
@@ -516,6 +516,7 @@ Elasticsearch build hash: `829fb56b986acb0b47b9be7aabc5c7b6e6d7f59d`
 | `get` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `inference` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
+| `put_ai21` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_alibabacloud` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_amazonbedrock` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_amazonsagemaker` | :white_circle: | Missing test | Missing test | stable | undefined |  |
@@ -531,6 +532,7 @@ Elasticsearch build hash: `829fb56b986acb0b47b9be7aabc5c7b6e6d7f59d`
 | `put_googlevertexai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_hugging_face` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_jinaai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| `put_llama` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_mistral` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_openai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_voyageai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
