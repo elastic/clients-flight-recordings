@@ -1,0 +1,40 @@
+{
+  "api": "bulk",
+  "file": "/test/platinum/inference/60_semantic_text_inference_update_bwc.yml",
+  "name": "Update logic handles source fields in object fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"update\": {\"_id\": \"doc_1\"}}",
+        "{\n  \"doc\": {\n    \"sparse_field\": \"sparse data 1\",\n    \"object_source.sparse_field\": \"sparse data 2\",\n    \"dense_field\": \"dense data 1\",\n    \"object_source.dense_field\": \"dense data 2\"\n  }\n}\n"
+      ],
+      "index": "test-copy-to-index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "415",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "reason": "Unexpected end-of-input: expected close marker for Object (start marker at [Source: (byte[])\"{\"; line: 1, column: 1])\n at [Source: (byte[])\"{\"; line: 1, column: 2]",
+          "type": "json_e_o_f_exception"
+        },
+        "reason": "[1:2] Unexpected end of file",
+        "root_cause": [
+          {
+            "reason": "[1:2] Unexpected end of file",
+            "type": "x_content_e_o_f_exception"
+          }
+        ],
+        "type": "x_content_e_o_f_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}
