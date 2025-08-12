@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `8.19.2-SNAPSHOT`  
-Elasticsearch build hash: `c1c00e18ef14acd650768ff01f037eaede0c1f7b`
+Elasticsearch build hash: `ab93718dc82b1b31ef95e8337f3c826a5fd78265`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 565 | 516 (91.3%) | 49 (8.7%) | 94 (16.6%) | 27 (4.8%) |
+| 566 | 517 (91.3%) | 49 (8.7%) | 94 (16.6%) | 28 (4.9%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 482 | 438 (90.9%) | 44 (9.1%) | 87 | 14 |
+| `stable` | 483 | 439 (90.9%) | 44 (9.1%) | 87 | 15 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 59 | 57 (96.6%) | 2 (3.4%) | 7 | 13 |
 
@@ -990,6 +990,7 @@ Elasticsearch build hash: `c1c00e18ef14acd650768ff01f037eaede0c1f7b`
 | `put_transform` | :green_circle: | 28/28 | 28/28 | stable | undefined |  |
 | `reset_transform` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `schedule_now_transform` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
+| `set_upgrade_mode` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
 | `start_transform` | :green_circle: | 29/29 | 29/29 | stable | undefined |  |
 | `stop_transform` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `update_transform` | :green_circle: | 14/14 | 14/14 | stable | undefined |  |
