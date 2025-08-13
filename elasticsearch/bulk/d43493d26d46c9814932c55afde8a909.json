@@ -1,0 +1,40 @@
+{
+  "api": "bulk",
+  "file": "/test/platinum/inference/60_semantic_text_inference_update.yml",
+  "name": "Explicit nulls clear inference results on bulk update operation",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"update\": {\"_index\": \"test-copy-to-index\", \"_id\": \"doc_1\"}}",
+        "{\"doc\": { \"sparse_source_field\": null, \"dense_source_field\": null, \"non_inference_field\": \"another value\" }, \"doc_as_upsert\": true}"
+      ],
+      "refresh": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "update": {
+            "_id": "doc_1",
+            "_index": "test-copy-to-index",
+            "error": {
+              "reason": "On retry, this indexing request resulted in another noop mapping update. Failing the indexing operation to prevent an infinite retry loop.",
+              "type": "illegal_state_exception"
+            },
+            "status": 500
+          }
+        }
+      ],
+      "took": 200
+    },
+    "statusCode": 200
+  }
+}
