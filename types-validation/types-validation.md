@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.2.0-SNAPSHOT`  
-Elasticsearch build hash: `23066a3f38b48bed1a33a569f2a46028c439065b`
+Elasticsearch build hash: `f23029faca71ac9c4d40fcc3523176a33f4a2b46`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ Elasticsearch build hash: `23066a3f38b48bed1a33a569f2a46028c439065b`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 2385/2431 | 2431/2431 | stable | undefined |  |
+| `search` | :red_circle: | 2386/2432 | 2432/2432 | stable | undefined |  |
 | `index` | :red_circle: | 1434/1434 | 1407/1436 | stable | undefined |  |
 | `security.authenticate` | :red_circle: | 30/30 | 25/30 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 228/228 | 209/228 | stable | undefined |  |
@@ -190,7 +190,7 @@ Elasticsearch build hash: `23066a3f38b48bed1a33a569f2a46028c439065b`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 69/69 | 20/20 | stable | undefined |  |
-| `search` | :red_circle: | 2385/2431 | 2431/2431 | stable | undefined |  |
+| `search` | :red_circle: | 2386/2432 | 2432/2432 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -370,7 +370,7 @@ Elasticsearch build hash: `23066a3f38b48bed1a33a569f2a46028c439065b`
 | `async_query_stop` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_query` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
-| `query` | :green_circle: | 336/336 | 0/0 | stable | undefined |  |
+| `query` | :green_circle: | 346/346 | 0/0 | stable | undefined |  |
 | **Summary** | :green_circle: | 100% | 0% | | | |
 
 [Back to top](#Summary)
