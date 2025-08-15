@@ -1,0 +1,66 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/security/authz_api_keys/40_document_level_security_synthetic_source.yml",
+  "name": "Filter on field with ignored_malformed",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "name": {
+              "type": "keyword"
+            },
+            "secret": {
+              "ignore_malformed": true,
+              "type": "integer"
+            }
+          },
+          "runtime": {
+            "rt_secret": {
+              "script": {
+                "source": "emit(params._source.secret)"
+              },
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mapping": {
+              "source": {
+                "mode": "synthetic"
+              }
+            }
+          }
+        }
+      },
+      "index": "index_dls"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "377",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "index": "index_dls",
+        "index_uuid": "f5fBP3l_QpCqXmZWYc6BjA",
+        "reason": "index [index_dls/f5fBP3l_QpCqXmZWYc6BjA] already exists",
+        "root_cause": [
+          {
+            "index": "index_dls",
+            "index_uuid": "f5fBP3l_QpCqXmZWYc6BjA",
+            "reason": "index [index_dls/f5fBP3l_QpCqXmZWYc6BjA] already exists",
+            "type": "resource_already_exists_exception"
+          }
+        ],
+        "type": "resource_already_exists_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}
