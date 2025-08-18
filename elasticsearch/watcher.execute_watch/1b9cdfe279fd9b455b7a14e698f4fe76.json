@@ -1,0 +1,190 @@
+{
+  "api": "watcher.execute_watch",
+  "file": "/test/platinum/mustache/40_search_transform.yml",
+  "name": "Test search transform mustache integration (using request template)",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "trigger_data": {
+          "scheduled_time": "2015-01-04T00:00:00"
+        },
+        "watch": {
+          "actions": {
+            "dummy": {
+              "logging": {
+                "text": "executed!"
+              }
+            }
+          },
+          "input": {
+            "simple": {
+              "number": 2
+            }
+          },
+          "transform": {
+            "search": {
+              "request": {
+                "indices": "idx",
+                "rest_total_hits_as_int": true,
+                "template": {
+                  "source": "{\"query\": {\"bool\" : { \"must\": [{\"term\": {\"value\": \"val_{{ctx.payload.number}}\"}}]}}}"
+                }
+              }
+            }
+          },
+          "trigger": {
+            "schedule": {
+              "interval": "10s"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1829",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "_inlined__b2249f63-26b9-4ff4-b474-96181ffef7ca-2025-08-18T10:40:51.483940623Z",
+      "watch_record": {
+        "@timestamp": "2025-08-18T10:40:51.48391318Z",
+        "condition": {
+          "always": {
+          }
+        },
+        "input": {
+          "simple": {
+            "number": 2
+          }
+        },
+        "messages": [
+        ],
+        "node": "Ku2n-mFVShiDe8KOrDdLZQ",
+        "result": {
+          "actions": [
+            {
+              "id": "dummy",
+              "logging": {
+                "logged_text": "executed!"
+              },
+              "status": "success",
+              "type": "logging"
+            }
+          ],
+          "condition": {
+            "met": true,
+            "status": "success",
+            "type": "always"
+          },
+          "execution_duration": 1,
+          "execution_time": "2025-08-18T10:40:51.483Z",
+          "input": {
+            "payload": {
+              "number": 2
+            },
+            "status": "success",
+            "type": "simple"
+          },
+          "transform": {
+            "payload": {
+              "_shards": {
+                "failed": 0,
+                "skipped": 0,
+                "successful": 1,
+                "total": 1
+              },
+              "hits": {
+                "hits": [
+                  {
+                    "_id": "2",
+                    "_index": "idx",
+                    "_score": 1.2039728,
+                    "_source": {
+                      "date": "2015-01-02T00:00:00",
+                      "value": "val_2"
+                    }
+                  }
+                ],
+                "max_score": 1.2039728,
+                "total": 1
+              },
+              "timed_out": false,
+              "took": 0
+            },
+            "search": {
+              "request": {
+                "body": {
+                  "query": {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "value": "val_2"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "indices": [
+                  "idx"
+                ],
+                "rest_total_hits_as_int": true,
+                "search_type": "query_then_fetch",
+                "template": {
+                  "lang": "mustache",
+                  "source": "{\"query\": {\"bool\" : { \"must\": [{\"term\": {\"value\": \"val_{{ctx.payload.number}}\"}}]}}}"
+                }
+              }
+            },
+            "status": "success",
+            "type": "search"
+          }
+        },
+        "state": "executed",
+        "status": {
+          "actions": {
+            "dummy": {
+              "ack": {
+                "state": "ackable",
+                "timestamp": "2025-08-18T10:40:51.483Z"
+              },
+              "last_execution": {
+                "successful": true,
+                "timestamp": "2025-08-18T10:40:51.483Z"
+              },
+              "last_successful_execution": {
+                "successful": true,
+                "timestamp": "2025-08-18T10:40:51.483Z"
+              }
+            }
+          },
+          "execution_state": "executed",
+          "last_checked": "2025-08-18T10:40:51.483Z",
+          "last_met_condition": "2025-08-18T10:40:51.483Z",
+          "state": {
+            "active": true,
+            "timestamp": "2025-08-18T10:40:51.483Z"
+          },
+          "version": -1
+        },
+        "trigger_event": {
+          "manual": {
+            "schedule": {
+              "scheduled_time": "2015-01-04T00:00:00.000Z"
+            }
+          },
+          "triggered_time": "2025-08-18T10:40:51.483Z",
+          "type": "manual"
+        },
+        "user": "elastic",
+        "watch_id": "_inlined_"
+      }
+    },
+    "statusCode": 200
+  }
+}
