@@ -1,0 +1,40 @@
+{
+  "api": "bulk",
+  "file": "/test/platinum/inference/60_semantic_text_inference_update_bwc.yml",
+  "name": "Updates with script are not allowed",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"update\": {\"_id\": \"doc_1\"}}",
+        "{\"script\": \"ctx._source.new_field = \\\"hello\\\"\", \"scripted_upsert\": true}"
+      ],
+      "index": "test-index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "update": {
+            "_id": "doc_1",
+            "_index": "test-index",
+            "error": {
+              "reason": "Cannot apply update with a script on indices that contain [semantic_text] field(s)",
+              "type": "status_exception"
+            },
+            "status": 400
+          }
+        }
+      ],
+      "took": 200
+    },
+    "statusCode": 200
+  }
+}
