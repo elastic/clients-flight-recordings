@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `8.19.3-SNAPSHOT`  
-Elasticsearch build hash: `b62c1dcabc32e368bb8b9aa5bd430b952794c175`
+Elasticsearch build hash: `6a7e39ccb90890cb44565fd0cde319846601f055`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 566 | 518 (91.5%) | 48 (8.5%) | 94 (16.6%) | 28 (4.9%) |
+| 566 | 518 (91.5%) | 48 (8.5%) | 95 (16.8%) | 27 (4.8%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 483 | 439 (90.9%) | 44 (9.1%) | 87 | 15 |
+| `stable` | 483 | 439 (90.9%) | 44 (9.1%) | 88 | 14 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 59 | 58 (98.3%) | 1 (1.7%) | 7 | 13 |
 
@@ -44,7 +44,7 @@ Elasticsearch build hash: `b62c1dcabc32e368bb8b9aa5bd430b952794c175`
 | `indices.put_mapping` | :red_circle: | 128/143 | 143/143 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 115/115 | 36/114 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1233/1301 | 1301/1301 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 110/142 | 142/142 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 84/84 | 65/84 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 33/33 | 7/33 | stable | undefined |  |
@@ -990,7 +990,7 @@ Elasticsearch build hash: `b62c1dcabc32e368bb8b9aa5bd430b952794c175`
 | `put_transform` | :green_circle: | 28/28 | 28/28 | stable | undefined |  |
 | `reset_transform` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `schedule_now_transform` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
-| `set_upgrade_mode` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
+| `set_upgrade_mode` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `start_transform` | :green_circle: | 29/29 | 29/29 | stable | undefined |  |
 | `stop_transform` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `update_transform` | :green_circle: | 14/14 | 14/14 | stable | undefined |  |
@@ -1025,8 +1025,8 @@ Elasticsearch build hash: `b62c1dcabc32e368bb8b9aa5bd430b952794c175`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 11.9% | | | |
+| `usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 14.3% | | | |
 
 [Back to top](#Summary)
 
