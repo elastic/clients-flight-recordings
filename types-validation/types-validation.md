@@ -12,9 +12,9 @@ Elasticsearch build hash: `57ebf151ce58c1577e7c301db543aed3ff9da8c6`
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 483 | 439 (90.9%) | 44 (9.1%) | 88 | 14 |
+| `stable` | 482 | 438 (90.9%) | 44 (9.1%) | 88 | 13 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 59 | 58 (98.3%) | 1 (1.7%) | 7 | 13 |
+| `experimental` | 60 | 59 (98.3%) | 1 (1.7%) | 7 | 14 |
 
 </details>
 
@@ -120,7 +120,7 @@ Elasticsearch build hash: `57ebf151ce58c1577e7c301db543aed3ff9da8c6`
 | `delete_desired_nodes` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `get_desired_balance` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `get_desired_nodes` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
-| `prevalidate_node_removal` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
+| `prevalidate_node_removal` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `update_desired_nodes` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | **Summary** | :orange_circle: | 0% | 0% | | | |
 
