@@ -12,9 +12,9 @@ Elasticsearch build hash: `7bddc49e04c8be50da4f09ec2893b57448ea9ea4`
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 483 | 444 (91.9%) | 39 (8.1%) | 87 | 9 |
+| `stable` | 482 | 443 (91.9%) | 39 (8.1%) | 87 | 8 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 61 | 59 (96.7%) | 2 (3.3%) | 8 | 14 |
+| `experimental` | 62 | 60 (96.8%) | 2 (3.2%) | 8 | 15 |
 
 </details>
 
@@ -43,7 +43,7 @@ Elasticsearch build hash: `7bddc49e04c8be50da4f09ec2893b57448ea9ea4`
 | `indices.put_mapping` | :red_circle: | 138/143 | 146/146 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 125/125 | 36/124 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1281/1323 | 1323/1323 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 43/43 | 1/39 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 43/43 | 2/39 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 124/147 | 147/147 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 84/84 | 65/84 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 33/33 | 7/33 | stable | undefined |  |
@@ -120,7 +120,7 @@ Elasticsearch build hash: `7bddc49e04c8be50da4f09ec2893b57448ea9ea4`
 | `delete_desired_nodes` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `get_desired_balance` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `get_desired_nodes` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
-| `prevalidate_node_removal` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
+| `prevalidate_node_removal` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `update_desired_nodes` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | **Summary** | :orange_circle: | 0% | 0% | | | |
 
@@ -1027,8 +1027,8 @@ Elasticsearch build hash: `7bddc49e04c8be50da4f09ec2893b57448ea9ea4`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 43/43 | 1/39 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 11.6% | | | |
+| `usage` | :red_circle: | 43/43 | 2/39 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 14% | | | |
 
 [Back to top](#Summary)
 
