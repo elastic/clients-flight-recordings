@@ -1,0 +1,164 @@
+{
+  "api": "watcher.execute_watch",
+  "file": "/test/platinum/watcher/execute_watch/20_transform.yml",
+  "name": "Test execute watch api with misconfigured search transform on failure",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "watch": {
+          "actions": {
+            "indexme": {
+              "index": {
+                "doc_id": "my-id",
+                "index": "my_test_index"
+              }
+            }
+          },
+          "condition": {
+            "always": {
+            }
+          },
+          "input": {
+            "simple": {
+              "foo": "bar"
+            }
+          },
+          "transform": {
+            "search": {
+              "request": {
+                "body": {
+                  "query": {
+                    "does_not_exist": {
+                    }
+                  }
+                },
+                "indices": [
+                  "my_test_index"
+                ]
+              }
+            }
+          },
+          "trigger": {
+            "schedule": {
+              "cron": "0 0 0 1 * ? 2099"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1580",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "_inlined__f180b07e-5ed6-4c2e-8316-aed805fb3df1-2025-09-01T10:49:03.526252961Z",
+      "watch_record": {
+        "@timestamp": "2025-09-01T10:49:03.526238471Z",
+        "condition": {
+          "always": {
+          }
+        },
+        "input": {
+          "simple": {
+            "foo": "bar"
+          }
+        },
+        "messages": [
+          "failed to execute watch transform"
+        ],
+        "node": "6kVNynoWRJqqniQY0baNsQ",
+        "result": {
+          "actions": [
+          ],
+          "condition": {
+            "met": true,
+            "status": "success",
+            "type": "always"
+          },
+          "execution_duration": 1,
+          "execution_time": "2025-09-01T10:49:03.526Z",
+          "input": {
+            "payload": {
+              "foo": "bar"
+            },
+            "status": "success",
+            "type": "simple"
+          },
+          "transform": {
+            "error": {
+              "caused_by": {
+                "reason": "[1:28] unknown field [does_not_exist]",
+                "type": "named_object_not_found_exception"
+              },
+              "col": 28,
+              "line": 1,
+              "reason": "unknown query [does_not_exist]",
+              "root_cause": [
+                {
+                  "col": 28,
+                  "line": 1,
+                  "reason": "unknown query [does_not_exist]",
+                  "type": "parsing_exception"
+                }
+              ],
+              "type": "parsing_exception"
+            },
+            "reason": "unknown query [does_not_exist]",
+            "search": {
+              "request": {
+                "body": {
+                  "query": {
+                    "does_not_exist": {
+                    }
+                  }
+                },
+                "indices": [
+                  "my_test_index"
+                ],
+                "rest_total_hits_as_int": true,
+                "search_type": "query_then_fetch"
+              }
+            },
+            "status": "failure",
+            "type": "search"
+          }
+        },
+        "state": "executed",
+        "status": {
+          "actions": {
+            "indexme": {
+              "ack": {
+                "state": "awaits_successful_execution",
+                "timestamp": "2025-09-01T10:49:03.525Z"
+              }
+            }
+          },
+          "execution_state": "executed",
+          "last_checked": "2025-09-01T10:49:03.526Z",
+          "last_met_condition": "2025-09-01T10:49:03.526Z",
+          "state": {
+            "active": true,
+            "timestamp": "2025-09-01T10:49:03.525Z"
+          },
+          "version": -1
+        },
+        "trigger_event": {
+          "manual": {
+            "schedule": {
+              "scheduled_time": "2025-09-01T10:49:03.526Z"
+            }
+          },
+          "triggered_time": "2025-09-01T10:49:03.526Z",
+          "type": "manual"
+        },
+        "user": "elastic",
+        "watch_id": "_inlined_"
+      }
+    },
+    "statusCode": 200
+  }
+}
