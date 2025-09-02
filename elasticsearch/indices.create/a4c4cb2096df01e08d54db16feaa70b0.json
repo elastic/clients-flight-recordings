@@ -1,0 +1,93 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/rollup/rollup_search.yml",
+  "name": "Obsolete BWC Timezone",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "_meta": {
+            "_rollup": {
+              "sensor": {
+                "cron": "* * * * * ?",
+                "groups": {
+                  "date_histogram": {
+                    "field": "timestamp",
+                    "interval": "5m",
+                    "time_zone": "Canada/Mountain"
+                  },
+                  "terms": {
+                    "fields": [
+                      "partition"
+                    ]
+                  }
+                },
+                "id": "tz",
+                "index_pattern": "tz",
+                "metrics": [
+                  {
+                    "field": "price",
+                    "metrics": [
+                      "max"
+                    ]
+                  }
+                ],
+                "page_size": 1000,
+                "rollup_index": "tz_rollup",
+                "timeout": "20s"
+              }
+            }
+          },
+          "properties": {
+            "_rollup.id": {
+              "type": "keyword"
+            },
+            "_rollup.version": {
+              "type": "long"
+            },
+            "partition.terms._count": {
+              "type": "long"
+            },
+            "partition.terms.value": {
+              "type": "keyword"
+            },
+            "price.max.value": {
+              "type": "double"
+            },
+            "timestamp.date_histogram._count": {
+              "type": "long"
+            },
+            "timestamp.date_histogram.interval": {
+              "type": "keyword"
+            },
+            "timestamp.date_histogram.time_zone": {
+              "type": "keyword"
+            },
+            "timestamp.date_histogram.timestamp": {
+              "type": "date"
+            }
+          }
+        },
+        "settings": {
+          "number_of_replicas": 0,
+          "number_of_shards": 1
+        }
+      },
+      "index": "tz_rollup"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "68",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "tz_rollup",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
