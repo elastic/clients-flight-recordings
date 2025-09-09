@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.2.0-SNAPSHOT`  
-Elasticsearch build hash: `30666199885d4ec2f50051097270928403da6a10`
+Elasticsearch build hash: `177a56af7c228d1f7fc745b51b4885dc9e565546`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ Elasticsearch build hash: `30666199885d4ec2f50051097270928403da6a10`
 | `watcher.put_watch` | :red_circle: | 46/53 | 53/53 | stable | undefined |  |
 | `indices.put_mapping` | :red_circle: | 140/148 | 151/151 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 125/125 | 36/124 | stable | undefined |  |
-| `indices.create` | :red_circle: | 1336/1376 | 1376/1376 | stable | undefined |  |
+| `indices.create` | :red_circle: | 1335/1375 | 1375/1375 | stable | undefined |  |
 | `xpack.usage` | :red_circle: | 43/43 | 2/39 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 130/153 | 153/153 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 85/85 | 66/85 | stable | undefined |  |
@@ -436,8 +436,8 @@ Elasticsearch build hash: `30666199885d4ec2f50051097270928403da6a10`
 | `cancel_migrate_reindex` | :green_circle: | 2/2 | 2/2 | experimental | undefined |  |
 | `clear_cache` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `clone` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
-| `close` | :green_circle: | 51/51 | 51/51 | stable | undefined |  |
-| `create` | :red_circle: | 1336/1376 | 1376/1376 | stable | undefined |  |
+| `close` | :green_circle: | 50/50 | 50/50 | stable | undefined |  |
+| `create` | :red_circle: | 1335/1375 | 1375/1375 | stable | undefined |  |
 | `create_data_stream` | :green_circle: | 120/120 | 120/120 | stable | undefined |  |
 | `create_from` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `data_streams_stats` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
