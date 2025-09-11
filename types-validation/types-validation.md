@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `8.19.4-SNAPSHOT`  
-Elasticsearch build hash: `9f98eb85cc5b1aa8d4705aedf10e5d26dd5ba237`
+Elasticsearch build hash: `6b9e3903423d61dc0e9111e1414cf0f47903b4a6`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -491,14 +491,14 @@ Elasticsearch build hash: `9f98eb85cc5b1aa8d4705aedf10e5d26dd5ba237`
 | `segments` | :red_circle: | 6/6 | 5/6 | stable | undefined |  |
 | `shard_stores` | :red_circle: | 6/6 | 5/6 | stable | undefined |  |
 | `shrink` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
-| `simulate_index_template` | :red_circle: | 7/9 | 6/9 | stable | undefined |  |
+| `simulate_index_template` | :red_circle: | 9/9 | 6/9 | stable | undefined |  |
 | `simulate_template` | :red_circle: | 5/5 | 4/5 | stable | undefined |  |
 | `split` | :green_circle: | 11/11 | 11/11 | stable | undefined |  |
 | `stats` | :red_circle: | 115/115 | 36/114 | stable | undefined |  |
 | `unfreeze` | :green_circle: | 1/1 | 1/1 | stable | undefined | deprecated |
 | `update_aliases` | :red_circle: | 33/33 | 7/33 | stable | undefined |  |
 | `validate_query` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
-| **Summary** | :red_circle: | 96.7% | 90.6% | | | |
+| **Summary** | :red_circle: | 96.8% | 90.6% | | | |
 
 [Back to top](#Summary)
 
