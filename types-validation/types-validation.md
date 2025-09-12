@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `8.19.4-SNAPSHOT`  
-Elasticsearch build hash: `6b9e3903423d61dc0e9111e1414cf0f47903b4a6`
+Elasticsearch build hash: `4cca71b0356d5845980f415a83772f1133a937ac`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -35,7 +35,7 @@ Elasticsearch build hash: `6b9e3903423d61dc0e9111e1414cf0f47903b4a6`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `search` | :red_circle: | 2307/2359 | 2359/2359 | stable | undefined |  |
-| `index` | :red_circle: | 1375/1375 | 1349/1377 | stable | undefined |  |
+| `index` | :red_circle: | 1377/1377 | 1351/1379 | stable | undefined |  |
 | `indices.get_alias` | :red_circle: | 93/93 | 81/93 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 200/200 | 183/200 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 37/37 | 34/37 | stable | undefined |  |
@@ -167,14 +167,14 @@ Elasticsearch build hash: `6b9e3903423d61dc0e9111e1414cf0f47903b4a6`
 | `exists` | :green_circle: | 19/19 | 19/19 | stable | undefined |  |
 | `exists_source` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `explain` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
-| `field_caps` | :green_circle: | 82/82 | 82/82 | stable | undefined |  |
+| `field_caps` | :green_circle: | 84/84 | 84/84 | stable | undefined |  |
 | `get` | :green_circle: | 340/340 | 337/337 | stable | undefined |  |
 | `get_script` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `get_script_context` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_script_languages` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_source` | :green_circle: | 18/18 | 18/18 | stable | undefined |  |
 | `health_report` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
-| `index` | :red_circle: | 1375/1375 | 1349/1377 | stable | undefined |  |
+| `index` | :red_circle: | 1377/1377 | 1351/1379 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `knn_search` | :green_circle: | 4/4 | 4/4 | experimental | undefined | deprecated |
 | `mget` | :green_circle: | 51/51 | 50/50 | stable | undefined |  |
