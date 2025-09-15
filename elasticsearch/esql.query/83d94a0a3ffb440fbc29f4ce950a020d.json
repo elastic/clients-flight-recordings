@@ -1,0 +1,252 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/120_profile.yml",
+  "name": "avg 8.14 or after",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "columnar": true,
+        "profile": true,
+        "query": "FROM test | STATS AVG(data) | LIMIT 1"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "10991284",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-async-is-running": "?0"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "AVG(data)",
+          "type": "double"
+        }
+      ],
+      "is_partial": false,
+      "profile": {
+        "drivers": [
+          {
+            "cpu_nanos": 474666,
+            "description": "data",
+            "iterations": 2,
+            "operators": [
+              {
+                "operator": "LuceneSourceOperator[maxPageSize = 21845, remainingDocs = 2147483607]",
+                "status": {
+                  "current": 2147483647,
+                  "pages_emitted": 1,
+                  "processed_queries": [
+                    "*:*"
+                  ],
+                  "processed_shards": [
+                    "test:0"
+                  ],
+                  "processed_slices": 1,
+                  "processing_nanos": 103940,
+                  "rows_emitted": 40,
+                  "slice_index": 0,
+                  "slice_max": 0,
+                  "slice_min": 0,
+                  "total_slices": 1
+                }
+              },
+              {
+                "operator": "ValuesSourceReaderOperator[fields = [data]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 190660,
+                  "readers_built": {
+                    "data:column_at_a_time:BlockDocValuesReader.SingletonLongs": 1
+                  },
+                  "rows_emitted": 40,
+                  "rows_received": 40
+                }
+              },
+              {
+                "operator": "AggregationOperator[aggregators=[Aggregator[aggregatorFunction=SumLongAggregatorFunction[channels=[1]], mode=INITIAL], Aggregator[aggregatorFunction=CountAggregatorFunction[channels=[1]], mode=INITIAL]]]",
+                "status": {
+                  "aggregation_finish_nanos": 32256,
+                  "aggregation_nanos": 40085,
+                  "pages_processed": 1,
+                  "rows_emitted": 1,
+                  "rows_received": 40
+                }
+              },
+              {
+                "operator": "ExchangeSinkOperator",
+                "status": {
+                  "pages_received": 1,
+                  "rows_received": 1
+                }
+              }
+            ],
+            "sleeps": {
+              "counts": {
+              },
+              "first": [
+              ],
+              "last": [
+              ]
+            },
+            "start_millis": 1757932317909,
+            "stop_millis": 1757932317910,
+            "took_nanos": 670123
+          },
+          {
+            "cpu_nanos": 123195,
+            "description": "node_reduce",
+            "iterations": 3,
+            "operators": [
+              {
+                "operator": "ExchangeSourceOperator",
+                "status": {
+                  "pages_emitted": 1,
+                  "pages_waiting": 0,
+                  "rows_emitted": 1
+                }
+              },
+              {
+                "operator": "ExchangeSinkOperator",
+                "status": {
+                  "pages_received": 1,
+                  "rows_received": 1
+                }
+              }
+            ],
+            "sleeps": {
+              "counts": {
+                "exchange empty": 1
+              },
+              "first": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1757932317911,
+                  "wake_millis": 1757932317911
+                }
+              ],
+              "last": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1757932317911,
+                  "wake_millis": 1757932317911
+                }
+              ]
+            },
+            "start_millis": 1757932317910,
+            "stop_millis": 1757932317912,
+            "took_nanos": 1042929
+          },
+          {
+            "cpu_nanos": 258986,
+            "description": "final",
+            "iterations": 4,
+            "operators": [
+              {
+                "operator": "ExchangeSourceOperator",
+                "status": {
+                  "pages_emitted": 1,
+                  "pages_waiting": 0,
+                  "rows_emitted": 1
+                }
+              },
+              {
+                "operator": "AggregationOperator[aggregators=[Aggregator[aggregatorFunction=SumLongAggregatorFunction[channels=[0, 1]], mode=FINAL], Aggregator[aggregatorFunction=CountAggregatorFunction[channels=[2, 3]], mode=FINAL]]]",
+                "status": {
+                  "aggregation_finish_nanos": 25851,
+                  "aggregation_nanos": 33927,
+                  "pages_processed": 1,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "ProjectOperator[projection = [0, 1]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 18611,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "LimitOperator[limit = 0/1]",
+                "status": {
+                  "limit": 1,
+                  "limit_remaining": 0,
+                  "pages_processed": 1,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "EvalOperator[evaluator=DivDoublesEvaluator[lhs=CastLongToDoubleEvaluator[v=Attribute[channel=0]], rhs=CastLongToDoubleEvaluator[v=Attribute[channel=1]]]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 43016,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "ProjectOperator[projection = [2]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 3302,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "OutputOperator[columns = [AVG(data)]]"
+              }
+            ],
+            "sleeps": {
+              "counts": {
+                "exchange empty": 2
+              },
+              "first": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1757932317906,
+                  "wake_millis": 1757932317911
+                },
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1757932317911,
+                  "wake_millis": 1757932317912
+                }
+              ],
+              "last": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1757932317906,
+                  "wake_millis": 1757932317911
+                },
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1757932317911,
+                  "wake_millis": 1757932317912
+                }
+              ]
+            },
+            "start_millis": 1757932317906,
+            "stop_millis": 1757932317912,
+            "took_nanos": 5996611
+          }
+        ]
+      },
+      "took": 10,
+      "values": [
+        [
+          1.5
+        ]
+      ]
+    },
+    "statusCode": 200
+  }
+}
