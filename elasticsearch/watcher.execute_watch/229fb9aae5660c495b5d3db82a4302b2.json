@@ -1,0 +1,191 @@
+{
+  "api": "watcher.execute_watch",
+  "file": "/test/platinum/watcher/execute_watch/20_transform.yml",
+  "name": "Test execute watch api with configured search transform using DFS_QUERY_THEN_FETCH",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "watch": {
+          "actions": {
+            "indexme": {
+              "index": {
+                "doc_id": "my-id",
+                "index": "my_test_index"
+              }
+            }
+          },
+          "condition": {
+            "always": {
+            }
+          },
+          "input": {
+            "simple": {
+              "foo": "bar"
+            }
+          },
+          "transform": {
+            "search": {
+              "request": {
+                "body": {
+                  "query": {
+                    "match_all": {
+                    }
+                  }
+                },
+                "indices": [
+                  "my_test_index"
+                ],
+                "search_type": "dfs_query_then_fetch"
+              }
+            }
+          },
+          "trigger": {
+            "schedule": {
+              "cron": "0 0 0 1 * ? 2099"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1719",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "_inlined__b38c2f22-b88a-4b63-9d01-4fe0e2c34260-2025-09-18T11:00:34.034900243Z",
+      "watch_record": {
+        "@timestamp": "2025-09-18T11:00:34.034887887Z",
+        "condition": {
+          "always": {
+          }
+        },
+        "input": {
+          "simple": {
+            "foo": "bar"
+          }
+        },
+        "messages": [
+        ],
+        "node": "AFr3IBC5SyCFZP7I-RsJJQ",
+        "result": {
+          "actions": [
+            {
+              "id": "indexme",
+              "index": {
+                "response": {
+                  "created": true,
+                  "id": "my-id",
+                  "index": "my_test_index",
+                  "result": "created",
+                  "version": 1
+                }
+              },
+              "status": "success",
+              "type": "index"
+            }
+          ],
+          "condition": {
+            "met": true,
+            "status": "success",
+            "type": "always"
+          },
+          "execution_duration": 31,
+          "execution_time": "2025-09-18T11:00:34.034Z",
+          "input": {
+            "payload": {
+              "foo": "bar"
+            },
+            "status": "success",
+            "type": "simple"
+          },
+          "transform": {
+            "payload": {
+              "_shards": {
+                "failed": 0,
+                "skipped": 0,
+                "successful": 2,
+                "total": 2
+              },
+              "hits": {
+                "hits": [
+                  {
+                    "_id": "my_id",
+                    "_index": "my_test_index",
+                    "_score": 1,
+                    "_source": {
+                      "key": "value"
+                    }
+                  }
+                ],
+                "max_score": 1,
+                "total": 1
+              },
+              "timed_out": false,
+              "took": 4
+            },
+            "search": {
+              "request": {
+                "body": {
+                  "query": {
+                    "match_all": {
+                    }
+                  }
+                },
+                "indices": [
+                  "my_test_index"
+                ],
+                "rest_total_hits_as_int": true,
+                "search_type": "dfs_query_then_fetch"
+              }
+            },
+            "status": "success",
+            "type": "search"
+          }
+        },
+        "state": "executed",
+        "status": {
+          "actions": {
+            "indexme": {
+              "ack": {
+                "state": "ackable",
+                "timestamp": "2025-09-18T11:00:34.034Z"
+              },
+              "last_execution": {
+                "successful": true,
+                "timestamp": "2025-09-18T11:00:34.034Z"
+              },
+              "last_successful_execution": {
+                "successful": true,
+                "timestamp": "2025-09-18T11:00:34.034Z"
+              }
+            }
+          },
+          "execution_state": "executed",
+          "last_checked": "2025-09-18T11:00:34.034Z",
+          "last_met_condition": "2025-09-18T11:00:34.034Z",
+          "state": {
+            "active": true,
+            "timestamp": "2025-09-18T11:00:34.034Z"
+          },
+          "version": -1
+        },
+        "trigger_event": {
+          "manual": {
+            "schedule": {
+              "scheduled_time": "2025-09-18T11:00:34.034Z"
+            }
+          },
+          "triggered_time": "2025-09-18T11:00:34.034Z",
+          "type": "manual"
+        },
+        "user": "elastic",
+        "watch_id": "_inlined_"
+      }
+    },
+    "statusCode": 200
+  }
+}
