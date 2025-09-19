@@ -5,16 +5,16 @@ Elasticsearch build hash: `898c3c2278aff5b969556eaea3c0549db3e94cd2`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 566 | 518 (91.5%) | 48 (8.5%) | 95 (16.8%) | 27 (4.8%) |
+| 566 | 518 (91.5%) | 48 (8.5%) | 98 (17.3%) | 24 (4.2%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 482 | 438 (90.9%) | 44 (9.1%) | 88 | 13 |
+| `stable` | 479 | 435 (90.8%) | 44 (9.2%) | 88 | 10 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 60 | 59 (98.3%) | 1 (1.7%) | 7 | 14 |
+| `experimental` | 63 | 62 (98.4%) | 1 (1.6%) | 10 | 14 |
 
 </details>
 
@@ -44,7 +44,7 @@ Elasticsearch build hash: `898c3c2278aff5b969556eaea3c0549db3e94cd2`
 | `indices.put_mapping` | :red_circle: | 128/143 | 143/143 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 115/115 | 36/114 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1234/1302 | 1302/1302 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 110/142 | 142/142 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 84/84 | 65/84 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 33/33 | 7/33 | stable | undefined |  |
@@ -933,10 +933,10 @@ Elasticsearch build hash: `898c3c2278aff5b969556eaea3c0549db3e94cd2`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `logs_disable` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
-| `logs_enable` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
-| `status` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
-| **Summary** | :orange_circle: | 0% | 0% | | | |
+| `logs_disable` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| `logs_enable` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| `status` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| **Summary** | :white_circle: | 0% | 0% | | | |
 
 [Back to top](#Summary)
 
@@ -1025,8 +1025,8 @@ Elasticsearch build hash: `898c3c2278aff5b969556eaea3c0549db3e94cd2`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 14.3% | | | |
+| `usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 11.9% | | | |
 
 [Back to top](#Summary)
 
