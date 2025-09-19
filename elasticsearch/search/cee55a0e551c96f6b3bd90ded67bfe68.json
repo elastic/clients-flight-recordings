@@ -1,0 +1,127 @@
+{
+  "api": "search",
+  "file": "/test/free/search.retrievers/30_rescorer_retriever.yml",
+  "name": "Rescorer retriever and collapsing",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "collapse": {
+          "field": "group"
+        },
+        "retriever": {
+          "rescorer": {
+            "rescore": {
+              "query": {
+                "query_weight": 0,
+                "rescore_query": {
+                  "rank_feature": {
+                    "field": "features.second_stage",
+                    "linear": {
+                    }
+                  }
+                }
+              },
+              "window_size": 10
+            },
+            "retriever": {
+              "standard": {
+                "query": {
+                  "rank_feature": {
+                    "field": "features.first_stage",
+                    "linear": {
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "size": 3
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "test",
+            "_score": 10,
+            "_source": {
+              "available": true,
+              "features": {
+                "first_stage": 1,
+                "second_stage": 10
+              },
+              "group": 1
+            },
+            "fields": {
+              "group": [
+                1
+              ]
+            }
+          },
+          {
+            "_id": "3",
+            "_index": "test",
+            "_score": 8,
+            "_source": {
+              "available": false,
+              "features": {
+                "first_stage": 3,
+                "second_stage": 8
+              },
+              "group": 3
+            },
+            "fields": {
+              "group": [
+                3
+              ]
+            }
+          },
+          {
+            "_id": "6",
+            "_index": "test",
+            "_score": 5,
+            "_source": {
+              "available": false,
+              "features": {
+                "first_stage": 6,
+                "second_stage": 5
+              },
+              "group": 2
+            },
+            "fields": {
+              "group": [
+                2
+              ]
+            }
+          }
+        ],
+        "max_score": 10,
+        "total": {
+          "relation": "eq",
+          "value": 10
+        }
+      },
+      "timed_out": false,
+      "took": 10
+    },
+    "statusCode": 200
+  }
+}
