@@ -1,0 +1,39 @@
+{
+  "api": "bulk",
+  "file": "/test/free/streams/logs/20_substream_restrictions.yml",
+  "name": "Check Bulk Index With Reroute Processor To Substream Is Rejected",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{ \"index\": { \"_index\": \"bad-index\" } }\n{ \"foo\": \"bar\" }\n"
+      ]
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "ingest_took": 0,
+      "items": [
+        {
+          "index": {
+            "_id": "auto-generated",
+            "_index": "logs.foo",
+            "error": {
+              "reason": "Pipeline [reroute-to-logs-foo] can't change the target index (from [bad-index] to [logs] child stream [logs.foo]) History: [bad-index]",
+              "type": "illegal_argument_exception"
+            },
+            "status": 400
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}
