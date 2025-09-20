@@ -1,11 +1,11 @@
 ## Summary
 
 Elasticsearch version: `9.1.5-SNAPSHOT`  
-Elasticsearch build hash: `91493b0b990fd3fd40fd6ae1cc26ba686ee40ec9`
+Elasticsearch build hash: `2b13cff8820b1a09b913bb4c0f3f1d88389d5c31`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 568 | 524 (92.3%) | 44 (7.7%) | 98 (17.3%) | 20 (3.5%) |
+| 568 | 524 (92.3%) | 44 (7.7%) | 95 (16.7%) | 20 (3.5%) |
 
 <details>
 <summary>Breakdown by stability</summary>
@@ -14,7 +14,7 @@ Elasticsearch build hash: `91493b0b990fd3fd40fd6ae1cc26ba686ee40ec9`
 | --- | --- | --- | --- | --- | --- |
 | `stable` | 479 | 440 (91.9%) | 39 (8.1%) | 87 | 5 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 65 | 63 (96.9%) | 2 (3.1%) | 11 | 15 |
+| `experimental` | 65 | 63 (96.9%) | 2 (3.1%) | 8 | 15 |
 
 </details>
 
@@ -935,10 +935,10 @@ Elasticsearch build hash: `91493b0b990fd3fd40fd6ae1cc26ba686ee40ec9`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `logs_disable` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
-| `logs_enable` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
-| `status` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
-| **Summary** | :white_circle: | 0% | 0% | | | |
+| `logs_disable` | :green_circle: | 1/1 | 1/1 | experimental | undefined |  |
+| `logs_enable` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
+| `status` | :green_circle: | 5/5 | 5/5 | experimental | undefined |  |
+| **Summary** | :green_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
 
