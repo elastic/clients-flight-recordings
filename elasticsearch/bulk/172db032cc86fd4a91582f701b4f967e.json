@@ -1,0 +1,41 @@
+{
+  "api": "bulk",
+  "file": "/test/free/streams/logs/30_param_restrictions.yml",
+  "name": "Multiple Disallowed Params - Bulk Should Fail",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{ \"index\": { \"_index\": \"logs\"} }\n{ \"foo\": \"bar\" }\n"
+      ],
+      "refresh": true,
+      "routing": "custom-routing",
+      "wait_for_active_shards": "2"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "index": {
+            "_id": "auto-generated",
+            "_index": "logs",
+            "error": {
+              "reason": "When writing to a stream, only the following parameters are allowed: [pretty, index, refresh, error_trace, id, op_type, require_data_stream, filter_path, timeout] however the following were used: [routing, wait_for_active_shards, refresh]",
+              "type": "illegal_argument_exception"
+            },
+            "status": 400
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}
