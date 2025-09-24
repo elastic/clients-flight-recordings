@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.2.0-SNAPSHOT`  
-Elasticsearch build hash: `4d79a59bd74692d65c0d09cfed46c749092aa73e`
+Elasticsearch build hash: `1d17ce6c97775e896bc45920ced866ab08b77880`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 572 | 526 (92%) | 46 (8%) | 97 (17%) | 20 (3.5%) |
+| 573 | 527 (92%) | 46 (8%) | 97 (16.9%) | 21 (3.7%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 483 | 441 (91.3%) | 42 (8.7%) | 89 | 5 |
+| `stable` | 484 | 442 (91.3%) | 42 (8.7%) | 89 | 6 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 65 | 64 (98.5%) | 1 (1.5%) | 8 | 15 |
 
@@ -820,6 +820,7 @@ Elasticsearch build hash: `4d79a59bd74692d65c0d09cfed46c749092aa73e`
 | `get_service_accounts` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_service_credentials` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_settings` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
+| `get_stats` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
 | `get_token` | :green_circle: | 25/25 | 24/24 | stable | undefined |  |
 | `get_user` | :green_circle: | 25/25 | 25/25 | stable | undefined |  |
 | `get_user_privileges` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
