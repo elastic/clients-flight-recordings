@@ -1,0 +1,66 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/60_enrich.yml",
+  "name": "Enrich in fork",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "from test | eval city_code = city_id | FORK (enrich city_codes_policy) (where false) | keep name, city, country | sort name"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "24727963",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.1.5-1810f887da532591d63ede7e46c4b1713f59ff41 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-async-is-running": "?0"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "name",
+          "type": "keyword"
+        },
+        {
+          "name": "city",
+          "type": "text"
+        },
+        {
+          "name": "country",
+          "type": "keyword"
+        }
+      ],
+      "documents_found": 4,
+      "is_partial": false,
+      "took": 24,
+      "values": [
+        [
+          "Alice",
+          "New York",
+          "USA"
+        ],
+        [
+          "Bob",
+          "New York",
+          "USA"
+        ],
+        [
+          "Denise",
+          null,
+          null
+        ],
+        [
+          "Mario",
+          "Rome",
+          "Italy"
+        ]
+      ],
+      "values_loaded": 12
+    },
+    "statusCode": 200
+  }
+}
