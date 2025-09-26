@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `8.18.8-SNAPSHOT`  
-Elasticsearch build hash: `ef50c3ef75225c1e07f35621d342a13a8abd27e1`
+Elasticsearch build hash: `e982eef416a5e1c2a4e94236d7d3b33b5c8d07db`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -153,7 +153,7 @@ Elasticsearch build hash: `ef50c3ef75225c1e07f35621d342a13a8abd27e1`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `bulk` | :green_circle: | 511/511 | 529/529 | stable | undefined |  |
+| `bulk` | :green_circle: | 510/510 | 528/528 | stable | undefined |  |
 | `capabilities` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `clear_scroll` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `close_point_in_time` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
