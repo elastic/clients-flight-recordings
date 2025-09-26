@@ -1,0 +1,203 @@
+{
+  "api": "watcher.execute_watch",
+  "file": "/test/platinum/watcher/put_watch/91_search_total_hits_as_int.yml",
+  "name": "Test search transform includes hits by default",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "watch": {
+          "actions": {
+            "indexme": {
+              "condition": {
+                "compare": {
+                  "ctx.payload.hits.total": {
+                    "gt": 0
+                  }
+                }
+              },
+              "index": {
+                "doc_id": "my-id",
+                "index": "my_test_index"
+              }
+            }
+          },
+          "input": {
+            "simple": {
+              "foo": "bar"
+            }
+          },
+          "transform": {
+            "search": {
+              "request": {
+                "body": {
+                  "query": {
+                    "match_all": {
+                    }
+                  }
+                },
+                "indices": [
+                  "my_test_index"
+                ]
+              }
+            }
+          },
+          "trigger": {
+            "schedule": {
+              "cron": "0 0 0 1 * ? 2099"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1835",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "_inlined__1e2e247b-26ac-4261-8f1f-1c27104e2a09-2025-09-26T10:55:30.109105691Z",
+      "watch_record": {
+        "@timestamp": "2025-09-26T10:55:30.109092068Z",
+        "condition": {
+          "always": {
+          }
+        },
+        "input": {
+          "simple": {
+            "foo": "bar"
+          }
+        },
+        "messages": [
+        ],
+        "node": "I500ctEJTEmyh5mdUoIQUQ",
+        "result": {
+          "actions": [
+            {
+              "condition": {
+                "compare": {
+                  "resolved_values": {
+                    "ctx.payload.hits.total": 1
+                  }
+                },
+                "met": true,
+                "status": "success",
+                "type": "compare"
+              },
+              "id": "indexme",
+              "index": {
+                "response": {
+                  "created": true,
+                  "id": "my-id",
+                  "index": "my_test_index",
+                  "result": "created",
+                  "version": 1
+                }
+              },
+              "status": "success",
+              "type": "index"
+            }
+          ],
+          "condition": {
+            "met": true,
+            "status": "success",
+            "type": "always"
+          },
+          "execution_duration": 25,
+          "execution_time": "2025-09-26T10:55:30.109Z",
+          "input": {
+            "payload": {
+              "foo": "bar"
+            },
+            "status": "success",
+            "type": "simple"
+          },
+          "transform": {
+            "payload": {
+              "_shards": {
+                "failed": 0,
+                "skipped": 0,
+                "successful": 1,
+                "total": 1
+              },
+              "hits": {
+                "hits": [
+                  {
+                    "_id": "my_id",
+                    "_index": "my_test_index",
+                    "_score": 1,
+                    "_source": {
+                      "key": "value"
+                    }
+                  }
+                ],
+                "max_score": 1,
+                "total": 1
+              },
+              "timed_out": false,
+              "took": 0
+            },
+            "search": {
+              "request": {
+                "body": {
+                  "query": {
+                    "match_all": {
+                    }
+                  }
+                },
+                "indices": [
+                  "my_test_index"
+                ],
+                "rest_total_hits_as_int": true,
+                "search_type": "query_then_fetch"
+              }
+            },
+            "status": "success",
+            "type": "search"
+          }
+        },
+        "state": "executed",
+        "status": {
+          "actions": {
+            "indexme": {
+              "ack": {
+                "state": "ackable",
+                "timestamp": "2025-09-26T10:55:30.109Z"
+              },
+              "last_execution": {
+                "successful": true,
+                "timestamp": "2025-09-26T10:55:30.109Z"
+              },
+              "last_successful_execution": {
+                "successful": true,
+                "timestamp": "2025-09-26T10:55:30.109Z"
+              }
+            }
+          },
+          "execution_state": "executed",
+          "last_checked": "2025-09-26T10:55:30.109Z",
+          "last_met_condition": "2025-09-26T10:55:30.109Z",
+          "state": {
+            "active": true,
+            "timestamp": "2025-09-26T10:55:30.108Z"
+          },
+          "version": -1
+        },
+        "trigger_event": {
+          "manual": {
+            "schedule": {
+              "scheduled_time": "2025-09-26T10:55:30.109Z"
+            }
+          },
+          "triggered_time": "2025-09-26T10:55:30.109Z",
+          "type": "manual"
+        },
+        "user": "elastic",
+        "watch_id": "_inlined_"
+      }
+    },
+    "statusCode": 200
+  }
+}
