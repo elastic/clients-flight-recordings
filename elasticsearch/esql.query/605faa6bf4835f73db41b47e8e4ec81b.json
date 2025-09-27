@@ -1,0 +1,60 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/220_explain.yml",
+  "name": "explainRow",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "EXPLAIN (row a = 1)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "3051991",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.2.0-f21c61c5fae5a42d099090840df7b9d6a996f34e \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "role",
+          "type": "keyword"
+        },
+        {
+          "name": "type",
+          "type": "keyword"
+        },
+        {
+          "name": "plan",
+          "type": "keyword"
+        }
+      ],
+      "documents_found": 0,
+      "is_partial": false,
+      "took": 3,
+      "values": [
+        [
+          "coordinator",
+          "parsedPlan",
+          "Row[[1[INTEGER] AS a#1596]]"
+        ],
+        [
+          "coordinator",
+          "optimizedLogicalPlan",
+          "Limit[1000[INTEGER],false]\n\\_LocalRelation[[a{r}#1596],org.elasticsearch.xpack.esql.plan.logical.local.CopyingLocalSupplier@400]"
+        ],
+        [
+          "coordinator",
+          "optimizedPhysicalPlan",
+          "LimitExec[1000[INTEGER],4]\n\\_LocalSourceExec[[a{r}#1596],org.elasticsearch.xpack.esql.plan.logical.local.CopyingLocalSupplier@400]"
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}
