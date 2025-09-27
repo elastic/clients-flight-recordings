@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `8.19.5-SNAPSHOT`  
-Elasticsearch build hash: `94e64b1d41754e2be0e8db99ff338f58261e59b7`
+Elasticsearch build hash: `16e179958908187f717f178daf9ab7f37044091d`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 566 | 519 (91.7%) | 47 (8.3%) | 95 (16.8%) | 24 (4.2%) |
+| 566 | 518 (91.5%) | 48 (8.5%) | 95 (16.8%) | 22 (3.9%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 479 | 436 (91%) | 43 (9%) | 88 | 10 |
+| `stable` | 479 | 435 (90.8%) | 44 (9.2%) | 88 | 8 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 63 | 62 (98.4%) | 1 (1.6%) | 7 | 14 |
 
@@ -462,7 +462,7 @@ Elasticsearch build hash: `94e64b1d41754e2be0e8db99ff338f58261e59b7`
 | `get_data_lifecycle_stats` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_data_stream` | :red_circle: | 115/115 | 17/115 | stable | undefined |  |
 | `get_data_stream_options` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
-| `get_data_stream_settings` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
+| `get_data_stream_settings` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `get_field_mapping` | :green_circle: | 18/18 | 18/18 | stable | undefined |  |
 | `get_index_template` | :green_circle: | 11/11 | 11/11 | stable | undefined |  |
 | `get_mapping` | :red_circle: | 200/200 | 183/200 | stable | undefined |  |
@@ -477,7 +477,7 @@ Elasticsearch build hash: `94e64b1d41754e2be0e8db99ff338f58261e59b7`
 | `put_alias` | :red_circle: | 61/61 | 20/61 | stable | undefined |  |
 | `put_data_lifecycle` | :red_circle: | 5/6 | 6/6 | stable | undefined |  |
 | `put_data_stream_options` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
-| `put_data_stream_settings` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
+| `put_data_stream_settings` | :red_circle: | 6/8 | 8/8 | stable | undefined |  |
 | `put_index_template` | :red_circle: | 110/142 | 142/142 | stable | undefined |  |
 | `put_mapping` | :red_circle: | 128/143 | 143/143 | stable | undefined |  |
 | `put_settings` | :red_circle: | 56/58 | 58/58 | stable | undefined |  |

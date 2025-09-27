@@ -1,0 +1,96 @@
+{
+  "api": "search",
+  "file": "/test/free/suggest/50_completion_with_multi_fields.yml",
+  "name": "Duplicate suggestions in different contexts in sub-fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "suggest": {
+          "result": {
+            "completion": {
+              "contexts": {
+                "color": "blue"
+              },
+              "field": "suggest_1.suggest_2"
+            },
+            "text": "foo"
+          }
+        }
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 0
+        }
+      },
+      "suggest": {
+        "completion#result": [
+          {
+            "length": 3,
+            "offset": 0,
+            "options": [
+              {
+                "_id": "1",
+                "_index": "completion_with_context",
+                "_score": 3,
+                "_source": {
+                  "suggest_1": [
+                    {
+                      "contexts": {
+                        "color": [
+                          "red"
+                        ]
+                      },
+                      "input": "foox",
+                      "weight": 2
+                    },
+                    {
+                      "contexts": {
+                        "color": [
+                          "blue",
+                          "green"
+                        ]
+                      },
+                      "input": "foox",
+                      "weight": 3
+                    }
+                  ]
+                },
+                "contexts": {
+                  "color": [
+                    "blue"
+                  ]
+                },
+                "text": "foox"
+              }
+            ],
+            "text": "foo"
+          }
+        ]
+      },
+      "timed_out": false,
+      "took": 10
+    },
+    "statusCode": 200
+  }
+}
