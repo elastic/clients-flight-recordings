@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.2.0-SNAPSHOT`  
-Elasticsearch build hash: `f21c61c5fae5a42d099090840df7b9d6a996f34e`
+Elasticsearch build hash: `e28606e5567b9a7e3dbcc0a8cc0dda6b4de83973`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ Elasticsearch build hash: `f21c61c5fae5a42d099090840df7b9d6a996f34e`
 | `indices.stats` | :red_circle: | 125/125 | 36/124 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1362/1402 | 1402/1402 | stable | undefined |  |
 | `cluster.stats` | :red_circle: | 27/27 | 0/27 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 43/43 | 2/39 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 45/45 | 1/41 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 130/154 | 154/154 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 85/85 | 66/85 | stable | undefined |  |
 | `ilm.explain_lifecycle` | :red_circle: | 5/5 | 4/5 | stable | undefined |  |
@@ -54,7 +54,7 @@ Elasticsearch build hash: `f21c61c5fae5a42d099090840df7b9d6a996f34e`
 | `indices.put_template` | :red_circle: | 45/46 | 46/46 | stable | undefined | deprecated |
 | `nodes.stats` | :red_circle: | 58/58 | 21/58 | stable | undefined |  |
 | `indices.get_data_stream` | :red_circle: | 124/124 | 77/124 | stable | undefined |  |
-| **Summary** | :red_circle: | 97.1% | 93.6% | | | |
+| **Summary** | :red_circle: | 97.1% | 93.5% | | | |
 
 </details>
 
@@ -370,7 +370,7 @@ Elasticsearch build hash: `f21c61c5fae5a42d099090840df7b9d6a996f34e`
 | `async_query_stop` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_query` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
-| `query` | :red_circle: | 346/348 | 0/0 | stable | undefined |  |
+| `query` | :red_circle: | 348/350 | 0/0 | stable | undefined |  |
 | **Summary** | :red_circle: | 99.4% | 0% | | | |
 
 [Back to top](#Summary)
@@ -1032,8 +1032,8 @@ Elasticsearch build hash: `f21c61c5fae5a42d099090840df7b9d6a996f34e`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 43/43 | 2/39 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 14% | | | |
+| `usage` | :red_circle: | 45/45 | 1/41 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 11.1% | | | |
 
 [Back to top](#Summary)
 
