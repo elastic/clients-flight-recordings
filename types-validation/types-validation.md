@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.2.0-SNAPSHOT`  
-Elasticsearch build hash: `e28606e5567b9a7e3dbcc0a8cc0dda6b4de83973`
+Elasticsearch build hash: `afd10f4b70c4616dcfbd54da9daac1bd36ce382d`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 573 | 527 (92%) | 46 (8%) | 97 (16.9%) | 21 (3.7%) |
+| 573 | 528 (92.1%) | 45 (7.9%) | 97 (16.9%) | 21 (3.7%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 484 | 442 (91.3%) | 42 (8.7%) | 89 | 6 |
+| `stable` | 484 | 443 (91.5%) | 41 (8.5%) | 89 | 6 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 65 | 64 (98.5%) | 1 (1.5%) | 8 | 15 |
 
@@ -34,7 +34,7 @@ Elasticsearch build hash: `e28606e5567b9a7e3dbcc0a8cc0dda6b4de83973`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 2568/2640 | 2640/2640 | stable | undefined |  |
+| `search` | :red_circle: | 2570/2640 | 2640/2640 | stable | undefined |  |
 | `security.authenticate` | :red_circle: | 30/30 | 25/30 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 228/228 | 215/228 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 37/37 | 34/37 | stable | undefined |  |
@@ -43,7 +43,7 @@ Elasticsearch build hash: `e28606e5567b9a7e3dbcc0a8cc0dda6b4de83973`
 | `indices.stats` | :red_circle: | 125/125 | 36/124 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1362/1402 | 1402/1402 | stable | undefined |  |
 | `cluster.stats` | :red_circle: | 27/27 | 0/27 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 45/45 | 1/41 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 45/45 | 2/41 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 130/154 | 154/154 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 85/85 | 66/85 | stable | undefined |  |
 | `ilm.explain_lifecycle` | :red_circle: | 5/5 | 4/5 | stable | undefined |  |
@@ -54,7 +54,7 @@ Elasticsearch build hash: `e28606e5567b9a7e3dbcc0a8cc0dda6b4de83973`
 | `indices.put_template` | :red_circle: | 45/46 | 46/46 | stable | undefined | deprecated |
 | `nodes.stats` | :red_circle: | 58/58 | 21/58 | stable | undefined |  |
 | `indices.get_data_stream` | :red_circle: | 124/124 | 77/124 | stable | undefined |  |
-| **Summary** | :red_circle: | 97.1% | 93.5% | | | |
+| **Summary** | :red_circle: | 97.1% | 93.6% | | | |
 
 </details>
 
@@ -190,7 +190,7 @@ Elasticsearch build hash: `e28606e5567b9a7e3dbcc0a8cc0dda6b4de83973`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 69/69 | 20/20 | stable | undefined |  |
-| `search` | :red_circle: | 2568/2640 | 2640/2640 | stable | undefined |  |
+| `search` | :red_circle: | 2570/2640 | 2640/2640 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -199,7 +199,7 @@ Elasticsearch build hash: `e28606e5567b9a7e3dbcc0a8cc0dda6b4de83973`
 | `update` | :green_circle: | 49/49 | 49/49 | stable | undefined |  |
 | `update_by_query` | :green_circle: | 11/11 | 10/10 | stable | undefined |  |
 | `update_by_query_rethrottle` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| **Summary** | :red_circle: | 98.7% | 100% | | | |
+| **Summary** | :red_circle: | 98.8% | 100% | | | |
 
 [Back to top](#Summary)
 
@@ -370,8 +370,8 @@ Elasticsearch build hash: `e28606e5567b9a7e3dbcc0a8cc0dda6b4de83973`
 | `async_query_stop` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_query` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
-| `query` | :red_circle: | 348/350 | 0/0 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.4% | 0% | | | |
+| `query` | :red_circle: | 349/350 | 0/0 | stable | undefined |  |
+| **Summary** | :red_circle: | 99.7% | 0% | | | |
 
 [Back to top](#Summary)
 
@@ -658,7 +658,7 @@ Elasticsearch build hash: `e28606e5567b9a7e3dbcc0a8cc0dda6b4de83973`
 | `put_datafeed` | :green_circle: | 71/71 | 71/71 | stable | undefined |  |
 | `put_filter` | :green_circle: | 27/27 | 27/27 | stable | undefined |  |
 | `put_job` | :green_circle: | 227/227 | 225/225 | stable | undefined |  |
-| `put_trained_model` | :red_circle: | 8/16 | 16/16 | stable | undefined |  |
+| `put_trained_model` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `put_trained_model_alias` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
 | `put_trained_model_definition_part` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `put_trained_model_vocabulary` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
@@ -680,7 +680,7 @@ Elasticsearch build hash: `e28606e5567b9a7e3dbcc0a8cc0dda6b4de83973`
 | `upgrade_job_snapshot` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `validate` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `validate_detector` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.3% | 100% | | | |
+| **Summary** | :red_circle: | 99.9% | 100% | | | |
 
 [Back to top](#Summary)
 
@@ -1032,8 +1032,8 @@ Elasticsearch build hash: `e28606e5567b9a7e3dbcc0a8cc0dda6b4de83973`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 45/45 | 1/41 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 11.1% | | | |
+| `usage` | :red_circle: | 45/45 | 2/41 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 13.3% | | | |
 
 [Back to top](#Summary)
 
