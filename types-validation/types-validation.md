@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.1.5-SNAPSHOT`  
-Elasticsearch build hash: `9bd83f73ccc01510a97bccf4a30ccca7d3d4abfa`
+Elasticsearch build hash: `e837ccd15a30219b67c32f0854f798f8e7d5846f`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 568 | 525 (92.4%) | 43 (7.6%) | 95 (16.7%) | 20 (3.5%) |
+| 568 | 526 (92.6%) | 42 (7.4%) | 95 (16.7%) | 20 (3.5%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 479 | 441 (92.1%) | 38 (7.9%) | 87 | 5 |
+| `stable` | 479 | 442 (92.3%) | 37 (7.7%) | 87 | 5 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 65 | 63 (96.9%) | 2 (3.1%) | 8 | 15 |
 
@@ -654,7 +654,7 @@ Elasticsearch build hash: `9bd83f73ccc01510a97bccf4a30ccca7d3d4abfa`
 | `put_datafeed` | :green_circle: | 71/71 | 71/71 | stable | undefined |  |
 | `put_filter` | :green_circle: | 27/27 | 27/27 | stable | undefined |  |
 | `put_job` | :green_circle: | 227/227 | 225/225 | stable | undefined |  |
-| `put_trained_model` | :red_circle: | 8/16 | 16/16 | stable | undefined |  |
+| `put_trained_model` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `put_trained_model_alias` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
 | `put_trained_model_definition_part` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `put_trained_model_vocabulary` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
@@ -676,7 +676,7 @@ Elasticsearch build hash: `9bd83f73ccc01510a97bccf4a30ccca7d3d4abfa`
 | `upgrade_job_snapshot` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `validate` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `validate_detector` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.3% | 100% | | | |
+| **Summary** | :red_circle: | 99.9% | 100% | | | |
 
 [Back to top](#Summary)
 
