@@ -1,20 +1,20 @@
 ## Summary
 
 Elasticsearch version: `9.2.0-SNAPSHOT`  
-Elasticsearch build hash: `afd10f4b70c4616dcfbd54da9daac1bd36ce382d`
+Elasticsearch build hash: `9316d644f0d45e9fcdcd827f2c63b26cbc211742`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 573 | 528 (92.1%) | 45 (7.9%) | 97 (16.9%) | 21 (3.7%) |
+| 574 | 531 (92.5%) | 43 (7.5%) | 99 (17.2%) | 21 (3.7%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 484 | 443 (91.5%) | 41 (8.5%) | 89 | 6 |
+| `stable` | 484 | 445 (91.9%) | 39 (8.1%) | 90 | 6 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 65 | 64 (98.5%) | 1 (1.5%) | 8 | 15 |
+| `experimental` | 66 | 65 (98.5%) | 1 (1.5%) | 9 | 15 |
 
 </details>
 
@@ -87,6 +87,7 @@ Elasticsearch build hash: `afd10f4b70c4616dcfbd54da9daac1bd36ce382d`
 - [`monitoring`](#monitoring)
 - [`nodes`](#nodes)
 - [`profiling`](#profiling)
+- [`project`](#project)
 - [`query_rules`](#query_rules)
 - [`rollup`](#rollup)
 - [`search_application`](#search_application)
@@ -110,7 +111,7 @@ Elasticsearch build hash: `afd10f4b70c4616dcfbd54da9daac1bd36ce382d`
 
 ## Report
 
-:construction: 29.5% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
+:construction: 24.4% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
 
 ### _internal
 
@@ -370,8 +371,8 @@ Elasticsearch build hash: `afd10f4b70c4616dcfbd54da9daac1bd36ce382d`
 | `async_query_stop` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_query` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
-| `query` | :red_circle: | 349/350 | 0/0 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.7% | 0% | | | |
+| `query` | :green_circle: | 349/349 | 0/0 | stable | undefined |  |
+| **Summary** | :green_circle: | 100% | 0% | | | |
 
 [Back to top](#Summary)
 
@@ -608,79 +609,79 @@ Elasticsearch build hash: `afd10f4b70c4616dcfbd54da9daac1bd36ce382d`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `clear_trained_model_deployment_cache` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| `close_job` | :green_circle: | 64/64 | 63/63 | stable | undefined |  |
-| `delete_calendar` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
-| `delete_calendar_event` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
-| `delete_calendar_job` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
+| `close_job` | :green_circle: | 26/26 | 26/26 | stable | undefined |  |
+| `delete_calendar` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
+| `delete_calendar_event` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
+| `delete_calendar_job` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `delete_data_frame_analytics` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| `delete_datafeed` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
-| `delete_expired_data` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
-| `delete_filter` | :green_circle: | 27/27 | 27/27 | stable | undefined |  |
-| `delete_forecast` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
-| `delete_job` | :green_circle: | 47/47 | 47/47 | stable | undefined |  |
-| `delete_model_snapshot` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
+| `delete_datafeed` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
+| `delete_expired_data` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
+| `delete_filter` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
+| `delete_forecast` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
+| `delete_job` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
+| `delete_model_snapshot` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `delete_trained_model` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `delete_trained_model_alias` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
-| `estimate_model_memory` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
+| `estimate_model_memory` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
 | `evaluate_data_frame` | :green_circle: | 22/22 | 22/22 | stable | undefined |  |
 | `explain_data_frame_analytics` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
-| `flush_job` | :green_circle: | 15/15 | 15/15 | stable | undefined | deprecated |
-| `forecast` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| `get_buckets` | :green_circle: | 14/14 | 14/14 | stable | undefined |  |
+| `flush_job` | :green_circle: | 6/6 | 6/6 | stable | undefined | deprecated |
+| `forecast` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| `get_buckets` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `get_calendar_events` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
-| `get_calendars` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
-| `get_categories` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
+| `get_calendars` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
+| `get_categories` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
 | `get_data_frame_analytics` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `get_data_frame_analytics_stats` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
-| `get_datafeed_stats` | :green_circle: | 27/27 | 27/27 | stable | undefined |  |
-| `get_datafeeds` | :green_circle: | 20/20 | 20/20 | stable | undefined |  |
-| `get_filters` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
-| `get_influencers` | :green_circle: | 11/11 | 11/11 | stable | undefined |  |
-| `get_job_stats` | :green_circle: | 32/32 | 32/32 | stable | undefined |  |
-| `get_jobs` | :green_circle: | 31/31 | 31/31 | stable | undefined |  |
+| `get_datafeed_stats` | :green_circle: | 25/25 | 25/25 | stable | undefined |  |
+| `get_datafeeds` | :green_circle: | 18/18 | 18/18 | stable | undefined |  |
+| `get_filters` | :green_circle: | 11/11 | 11/11 | stable | undefined |  |
+| `get_influencers` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
+| `get_job_stats` | :green_circle: | 30/30 | 30/30 | stable | undefined |  |
+| `get_jobs` | :green_circle: | 29/29 | 29/29 | stable | undefined |  |
 | `get_memory_stats` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
 | `get_model_snapshot_upgrade_stats` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
-| `get_model_snapshots` | :green_circle: | 18/18 | 18/18 | stable | undefined |  |
-| `get_overall_buckets` | :green_circle: | 16/16 | 15/15 | stable | undefined |  |
-| `get_records` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
+| `get_model_snapshots` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
+| `get_overall_buckets` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
+| `get_records` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
 | `get_trained_models` | :green_circle: | 36/36 | 36/36 | stable | undefined |  |
 | `get_trained_models_stats` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `infer_trained_model` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
-| `info` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
-| `open_job` | :green_circle: | 83/83 | 83/83 | stable | undefined |  |
+| `info` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
+| `open_job` | :green_circle: | 38/38 | 38/38 | stable | undefined |  |
 | `post_calendar_events` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
-| `post_data` | :red_circle: | 9/11 | 18/18 | stable | undefined | deprecated |
+| `post_data` | :green_circle: | 9/9 | 9/9 | stable | undefined | deprecated |
 | `preview_data_frame_analytics` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
-| `preview_datafeed` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
-| `put_calendar` | :green_circle: | 135/135 | 135/135 | stable | undefined |  |
-| `put_calendar_job` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
+| `preview_datafeed` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
+| `put_calendar` | :green_circle: | 22/22 | 22/22 | stable | undefined |  |
+| `put_calendar_job` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `put_data_frame_analytics` | :green_circle: | 33/33 | 33/33 | stable | undefined |  |
-| `put_datafeed` | :green_circle: | 71/71 | 71/71 | stable | undefined |  |
-| `put_filter` | :green_circle: | 27/27 | 27/27 | stable | undefined |  |
-| `put_job` | :green_circle: | 227/227 | 225/225 | stable | undefined |  |
+| `put_datafeed` | :green_circle: | 30/30 | 30/30 | stable | undefined |  |
+| `put_filter` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
+| `put_job` | :green_circle: | 65/65 | 65/65 | stable | undefined |  |
 | `put_trained_model` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `put_trained_model_alias` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
 | `put_trained_model_definition_part` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `put_trained_model_vocabulary` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `reset_job` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| `revert_model_snapshot` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| `set_upgrade_mode` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
+| `revert_model_snapshot` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
+| `set_upgrade_mode` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `start_data_frame_analytics` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| `start_datafeed` | :green_circle: | 24/24 | 24/24 | stable | undefined |  |
+| `start_datafeed` | :green_circle: | 19/19 | 19/19 | stable | undefined |  |
 | `start_trained_model_deployment` | :green_circle: | 14/14 | 14/14 | stable | undefined |  |
 | `stop_data_frame_analytics` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
-| `stop_datafeed` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
+| `stop_datafeed` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `stop_trained_model_deployment` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
 | `update_data_frame_analytics` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| `update_datafeed` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
-| `update_filter` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
-| `update_job` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
-| `update_model_snapshot` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
+| `update_datafeed` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
+| `update_filter` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
+| `update_job` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
+| `update_model_snapshot` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `update_trained_model_deployment` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `upgrade_job_snapshot` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
-| `validate` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
-| `validate_detector` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.9% | 100% | | | |
+| `validate` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
+| `validate_detector` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
+| **Summary** | :green_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
 
@@ -717,6 +718,15 @@ Elasticsearch build hash: `afd10f4b70c4616dcfbd54da9daac1bd36ce382d`
 | `status` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
 | `topn_functions` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
 | **Summary** | :orange_circle: | 0% | 0% | | | |
+
+[Back to top](#Summary)
+
+### project
+
+| API | Status | Request | Response | Stability | Visibility | Meta |
+| --- | --- | --- | --- | --- | --- | --- |
+| `tags` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| **Summary** | :white_circle: | 0% | 0% | | | |
 
 [Back to top](#Summary)
 
