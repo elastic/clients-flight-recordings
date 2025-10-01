@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `8.19.5-SNAPSHOT`  
-Elasticsearch build hash: `c934908c7af122c7bb78d3d68174bf5ab5acbeb1`
+Elasticsearch build hash: `eb04edce0699f0821ece040df1272bcd045ad679`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 566 | 520 (91.9%) | 46 (8.1%) | 96 (17%) | 22 (3.9%) |
+| 566 | 521 (92%) | 45 (8%) | 96 (17%) | 22 (3.9%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 479 | 437 (91.2%) | 42 (8.8%) | 89 | 8 |
+| `stable` | 479 | 438 (91.4%) | 41 (8.6%) | 89 | 8 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 63 | 62 (98.4%) | 1 (1.6%) | 7 | 14 |
 
@@ -42,7 +42,7 @@ Elasticsearch build hash: `c934908c7af122c7bb78d3d68174bf5ab5acbeb1`
 | `ml.get_calendar_events` | :red_circle: | 15/15 | 5/15 | stable | undefined |  |
 | `indices.put_mapping` | :red_circle: | 128/143 | 143/143 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 115/115 | 36/114 | stable | undefined |  |
-| `indices.create` | :red_circle: | 1234/1302 | 1302/1302 | stable | undefined |  |
+| `indices.create` | :red_circle: | 1236/1302 | 1302/1302 | stable | undefined |  |
 | `xpack.usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 110/142 | 142/142 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 84/84 | 65/84 | stable | undefined |  |
@@ -54,7 +54,7 @@ Elasticsearch build hash: `c934908c7af122c7bb78d3d68174bf5ab5acbeb1`
 | `nodes.stats` | :red_circle: | 51/51 | 18/51 | stable | undefined |  |
 | `put_script` | :red_circle: | 47/49 | 49/49 | stable | undefined |  |
 | `indices.get_data_stream` | :red_circle: | 115/115 | 17/115 | stable | undefined |  |
-| **Summary** | :red_circle: | 96.2% | 92.6% | | | |
+| **Summary** | :red_circle: | 96.3% | 92.6% | | | |
 
 </details>
 
@@ -110,7 +110,7 @@ Elasticsearch build hash: `c934908c7af122c7bb78d3d68174bf5ab5acbeb1`
 
 ## Report
 
-:construction: 25% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
+:construction: 22.7% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
 
 ### _internal
 
@@ -435,7 +435,7 @@ Elasticsearch build hash: `c934908c7af122c7bb78d3d68174bf5ab5acbeb1`
 | `clear_cache` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `clone` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `close` | :green_circle: | 51/51 | 51/51 | stable | undefined |  |
-| `create` | :red_circle: | 1234/1302 | 1302/1302 | stable | undefined |  |
+| `create` | :red_circle: | 1236/1302 | 1302/1302 | stable | undefined |  |
 | `create_data_stream` | :green_circle: | 116/116 | 116/116 | stable | undefined |  |
 | `create_from` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `data_streams_stats` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
@@ -915,8 +915,8 @@ Elasticsearch build hash: `c934908c7af122c7bb78d3d68174bf5ab5acbeb1`
 | `get_async` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_async_status` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `query` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
-| `translate` | :red_circle: | 1/1 | 0/1 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 83.3% | | | |
+| `translate` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
+| **Summary** | :green_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
 
