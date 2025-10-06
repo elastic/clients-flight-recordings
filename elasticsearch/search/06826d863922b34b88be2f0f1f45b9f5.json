@@ -1,0 +1,91 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/90_sparse_vector.yml",
+  "name": "Indexing and searching multi-value sparse vectors in >=8.15",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "bool": {
+            "should": [
+              {
+                "term": {
+                  "ml.tokens": {
+                    "boost": 1.9790847,
+                    "value": "walk"
+                  }
+                }
+              },
+              {
+                "term": {
+                  "ml.tokens": {
+                    "boost": 1.7092685,
+                    "value": "walking"
+                  }
+                }
+              },
+              {
+                "term": {
+                  "ml.tokens": {
+                    "boost": 0.84076905,
+                    "value": "exercise"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "2",
+            "_index": "test",
+            "_score": 9.228432,
+            "_source": {
+              "ml": {
+              },
+              "text": "walking is a healthy exercise"
+            }
+          },
+          {
+            "_id": "1",
+            "_index": "test",
+            "_score": 0.97870773,
+            "_source": {
+              "ml": {
+              },
+              "text": "running is good for you"
+            }
+          }
+        ],
+        "max_score": 9.228432,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 5
+    },
+    "statusCode": 200
+  }
+}
