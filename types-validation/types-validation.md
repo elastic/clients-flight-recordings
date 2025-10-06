@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `c8196d42ce137833e801b0e4726488f8a31ef2fb`
+Elasticsearch build hash: `f3b28fcb2b9d24870da24b8598a8cafa1ce4da0c`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -41,7 +41,7 @@ Elasticsearch build hash: `c8196d42ce137833e801b0e4726488f8a31ef2fb`
 | `indices.put_mapping` | :red_circle: | 139/145 | 148/148 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 125/125 | 36/124 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1347/1377 | 1377/1377 | stable | undefined |  |
-| `cluster.stats` | :red_circle: | 27/27 | 0/27 | stable | undefined |  |
+| `cluster.stats` | :red_circle: | 27/27 | 26/27 | stable | undefined |  |
 | `xpack.usage` | :red_circle: | 47/47 | 2/43 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 130/154 | 154/154 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 85/85 | 66/85 | stable | undefined |  |
@@ -54,7 +54,7 @@ Elasticsearch build hash: `c8196d42ce137833e801b0e4726488f8a31ef2fb`
 | `indices.get_data_stream` | :red_circle: | 124/124 | 77/124 | stable | undefined |  |
 | `indices.rollover` | :red_circle: | 59/59 | 2/59 | stable | undefined |  |
 | `snapshot.get_repository` | :red_circle: | 19/19 | 7/19 | stable | undefined |  |
-| **Summary** | :red_circle: | 97.6% | 92.4% | | | |
+| **Summary** | :red_circle: | 97.6% | 92.8% | | | |
 
 </details>
 
@@ -278,8 +278,8 @@ Elasticsearch build hash: `c8196d42ce137833e801b0e4726488f8a31ef2fb`
 | `remote_info` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `reroute` | :green_circle: | 8/8 | 7/7 | stable | undefined |  |
 | `state` | :green_circle: | 84/84 | 83/83 | stable | undefined |  |
-| `stats` | :red_circle: | 27/27 | 0/27 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.2% | 94.3% | | | |
+| `stats` | :red_circle: | 27/27 | 26/27 | stable | undefined |  |
+| **Summary** | :red_circle: | 99.2% | 99.8% | | | |
 
 [Back to top](#Summary)
 
