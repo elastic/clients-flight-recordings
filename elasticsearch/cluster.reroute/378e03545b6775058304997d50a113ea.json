@@ -1,0 +1,52 @@
+{
+  "api": "cluster.reroute",
+  "file": "/test/free/cluster.reroute/11_explain.yml",
+  "name": "Explain API for non-existent node & shard",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "commands": [
+          {
+            "cancel": {
+              "index": "test_index",
+              "node": "vJznccyHT1GD529HqEpmYw",
+              "shard": 9
+            }
+          }
+        ]
+      },
+      "dry_run": true,
+      "explain": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "explanations": [
+        {
+          "command": "cancel",
+          "decisions": [
+            {
+              "decider": "cancel_allocation_command",
+              "decision": "NO",
+              "explanation": "can't cancel [test_index][9], failed to find it on node {instance}{vJznccyHT1GD529HqEpmYw}{ruQkDmr8S0u9LQZokAeXpA}{instance}{172.18.0.2}{172.18.0.2:9300}{cdfhilmrstw}{9.1.5}{8000099-9033000}{ml.config_version=12.0.0, ml.max_jvm_size=1610612736, ml.allocated_processors=2, xpack.installed=true, transform.config_version=10.0.0, testattr=test, ml.allocated_processors_double=2.0, ml.machine_memory=16762265600}"
+            }
+          ],
+          "parameters": {
+            "allow_primary": false,
+            "index": "test_index",
+            "node": "vJznccyHT1GD529HqEpmYw",
+            "shard": 9
+          }
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}
