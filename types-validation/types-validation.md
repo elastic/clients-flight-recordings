@@ -34,7 +34,7 @@ Elasticsearch build hash: `c9b07b022dd6794eacb1d3838879c2495f80b22b`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 2341/2380 | 2380/2380 | stable | undefined |  |
+| `search` | :red_circle: | 2347/2380 | 2380/2380 | stable | undefined |  |
 | `security.authenticate` | :red_circle: | 30/30 | 25/30 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 203/203 | 193/203 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 37/37 | 34/37 | stable | undefined |  |
@@ -54,7 +54,7 @@ Elasticsearch build hash: `c9b07b022dd6794eacb1d3838879c2495f80b22b`
 | `indices.get_data_stream` | :red_circle: | 115/115 | 71/115 | stable | undefined |  |
 | `indices.rollover` | :red_circle: | 52/52 | 2/52 | stable | undefined |  |
 | `snapshot.get_repository` | :red_circle: | 19/19 | 7/19 | stable | undefined |  |
-| **Summary** | :red_circle: | 97.6% | 92.6% | | | |
+| **Summary** | :red_circle: | 97.7% | 92.6% | | | |
 
 </details>
 
@@ -190,7 +190,7 @@ Elasticsearch build hash: `c9b07b022dd6794eacb1d3838879c2495f80b22b`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 69/69 | 20/20 | stable | undefined |  |
-| `search` | :red_circle: | 2341/2380 | 2380/2380 | stable | undefined |  |
+| `search` | :red_circle: | 2347/2380 | 2380/2380 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -199,7 +199,7 @@ Elasticsearch build hash: `c9b07b022dd6794eacb1d3838879c2495f80b22b`
 | `update` | :green_circle: | 46/46 | 46/46 | stable | undefined |  |
 | `update_by_query` | :green_circle: | 11/11 | 10/10 | stable | undefined |  |
 | `update_by_query_rethrottle` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.3% | 100% | | | |
+| **Summary** | :red_circle: | 99.4% | 100% | | | |
 
 [Back to top](#Summary)
 
