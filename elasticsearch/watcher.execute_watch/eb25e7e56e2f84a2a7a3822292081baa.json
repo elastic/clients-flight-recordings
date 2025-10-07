@@ -1,0 +1,197 @@
+{
+  "api": "watcher.execute_watch",
+  "file": "/test/platinum/painless/30_inline_watch.yml",
+  "name": "Test execute watch api with an inline watch",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "action_modes": {
+          "_all": "force_simulate"
+        },
+        "alternative_input": {
+          "foo": "bar"
+        },
+        "ignore_condition": true,
+        "trigger_data": {
+          "scheduled_time": "2015-05-05T20:58:02.443Z",
+          "triggered_time": "2015-05-05T20:58:02.443Z"
+        },
+        "watch": {
+          "actions": {
+            "email_admin": {
+              "email": {
+                "subject": "404 recently encountered",
+                "to": "someone@domain.host.com"
+              }
+            }
+          },
+          "condition": {
+            "script": {
+              "lang": "painless",
+              "source": "ctx.payload.hits.total > 1"
+            }
+          },
+          "input": {
+            "search": {
+              "request": {
+                "body": {
+                  "query": {
+                    "bool": {
+                      "filter": {
+                        "range": {
+                          "@timestamp": {
+                            "from": "{{ctx.trigger.scheduled_time}}||-5m",
+                            "to": "{{ctx.trigger.triggered_time}}"
+                          }
+                        }
+                      },
+                      "must": {
+                        "match": {
+                          "response": 404
+                        }
+                      }
+                    }
+                  }
+                },
+                "indices": [
+                  "logstash*"
+                ],
+                "rest_total_hits_as_int": true
+              }
+            }
+          },
+          "trigger": {
+            "schedule": {
+              "cron": "0 0 0 1 * ? 2099"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1751",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "_inlined__59781045-6539-4dc5-a1c1-e7cf286f4e73-2025-10-07T10:40:14.296409548Z",
+      "watch_record": {
+        "@timestamp": "2015-05-05T20:58:02.443Z",
+        "condition": {
+          "script": {
+            "lang": "painless",
+            "source": "ctx.payload.hits.total > 1"
+          }
+        },
+        "input": {
+          "search": {
+            "request": {
+              "body": {
+                "query": {
+                  "bool": {
+                    "filter": {
+                      "range": {
+                        "@timestamp": {
+                          "from": "{{ctx.trigger.scheduled_time}}||-5m",
+                          "to": "{{ctx.trigger.triggered_time}}"
+                        }
+                      }
+                    },
+                    "must": {
+                      "match": {
+                        "response": 404
+                      }
+                    }
+                  }
+                }
+              },
+              "indices": [
+                "logstash*"
+              ],
+              "rest_total_hits_as_int": true,
+              "search_type": "query_then_fetch"
+            }
+          }
+        },
+        "messages": [
+        ],
+        "node": "pynuhNXfRea2OORn_bwu8w",
+        "result": {
+          "actions": [
+            {
+              "email": {
+                "message": {
+                  "id": "email_admin__inlined__59781045-6539-4dc5-a1c1-e7cf286f4e73-2025-10-07T10:40:14.296409548Z_3",
+                  "sent_date": "2025-10-07T10:40:14.296658568Z",
+                  "subject": "404 recently encountered",
+                  "to": [
+                    "someone@domain.host.com"
+                  ]
+                }
+              },
+              "id": "email_admin",
+              "status": "simulated",
+              "type": "email"
+            }
+          ],
+          "condition": {
+            "met": true,
+            "status": "success",
+            "type": "always"
+          },
+          "execution_duration": 0,
+          "execution_time": "2025-10-07T10:40:14.296Z",
+          "input": {
+            "payload": {
+              "foo": "bar"
+            },
+            "status": "success",
+            "type": "simple"
+          }
+        },
+        "state": "executed",
+        "status": {
+          "actions": {
+            "email_admin": {
+              "ack": {
+                "state": "ackable",
+                "timestamp": "2025-10-07T10:40:14.296Z"
+              },
+              "last_execution": {
+                "successful": true,
+                "timestamp": "2025-10-07T10:40:14.296Z"
+              },
+              "last_successful_execution": {
+                "successful": true,
+                "timestamp": "2025-10-07T10:40:14.296Z"
+              }
+            }
+          },
+          "execution_state": "executed",
+          "last_checked": "2025-10-07T10:40:14.296Z",
+          "last_met_condition": "2025-10-07T10:40:14.296Z",
+          "state": {
+            "active": true,
+            "timestamp": "2025-10-07T10:40:14.296Z"
+          },
+          "version": -1
+        },
+        "trigger_event": {
+          "manual": {
+            "schedule": {
+              "scheduled_time": "2015-05-05T20:58:02.443Z"
+            }
+          },
+          "triggered_time": "2015-05-05T20:58:02.443Z",
+          "type": "manual"
+        },
+        "user": "elastic",
+        "watch_id": "_inlined_"
+      }
+    },
+    "statusCode": 200
+  }
+}
