@@ -1,0 +1,60 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/220_explain.yml",
+  "name": "explainQuery",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "EXPLAIN (from test | where color == \"red\" | eval b = 20)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "4579597",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.3.0-50a2c7214c363447808992599f68386279d36740 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "role",
+          "type": "keyword"
+        },
+        {
+          "name": "type",
+          "type": "keyword"
+        },
+        {
+          "name": "plan",
+          "type": "keyword"
+        }
+      ],
+      "documents_found": 0,
+      "is_partial": false,
+      "took": 4,
+      "values": [
+        [
+          "coordinator",
+          "parsedPlan",
+          "Eval[[20[INTEGER] AS b#1601]]\n\\_Filter[?color == red[KEYWORD]]\n  \\_UnresolvedRelation[test]"
+        ],
+        [
+          "coordinator",
+          "optimizedLogicalPlan",
+          "Eval[[20[INTEGER] AS b#1601]]\n\\_Limit[1000[INTEGER],false]\n  \\_Filter[color{f}#1605 == red[KEYWORD]]\n    \\_EsRelation[test][color{f}#1605, color.keyword{f}#1606, description{f..]"
+        ],
+        [
+          "coordinator",
+          "optimizedPhysicalPlan",
+          "EvalExec[[20[INTEGER] AS b#1601]]\n\\_LimitExec[1000[INTEGER],2148]\n  \\_ExchangeExec[[color{f}#1605, color.keyword{f}#1606, description{f}#1607, description.keyword{f}#1608],false]\n    \\_FragmentExec[filter=null, estimatedRowSize=4, reducer=[], fragment=[<>\nProject[[color{f}#1605, color.keyword{f}#1606, description{f}#1607, description.keyword{f}#1608]]\n\\_Limit[1000[INTEGER],false]\n  \\_Filter[color{f}#1605 == red[KEYWORD]]\n    \\_EsRelation[test][color{f}#1605, color.keyword{f}#1606, description{f..]<>]]"
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}
