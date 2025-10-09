@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `0b3d23a51b69fe5b2fc35b1eff90bb7f5270b8b2`
+Elasticsearch build hash: `7663396141c50893e4097cd6db6a73750fd585c7`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -39,10 +39,10 @@ Elasticsearch build hash: `0b3d23a51b69fe5b2fc35b1eff90bb7f5270b8b2`
 | `watcher.get_watch` | :red_circle: | 37/37 | 34/37 | stable | undefined |  |
 | `watcher.put_watch` | :red_circle: | 46/53 | 53/53 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 125/125 | 36/124 | stable | undefined |  |
-| `indices.create` | :red_circle: | 1356/1380 | 1380/1380 | stable | undefined |  |
+| `indices.create` | :red_circle: | 1357/1381 | 1381/1381 | stable | undefined |  |
 | `xpack.usage` | :red_circle: | 47/47 | 2/43 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 130/154 | 154/154 | stable | undefined |  |
-| `indices.get_settings` | :red_circle: | 85/85 | 66/85 | stable | undefined |  |
+| `indices.get_settings` | :red_circle: | 86/86 | 66/86 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 33/33 | 7/33 | stable | undefined |  |
 | `indices.put_alias` | :red_circle: | 64/64 | 21/64 | stable | undefined |  |
 | `indices.put_settings` | :red_circle: | 56/58 | 58/58 | stable | undefined |  |
@@ -437,7 +437,7 @@ Elasticsearch build hash: `0b3d23a51b69fe5b2fc35b1eff90bb7f5270b8b2`
 | `clear_cache` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `clone` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `close` | :green_circle: | 50/50 | 50/50 | stable | undefined |  |
-| `create` | :red_circle: | 1356/1380 | 1380/1380 | stable | undefined |  |
+| `create` | :red_circle: | 1357/1381 | 1381/1381 | stable | undefined |  |
 | `create_data_stream` | :green_circle: | 121/121 | 121/121 | stable | undefined |  |
 | `create_from` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `data_streams_stats` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
@@ -472,7 +472,7 @@ Elasticsearch build hash: `0b3d23a51b69fe5b2fc35b1eff90bb7f5270b8b2`
 | `get_migrate_reindex_status` | :green_circle: | 1/1 | 1/1 | experimental | undefined |  |
 | `get_sample` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `get_sample_stats` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
-| `get_settings` | :red_circle: | 85/85 | 66/85 | stable | undefined |  |
+| `get_settings` | :red_circle: | 86/86 | 66/86 | stable | undefined |  |
 | `get_template` | :green_circle: | 32/32 | 32/32 | stable | undefined | deprecated |
 | `migrate_reindex` | :green_circle: | 2/2 | 2/2 | experimental | undefined |  |
 | `migrate_to_data_stream` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
