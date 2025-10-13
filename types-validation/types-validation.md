@@ -1,20 +1,20 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `7ba21bb694e7e5f535e1c9830650f80447cd12a9`
+Elasticsearch build hash: `932999bf1b1e8bbfbf69b32d478da14fb891c1e1`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 577 | 540 (93.6%) | 37 (6.4%) | 100 (17.3%) | 22 (3.8%) |
+| 578 | 542 (93.8%) | 36 (6.2%) | 100 (17.3%) | 23 (4%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 485 | 452 (93.2%) | 33 (6.8%) | 91 | 5 |
+| `stable` | 485 | 453 (93.4%) | 32 (6.6%) | 91 | 5 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 68 | 67 (98.5%) | 1 (1.5%) | 9 | 17 |
+| `experimental` | 69 | 68 (98.6%) | 1 (1.4%) | 9 | 18 |
 
 </details>
 
@@ -221,7 +221,7 @@ Elasticsearch build hash: `7ba21bb694e7e5f535e1c9830650f80447cd12a9`
 | `ml_jobs` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `ml_trained_models` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `nodeattrs` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
-| `nodes` | :red_circle: | 12/12 | 11/12 | stable | undefined |  |
+| `nodes` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `pending_tasks` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `plugins` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `recovery` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
@@ -233,7 +233,7 @@ Elasticsearch build hash: `7ba21bb694e7e5f535e1c9830650f80447cd12a9`
 | `templates` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `thread_pool` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `transforms` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.5% | 99.5% | | | |
+| **Summary** | :red_circle: | 99.5% | 100% | | | |
 
 [Back to top](#Summary)
 
@@ -486,6 +486,7 @@ Elasticsearch build hash: `7ba21bb694e7e5f535e1c9830650f80447cd12a9`
 | `put_data_stream_settings` | :red_circle: | 8/10 | 0/10 | stable | undefined |  |
 | `put_index_template` | :red_circle: | 130/154 | 154/154 | stable | undefined |  |
 | `put_mapping` | :green_circle: | 147/147 | 150/150 | stable | undefined |  |
+| `put_sample_configuration` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `put_settings` | :red_circle: | 56/58 | 58/58 | stable | undefined |  |
 | `put_template` | :red_circle: | 45/46 | 46/46 | stable | undefined | deprecated |
 | `recovery` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
