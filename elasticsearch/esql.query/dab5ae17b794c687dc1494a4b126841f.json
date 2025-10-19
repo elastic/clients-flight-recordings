@@ -1,0 +1,56 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/46_downsample.yml",
+  "name": "MV_EXPAND on non-MV aggregate metric double",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM test-downsample | MV_EXPAND k8s.pod.network.rx | SORT @timestamp, k8s.pod.uid | KEEP k8s.pod.network.rx, @timestamp | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "5197578",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "k8s.pod.network.rx",
+          "type": "aggregate_metric_double"
+        },
+        {
+          "name": "@timestamp",
+          "type": "date"
+        }
+      ],
+      "documents_found": 4,
+      "is_partial": false,
+      "took": 5,
+      "values": [
+        [
+          "{\"min\":801479.0,\"max\":802133.0,\"sum\":1603612.0,\"value_count\":2}",
+          "2021-04-28T18:00:00.000Z"
+        ],
+        [
+          "{\"min\":530575.0,\"max\":530600.0,\"sum\":1061175.0,\"value_count\":2}",
+          "2021-04-28T18:00:00.000Z"
+        ],
+        [
+          "{\"min\":530604.0,\"max\":530605.0,\"sum\":1061209.0,\"value_count\":2}",
+          "2021-04-28T19:00:00.000Z"
+        ],
+        [
+          "{\"min\":802337.0,\"max\":803685.0,\"sum\":1606022.0,\"value_count\":2}",
+          "2021-04-28T20:00:00.000Z"
+        ]
+      ],
+      "values_loaded": 24
+    },
+    "statusCode": 200
+  }
+}
