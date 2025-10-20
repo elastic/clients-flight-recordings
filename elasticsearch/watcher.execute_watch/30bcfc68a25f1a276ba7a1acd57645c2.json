@@ -1,0 +1,256 @@
+{
+  "api": "watcher.execute_watch",
+  "file": "/test/platinum/mustache/25_array_compare.yml",
+  "name": "Basic array_compare watch",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "watch": {
+          "actions": {
+            "log": {
+              "logging": {
+                "text": "executed at {{ctx.execution_time}}"
+              }
+            }
+          },
+          "condition": {
+            "array_compare": {
+              "ctx.payload.aggregations.top_levels.buckets": {
+                "gte": {
+                  "quantifier": "some",
+                  "value": 3
+                },
+                "path": "doc_count"
+              }
+            }
+          },
+          "input": {
+            "search": {
+              "request": {
+                "body": {
+                  "aggs": {
+                    "top_levels": {
+                      "terms": {
+                        "field": "level",
+                        "size": 1
+                      }
+                    }
+                  }
+                },
+                "indices": [
+                  "test_1"
+                ],
+                "rest_total_hits_as_int": true
+              }
+            }
+          },
+          "trigger": {
+            "schedule": {
+              "interval": "5m"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "2312",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "_inlined__c54e3ae2-4625-420d-9973-9ad2a4c8ba4f-2025-10-20T11:12:18.739850945Z",
+      "watch_record": {
+        "@timestamp": "2025-10-20T11:12:18.739835775Z",
+        "condition": {
+          "array_compare": {
+            "ctx.payload.aggregations.top_levels.buckets": {
+              "gte": {
+                "quantifier": "some",
+                "value": 3
+              },
+              "path": "doc_count"
+            }
+          }
+        },
+        "input": {
+          "search": {
+            "request": {
+              "body": {
+                "aggs": {
+                  "top_levels": {
+                    "terms": {
+                      "field": "level",
+                      "size": 1
+                    }
+                  }
+                }
+              },
+              "indices": [
+                "test_1"
+              ],
+              "rest_total_hits_as_int": true,
+              "search_type": "query_then_fetch"
+            }
+          }
+        },
+        "messages": [
+        ],
+        "node": "Jh-zv1IyQkW3kd5eyJ_3CQ",
+        "result": {
+          "actions": [
+            {
+              "id": "log",
+              "logging": {
+                "logged_text": "executed at 2025-10-20T11:12:18.739850945Z"
+              },
+              "status": "success",
+              "type": "logging"
+            }
+          ],
+          "condition": {
+            "array_compare": {
+              "resolved_values": {
+                "ctx.payload.aggregations.top_levels.buckets": [
+                  {
+                    "doc_count": 3,
+                    "key": 0
+                  }
+                ]
+              }
+            },
+            "met": true,
+            "status": "success",
+            "type": "array_compare"
+          },
+          "execution_duration": 13,
+          "execution_time": "2025-10-20T11:12:18.739Z",
+          "input": {
+            "payload": {
+              "_shards": {
+                "failed": 0,
+                "skipped": 0,
+                "successful": 1,
+                "total": 1
+              },
+              "aggregations": {
+                "top_levels": {
+                  "buckets": [
+                    {
+                      "doc_count": 3,
+                      "key": 0
+                    }
+                  ],
+                  "doc_count_error_upper_bound": 0,
+                  "sum_other_doc_count": 1
+                }
+              },
+              "hits": {
+                "hits": [
+                  {
+                    "_id": "1",
+                    "_index": "test_1",
+                    "_score": 1,
+                    "_source": {
+                      "level": 0
+                    }
+                  },
+                  {
+                    "_id": "2",
+                    "_index": "test_1",
+                    "_score": 1,
+                    "_source": {
+                      "level": 0
+                    }
+                  },
+                  {
+                    "_id": "3",
+                    "_index": "test_1",
+                    "_score": 1,
+                    "_source": {
+                      "level": 0
+                    }
+                  },
+                  {
+                    "_id": "4",
+                    "_index": "test_1",
+                    "_score": 1,
+                    "_source": {
+                      "level": 1
+                    }
+                  }
+                ],
+                "max_score": 1,
+                "total": 4
+              },
+              "timed_out": false,
+              "took": 1
+            },
+            "search": {
+              "request": {
+                "body": {
+                  "aggs": {
+                    "top_levels": {
+                      "terms": {
+                        "field": "level",
+                        "size": 1
+                      }
+                    }
+                  }
+                },
+                "indices": [
+                  "test_1"
+                ],
+                "rest_total_hits_as_int": true,
+                "search_type": "query_then_fetch"
+              }
+            },
+            "status": "success",
+            "type": "search"
+          }
+        },
+        "state": "executed",
+        "status": {
+          "actions": {
+            "log": {
+              "ack": {
+                "state": "ackable",
+                "timestamp": "2025-10-20T11:12:18.739Z"
+              },
+              "last_execution": {
+                "successful": true,
+                "timestamp": "2025-10-20T11:12:18.739Z"
+              },
+              "last_successful_execution": {
+                "successful": true,
+                "timestamp": "2025-10-20T11:12:18.739Z"
+              }
+            }
+          },
+          "execution_state": "executed",
+          "last_checked": "2025-10-20T11:12:18.739Z",
+          "last_met_condition": "2025-10-20T11:12:18.739Z",
+          "state": {
+            "active": true,
+            "timestamp": "2025-10-20T11:12:18.733Z"
+          },
+          "version": -1
+        },
+        "trigger_event": {
+          "manual": {
+            "schedule": {
+              "scheduled_time": "2025-10-20T11:12:18.739Z"
+            }
+          },
+          "triggered_time": "2025-10-20T11:12:18.739Z",
+          "type": "manual"
+        },
+        "user": "elastic",
+        "watch_id": "_inlined_"
+      }
+    },
+    "statusCode": 200
+  }
+}
