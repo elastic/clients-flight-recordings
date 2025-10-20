@@ -1,0 +1,125 @@
+{
+  "api": "search",
+  "file": "/test/platinum/spatial/20_cartesian_centroid.yml",
+  "name": "Test cartesian_centroid aggregation on cartesian shape shapes with grouping and filter",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "names": {
+            "aggs": {
+              "centroid": {
+                "cartesian_centroid": {
+                  "field": "shape"
+                }
+              }
+            },
+            "terms": {
+              "field": "name",
+              "order": {
+                "_key": "asc"
+              }
+            }
+          }
+        },
+        "query": {
+          "term": {
+            "category": "collections"
+          }
+        }
+      },
+      "index": "shapes",
+      "rest_total_hits_as_int": true,
+      "size": 0,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "sterms#names": {
+          "buckets": [
+            {
+              "cartesian_centroid#centroid": {
+                "count": 1,
+                "location": {
+                  "x": 488.3940124511719,
+                  "y": 5237.52001953125
+                }
+              },
+              "doc_count": 1,
+              "key": "Collection of one point"
+            },
+            {
+              "cartesian_centroid#centroid": {
+                "count": 1,
+                "location": {
+                  "x": 489.868896484375,
+                  "y": 5237.08837890625
+                }
+              },
+              "doc_count": 1,
+              "key": "Collection of point and line"
+            },
+            {
+              "cartesian_centroid#centroid": {
+                "count": 1,
+                "location": {
+                  "x": 488.3949890136719,
+                  "y": 5237.52001953125
+                }
+              },
+              "doc_count": 1,
+              "key": "Collection of point, line and polygon"
+            },
+            {
+              "cartesian_centroid#centroid": {
+                "count": 1,
+                "location": {
+                  "x": 490.0045471191406,
+                  "y": 5237.172851562501
+                }
+              },
+              "doc_count": 1,
+              "key": "Collection of point, line, polygon and multipolygon"
+            },
+            {
+              "cartesian_centroid#centroid": {
+                "count": 1,
+                "location": {
+                  "x": 488.6563415527344,
+                  "y": 5237.41943359375
+                }
+              },
+              "doc_count": 1,
+              "key": "Collection of two points"
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": 5
+      },
+      "timed_out": false,
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}
