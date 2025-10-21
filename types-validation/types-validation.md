@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `cf60614121dffdea6195eb025533ff72724d5327`
+Elasticsearch build hash: `c3cc3d1d1464051f301c8eaa192360b5e032cfd4`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -34,8 +34,8 @@ Elasticsearch build hash: `cf60614121dffdea6195eb025533ff72724d5327`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 2585/2612 | 2612/2612 | stable | undefined |  |
-| `indices.get_mapping` | :red_circle: | 202/202 | 191/202 | stable | undefined |  |
+| `search` | :red_circle: | 2588/2615 | 2615/2615 | stable | undefined |  |
+| `indices.get_mapping` | :red_circle: | 213/213 | 202/213 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 37/37 | 34/37 | stable | undefined |  |
 | `watcher.put_watch` | :red_circle: | 46/53 | 53/53 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 125/125 | 36/124 | stable | undefined |  |
@@ -174,7 +174,7 @@ Elasticsearch build hash: `cf60614121dffdea6195eb025533ff72724d5327`
 | `get_script_languages` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_source` | :green_circle: | 18/18 | 18/18 | stable | undefined |  |
 | `health_report` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
-| `index` | :green_circle: | 1443/1443 | 1445/1445 | stable | undefined |  |
+| `index` | :green_circle: | 1451/1451 | 1453/1453 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `knn_search` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `mget` | :green_circle: | 51/51 | 50/50 | stable | undefined |  |
@@ -190,7 +190,7 @@ Elasticsearch build hash: `cf60614121dffdea6195eb025533ff72724d5327`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 69/69 | 20/20 | stable | undefined |  |
-| `search` | :red_circle: | 2585/2612 | 2612/2612 | stable | undefined |  |
+| `search` | :red_circle: | 2588/2615 | 2615/2615 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -468,7 +468,7 @@ Elasticsearch build hash: `cf60614121dffdea6195eb025533ff72724d5327`
 | `get_data_stream_settings` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
 | `get_field_mapping` | :green_circle: | 24/24 | 24/24 | stable | undefined |  |
 | `get_index_template` | :green_circle: | 23/23 | 23/23 | stable | undefined |  |
-| `get_mapping` | :red_circle: | 202/202 | 191/202 | stable | undefined |  |
+| `get_mapping` | :red_circle: | 213/213 | 202/213 | stable | undefined |  |
 | `get_migrate_reindex_status` | :green_circle: | 1/1 | 1/1 | experimental | undefined |  |
 | `get_sample` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `get_sample_stats` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
@@ -485,7 +485,7 @@ Elasticsearch build hash: `cf60614121dffdea6195eb025533ff72724d5327`
 | `put_data_stream_options` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `put_data_stream_settings` | :red_circle: | 8/10 | 0/10 | stable | undefined |  |
 | `put_index_template` | :red_circle: | 130/154 | 154/154 | stable | undefined |  |
-| `put_mapping` | :green_circle: | 147/147 | 150/150 | stable | undefined |  |
+| `put_mapping` | :green_circle: | 151/151 | 154/154 | stable | undefined |  |
 | `put_sample_configuration` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `put_settings` | :red_circle: | 56/58 | 58/58 | stable | undefined |  |
 | `put_template` | :red_circle: | 45/46 | 46/46 | stable | undefined | deprecated |
@@ -518,7 +518,7 @@ Elasticsearch build hash: `cf60614121dffdea6195eb025533ff72724d5327`
 | `delete` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `get` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `inference` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `put` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
+| `put` | :green_circle: | 11/11 | 11/11 | stable | undefined |  |
 | `put_ai21` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_alibabacloud` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_amazonbedrock` | :white_circle: | Missing test | Missing test | stable | undefined |  |
