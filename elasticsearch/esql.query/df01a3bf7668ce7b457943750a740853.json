@@ -1,0 +1,40 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/40_tsdb.yml",
+  "name": "avg of aggregate_metric_double",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM test2\n| EVAL a = TO_AGGREGATE_METRIC_DOUBLE(1)  // Temporary workaround to enable aggregate_metric_double\n| STATS avg = avg(agg_metric)\n| KEEP avg\n"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "6211357",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.3.0-c3cc3d1d1464051f301c8eaa192360b5e032cfd4 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "avg",
+          "type": "double"
+        }
+      ],
+      "documents_found": 3,
+      "is_partial": false,
+      "took": 6,
+      "values": [
+        [
+          4.904761904761905
+        ]
+      ],
+      "values_loaded": 12
+    },
+    "statusCode": 200
+  }
+}
