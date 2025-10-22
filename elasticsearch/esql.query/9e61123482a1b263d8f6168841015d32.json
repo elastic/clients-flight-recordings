@@ -1,0 +1,43 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/130_spatial.yml",
+  "name": "values supported for geo_point",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM geo_points | STATS locations = VALUES(location) | EVAL locations = MV_SORT(TO_STRING(locations))"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "16094893",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-8.19.6-058d03818e3eebae6391336802da5d77dad02878 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "locations",
+          "type": "keyword"
+        }
+      ],
+      "documents_found": 2,
+      "is_partial": false,
+      "took": 16,
+      "values": [
+        [
+          [
+            "POINT (-1.0 1.0)",
+            "POINT (1.0 -1.0)"
+          ]
+        ]
+      ],
+      "values_loaded": 2
+    },
+    "statusCode": 200
+  }
+}
