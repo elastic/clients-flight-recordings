@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `88d4704a9a48e0c58dcb16d7f6efac2612b12901`
+Elasticsearch build hash: `045893799b7adc0484935745873d5a787af1b678`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -40,7 +40,7 @@ Elasticsearch build hash: `88d4704a9a48e0c58dcb16d7f6efac2612b12901`
 | `watcher.put_watch` | :red_circle: | 51/60 | 60/60 | stable | undefined |  |
 | `indices.put_mapping` | :red_circle: | 150/151 | 154/154 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 125/125 | 36/124 | stable | undefined |  |
-| `indices.create` | :red_circle: | 1400/1429 | 1429/1429 | stable | undefined |  |
+| `indices.create` | :red_circle: | 1412/1441 | 1441/1441 | stable | undefined |  |
 | `cluster.stats` | :red_circle: | 27/27 | 0/27 | stable | undefined |  |
 | `xpack.usage` | :red_circle: | 47/47 | 2/43 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 130/154 | 154/154 | stable | undefined |  |
@@ -54,7 +54,7 @@ Elasticsearch build hash: `88d4704a9a48e0c58dcb16d7f6efac2612b12901`
 | `indices.get_data_stream` | :red_circle: | 124/124 | 77/124 | stable | undefined |  |
 | `indices.rollover` | :red_circle: | 59/59 | 2/59 | stable | undefined |  |
 | `snapshot.get_repository` | :red_circle: | 19/19 | 7/19 | stable | undefined |  |
-| **Summary** | :red_circle: | 98% | 92.4% | | | |
+| **Summary** | :red_circle: | 98% | 92.5% | | | |
 
 </details>
 
@@ -438,7 +438,7 @@ Elasticsearch build hash: `88d4704a9a48e0c58dcb16d7f6efac2612b12901`
 | `clear_cache` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `clone` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `close` | :green_circle: | 51/51 | 51/51 | stable | undefined |  |
-| `create` | :red_circle: | 1400/1429 | 1429/1429 | stable | undefined |  |
+| `create` | :red_circle: | 1412/1441 | 1441/1441 | stable | undefined |  |
 | `create_data_stream` | :green_circle: | 121/121 | 121/121 | stable | undefined |  |
 | `create_from` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `data_streams_stats` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
