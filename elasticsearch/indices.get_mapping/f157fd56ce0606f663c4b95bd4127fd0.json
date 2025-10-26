@@ -1,0 +1,107 @@
+{
+  "api": "indices.get_mapping",
+  "file": "/test/free/data_stream/150_tsdb.yml",
+  "name": "non string dimension fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "expand_wildcards": "hidden",
+      "index": ".ds-k9s-2025.10.26-000001"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      ".ds-k9s-2025.10.26-000001": {
+        "mappings": {
+          "_data_stream_timestamp": {
+            "enabled": true
+          },
+          "dynamic_templates": [
+            {
+              "counter_metric": {
+                "mapping": {
+                  "time_series_metric": "counter",
+                  "type": "integer"
+                }
+              }
+            },
+            {
+              "ip_attributes": {
+                "mapping": {
+                  "type": "ip"
+                },
+                "match_mapping_type": "string",
+                "path_match": "*.ip"
+              }
+            },
+            {
+              "strings_as_keywords": {
+                "mapping": {
+                  "type": "keyword"
+                },
+                "match_mapping_type": "string"
+              }
+            },
+            {
+              "double_as_double": {
+                "mapping": {
+                  "type": "double"
+                },
+                "match_mapping_type": "double"
+              }
+            }
+          ],
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "attributes": {
+              "dynamic": "true",
+              "priority": 0,
+              "properties": {
+                "boolean": {
+                  "time_series_dimension": true,
+                  "type": "boolean"
+                },
+                "double": {
+                  "time_series_dimension": true,
+                  "type": "double"
+                },
+                "host.ip": {
+                  "time_series_dimension": true,
+                  "type": "ip"
+                },
+                "integer": {
+                  "time_series_dimension": true,
+                  "type": "long"
+                },
+                "string": {
+                  "time_series_dimension": true,
+                  "type": "keyword"
+                }
+              },
+              "time_series_dimension": true,
+              "type": "passthrough"
+            },
+            "metrics": {
+              "priority": 1,
+              "properties": {
+                "data": {
+                  "time_series_metric": "counter",
+                  "type": "integer"
+                }
+              },
+              "type": "passthrough"
+            }
+          }
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}
