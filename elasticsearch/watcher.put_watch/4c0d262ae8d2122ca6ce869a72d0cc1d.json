@@ -1,0 +1,69 @@
+{
+  "api": "watcher.put_watch",
+  "file": "/test/platinum/watcher/put_watch/80_put_get_watch_with_passwords.yml",
+  "name": "Test putting a watch with a redacted password with old seq no returns an error",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "actions": {
+          "logging": {
+            "logging": {
+              "text": "Log me Amadeus!"
+            }
+          }
+        },
+        "input": {
+          "http": {
+            "request": {
+              "auth": {
+                "basic": {
+                  "password": "::es_redacted::",
+                  "username": "user"
+                }
+              },
+              "host": "host.domain",
+              "path": "/myservice",
+              "port": 9200
+            }
+          }
+        },
+        "trigger": {
+          "schedule": {
+            "cron": "0 0 0 1 * ? 2099"
+          }
+        }
+      },
+      "id": "watch_with_seq_no",
+      "if_primary_term": 1,
+      "if_seq_no": 123034
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "557",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "index": ".watches",
+        "index_uuid": "DKnZMtGpTZ2uqf7zEQ--6Q",
+        "reason": "[watch_with_seq_no]: version conflict, required seqNo [123034], primary term [1]. current document has seqNo [82] and primary term [1]",
+        "root_cause": [
+          {
+            "index": ".watches",
+            "index_uuid": "DKnZMtGpTZ2uqf7zEQ--6Q",
+            "reason": "[watch_with_seq_no]: version conflict, required seqNo [123034], primary term [1]. current document has seqNo [82] and primary term [1]",
+            "shard": "0",
+            "type": "version_conflict_engine_exception"
+          }
+        ],
+        "shard": "0",
+        "type": "version_conflict_engine_exception"
+      },
+      "status": 409
+    },
+    "statusCode": 409
+  }
+}
