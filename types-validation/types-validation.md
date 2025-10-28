@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `c0342b01078f801ff5fed4eeb96dbc103fadb13a`
+Elasticsearch build hash: `5ffa07cdf83b2a104270a5ef1f5891affa23efbe`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ Elasticsearch build hash: `c0342b01078f801ff5fed4eeb96dbc103fadb13a`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 2578/2615 | 2615/2615 | stable | undefined |  |
+| `search` | :red_circle: | 2581/2615 | 2615/2615 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 213/213 | 202/213 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 42/42 | 39/42 | stable | undefined |  |
 | `watcher.put_watch` | :red_circle: | 51/60 | 60/60 | stable | undefined |  |
@@ -191,7 +191,7 @@ Elasticsearch build hash: `c0342b01078f801ff5fed4eeb96dbc103fadb13a`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 69/69 | 20/20 | stable | undefined |  |
-| `search` | :red_circle: | 2578/2615 | 2615/2615 | stable | undefined |  |
+| `search` | :red_circle: | 2581/2615 | 2615/2615 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -200,7 +200,7 @@ Elasticsearch build hash: `c0342b01078f801ff5fed4eeb96dbc103fadb13a`
 | `update` | :green_circle: | 44/44 | 44/44 | stable | undefined |  |
 | `update_by_query` | :green_circle: | 9/9 | 8/8 | stable | undefined |  |
 | `update_by_query_rethrottle` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.3% | 100% | | | |
+| **Summary** | :red_circle: | 99.4% | 100% | | | |
 
 [Back to top](#Summary)
 
