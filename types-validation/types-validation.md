@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.1.7-SNAPSHOT`  
-Elasticsearch build hash: `dabb916ce4b3b1f3c7609c9fb3b66c002809d9cb`
+Elasticsearch build hash: `0250d6f00f8a0fe5d7f79ccc41ac003e489c3633`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 568 | 529 (93.1%) | 39 (6.9%) | 96 (16.9%) | 20 (3.5%) |
+| 568 | 530 (93.3%) | 38 (6.7%) | 96 (16.9%) | 20 (3.5%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 479 | 445 (92.9%) | 34 (7.1%) | 88 | 5 |
+| `stable` | 479 | 446 (93.1%) | 33 (6.9%) | 88 | 5 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 65 | 63 (96.9%) | 2 (3.1%) | 8 | 15 |
 
@@ -110,7 +110,7 @@ Elasticsearch build hash: `dabb916ce4b3b1f3c7609c9fb3b66c002809d9cb`
 
 ## Report
 
-:construction: 25% namespaces have failures, and the namespace with the most failures is [`simulate`](#simulate) with 100% failures.
+:construction: 22.7% namespaces have failures, and the namespace with the most failures is [`simulate`](#simulate) with 100% failures.
 
 ### _internal
 
@@ -226,14 +226,14 @@ Elasticsearch build hash: `dabb916ce4b3b1f3c7609c9fb3b66c002809d9cb`
 | `plugins` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `recovery` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
 | `repositories` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
-| `segments` | :red_circle: | 9/10 | 10/10 | stable | undefined |  |
+| `segments` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
 | `shards` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `snapshots` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `tasks` | :green_circle: | 11/11 | 11/11 | experimental | undefined |  |
 | `templates` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `thread_pool` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `transforms` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.5% | 100% | | | |
+| **Summary** | :green_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
 
