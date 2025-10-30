@@ -1,0 +1,62 @@
+{
+  "api": "indices.put_index_template",
+  "file": "/test/platinum/downsample/60_settings.yml",
+  "name": "Downsample datastream with tier preference",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "data_stream": {
+        },
+        "index_patterns": [
+          "test-datastream-*"
+        ],
+        "template": {
+          "mappings": {
+            "properties": {
+              "@timestamp": {
+                "type": "date"
+              },
+              "metricset": {
+                "time_series_dimension": true,
+                "type": "keyword"
+              },
+              "value": {
+                "time_series_metric": "gauge",
+                "type": "double"
+              }
+            }
+          },
+          "settings": {
+            "index": {
+              "hidden": false,
+              "lifecycle": {
+                "name": "dummy-lifecycle"
+              },
+              "mode": "time_series",
+              "routing": {
+                "allocation": {
+                  "include": {
+                    "_tier_preference": "data_warm"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "name": "downsampling-template"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

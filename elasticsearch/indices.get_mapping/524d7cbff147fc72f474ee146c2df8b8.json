@@ -1,0 +1,112 @@
+{
+  "api": "indices.get_mapping",
+  "file": "/test/platinum/downsample/40_runtime_fields.yml",
+  "name": "Runtime field accessing label fields in downsample target index",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "index": "target"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "target": {
+        "mappings": {
+          "_data_stream_timestamp": {
+            "enabled": true
+          },
+          "dynamic_templates": [
+            {
+              "strings": {
+                "mapping": {
+                  "type": "keyword"
+                },
+                "match_mapping_type": "string"
+              }
+            }
+          ],
+          "properties": {
+            "@timestamp": {
+              "meta": {
+                "fixed_interval": "1h",
+                "time_zone": "UTC"
+              },
+              "type": "date"
+            },
+            "k8s": {
+              "properties": {
+                "pod": {
+                  "properties": {
+                    "network": {
+                      "properties": {
+                        "received": {
+                          "time_series_metric": "counter",
+                          "type": "long"
+                        },
+                        "rx": {
+                          "default_metric": "max",
+                          "metrics": [
+                            "min",
+                            "max",
+                            "sum",
+                            "value_count"
+                          ],
+                          "time_series_metric": "gauge",
+                          "type": "aggregate_metric_double"
+                        },
+                        "sent": {
+                          "time_series_metric": "counter",
+                          "type": "long"
+                        },
+                        "tx": {
+                          "default_metric": "max",
+                          "metrics": [
+                            "min",
+                            "max",
+                            "sum",
+                            "value_count"
+                          ],
+                          "time_series_metric": "gauge",
+                          "type": "aggregate_metric_double"
+                        }
+                      }
+                    },
+                    "uid": {
+                      "time_series_dimension": true,
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "label_1": {
+              "type": "keyword"
+            },
+            "label_2": {
+              "type": "long"
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          },
+          "runtime": {
+            "labels": {
+              "script": {
+                "lang": "painless",
+                "source": "emit(doc['label_1'].value + '-' + doc['label_2'].value);\n"
+              },
+              "type": "keyword"
+            }
+          }
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}

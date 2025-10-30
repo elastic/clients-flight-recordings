@@ -1,0 +1,61 @@
+{
+  "api": "indices.get_mapping",
+  "file": "/test/platinum/downsample/80_downsample_aggregate.yml",
+  "name": "downsample aggregate field",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "index": "test-downsample"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "test-downsample": {
+        "mappings": {
+          "_data_stream_timestamp": {
+            "enabled": true
+          },
+          "dynamic_templates": [
+            {
+              "strings": {
+                "mapping": {
+                  "type": "keyword"
+                },
+                "match_mapping_type": "string"
+              }
+            }
+          ],
+          "properties": {
+            "@timestamp": {
+              "meta": {
+                "fixed_interval": "1h",
+                "time_zone": "UTC"
+              },
+              "type": "date"
+            },
+            "sensor_id": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            },
+            "temperature": {
+              "default_metric": "sum",
+              "metrics": [
+                "min",
+                "sum",
+                "value_count"
+              ],
+              "time_series_metric": "gauge",
+              "type": "aggregate_metric_double"
+            }
+          }
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}

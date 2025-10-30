@@ -1,0 +1,72 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/downsample/10_basic.yml",
+  "name": "Downsample date_nanos timestamp field using custom format",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "format": "uuuu-MM-dd'T'HH:mm:ss.SSSSSSSSSX",
+              "type": "date_nanos"
+            },
+            "k8s": {
+              "properties": {
+                "pod": {
+                  "properties": {
+                    "name": {
+                      "type": "keyword"
+                    },
+                    "uid": {
+                      "time_series_dimension": true,
+                      "type": "keyword"
+                    },
+                    "value": {
+                      "time_series_metric": "gauge",
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          },
+          "subobjects": false
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "routing_path": [
+              "metricset",
+              "k8s.pod.uid"
+            ],
+            "time_series": {
+              "end_time": "2023-02-24T00:00:00Z",
+              "start_time": "2023-02-23T00:00:00Z"
+            }
+          },
+          "number_of_shards": 1
+        }
+      },
+      "index": "test-timestamp"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "73",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test-timestamp",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

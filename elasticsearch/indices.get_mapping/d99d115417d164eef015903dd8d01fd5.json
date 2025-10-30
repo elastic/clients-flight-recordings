@@ -1,0 +1,83 @@
+{
+  "api": "indices.get_mapping",
+  "file": "/test/platinum/downsample/10_basic.yml",
+  "name": "Downsample label with ignore_above",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "index": "test-downsample-label-ignore-above"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "test-downsample-label-ignore-above": {
+        "mappings": {
+          "_data_stream_timestamp": {
+            "enabled": true
+          },
+          "dynamic_templates": [
+            {
+              "strings": {
+                "mapping": {
+                  "type": "keyword"
+                },
+                "match_mapping_type": "string"
+              }
+            }
+          ],
+          "properties": {
+            "@timestamp": {
+              "meta": {
+                "fixed_interval": "1h",
+                "time_zone": "UTC"
+              },
+              "type": "date"
+            },
+            "k8s.pod.gauge": {
+              "default_metric": "max",
+              "metrics": [
+                "min",
+                "max",
+                "sum",
+                "value_count"
+              ],
+              "time_series_metric": "gauge",
+              "type": "aggregate_metric_double"
+            },
+            "k8s.pod.label": {
+              "ignore_above": 3,
+              "type": "keyword"
+            },
+            "k8s.pod.name": {
+              "fields": {
+                "keyword": {
+                  "ignore_above": 256,
+                  "type": "keyword"
+                }
+              },
+              "type": "text"
+            },
+            "k8s.pod.uid": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            },
+            "k8s.pod.value": {
+              "type": "long"
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          },
+          "subobjects": false
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}
