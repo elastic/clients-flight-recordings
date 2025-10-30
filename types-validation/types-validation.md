@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `c81eee54663612cc49a173ad78127f823a7a0482`
+Elasticsearch build hash: `558d38c3a6a28dd976afda1435584d084ccc3461`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 581 | 541 (93.1%) | 40 (6.9%) | 100 (17.2%) | 24 (4.1%) |
+| 582 | 542 (93.1%) | 40 (6.9%) | 100 (17.2%) | 25 (4.3%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 489 | 456 (93.3%) | 33 (6.7%) | 91 | 9 |
+| `stable` | 490 | 457 (93.3%) | 33 (6.7%) | 91 | 10 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 68 | 64 (94.1%) | 4 (5.9%) | 9 | 15 |
 
@@ -209,6 +209,7 @@ Elasticsearch build hash: `c81eee54663612cc49a173ad78127f823a7a0482`
 | --- | --- | --- | --- | --- | --- | --- |
 | `aliases` | :green_circle: | 29/29 | 29/29 | stable | undefined |  |
 | `allocation` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
+| `circuit_breaker` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
 | `component_templates` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `count` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `fielddata` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
@@ -233,7 +234,7 @@ Elasticsearch build hash: `c81eee54663612cc49a173ad78127f823a7a0482`
 | `templates` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `thread_pool` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `transforms` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
-| **Summary** | :green_circle: | 100% | 100% | | | |
+| **Summary** | :orange_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
 
