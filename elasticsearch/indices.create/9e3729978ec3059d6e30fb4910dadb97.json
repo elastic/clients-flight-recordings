@@ -1,0 +1,73 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/downsample/10_basic.yml",
+  "name": "Downsample index with empty dimension on routing path",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "k8s": {
+              "properties": {
+                "pod": {
+                  "properties": {
+                    "empty": {
+                      "time_series_dimension": true,
+                      "type": "keyword"
+                    },
+                    "gauge": {
+                      "time_series_metric": "gauge",
+                      "type": "long"
+                    },
+                    "name": {
+                      "time_series_dimension": true,
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          },
+          "subobjects": false
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "routing_path": [
+              "k8s.pod.name",
+              "k8s.pod.empty"
+            ],
+            "time_series": {
+              "end_time": "2021-04-29T00:00:00Z",
+              "start_time": "2021-04-28T00:00:00Z"
+            }
+          },
+          "number_of_replicas": 0,
+          "number_of_shards": 1
+        }
+      },
+      "index": "test-empty-dim-routing"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "81",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test-empty-dim-routing",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
