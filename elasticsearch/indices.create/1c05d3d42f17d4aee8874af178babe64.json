@@ -1,0 +1,101 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/downsample/40_runtime_fields.yml",
+  "name": "Runtime fields accessing metric fields in downsample target index",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "k8s": {
+              "properties": {
+                "pod": {
+                  "properties": {
+                    "network": {
+                      "properties": {
+                        "received": {
+                          "time_series_metric": "counter",
+                          "type": "long"
+                        },
+                        "rx": {
+                          "time_series_metric": "gauge",
+                          "type": "long"
+                        },
+                        "sent": {
+                          "time_series_metric": "counter",
+                          "type": "long"
+                        },
+                        "tx": {
+                          "time_series_metric": "gauge",
+                          "type": "long"
+                        }
+                      }
+                    },
+                    "uid": {
+                      "time_series_dimension": true,
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          },
+          "runtime": {
+            "received_kb": {
+              "script": "emit(doc['k8s.pod.network.received'].value / 1024.0d);\n",
+              "type": "double"
+            },
+            "rx_kb": {
+              "script": "emit(doc['k8s.pod.network.rx'].value / 1024.0d);\n",
+              "type": "double"
+            },
+            "sent_kb": {
+              "script": "emit(doc['k8s.pod.network.sent'].value / 1024.0d);\n",
+              "type": "double"
+            },
+            "tx_kb": {
+              "script": "emit(doc['k8s.pod.network.tx'].value / 1024.0d);\n",
+              "type": "double"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "routing_path": [
+              "metricset",
+              "k8s.pod.uid"
+            ],
+            "time_series": {
+              "end_time": "2021-04-29T00:00:00Z",
+              "start_time": "2021-04-28T00:00:00Z"
+            }
+          },
+          "number_of_shards": 1
+        }
+      },
+      "index": "source"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "65",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "source",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
