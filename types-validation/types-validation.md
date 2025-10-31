@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.1.7-SNAPSHOT`  
-Elasticsearch build hash: `5a24930a92f055cfa37aba59ca4d7b07c7fef053`
+Elasticsearch build hash: `ed8a397419a29a2defa6a754ffc0d693a46b868f`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ Elasticsearch build hash: `5a24930a92f055cfa37aba59ca4d7b07c7fef053`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 2354/2384 | 2384/2384 | stable | undefined |  |
+| `search` | :red_circle: | 2361/2384 | 2384/2384 | stable | undefined |  |
 | `security.authenticate` | :red_circle: | 30/30 | 25/30 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 192/192 | 186/192 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 42/42 | 39/42 | stable | undefined |  |
@@ -54,7 +54,7 @@ Elasticsearch build hash: `5a24930a92f055cfa37aba59ca4d7b07c7fef053`
 | `indices.get_data_stream` | :red_circle: | 116/116 | 71/116 | stable | undefined |  |
 | `indices.rollover` | :red_circle: | 52/52 | 2/52 | stable | undefined |  |
 | `snapshot.get_repository` | :red_circle: | 19/19 | 7/19 | stable | undefined |  |
-| **Summary** | :red_circle: | 97.9% | 92.7% | | | |
+| **Summary** | :red_circle: | 98% | 92.7% | | | |
 
 </details>
 
@@ -190,7 +190,7 @@ Elasticsearch build hash: `5a24930a92f055cfa37aba59ca4d7b07c7fef053`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 69/69 | 20/20 | stable | undefined |  |
-| `search` | :red_circle: | 2354/2384 | 2384/2384 | stable | undefined |  |
+| `search` | :red_circle: | 2361/2384 | 2384/2384 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -199,7 +199,7 @@ Elasticsearch build hash: `5a24930a92f055cfa37aba59ca4d7b07c7fef053`
 | `update` | :green_circle: | 41/41 | 41/41 | stable | undefined |  |
 | `update_by_query` | :green_circle: | 9/9 | 8/8 | stable | undefined |  |
 | `update_by_query_rethrottle` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.4% | 100% | | | |
+| **Summary** | :red_circle: | 99.6% | 100% | | | |
 
 [Back to top](#Summary)
 
