@@ -1,0 +1,106 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/random_sampler.yml",
+  "name": "Test random_sampler aggregation with scored subagg",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "sampled": {
+            "aggs": {
+              "top": {
+                "top_hits": {
+                }
+              }
+            },
+            "random_sampler": {
+              "probability": 0.5
+            }
+          }
+        },
+        "query": {
+          "function_score": {
+            "random_score": {
+            }
+          }
+        }
+      },
+      "index": "data",
+      "size": 0,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "random_sampler#sampled": {
+          "doc_count": 4,
+          "probability": 0.5,
+          "seed": 2124322699,
+          "top_hits#top": {
+            "hits": {
+              "hits": [
+                {
+                  "_id": "RzsIRJoBveRw1IOd1QSi",
+                  "_index": "data",
+                  "_score": 0.84972405,
+                  "_source": {
+                    "product": "server",
+                    "value": 1
+                  }
+                },
+                {
+                  "_id": "SjsIRJoBveRw1IOd1QSi",
+                  "_index": "data",
+                  "_score": 0.324565,
+                  "_source": {
+                    "product": "VCR",
+                    "value": 4
+                  }
+                },
+                {
+                  "_id": "SDsIRJoBveRw1IOd1QSi",
+                  "_index": "data",
+                  "_score": 0.2639265,
+                  "_source": {
+                    "product": "server",
+                    "value": 1
+                  }
+                }
+              ],
+              "max_score": 0.84972405,
+              "total": {
+                "relation": "eq",
+                "value": 4
+              }
+            }
+          }
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 6
+        }
+      },
+      "timed_out": false,
+      "took": 3
+    },
+    "statusCode": 200
+  }
+}
