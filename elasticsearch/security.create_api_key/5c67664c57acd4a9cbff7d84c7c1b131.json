@@ -1,0 +1,53 @@
+{
+  "api": "security.create_api_key",
+  "file": "/test/platinum/security/authz_api_keys/40_document_level_security_synthetic_source.yml",
+  "name": "Filter on nested field",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "expiration": "1d",
+        "name": "test-fls",
+        "role_descriptors": {
+          "index_access": {
+            "indices": [
+              {
+                "names": [
+                  "index_dls"
+                ],
+                "privileges": [
+                  "read"
+                ],
+                "query": {
+                  "nested": {
+                    "path": "object",
+                    "query": {
+                      "term": {
+                        "object.secret": "mission"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "182",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "api_key": "KHOaDzb3rTC_4hB5Ia3wbg",
+      "encoded": "U0xCV1Nab0I0RDZxUElDdGxQM0s6S0hPYUR6YjNyVENfNGhCNUlhM3diZw==",
+      "expiration": 1762253402314,
+      "id": "SLBWSZoB4D6qPICtlP3K",
+      "name": "test-fls"
+    },
+    "statusCode": 200
+  }
+}
