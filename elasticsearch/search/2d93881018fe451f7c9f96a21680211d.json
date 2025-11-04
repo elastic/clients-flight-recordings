@@ -1,0 +1,73 @@
+{
+  "api": "search",
+  "file": "/test/free/data_stream/150_tsdb.yml",
+  "name": "dynamic templates with incremental indexing",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "filterA": {
+            "aggs": {
+              "tsids": {
+                "terms": {
+                  "field": "_tsid"
+                }
+              }
+            },
+            "filter": {
+              "term": {
+                "dim1": "A"
+              }
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "k9s",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "filter#filterA": {
+          "doc_count": 2,
+          "sterms#tsids": {
+            "buckets": [
+              {
+                "doc_count": 2,
+                "key": "KF4PAWOA-Y7wM6bB6G3UdlEgYpiKF9nXxRUMHnJBiqqP58deEIun8H8"
+              }
+            ],
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0
+          }
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 20
+        }
+      },
+      "timed_out": false,
+      "took": 7
+    },
+    "statusCode": 200
+  }
+}
