@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `c9c50eaaf0b05b4968a9c6993cedf8e576de425b`
+Elasticsearch build hash: `c75196107b5492067589079847edda81ac2f9801`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -12,9 +12,9 @@ Elasticsearch build hash: `c9c50eaaf0b05b4968a9c6993cedf8e576de425b`
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 486 | 451 (92.8%) | 35 (7.2%) | 91 | 6 |
+| `stable` | 490 | 455 (92.9%) | 35 (7.1%) | 91 | 6 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 72 | 69 (95.8%) | 3 (4.2%) | 9 | 15 |
+| `experimental` | 68 | 65 (95.6%) | 3 (4.4%) | 9 | 15 |
 
 </details>
 
@@ -435,13 +435,13 @@ Elasticsearch build hash: `c9c50eaaf0b05b4968a9c6993cedf8e576de425b`
 | --- | --- | --- | --- | --- | --- | --- |
 | `add_block` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `analyze` | :green_circle: | 246/246 | 246/246 | stable | undefined |  |
-| `cancel_migrate_reindex` | :green_circle: | 2/2 | 2/2 | experimental | undefined |  |
+| `cancel_migrate_reindex` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `clear_cache` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `clone` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `close` | :green_circle: | 51/51 | 51/51 | stable | undefined |  |
 | `create` | :red_circle: | 1437/1465 | 1465/1465 | stable | undefined |  |
 | `create_data_stream` | :green_circle: | 135/135 | 135/135 | stable | undefined |  |
-| `create_from` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
+| `create_from` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `data_streams_stats` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `delete` | :green_circle: | 121/121 | 121/121 | stable | undefined |  |
 | `delete_alias` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
@@ -473,13 +473,13 @@ Elasticsearch build hash: `c9c50eaaf0b05b4968a9c6993cedf8e576de425b`
 | `get_field_mapping` | :green_circle: | 24/24 | 24/24 | stable | undefined |  |
 | `get_index_template` | :red_circle: | 24/24 | 23/24 | stable | undefined |  |
 | `get_mapping` | :red_circle: | 227/227 | 216/227 | stable | undefined |  |
-| `get_migrate_reindex_status` | :green_circle: | 1/1 | 1/1 | experimental | undefined |  |
+| `get_migrate_reindex_status` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_sample` | :red_circle: | 24/24 | 16/24 | experimental | undefined |  |
 | `get_sample_configuration` | :green_circle: | 10/10 | 10/10 | experimental | undefined |  |
 | `get_sample_stats` | :red_circle: | 26/26 | 24/26 | experimental | undefined |  |
 | `get_settings` | :red_circle: | 93/93 | 73/93 | stable | undefined |  |
 | `get_template` | :green_circle: | 32/32 | 32/32 | stable | undefined | deprecated |
-| `migrate_reindex` | :green_circle: | 2/2 | 2/2 | experimental | undefined |  |
+| `migrate_reindex` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `migrate_to_data_stream` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `modify_data_stream` | :red_circle: | 3/7 | 7/7 | stable | undefined |  |
 | `open` | :green_circle: | 21/21 | 21/21 | stable | undefined |  |
