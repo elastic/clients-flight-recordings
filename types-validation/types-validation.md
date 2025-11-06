@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `8.19.7-SNAPSHOT`  
-Elasticsearch build hash: `9f914b48df2dbbe523915c075d27302fddf9ea7f`
+Elasticsearch build hash: `b033c7e9bb88d287b8ddb98f8de8f021e152cfe2`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -508,10 +508,10 @@ Elasticsearch build hash: `9f914b48df2dbbe523915c075d27302fddf9ea7f`
 | --- | --- | --- | --- | --- | --- | --- |
 | `chat_completion_unified` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `completion` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `delete` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
+| `delete` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `inference` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `put` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
+| `put` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `put_alibabacloud` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_amazonbedrock` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_amazonsagemaker` | :white_circle: | Missing test | Missing test | stable | undefined |  |
