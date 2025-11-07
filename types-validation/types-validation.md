@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `c75196107b5492067589079847edda81ac2f9801`
+Elasticsearch build hash: `f969d7de63663ef498300b44a91d30dea7af9aef`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -12,9 +12,9 @@ Elasticsearch build hash: `c75196107b5492067589079847edda81ac2f9801`
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 485 | 446 (92%) | 39 (8%) | 91 | 5 |
+| `stable` | 486 | 447 (92%) | 39 (8%) | 92 | 5 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 66 | 64 (97%) | 2 (3%) | 9 | 15 |
+| `experimental` | 65 | 63 (96.9%) | 2 (3.1%) | 8 | 15 |
 
 </details>
 
@@ -726,7 +726,7 @@ Elasticsearch build hash: `c75196107b5492067589079847edda81ac2f9801`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `tags` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| `tags` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | **Summary** | :white_circle: | 0% | 0% | | | |
 
 [Back to top](#Summary)
