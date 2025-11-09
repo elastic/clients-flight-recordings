@@ -1,0 +1,59 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/230_folding.yml",
+  "name": "Foldable query using MATCH_PHRASE on name",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM employees\n| WHERE MATCH_PHRASE(name, CONCAT(\"Bob \", \"Johnson\"))\n| KEEP hire_date, salary, salary_change, salary_change_long, name\n| LIMIT 5\n"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "9189639",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "hire_date",
+          "type": "date"
+        },
+        {
+          "name": "salary",
+          "type": "integer"
+        },
+        {
+          "name": "salary_change",
+          "type": "double"
+        },
+        {
+          "name": "salary_change_long",
+          "type": "long"
+        },
+        {
+          "name": "name",
+          "type": "keyword"
+        }
+      ],
+      "documents_found": 1,
+      "is_partial": false,
+      "took": 9,
+      "values": [
+        [
+          "2021-01-01T00:00:00.000Z",
+          60000,
+          200.5,
+          200,
+          "Bob Johnson"
+        ]
+      ],
+      "values_loaded": 5
+    },
+    "statusCode": 200
+  }
+}
