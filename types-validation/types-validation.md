@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `efe4d42d990ec893126db60f95ff38f07879a0b5`
+Elasticsearch build hash: `7fbb495e69e5379910ba73a91eb89e3d974c7631`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ Elasticsearch build hash: `efe4d42d990ec893126db60f95ff38f07879a0b5`
 | `indices.create` | :red_circle: | 1435/1465 | 1465/1465 | stable | undefined |  |
 | `cluster.stats` | :red_circle: | 27/27 | 0/27 | stable | undefined |  |
 | `xpack.usage` | :red_circle: | 47/47 | 2/43 | stable | undefined |  |
-| `indices.put_index_template` | :red_circle: | 140/165 | 165/165 | stable | undefined |  |
+| `indices.put_index_template` | :red_circle: | 146/171 | 171/171 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 93/93 | 73/93 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 33/33 | 7/33 | stable | undefined |  |
 | `indices.put_alias` | :red_circle: | 64/64 | 21/64 | stable | undefined |  |
@@ -53,8 +53,8 @@ Elasticsearch build hash: `efe4d42d990ec893126db60f95ff38f07879a0b5`
 | `indices.put_template` | :red_circle: | 45/46 | 46/46 | stable | undefined | deprecated |
 | `nodes.stats` | :red_circle: | 58/58 | 21/58 | stable | undefined |  |
 | `cluster.get_component_template` | :red_circle: | 15/15 | 14/15 | stable | undefined |  |
-| `indices.get_data_stream` | :red_circle: | 132/132 | 79/132 | stable | undefined |  |
-| **Summary** | :red_circle: | 98.1% | 93.7% | | | |
+| `indices.get_data_stream` | :red_circle: | 139/139 | 83/139 | stable | undefined |  |
+| **Summary** | :red_circle: | 98.1% | 93.6% | | | |
 
 </details>
 
@@ -269,7 +269,7 @@ Elasticsearch build hash: `efe4d42d990ec893126db60f95ff38f07879a0b5`
 | `exists_component_template` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_component_template` | :red_circle: | 15/15 | 14/15 | stable | undefined |  |
 | `get_settings` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
-| `health` | :green_circle: | 222/222 | 222/222 | stable | undefined |  |
+| `health` | :green_circle: | 228/228 | 228/228 | stable | undefined |  |
 | `info` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `pending_tasks` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `post_voting_config_exclusions` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
@@ -439,7 +439,7 @@ Elasticsearch build hash: `efe4d42d990ec893126db60f95ff38f07879a0b5`
 | `clone` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `close` | :green_circle: | 51/51 | 51/51 | stable | undefined |  |
 | `create` | :red_circle: | 1435/1465 | 1465/1465 | stable | undefined |  |
-| `create_data_stream` | :green_circle: | 135/135 | 135/135 | stable | undefined |  |
+| `create_data_stream` | :green_circle: | 138/138 | 138/138 | stable | undefined |  |
 | `create_from` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `data_streams_stats` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `delete` | :green_circle: | 121/121 | 121/121 | stable | undefined |  |
@@ -463,8 +463,8 @@ Elasticsearch build hash: `efe4d42d990ec893126db60f95ff38f07879a0b5`
 | `get_alias` | :green_circle: | 75/75 | 75/75 | stable | undefined |  |
 | `get_data_lifecycle` | :red_circle: | 15/15 | 1/15 | stable | undefined |  |
 | `get_data_lifecycle_stats` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `get_data_stream` | :red_circle: | 132/132 | 79/132 | stable | undefined |  |
-| `get_data_stream_mappings` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
+| `get_data_stream` | :red_circle: | 139/139 | 83/139 | stable | undefined |  |
+| `get_data_stream_mappings` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `get_data_stream_options` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `get_data_stream_settings` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
 | `get_field_mapping` | :green_circle: | 24/24 | 24/24 | stable | undefined |  |
@@ -483,7 +483,7 @@ Elasticsearch build hash: `efe4d42d990ec893126db60f95ff38f07879a0b5`
 | `put_data_stream_mappings` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
 | `put_data_stream_options` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `put_data_stream_settings` | :red_circle: | 8/10 | 0/10 | stable | undefined |  |
-| `put_index_template` | :red_circle: | 140/165 | 165/165 | stable | undefined |  |
+| `put_index_template` | :red_circle: | 146/171 | 171/171 | stable | undefined |  |
 | `put_mapping` | :red_circle: | 150/151 | 154/154 | stable | undefined |  |
 | `put_settings` | :red_circle: | 78/80 | 80/80 | stable | undefined |  |
 | `put_template` | :red_circle: | 45/46 | 46/46 | stable | undefined | deprecated |
@@ -493,7 +493,7 @@ Elasticsearch build hash: `efe4d42d990ec893126db60f95ff38f07879a0b5`
 | `remove_block` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `resolve_cluster` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
 | `resolve_index` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
-| `rollover` | :red_circle: | 72/72 | 2/72 | stable | undefined |  |
+| `rollover` | :red_circle: | 75/75 | 2/75 | stable | undefined |  |
 | `segments` | :red_circle: | 6/6 | 5/6 | stable | undefined |  |
 | `shard_stores` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `shrink` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
@@ -503,7 +503,7 @@ Elasticsearch build hash: `efe4d42d990ec893126db60f95ff38f07879a0b5`
 | `stats` | :red_circle: | 125/125 | 36/124 | stable | undefined |  |
 | `update_aliases` | :red_circle: | 33/33 | 7/33 | stable | undefined |  |
 | `validate_query` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
-| **Summary** | :red_circle: | 98.4% | 92% | | | |
+| **Summary** | :red_circle: | 98.4% | 91.9% | | | |
 
 [Back to top](#Summary)
 
