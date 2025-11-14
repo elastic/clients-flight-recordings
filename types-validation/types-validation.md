@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `263c178183939f77a5667ae0867eef8c1ee91ed4`
+Elasticsearch build hash: `73eebc86f9a4c1a49c1d673584ac52c2ccbe2725`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -155,7 +155,7 @@ Elasticsearch build hash: `263c178183939f77a5667ae0867eef8c1ee91ed4`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `bulk` | :green_circle: | 588/588 | 606/606 | stable | undefined |  |
+| `bulk` | :green_circle: | 589/589 | 607/607 | stable | undefined |  |
 | `capabilities` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `clear_scroll` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `close_point_in_time` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
@@ -442,7 +442,7 @@ Elasticsearch build hash: `263c178183939f77a5667ae0867eef8c1ee91ed4`
 | `create_data_stream` | :green_circle: | 138/138 | 138/138 | stable | undefined |  |
 | `create_from` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `data_streams_stats` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
-| `delete` | :green_circle: | 121/121 | 121/121 | stable | undefined |  |
+| `delete` | :green_circle: | 122/122 | 122/122 | stable | undefined |  |
 | `delete_alias` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `delete_data_lifecycle` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `delete_data_stream` | :green_circle: | 98/98 | 98/98 | stable | undefined |  |
@@ -952,8 +952,8 @@ Elasticsearch build hash: `263c178183939f77a5667ae0867eef8c1ee91ed4`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `logs_disable` | :green_circle: | 3/3 | 3/3 | experimental | undefined |  |
-| `logs_enable` | :green_circle: | 11/11 | 11/11 | experimental | undefined |  |
-| `status` | :green_circle: | 10/10 | 10/10 | experimental | undefined |  |
+| `logs_enable` | :green_circle: | 12/12 | 12/12 | experimental | undefined |  |
+| `status` | :green_circle: | 11/11 | 11/11 | experimental | undefined |  |
 | **Summary** | :green_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)

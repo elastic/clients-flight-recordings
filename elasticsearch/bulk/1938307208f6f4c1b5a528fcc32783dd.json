@@ -1,0 +1,39 @@
+{
+  "api": "bulk",
+  "file": "/test/free/streams/logs/40_index_request_restrictions.yml",
+  "name": "Check User Can't Provide Pipeline to Logs Stream",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{ \"create\": {\"pipeline\": \"noop\"}}\n{ \"message\": \"hello streams!\"}\n"
+      ],
+      "index": "logs"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "create": {
+            "_id": "auto-generated",
+            "_index": "logs",
+            "error": {
+              "reason": "Cannot provide a pipeline when writing to a stream however the [noop] pipeline was provided when writing to the [logs] stream",
+              "type": "illegal_argument_exception"
+            },
+            "status": 400
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}
