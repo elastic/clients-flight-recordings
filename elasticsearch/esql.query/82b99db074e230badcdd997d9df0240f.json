@@ -1,0 +1,40 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/10_basic.yml",
+  "name": "Drop all columns with fork drop all count",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "from test | keep color | drop color | fork (stats c=count()) (stats c=count()) | drop _fork*, c | stats count(*)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "14111997",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.3.0-93410cfee3fdfe5d0339ac8963937700bb204bd0 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "count(*)",
+          "type": "long"
+        }
+      ],
+      "documents_found": 2,
+      "is_partial": false,
+      "took": 14,
+      "values": [
+        [
+          2
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}
