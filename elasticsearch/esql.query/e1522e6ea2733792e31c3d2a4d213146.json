@@ -1,0 +1,59 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/40_tsdb.yml",
+  "name": "TS Command grouping on text field",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "TS test-text-field\n| STATS max = max(k8s.pod.network.rx) BY text_field, bucket = bucket(@timestamp,1hour)\n| SORT max, text_field\n| LIMIT 3\n"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "55711616",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "max",
+          "type": "integer"
+        },
+        {
+          "name": "text_field",
+          "type": "keyword"
+        },
+        {
+          "name": "bucket",
+          "type": "date"
+        }
+      ],
+      "documents_found": 8,
+      "is_partial": false,
+      "took": 55,
+      "values": [
+        [
+          530575198,
+          "we are just overflowing with text",
+          "2021-04-28T16:00:00.000Z"
+        ],
+        [
+          530600088,
+          "is this text?",
+          "2021-04-28T17:00:00.000Z"
+        ],
+        [
+          530604797,
+          "why cant i hold all these text",
+          "2021-04-28T18:00:00.000Z"
+        ]
+      ],
+      "values_loaded": 32
+    },
+    "statusCode": 200
+  }
+}
