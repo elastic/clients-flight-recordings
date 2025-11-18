@@ -1,0 +1,66 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/230_folding.yml",
+  "name": "TOP function with constant folding",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM employees\n| STATS\n    date = TOP(hire_date, 1+1, \"dEsc\"),\n    double = TOP(salary_change, 100-98, REVERSE(\"csed\")),\n    integer = TOP(salary, 4-(1+1), Substring(\"Ascending\",0,3)),\n    long = TOP(salary_change_long, 10 - 4*2, Concat(\"as\",\"c\"))\n| LIMIT 5\n"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "75350160",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "date",
+          "type": "date"
+        },
+        {
+          "name": "double",
+          "type": "double"
+        },
+        {
+          "name": "integer",
+          "type": "integer"
+        },
+        {
+          "name": "long",
+          "type": "long"
+        }
+      ],
+      "documents_found": 3,
+      "is_partial": false,
+      "took": 75,
+      "values": [
+        [
+          [
+            "2021-01-01T00:00:00.000Z",
+            "2020-01-01T00:00:00.000Z"
+          ],
+          [
+            200.5,
+            100.5
+          ],
+          [
+            40000,
+            50000
+          ],
+          [
+            50,
+            100
+          ]
+        ]
+      ],
+      "values_loaded": 12
+    },
+    "statusCode": 200
+  }
+}
