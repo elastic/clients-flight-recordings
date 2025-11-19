@@ -1,0 +1,65 @@
+{
+  "api": "search",
+  "file": "/test/free/data_stream/190_failure_store_redirection.yml",
+  "name": "Ensure failure is redirected to correct failure store after a reroute processor",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "index": ".fs-destination-*",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "n5afm5oBAXW934cPGo6z",
+            "_index": ".fs-destination-data-stream-2025.11.19-000002",
+            "_score": 1,
+            "_source": {
+              "@timestamp": "2025-11-19T10:18:06.822Z",
+              "document": {
+                "index": "logs-foobar",
+                "source": {
+                  "@timestamp": "2020-12-12",
+                  "foo": "bar"
+                }
+              },
+              "error": {
+                "message": "error_message",
+                "pipeline": "failing_pipeline",
+                "pipeline_trace": [
+                  "failing_pipeline"
+                ],
+                "processor_tag": "foo-tag",
+                "processor_type": "fail",
+                "stack_trace": "o.e.i.c.FailProcessorException: error_message\n\tat o.e.i.c.FailProcessor.execute(FailProcessor.java:42)\n\tat o.e.i.CompoundProcessor.innerExecute(CompoundProcessor.java:171)\n\t... 23 more\n",
+                "type": "fail_processor_exception"
+              }
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
