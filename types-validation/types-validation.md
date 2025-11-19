@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `f86f58fbf3ebfb4e54fd711acae8290e3669e835`
+Elasticsearch build hash: `7e73dc4bb231a505257ef9cd716ac338b28aa761`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 582 | 539 (92.6%) | 43 (7.4%) | 100 (17.2%) | 21 (3.6%) |
+| 583 | 540 (92.6%) | 43 (7.4%) | 101 (17.3%) | 21 (3.6%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 490 | 453 (92.4%) | 37 (7.6%) | 91 | 6 |
+| `stable` | 491 | 454 (92.5%) | 37 (7.5%) | 92 | 6 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 68 | 65 (95.6%) | 3 (4.4%) | 9 | 15 |
 
@@ -544,6 +544,7 @@ Elasticsearch build hash: `f86f58fbf3ebfb4e54fd711acae8290e3669e835`
 | `put_llama` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_mistral` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_openai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| `put_openshift_ai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_voyageai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_watsonx` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `rerank` | :white_circle: | Missing test | Missing test | stable | undefined |  |
