@@ -1,0 +1,60 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/220_explain.yml",
+  "name": "explainFrom",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "EXPLAIN (from test)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "2145409",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.1.8-6c1a0d3b75fa964efe6a9516e81b4fb8d6b13ffa \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "role",
+          "type": "keyword"
+        },
+        {
+          "name": "type",
+          "type": "keyword"
+        },
+        {
+          "name": "plan",
+          "type": "keyword"
+        }
+      ],
+      "documents_found": 0,
+      "is_partial": false,
+      "took": 2,
+      "values": [
+        [
+          "coordinator",
+          "parsedPlan",
+          "?test"
+        ],
+        [
+          "coordinator",
+          "optimizedLogicalPlan",
+          "Limit[1000[INTEGER],false]\n\\_EsRelation[test][color{f}#1581, color.keyword{f}#1582, description{f..]"
+        ],
+        [
+          "coordinator",
+          "optimizedPhysicalPlan",
+          "LimitExec[1000[INTEGER],200]\n\\_ExchangeExec[[color{f}#1581, color.keyword{f}#1582, description{f}#1583, description.keyword{f}#1584],false]\n  \\_FragmentExec[filter=null, estimatedRowSize=0, reducer=[], fragment=[<>\nProject[[color{f}#1581, color.keyword{f}#1582, description{f}#1583, description.keyword{f}#1584]]\n\\_Limit[1000[INTEGER],false]\n  \\_EsRelation[test][color{f}#1581, color.keyword{f}#1582, description{f..]<>]]"
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}
