@@ -1,0 +1,63 @@
+{
+  "api": "search",
+  "file": "/test/free/data_stream/190_failure_store_redirection.yml",
+  "name": "Failure redirects to correct failure store when index loop is detected",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "index": ".fs-destination-data-stream-*",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "NLQOq5oBd2nJt102iVbp",
+            "_index": ".fs-destination-data-stream-2025.11.22-000001",
+            "_score": 1,
+            "_source": {
+              "@timestamp": "2025-11-22T10:14:07.992Z",
+              "document": {
+                "index": "logs-foobar",
+                "source": {
+                  "@timestamp": "2020-12-12",
+                  "foo": "bar"
+                }
+              },
+              "error": {
+                "message": "index cycle detected while processing pipeline [send_back_to_original] for document [null]: [logs-foobar, destination-data-stream, logs-foobar]",
+                "pipeline": "send_back_to_original",
+                "pipeline_trace": [
+                  "send_back_to_original"
+                ],
+                "stack_trace": "j.l.IllegalStateException: index cycle detected while processing pipeline [send_back_to_original] for document [null]: [logs-foobar, destination-data-stream, logs-foobar]\n\tat o.e.i.IngestService.lambda$executePipelines$12(IngestService.java:1322)\n\tat o.e.i.IngestService.lambda$executePipeline$14(IngestService.java:1397)\n\t... 34 more\n",
+                "type": "illegal_state_exception"
+              }
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
