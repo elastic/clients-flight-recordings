@@ -1,11 +1,11 @@
 ## Summary
 
 Elasticsearch version: `8.19.8-SNAPSHOT`  
-Elasticsearch build hash: `d8a408da79f214395845d99d241e832077045983`
+Elasticsearch build hash: `5d6dd63a52f89c0176202ac57a2cc228148a3179`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 566 | 520 (91.9%) | 46 (8.1%) | 102 (18%) | 13 (2.3%) |
+| 566 | 520 (91.9%) | 46 (8.1%) | 105 (18.6%) | 6 (1.1%) |
 
 <details>
 <summary>Breakdown by stability</summary>
@@ -14,7 +14,7 @@ Elasticsearch build hash: `d8a408da79f214395845d99d241e832077045983`
 | --- | --- | --- | --- | --- | --- |
 | `stable` | 479 | 439 (91.6%) | 40 (8.4%) | 95 | 5 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 63 | 60 (95.2%) | 3 (4.8%) | 7 | 8 |
+| `experimental` | 63 | 60 (95.2%) | 3 (4.8%) | 10 | 1 |
 
 </details>
 
@@ -43,7 +43,7 @@ Elasticsearch build hash: `d8a408da79f214395845d99d241e832077045983`
 | `indices.put_mapping` | :red_circle: | 124/139 | 139/139 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 115/115 | 36/114 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1241/1304 | 1304/1304 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 112/144 | 144/144 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 90/90 | 71/90 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 33/33 | 7/33 | stable | undefined |  |
@@ -293,10 +293,10 @@ Elasticsearch build hash: `d8a408da79f214395845d99d241e832077045983`
 | `list` | :green_circle: | 19/19 | 19/19 | beta | undefined |  |
 | `post` | :green_circle: | 7/7 | 7/7 | beta | undefined |  |
 | `put` | :green_circle: | 14/14 | 14/14 | beta | undefined |  |
-| `secret_delete` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
-| `secret_get` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
-| `secret_post` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
-| `secret_put` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
+| `secret_delete` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
+| `secret_get` | :green_circle: | 11/11 | 11/11 | experimental | undefined |  |
+| `secret_post` | :green_circle: | 9/9 | 9/9 | experimental | undefined |  |
+| `secret_put` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `sync_job_cancel` | :green_circle: | 3/3 | 3/3 | beta | undefined |  |
 | `sync_job_check_in` | :green_circle: | 3/3 | 3/3 | experimental | undefined |  |
 | `sync_job_claim` | :green_circle: | 3/3 | 3/3 | experimental | undefined |  |
@@ -320,7 +320,7 @@ Elasticsearch build hash: `d8a408da79f214395845d99d241e832077045983`
 | `update_scheduling` | :green_circle: | 3/3 | 3/3 | beta | undefined |  |
 | `update_service_type` | :green_circle: | 2/2 | 2/2 | beta | undefined |  |
 | `update_status` | :green_circle: | 3/3 | 3/3 | experimental | undefined |  |
-| **Summary** | :orange_circle: | 100% | 100% | | | |
+| **Summary** | :green_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
 
@@ -387,13 +387,13 @@ Elasticsearch build hash: `d8a408da79f214395845d99d241e832077045983`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `delete_secret` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
-| `get_secret` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
+| `delete_secret` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| `get_secret` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `global_checkpoints` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `msearch` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
-| `post_secret` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
+| `post_secret` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `search` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
-| **Summary** | :orange_circle: | 0% | 0% | | | |
+| **Summary** | :white_circle: | 0% | 0% | | | |
 
 [Back to top](#Summary)
 
@@ -1025,8 +1025,8 @@ Elasticsearch build hash: `d8a408da79f214395845d99d241e832077045983`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 14.3% | | | |
+| `usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 11.9% | | | |
 
 [Back to top](#Summary)
 
