@@ -1,11 +1,11 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `979d92ecba40e99b9e407b17ecabb745c4a3b5da`
+Elasticsearch build hash: `a83acf10824264c8f6eb205e480d7103df6c95fa`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 583 | 538 (92.3%) | 45 (7.7%) | 110 (18.9%) | 5 (0.9%) |
+| 583 | 538 (92.3%) | 45 (7.7%) | 110 (18.9%) | 4 (0.7%) |
 
 <details>
 <summary>Breakdown by stability</summary>
@@ -14,7 +14,7 @@ Elasticsearch build hash: `979d92ecba40e99b9e407b17ecabb745c4a3b5da`
 | --- | --- | --- | --- | --- | --- |
 | `stable` | 491 | 454 (92.5%) | 37 (7.5%) | 98 | 3 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 68 | 63 (92.6%) | 5 (7.4%) | 12 | 2 |
+| `experimental` | 68 | 63 (92.6%) | 5 (7.4%) | 12 | 1 |
 
 </details>
 
@@ -177,7 +177,7 @@ Elasticsearch build hash: `979d92ecba40e99b9e407b17ecabb745c4a3b5da`
 | `health_report` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `index` | :green_circle: | 1512/1512 | 1514/1514 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
-| `knn_search` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
+| `knn_search` | :green_circle: | 4/4 | 4/4 | experimental | undefined | deprecated |
 | `mget` | :green_circle: | 54/54 | 53/53 | stable | undefined |  |
 | `msearch` | :green_circle: | 18/18 | 17/17 | stable | undefined |  |
 | `msearch_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
