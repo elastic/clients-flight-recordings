@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.1.8-SNAPSHOT`  
-Elasticsearch build hash: `f0d6a4c0195ea30184f98bff3122108d7c0fcdfb`
+Elasticsearch build hash: `d9dc935b59f17e613636fea70e0c0dfb21f1a792`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ Elasticsearch build hash: `f0d6a4c0195ea30184f98bff3122108d7c0fcdfb`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 2364/2393 | 2393/2393 | stable | undefined |  |
+| `search` | :red_circle: | 2366/2395 | 2395/2395 | stable | undefined |  |
 | `security.authenticate` | :red_circle: | 30/30 | 25/30 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 192/192 | 186/192 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 42/42 | 39/42 | stable | undefined |  |
@@ -174,7 +174,7 @@ Elasticsearch build hash: `f0d6a4c0195ea30184f98bff3122108d7c0fcdfb`
 | `get_script_languages` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_source` | :green_circle: | 18/18 | 18/18 | stable | undefined |  |
 | `health_report` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
-| `index` | :green_circle: | 1368/1368 | 1370/1370 | stable | undefined |  |
+| `index` | :green_circle: | 1370/1370 | 1372/1372 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `knn_search` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
 | `mget` | :green_circle: | 51/51 | 50/50 | stable | undefined |  |
@@ -190,7 +190,7 @@ Elasticsearch build hash: `f0d6a4c0195ea30184f98bff3122108d7c0fcdfb`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 69/69 | 20/20 | stable | undefined |  |
-| `search` | :red_circle: | 2364/2393 | 2393/2393 | stable | undefined |  |
+| `search` | :red_circle: | 2366/2395 | 2395/2395 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
