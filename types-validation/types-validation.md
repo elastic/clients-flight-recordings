@@ -1,11 +1,11 @@
 ## Summary
 
 Elasticsearch version: `9.1.8-SNAPSHOT`  
-Elasticsearch build hash: `50f58de526b746a6cc07f0cbec0e0d510f13ce52`
+Elasticsearch build hash: `e7bfe2dea7b20c7a0256be1535191456317152d6`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 568 | 527 (92.8%) | 41 (7.2%) | 105 (18.5%) | 4 (0.7%) |
+| 568 | 527 (92.8%) | 41 (7.2%) | 105 (18.5%) | 3 (0.5%) |
 
 <details>
 <summary>Breakdown by stability</summary>
@@ -14,7 +14,7 @@ Elasticsearch build hash: `50f58de526b746a6cc07f0cbec0e0d510f13ce52`
 | --- | --- | --- | --- | --- | --- |
 | `stable` | 479 | 445 (92.9%) | 34 (7.1%) | 94 | 2 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 65 | 61 (93.8%) | 4 (6.2%) | 11 | 2 |
+| `experimental` | 65 | 61 (93.8%) | 4 (6.2%) | 11 | 1 |
 
 </details>
 
@@ -155,7 +155,7 @@ Elasticsearch build hash: `50f58de526b746a6cc07f0cbec0e0d510f13ce52`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `bulk` | :green_circle: | 543/543 | 561/561 | stable | undefined |  |
-| `capabilities` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
+| `capabilities` | :green_circle: | 2/2 | 2/2 | experimental | undefined |  |
 | `clear_scroll` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `close_point_in_time` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
 | `count` | :green_circle: | 37/37 | 37/37 | stable | undefined |  |
