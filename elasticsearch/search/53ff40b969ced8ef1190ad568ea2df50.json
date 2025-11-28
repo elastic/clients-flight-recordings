@@ -1,0 +1,97 @@
+{
+  "api": "search",
+  "file": "/test/platinum/entsearch/rules/40_rule_query_search.yml",
+  "name": "Perform a rule query with an organic query that must be rewritten to another query type",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "rule": {
+            "match_criteria": {
+              "foo": "baz"
+            },
+            "organic": {
+              "sparse_vector": {
+                "field": "ml.tokens",
+                "inference_id": "text_expansion_model",
+                "query": "octopus comforter smells"
+              }
+            },
+            "ruleset_ids": [
+              "combined-ruleset"
+            ]
+          }
+        }
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 3,
+        "total": 3
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "pinned_doc2",
+            "_index": "test-index-with-sparse-vector",
+            "_score": 1.7014122e+38,
+            "_source": {
+              "source_text": "another unrelated pinned doc"
+            }
+          },
+          {
+            "_id": "y-AMypoBb9D7Xk1nW6Bh",
+            "_index": "test-index-with-sparse-vector",
+            "_score": 3,
+            "_source": {
+              "source_text": "the octopus comforter smells"
+            }
+          },
+          {
+            "_id": "zOAMypoBb9D7Xk1nW6Bh",
+            "_index": "test-index-with-sparse-vector",
+            "_score": 2,
+            "_source": {
+              "source_text": "the octopus comforter is leaking"
+            }
+          },
+          {
+            "_id": "yOAMypoBb9D7Xk1nW6Bh",
+            "_index": "test-index-with-sparse-vector",
+            "_score": 1,
+            "_source": {
+              "source_text": "my words comforter"
+            }
+          },
+          {
+            "_id": "zeAMypoBb9D7Xk1nW6Bh",
+            "_index": "test-index-with-sparse-vector",
+            "_score": 1,
+            "_source": {
+              "source_text": "washing machine smells"
+            }
+          }
+        ],
+        "max_score": 1.7014122e+38,
+        "total": {
+          "relation": "eq",
+          "value": 5
+        }
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}
