@@ -1,0 +1,108 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/weighted_avg.yml",
+  "name": "Missing weight results in skipping document",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "weighted_long_avg": {
+            "weighted_avg": {
+              "value": {
+                "field": "long_field"
+              },
+              "weight": {
+                "field": "weight"
+              }
+            }
+          }
+        }
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "weighted_avg#weighted_long_avg": {
+          "value": 3.2222222222222223
+        }
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "5YY81JoB6LjHkcGOSR1w",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "double_field": 1,
+              "integer_field": 10,
+              "long_field": 6,
+              "multi_value_field": [
+                1,
+                2,
+                3
+              ],
+              "weight": 2
+            }
+          },
+          {
+            "_id": "5oY81JoB6LjHkcGOSR1w",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "double_field": 3,
+              "long_field": 2,
+              "multi_value_field": [
+                0,
+                1,
+                4
+              ],
+              "weight": 4
+            }
+          },
+          {
+            "_id": "54Y81JoB6LjHkcGOSR1w",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "double_field": 1,
+              "long_field": 1
+            }
+          },
+          {
+            "_id": "6IY81JoB6LjHkcGOSR1w",
+            "_index": "test",
+            "_score": 1,
+            "_source": {
+              "double_field": 5,
+              "integer_field": 4,
+              "long_field": 3,
+              "weight": 3
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 4
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
