@@ -1,20 +1,20 @@
 ## Summary
 
-Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `75e5f80582ef4fad22b8785b484a0896b1c5fcaf`
+Elasticsearch version: `undefined`  
+Elasticsearch build hash: `undefined`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 575 | 529 (92%) | 46 (8%) | 109 (19%) | 3 (0.5%) |
+| 575 | 529 (92%) | 46 (8%) | 110 (19.1%) | 1 (0.2%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 490 | 451 (92%) | 39 (8%) | 98 | 2 |
+| `stable` | 490 | 451 (92%) | 39 (8%) | 99 | 1 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 61 | 57 (93.4%) | 4 (6.6%) | 11 | 1 |
+| `experimental` | 61 | 57 (93.4%) | 4 (6.6%) | 11 | 0 |
 
 </details>
 
@@ -177,7 +177,7 @@ Elasticsearch build hash: `75e5f80582ef4fad22b8785b484a0896b1c5fcaf`
 | `health_report` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `index` | :green_circle: | 1512/1512 | 1514/1514 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
-| `knn_search` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
+| `knn_search` | :green_circle: | 4/4 | 4/4 | experimental | undefined | deprecated |
 | `mget` | :green_circle: | 54/54 | 53/53 | stable | undefined |  |
 | `msearch` | :green_circle: | 18/18 | 17/17 | stable | undefined |  |
 | `msearch_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
@@ -717,8 +717,8 @@ Elasticsearch build hash: `75e5f80582ef4fad22b8785b484a0896b1c5fcaf`
 | `flamegraph` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `stacktraces` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `status` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `topn_functions` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
-| **Summary** | :orange_circle: | 0% | 0% | | | |
+| `topn_functions` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| **Summary** | :white_circle: | 0% | 0% | | | |
 
 [Back to top](#Summary)
 
