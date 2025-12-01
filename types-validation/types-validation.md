@@ -5,16 +5,16 @@ Elasticsearch build hash: `13a70e4421203329a60e56b88c712040e208b8f6`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 568 | 527 (92.8%) | 41 (7.2%) | 105 (18.5%) | 3 (0.5%) |
+| 568 | 527 (92.8%) | 41 (7.2%) | 106 (18.7%) | 1 (0.2%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 479 | 445 (92.9%) | 34 (7.1%) | 94 | 2 |
+| `stable` | 479 | 445 (92.9%) | 34 (7.1%) | 95 | 1 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 65 | 61 (93.8%) | 4 (6.2%) | 11 | 1 |
+| `experimental` | 65 | 61 (93.8%) | 4 (6.2%) | 11 | 0 |
 
 </details>
 
@@ -176,7 +176,7 @@ Elasticsearch build hash: `13a70e4421203329a60e56b88c712040e208b8f6`
 | `health_report` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `index` | :green_circle: | 1364/1364 | 1366/1366 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
-| `knn_search` | :orange_circle: | Missing type | Missing type | experimental | undefined |  |
+| `knn_search` | :green_circle: | 4/4 | 4/4 | experimental | undefined | deprecated |
 | `mget` | :green_circle: | 51/51 | 50/50 | stable | undefined |  |
 | `msearch` | :green_circle: | 18/18 | 17/17 | stable | undefined |  |
 | `msearch_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
@@ -711,8 +711,8 @@ Elasticsearch build hash: `13a70e4421203329a60e56b88c712040e208b8f6`
 | `flamegraph` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `stacktraces` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `status` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `topn_functions` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
-| **Summary** | :orange_circle: | 0% | 0% | | | |
+| `topn_functions` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| **Summary** | :white_circle: | 0% | 0% | | | |
 
 [Back to top](#Summary)
 
