@@ -1,0 +1,120 @@
+{
+  "api": "search",
+  "file": "/test/free/search/620_rescore_script.yml",
+  "name": "Multiple script rescore",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "match": {
+            "title": "ethics of ambiguity"
+          }
+        },
+        "rescore": [
+          {
+            "script": {
+              "script": {
+                "params": {
+                  "multiplier": 10
+                },
+                "source": "doc['num_likes'].value * params.multiplier + _score"
+              }
+            },
+            "window_size": 3
+          },
+          {
+            "script": {
+              "script": {
+                "params": {
+                  "factor": 10
+                },
+                "source": "_score * params.factor"
+              }
+            },
+            "window_size": 2
+          }
+        ]
+      },
+      "index": "books",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "2",
+            "_index": "books",
+            "_score": 25005.988,
+            "_source": {
+              "author": "Jean-Paul Sartre",
+              "num_likes": 250,
+              "title": "The Ethics of Being and Nothingness"
+            }
+          },
+          {
+            "_id": "4",
+            "_index": "books",
+            "_score": 18007.004,
+            "_source": {
+              "author": "Jean-Paul Sartre",
+              "num_likes": 180,
+              "title": "The Ethics of Nausea"
+            }
+          },
+          {
+            "_id": "1",
+            "_index": "books",
+            "_score": 1501.3032,
+            "_source": {
+              "author": "Simone de Beauvoir",
+              "num_likes": 150,
+              "title": "The Ethics of Ambiguity"
+            }
+          },
+          {
+            "_id": "3",
+            "_index": "books",
+            "_score": 0.5987902,
+            "_source": {
+              "author": "Simone de Beauvoir",
+              "num_likes": 300,
+              "title": "The Ambiguity of The Second Sex"
+            }
+          },
+          {
+            "_id": "5",
+            "_index": "books",
+            "_score": 0.5583314,
+            "_source": {
+              "author": "Albert Camus",
+              "num_likes": 220,
+              "title": "The Ambiguity in the Myth of Sisyphus"
+            }
+          }
+        ],
+        "max_score": 25005.988,
+        "total": {
+          "relation": "eq",
+          "value": 5
+        }
+      },
+      "timed_out": false,
+      "took": 12
+    },
+    "statusCode": 200
+  }
+}

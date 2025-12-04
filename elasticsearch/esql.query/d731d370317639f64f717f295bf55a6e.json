@@ -1,0 +1,75 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/240_timezone.yml",
+  "name": "Paris tz with SET",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET time_zone=\"Europe/Paris\";\nFROM tzs\n| EVAL\n    hour=DATE_EXTRACT(\"hour_of_day\", @timestamp),\n    day_name=DAY_NAME(@timestamp),\n    month_name=MONTH_NAME(@timestamp)\n| SORT @timestamp ASC\n| LIMIT 5\n"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "9447974",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "@timestamp",
+          "type": "date"
+        },
+        {
+          "name": "hour",
+          "type": "long"
+        },
+        {
+          "name": "day_name",
+          "type": "keyword"
+        },
+        {
+          "name": "month_name",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1764845058024,
+      "documents_found": 4,
+      "expiration_time_in_millis": 1765277057834,
+      "is_partial": false,
+      "start_time_in_millis": 1764845058015,
+      "took": 9,
+      "values": [
+        [
+          "2025-05-31T00:00:00.000Z",
+          2,
+          "Saturday",
+          "May"
+        ],
+        [
+          "2025-05-31T01:00:00.000Z",
+          3,
+          "Saturday",
+          "May"
+        ],
+        [
+          "2025-05-31T22:00:00.000Z",
+          0,
+          "Sunday",
+          "June"
+        ],
+        [
+          "2025-05-31T23:00:00.000Z",
+          1,
+          "Sunday",
+          "June"
+        ]
+      ],
+      "values_loaded": 4
+    },
+    "statusCode": 200
+  }
+}
