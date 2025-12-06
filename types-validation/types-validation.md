@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `8.19.9-SNAPSHOT`  
-Elasticsearch build hash: `08691453b1e8c1c49e32fd393f006be31a821cf3`
+Elasticsearch build hash: `639bbf04eade842b48e88133929bf0cc9efc54df`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 566 | 520 (91.9%) | 46 (8.1%) | 106 (18.7%) | 4 (0.7%) |
+| 566 | 520 (91.9%) | 46 (8.1%) | 107 (18.9%) | 3 (0.5%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 479 | 439 (91.6%) | 40 (8.4%) | 96 | 4 |
+| `stable` | 479 | 439 (91.6%) | 40 (8.4%) | 97 | 3 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 63 | 60 (95.2%) | 3 (4.8%) | 10 | 0 |
 
@@ -983,7 +983,7 @@ Elasticsearch build hash: `08691453b1e8c1c49e32fd393f006be31a821cf3`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `delete_transform` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
-| `get_node_stats` | :orange_circle: | Missing type | Missing type | stable | undefined |  |
+| `get_node_stats` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_transform` | :green_circle: | 26/26 | 26/26 | stable | undefined |  |
 | `get_transform_stats` | :green_circle: | 34/34 | 34/34 | stable | undefined |  |
 | `preview_transform` | :green_circle: | 21/21 | 21/21 | stable | undefined |  |
@@ -995,7 +995,7 @@ Elasticsearch build hash: `08691453b1e8c1c49e32fd393f006be31a821cf3`
 | `stop_transform` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `update_transform` | :green_circle: | 14/14 | 14/14 | stable | undefined |  |
 | `upgrade_transforms` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| **Summary** | :orange_circle: | 100% | 100% | | | |
+| **Summary** | :green_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
 
