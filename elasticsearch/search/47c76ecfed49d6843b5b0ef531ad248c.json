@@ -1,0 +1,80 @@
+{
+  "api": "search",
+  "file": "/test/platinum/downsample/30_date_histogram.yml",
+  "name": "timezone support - 15m",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "date_histogram": {
+            "date_histogram": {
+              "field": "@timestamp",
+              "fixed_interval": "1h",
+              "time_zone": "-01:15"
+            }
+          }
+        },
+        "query": {
+          "range": {
+            "@timestamp": {
+              "gt": "2021-04-27T15:00:00Z",
+              "lt": "2021-04-28T15:00:00Z"
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "test-downsample",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "date_histogram#date_histogram": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": 1619601300000,
+              "key_as_string": "2021-04-28T08:00:00.000-01:15"
+            },
+            {
+              "doc_count": 2,
+              "key": 1619604900000,
+              "key_as_string": "2021-04-28T09:00:00.000-01:15"
+            },
+            {
+              "doc_count": 2,
+              "key": 1619608500000,
+              "key_as_string": "2021-04-28T10:00:00.000-01:15"
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 5
+        }
+      },
+      "timed_out": false,
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}
