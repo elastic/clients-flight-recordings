@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `30ec375504ac09a807779a8ff6905febf73b3dd1`
+Elasticsearch build hash: `2455b009c760e3d1911d1ad95dfa433d7a0d8f0f`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 583 | 543 (93.1%) | 40 (6.9%) | 112 (19.2%) | 0 (0%) |
+| 584 | 544 (93.2%) | 40 (6.8%) | 113 (19.3%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 491 | 459 (93.5%) | 32 (6.5%) | 100 | 0 |
+| `stable` | 492 | 460 (93.5%) | 32 (6.5%) | 101 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 68 | 63 (92.6%) | 5 (7.4%) | 12 | 0 |
 
@@ -370,7 +370,7 @@ Elasticsearch build hash: `30ec375504ac09a807779a8ff6905febf73b3dd1`
 | `async_query_stop` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_query` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
-| `query` | :red_circle: | 365/368 | 0/0 | stable | undefined |  |
+| `query` | :red_circle: | 372/375 | 0/0 | stable | undefined |  |
 | **Summary** | :red_circle: | 99.2% | 0% | | | |
 
 [Back to top](#Summary)
@@ -537,6 +537,7 @@ Elasticsearch build hash: `30ec375504ac09a807779a8ff6905febf73b3dd1`
 | `put_elser` | :white_circle: | Missing test | Missing test | stable | undefined | deprecated |
 | `put_googleaistudio` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_googlevertexai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| `put_groq` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_hugging_face` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_jinaai` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_llama` | :white_circle: | Missing test | Missing test | stable | undefined |  |
