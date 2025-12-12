@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `8.19.9-SNAPSHOT`  
-Elasticsearch build hash: `ab44b4615dea9f1a2b7fb7797f51699e9e6cc10c`
+Elasticsearch build hash: `66b13eff9aca7d6384f0c570f3cceab8570549e0`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 566 | 520 (91.9%) | 46 (8.1%) | 107 (18.9%) | 0 (0%) |
+| 566 | 519 (91.7%) | 47 (8.3%) | 107 (18.9%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 479 | 439 (91.6%) | 40 (8.4%) | 97 | 0 |
+| `stable` | 479 | 438 (91.4%) | 41 (8.6%) | 97 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 63 | 60 (95.2%) | 3 (4.8%) | 10 | 0 |
 
@@ -623,7 +623,7 @@ Elasticsearch build hash: `ab44b4615dea9f1a2b7fb7797f51699e9e6cc10c`
 | `get_buckets` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `get_calendar_events` | :red_circle: | 15/15 | 5/15 | stable | undefined |  |
 | `get_calendars` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
-| `get_categories` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
+| `get_categories` | :red_circle: | 9/10 | 10/10 | stable | undefined |  |
 | `get_data_frame_analytics` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `get_data_frame_analytics_stats` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `get_datafeed_stats` | :green_circle: | 25/25 | 25/25 | stable | undefined |  |
@@ -674,7 +674,7 @@ Elasticsearch build hash: `ab44b4615dea9f1a2b7fb7797f51699e9e6cc10c`
 | `upgrade_job_snapshot` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `validate` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `validate_detector` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 97.2% | | | |
+| **Summary** | :red_circle: | 99.9% | 97.2% | | | |
 
 [Back to top](#Summary)
 
