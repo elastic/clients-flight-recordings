@@ -1,0 +1,76 @@
+{
+  "api": "cluster.put_component_template",
+  "file": "/test/free/reindex/100_tsdb.yml",
+  "name": "from tsdb to tsdb created by template while modifying dimension",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "template": {
+          "mappings": {
+            "properties": {
+              "@timestamp": {
+                "type": "date"
+              },
+              "k8s": {
+                "properties": {
+                  "pod": {
+                    "properties": {
+                      "ip": {
+                        "type": "ip"
+                      },
+                      "name": {
+                        "type": "keyword"
+                      },
+                      "network": {
+                        "properties": {
+                          "rx": {
+                            "type": "long"
+                          },
+                          "tx": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "uid": {
+                        "time_series_dimension": true,
+                        "type": "keyword"
+                      }
+                    }
+                  }
+                }
+              },
+              "metricset": {
+                "time_series_dimension": true,
+                "type": "keyword"
+              }
+            }
+          },
+          "settings": {
+            "index": {
+              "mode": "time_series",
+              "number_of_replicas": 0,
+              "number_of_shards": 2,
+              "routing_path": [
+                "metricset",
+                "k8s.pod.uid"
+              ]
+            }
+          }
+        }
+      },
+      "name": "test-component-template"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
