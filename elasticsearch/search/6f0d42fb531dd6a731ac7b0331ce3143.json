@@ -1,0 +1,235 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/terms.yml",
+  "name": "string profiler via map",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "str_terms": {
+            "aggs": {
+              "max_number": {
+                "max": {
+                  "field": "number"
+                }
+              }
+            },
+            "terms": {
+              "collect_mode": "breadth_first",
+              "execution_hint": "map",
+              "field": "str"
+            }
+          }
+        },
+        "profile": true,
+        "size": 0
+      },
+      "index": "test_1",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "sterms#str_terms": {
+          "buckets": [
+            {
+              "doc_count": 2,
+              "key": "sheep",
+              "max#max_number": {
+                "value": 3
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": "cow",
+              "max#max_number": {
+                "value": 1
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": "pig",
+              "max#max_number": {
+                "value": 1
+              }
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 4
+        }
+      },
+      "profile": {
+        "shards": [
+          {
+            "aggregations": [
+              {
+                "breakdown": {
+                  "build_aggregation": 176242,
+                  "build_aggregation_count": 1,
+                  "build_leaf_collector": 40210,
+                  "build_leaf_collector_count": 1,
+                  "collect": 76482,
+                  "collect_count": 4,
+                  "initialize": 37442,
+                  "initialize_count": 1,
+                  "post_collection": 15708,
+                  "post_collection_count": 1,
+                  "reduce": 0,
+                  "reduce_count": 0
+                },
+                "children": [
+                  {
+                    "breakdown": {
+                      "build_aggregation": 7596,
+                      "build_aggregation_count": 1,
+                      "build_leaf_collector": 20204,
+                      "build_leaf_collector_count": 1,
+                      "collect": 21345,
+                      "collect_count": 4,
+                      "initialize": 2073,
+                      "initialize_count": 1,
+                      "post_collection": 823,
+                      "post_collection_count": 1,
+                      "reduce": 0,
+                      "reduce_count": 0
+                    },
+                    "debug": {
+                      "built_buckets": 3
+                    },
+                    "description": "max_number",
+                    "time_in_nanos": 52041,
+                    "type": "MaxAggregator"
+                  }
+                ],
+                "debug": {
+                  "built_buckets": 1,
+                  "collection_strategy": "from Field [str] of type [keyword]",
+                  "deferred_aggregators": [
+                    "max_number"
+                  ],
+                  "result_strategy": "terms",
+                  "total_buckets": 3
+                },
+                "description": "str_terms",
+                "time_in_nanos": 346084,
+                "type": "MapStringTermsAggregator"
+              }
+            ],
+            "cluster": "(local)",
+            "id": "[3Yj-j9s4SK6LhVjxIrx5OA][test_1][0]",
+            "index": "test_1",
+            "node_id": "3Yj-j9s4SK6LhVjxIrx5OA",
+            "searches": [
+              {
+                "collector": [
+                  {
+                    "children": [
+                      {
+                        "name": "PartialHitCountCollector",
+                        "reason": "search_count",
+                        "time_in_nanos": 16747
+                      },
+                      {
+                        "name": "AggregatorCollector: [str_terms]",
+                        "reason": "aggregation",
+                        "time_in_nanos": 131631
+                      }
+                    ],
+                    "name": "QueryPhaseCollector",
+                    "reason": "search_query_phase",
+                    "time_in_nanos": 160562
+                  }
+                ],
+                "query": [
+                  {
+                    "breakdown": {
+                      "advance": 0,
+                      "advance_count": 0,
+                      "build_scorer": 16485,
+                      "build_scorer_count": 2,
+                      "compute_max_score": 0,
+                      "compute_max_score_count": 0,
+                      "count_weight": 3472,
+                      "count_weight_count": 1,
+                      "create_weight": 8165,
+                      "create_weight_count": 1,
+                      "match": 0,
+                      "match_count": 0,
+                      "next_doc": 2554,
+                      "next_doc_count": 5,
+                      "score": 0,
+                      "score_count": 0,
+                      "set_min_competitive_score": 0,
+                      "set_min_competitive_score_count": 0,
+                      "shallow_advance": 0,
+                      "shallow_advance_count": 0
+                    },
+                    "children": [
+                      {
+                        "breakdown": {
+                          "advance": 0,
+                          "advance_count": 0,
+                          "build_scorer": 12778,
+                          "build_scorer_count": 2,
+                          "compute_max_score": 0,
+                          "compute_max_score_count": 0,
+                          "count_weight": 2759,
+                          "count_weight_count": 1,
+                          "create_weight": 1115,
+                          "create_weight_count": 1,
+                          "match": 0,
+                          "match_count": 0,
+                          "next_doc": 1301,
+                          "next_doc_count": 5,
+                          "score": 0,
+                          "score_count": 0,
+                          "set_min_competitive_score": 0,
+                          "set_min_competitive_score_count": 0,
+                          "shallow_advance": 0,
+                          "shallow_advance_count": 0
+                        },
+                        "description": "*:*",
+                        "time_in_nanos": 17953,
+                        "type": "MatchAllDocsQuery"
+                      }
+                    ],
+                    "description": "ConstantScore(*:*)",
+                    "time_in_nanos": 30676,
+                    "type": "ConstantScoreQuery"
+                  }
+                ],
+                "rewrite_time": 6668
+              }
+            ],
+            "shard_id": 0
+          }
+        ]
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
