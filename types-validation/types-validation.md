@@ -1,11 +1,11 @@
 ## Summary
 
 Elasticsearch version: `9.4.0-SNAPSHOT`  
-Elasticsearch build hash: `48d29e1425a971471b42ff75640f98e2fba43d90`
+Elasticsearch build hash: `2b0454944fb87b4e21cd1879f491560f9d9df40c`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 588 | 542 (92.2%) | 46 (7.8%) | 113 (19.2%) | 0 (0%) |
+| 593 | 547 (92.2%) | 46 (7.8%) | 118 (19.9%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
@@ -14,7 +14,7 @@ Elasticsearch build hash: `48d29e1425a971471b42ff75640f98e2fba43d90`
 | --- | --- | --- | --- | --- | --- |
 | `stable` | 493 | 455 (92.3%) | 38 (7.7%) | 101 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 71 | 66 (93%) | 5 (7%) | 12 | 0 |
+| `experimental` | 76 | 71 (93.4%) | 5 (6.6%) | 17 | 0 |
 
 </details>
 
@@ -34,7 +34,7 @@ Elasticsearch build hash: `48d29e1425a971471b42ff75640f98e2fba43d90`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 2920/2940 | 2940/2940 | stable | undefined |  |
+| `search` | :red_circle: | 2921/2941 | 2941/2941 | stable | undefined |  |
 | `update_by_query` | :red_circle: | 42/42 | 39/41 | stable | undefined |  |
 | `delete_by_query` | :red_circle: | 27/27 | 24/26 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 236/236 | 224/236 | stable | undefined |  |
@@ -88,6 +88,7 @@ Elasticsearch build hash: `48d29e1425a971471b42ff75640f98e2fba43d90`
 - [`nodes`](#nodes)
 - [`profiling`](#profiling)
 - [`project`](#project)
+- [`project_routing`](#project_routing)
 - [`query_rules`](#query_rules)
 - [`rollup`](#rollup)
 - [`search_application`](#search_application)
@@ -111,7 +112,7 @@ Elasticsearch build hash: `48d29e1425a971471b42ff75640f98e2fba43d90`
 
 ## Report
 
-:construction: 24.4% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
+:construction: 23.9% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
 
 ### _internal
 
@@ -191,7 +192,7 @@ Elasticsearch build hash: `48d29e1425a971471b42ff75640f98e2fba43d90`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 69/69 | 20/20 | stable | undefined |  |
-| `search` | :red_circle: | 2920/2940 | 2940/2940 | stable | undefined |  |
+| `search` | :red_circle: | 2921/2941 | 2941/2941 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -740,6 +741,19 @@ Elasticsearch build hash: `48d29e1425a971471b42ff75640f98e2fba43d90`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `tags` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| **Summary** | :white_circle: | 0% | 0% | | | |
+
+[Back to top](#Summary)
+
+### project_routing
+
+| API | Status | Request | Response | Stability | Visibility | Meta |
+| --- | --- | --- | --- | --- | --- | --- |
+| `create` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| `create_many` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| `delete` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| `get` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| `get_many` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | **Summary** | :white_circle: | 0% | 0% | | | |
 
 [Back to top](#Summary)
