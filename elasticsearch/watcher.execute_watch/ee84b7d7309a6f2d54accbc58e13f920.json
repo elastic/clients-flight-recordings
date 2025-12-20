@@ -1,0 +1,152 @@
+{
+  "api": "watcher.execute_watch",
+  "file": "/test/platinum/watcher/execute_watch/60_http_input.yml",
+  "name": "HTTP input redacts sensitive info",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "watch": {
+          "actions": {
+            "log": {
+              "logging": {
+                "text": "executed at {{ctx.execution_time}}"
+              }
+            }
+          },
+          "input": {
+            "http": {
+              "request": {
+                "auth": {
+                  "basic": {
+                    "password": "x-pack-test-password",
+                    "username": "x_pack_rest_user"
+                  }
+                },
+                "headers": {
+                  "authorization": "Basic eF9wYWNrX3Jlc3RfdXNlcjp4LXBhY2stdGVzdC1wYXNzd29yZA=="
+                },
+                "url": "http://172.18.0.2:9200/_cluster/health"
+              }
+            }
+          },
+          "trigger": {
+            "schedule": {
+              "interval": "1s"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1488",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "_inlined__bfcac204-fd38-44fd-8dba-e9d2077a0e44-2025-12-20T10:55:22.176244963Z",
+      "watch_record": {
+        "@timestamp": "2025-12-20T10:55:22.176225654Z",
+        "condition": {
+          "always": {
+          }
+        },
+        "input": {
+          "http": {
+            "request": {
+              "auth": {
+                "basic": {
+                  "password": "::es_redacted::",
+                  "username": "x_pack_rest_user"
+                }
+              },
+              "headers": {
+                "authorization": "::es_redacted::"
+              },
+              "host": "172.18.0.2",
+              "method": "get",
+              "params": {
+              },
+              "path": "/_cluster/health",
+              "port": 9200,
+              "scheme": "http"
+            }
+          }
+        },
+        "messages": [
+          "failed to execute watch input"
+        ],
+        "node": "dZy3thkGRU6ZHsvPAqTEVQ",
+        "result": {
+          "actions": [
+          ],
+          "execution_duration": 6,
+          "execution_time": "2025-12-20T10:55:22.176Z",
+          "input": {
+            "error": {
+              "reason": "172.18.0.2:9200 failed to respond",
+              "root_cause": [
+                {
+                  "reason": "172.18.0.2:9200 failed to respond",
+                  "type": "no_http_response_exception"
+                }
+              ],
+              "type": "no_http_response_exception"
+            },
+            "http": {
+              "request": {
+                "auth": {
+                  "basic": {
+                    "password": "::es_redacted::",
+                    "username": "x_pack_rest_user"
+                  }
+                },
+                "headers": {
+                  "authorization": "::es_redacted::"
+                },
+                "host": "172.18.0.2",
+                "method": "get",
+                "path": "/_cluster/health",
+                "port": 9200,
+                "scheme": "http"
+              }
+            },
+            "status": "failure",
+            "type": "http"
+          }
+        },
+        "state": "failed",
+        "status": {
+          "actions": {
+            "log": {
+              "ack": {
+                "state": "awaits_successful_execution",
+                "timestamp": "2025-12-20T10:55:22.176Z"
+              }
+            }
+          },
+          "execution_state": "failed",
+          "state": {
+            "active": true,
+            "timestamp": "2025-12-20T10:55:22.176Z"
+          },
+          "version": -1
+        },
+        "trigger_event": {
+          "manual": {
+            "schedule": {
+              "scheduled_time": "2025-12-20T10:55:22.176Z"
+            }
+          },
+          "triggered_time": "2025-12-20T10:55:22.176Z",
+          "type": "manual"
+        },
+        "user": "elastic",
+        "watch_id": "_inlined_"
+      }
+    },
+    "statusCode": 200
+  }
+}
