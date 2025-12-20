@@ -1,0 +1,67 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/140_metadata.yml",
+  "name": "sort returning _source is allowed",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM test METADATA _source | SORT case ASC | KEEP case, _source | LIMIT 5"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "13302514",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "case",
+          "type": "keyword"
+        },
+        {
+          "name": "_source",
+          "type": "_source"
+        }
+      ],
+      "completion_time_in_millis": 1766227341702,
+      "documents_found": 3,
+      "expiration_time_in_millis": 1766659341574,
+      "is_partial": false,
+      "start_time_in_millis": 1766227341689,
+      "took": 13,
+      "values": [
+        [
+          "all_ignored",
+          {
+            "case": "all_ignored",
+            "integer": "not-an-integer",
+            "keyword": "long-keyword"
+          }
+        ],
+        [
+          "integer_ignored",
+          {
+            "case": "integer_ignored",
+            "integer": "not-an-integer",
+            "keyword": "ok"
+          }
+        ],
+        [
+          "ok",
+          {
+            "case": "ok",
+            "integer": 10,
+            "keyword": "ok"
+          }
+        ]
+      ],
+      "values_loaded": 6
+    },
+    "statusCode": 200
+  }
+}
