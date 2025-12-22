@@ -1,0 +1,80 @@
+{
+  "api": "watcher.get_watch",
+  "file": "/test/platinum/security/20_test_run_as_execute_watch.yml",
+  "name": "Test watch search input is run as user who added the watch",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "id": "my_watch"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "661",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "my_watch",
+      "_primary_term": 1,
+      "_seq_no": 21,
+      "_version": 3,
+      "found": true,
+      "status": {
+        "actions": {
+          "logging": {
+            "ack": {
+              "state": "awaits_successful_execution",
+              "timestamp": "2025-12-22T10:55:15.126Z"
+            }
+          }
+        },
+        "state": {
+          "active": true,
+          "timestamp": "2025-12-22T10:55:15.126Z"
+        },
+        "version": 3
+      },
+      "watch": {
+        "actions": {
+          "logging": {
+            "logging": {
+              "level": "info",
+              "text": "Successfully ran my_watch to test for search input"
+            }
+          }
+        },
+        "condition": {
+          "compare": {
+            "ctx.payload.hits.total": {
+              "gte": 1
+            }
+          }
+        },
+        "input": {
+          "search": {
+            "request": {
+              "body": {
+                "query": {
+                  "match_all": {
+                  }
+                }
+              },
+              "indices": [
+                "my_test_index"
+              ],
+              "rest_total_hits_as_int": true,
+              "search_type": "query_then_fetch"
+            }
+          }
+        },
+        "trigger": {
+          "schedule": {
+            "cron": "0 0 0 1 * ? 2099"
+          }
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}
