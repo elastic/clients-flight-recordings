@@ -1,0 +1,94 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/46_downsample.yml",
+  "name": "Over time functions from downsampled and non-downsampled indices simultaneously, with grouping",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "TS test-* | STATS avg = sum(avg_over_time(k8s.pod.network.rx)), count = sum(count_over_time(k8s.pod.network.rx)), sum = sum(sum_over_time(k8s.pod.network.rx)) BY k8s.pod.name, time_bucket = bucket(@timestamp, 1 hour) | SORT time_bucket, k8s.pod.name | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "14890895",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "avg",
+          "type": "double"
+        },
+        {
+          "name": "count",
+          "type": "long"
+        },
+        {
+          "name": "sum",
+          "type": "double"
+        },
+        {
+          "name": "k8s.pod.name",
+          "type": "keyword"
+        },
+        {
+          "name": "time_bucket",
+          "type": "date"
+        }
+      ],
+      "documents_found": 8,
+      "is_partial": false,
+      "took": 14,
+      "values": [
+        [
+          801806,
+          2,
+          1603612,
+          "cat",
+          "2021-04-28T18:00:00.000Z"
+        ],
+        [
+          530587.5,
+          2,
+          1061175,
+          "dog",
+          "2021-04-28T18:00:00.000Z"
+        ],
+        [
+          530604.5,
+          2,
+          1061209,
+          "dog",
+          "2021-04-28T19:00:00.000Z"
+        ],
+        [
+          803011,
+          2,
+          1606022,
+          "cat",
+          "2021-04-28T20:00:00.000Z"
+        ],
+        [
+          801409,
+          2,
+          1602818,
+          "cat",
+          "2021-04-29T21:00:00.000Z"
+        ],
+        [
+          532602,
+          2,
+          1065204,
+          "dog",
+          "2021-04-29T21:00:00.000Z"
+        ]
+      ],
+      "values_loaded": 88
+    },
+    "statusCode": 200
+  }
+}
