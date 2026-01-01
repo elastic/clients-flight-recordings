@@ -1,0 +1,102 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/41_knn_search_half_byte_quantized_bfloat16.yml",
+  "name": "kNN search plus query",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "name"
+        ],
+        "knn": {
+          "field": "vector",
+          "k": 2,
+          "num_candidates": 3,
+          "query_vector": [
+            -0.5,
+            90,
+            -10,
+            14.8
+          ]
+        },
+        "query": {
+          "term": {
+            "name": {
+              "boost": 1.5,
+              "value": "cow.jpg"
+            }
+          }
+        }
+      },
+      "index": "hnsw_byte_quantized",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "hnsw_byte_quantized",
+            "_score": 1.4712439,
+            "_source": {
+              "name": "cow.jpg"
+            },
+            "fields": {
+              "name": [
+                "cow.jpg"
+              ]
+            }
+          },
+          {
+            "_id": "2",
+            "_index": "hnsw_byte_quantized",
+            "_score": 1,
+            "_source": {
+              "name": "moose.jpg"
+            },
+            "fields": {
+              "name": [
+                "moose.jpg"
+              ]
+            }
+          },
+          {
+            "_id": "3",
+            "_index": "hnsw_byte_quantized",
+            "_score": 0.0026866954,
+            "_source": {
+              "name": "rabbit.jpg"
+            },
+            "fields": {
+              "name": [
+                "rabbit.jpg"
+              ]
+            }
+          }
+        ],
+        "max_score": 1.4712439,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
