@@ -1,0 +1,63 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/220_explain.yml",
+  "name": "explainFrom",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "EXPLAIN (from test)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "2184950",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.4.0-4aac5351e67fc2493584bd73148b2f30cb4df4e1 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "role",
+          "type": "keyword"
+        },
+        {
+          "name": "type",
+          "type": "keyword"
+        },
+        {
+          "name": "plan",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1767436993533,
+      "documents_found": 0,
+      "expiration_time_in_millis": 1767868993522,
+      "is_partial": false,
+      "start_time_in_millis": 1767436993531,
+      "took": 2,
+      "values": [
+        [
+          "coordinator",
+          "parsedPlan",
+          "?test"
+        ],
+        [
+          "coordinator",
+          "optimizedLogicalPlan",
+          "Limit[1000[INTEGER],false,false]\n\\_EsRelation[test][color{f}#1754, color.keyword{f}#1755, description{f..]"
+        ],
+        [
+          "coordinator",
+          "optimizedPhysicalPlan",
+          "LimitExec[1000[INTEGER],2148]\n\\_ExchangeExec[[color{f}#1754, color.keyword{f}#1755, description{f}#1756, description.keyword{f}#1757],false]\n  \\_FragmentExec[filter=null, estimatedRowSize=0, reducer=[], fragment=[<>\nProject[[color{f}#1754, color.keyword{f}#1755, description{f}#1756, description.keyword{f}#1757]]\n\\_Limit[1000[INTEGER],false,false]\n  \\_EsRelation[test][color{f}#1754, color.keyword{f}#1755, description{f..]<>]]"
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}
