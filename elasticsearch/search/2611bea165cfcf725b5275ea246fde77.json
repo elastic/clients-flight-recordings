@@ -1,0 +1,118 @@
+{
+  "api": "search",
+  "file": "/test/free/tsdb/160_nested_fields.yml",
+  "name": "TSDB index with multi-level nested fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "nested": {
+            "path": "courses",
+            "query": {
+              "bool": {
+                "must": [
+                  {
+                    "nested": {
+                      "path": "courses.students",
+                      "query": {
+                        "bool": {
+                          "must": [
+                            {
+                              "match": {
+                                "courses.students.name": "Elliott"
+                              }
+                            },
+                            {
+                              "term": {
+                                "courses.students.major": "Computer Engineering"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "term": {
+                      "courses.name": "Theory of Computation"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "A3ZO5efviUk-TBB0AAABeRX9aoA",
+            "_index": "test",
+            "_score": 3.566642,
+            "_source": {
+              "@timestamp": "2021-04-28T01:00:00.000Z",
+              "courses": [
+                {
+                  "credits": 3,
+                  "name": "Object Oriented Programming",
+                  "students": [
+                    {
+                      "major": "Computer Science",
+                      "name": "Kimora Tanner"
+                    },
+                    {
+                      "major": "Software Engineering",
+                      "name": "Bruno Garrett"
+                    }
+                  ]
+                },
+                {
+                  "credits": 4,
+                  "name": "Theory of Computation",
+                  "students": [
+                    {
+                      "major": "Computer Engineering",
+                      "name": "Elliott Booker"
+                    },
+                    {
+                      "major": "Software Engineering",
+                      "name": "Kimora Tanner"
+                    }
+                  ]
+                }
+              ],
+              "department": "compsci",
+              "staff": 12
+            }
+          }
+        ],
+        "max_score": 3.566642,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 17
+    },
+    "statusCode": 200
+  }
+}
