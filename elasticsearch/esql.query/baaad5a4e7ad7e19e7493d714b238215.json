@@ -1,0 +1,63 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/220_explain.yml",
+  "name": "explainRow",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "EXPLAIN (row a = 1)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "3178326",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.4.0-fc859e1aac1a3db56b303973f6c59a52fc6a4bef \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "role",
+          "type": "keyword"
+        },
+        {
+          "name": "type",
+          "type": "keyword"
+        },
+        {
+          "name": "plan",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1767609908989,
+      "documents_found": 0,
+      "expiration_time_in_millis": 1768041908839,
+      "is_partial": false,
+      "start_time_in_millis": 1767609908986,
+      "took": 3,
+      "values": [
+        [
+          "coordinator",
+          "parsedPlan",
+          "Row[[1[INTEGER] AS a#1731]]"
+        ],
+        [
+          "coordinator",
+          "optimizedLogicalPlan",
+          "Limit[1000[INTEGER],false,false]\n\\_LocalRelation[[a{r}#1731],Page{blocks=[IntVectorBlock[vector=ConstantIntVector[positions=1, value=1]]]}]"
+        ],
+        [
+          "coordinator",
+          "optimizedPhysicalPlan",
+          "LimitExec[1000[INTEGER],4]\n\\_LocalSourceExec[[a{r}#1731],Page{blocks=[IntVectorBlock[vector=ConstantIntVector[positions=1, value=1]]]}]"
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}
