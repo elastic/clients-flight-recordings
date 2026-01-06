@@ -1,0 +1,69 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/analysis-common/50_chained_synonym_filters.yml",
+  "name": "Test chained synonym_graph filters",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "text": {
+              "analyzer": "chained_syn",
+              "type": "text"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "chained_syn": {
+                "filter": [
+                  "lowercase",
+                  "synonyms_a",
+                  "synonyms_b",
+                  "synonyms_c"
+                ],
+                "tokenizer": "standard"
+              }
+            },
+            "filter": {
+              "synonyms_a": {
+                "synonyms": [
+                  "foo, bar"
+                ],
+                "type": "synonym_graph"
+              },
+              "synonyms_b": {
+                "synonyms": [
+                  "baz, qux"
+                ],
+                "type": "synonym_graph"
+              },
+              "synonyms_c": {
+                "synonyms": [
+                  "hello, world"
+                ],
+                "type": "synonym_graph"
+              }
+            }
+          }
+        }
+      },
+      "index": "test_chained_synonyms"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "80",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test_chained_synonyms",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
