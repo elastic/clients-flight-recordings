@@ -1,0 +1,87 @@
+{
+  "api": "search",
+  "file": "/test/platinum/inference/70_text_similarity_rank_retriever.yml",
+  "name": "Reranking based on rescore_chunks",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "text",
+          "topic"
+        ],
+        "retriever": {
+          "text_similarity_reranker": {
+            "chunk_rescorer": {
+              "size": 2
+            },
+            "field": "text",
+            "inference_id": "my-rerank-model",
+            "inference_text": "How often does the moon hide the sun?",
+            "rank_window_size": 10,
+            "retriever": {
+              "standard": {
+                "query": {
+                  "match": {
+                    "topic": {
+                      "query": "science"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "size": 10,
+        "track_total_hits": true
+      },
+      "index": "test-index",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "837",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "[text_similarity_reranker] search failed - retrievers '[standard]' returned errors. All failures are attached as suppressed exceptions.",
+        "root_cause": [
+          {
+            "reason": "[text_similarity_reranker] search failed - retrievers '[standard]' returned errors. All failures are attached as suppressed exceptions.",
+            "suppressed": [
+              {
+                "failed_shards": [
+                ],
+                "grouped": true,
+                "phase": "rank-feature",
+                "reason": "Computing updated ranks for results failed",
+                "type": "search_phase_execution_exception"
+              }
+            ],
+            "type": "status_exception"
+          }
+        ],
+        "suppressed": [
+          {
+            "caused_by": {
+              "reason": "Inference endpoint not found [my-rerank-model]",
+              "type": "resource_not_found_exception"
+            },
+            "failed_shards": [
+            ],
+            "grouped": true,
+            "phase": "rank-feature",
+            "reason": "Computing updated ranks for results failed",
+            "type": "search_phase_execution_exception"
+          }
+        ],
+        "type": "status_exception"
+      },
+      "status": 404
+    },
+    "statusCode": 404
+  }
+}
