@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.2.4-SNAPSHOT`  
-Elasticsearch build hash: `3d760844def83c6503f7838a2ffe39cadf1c3baa`
+Elasticsearch build hash: `771cc097ca3a21f873f67be4bb488d6df577b99f`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -41,7 +41,7 @@ Elasticsearch build hash: `3d760844def83c6503f7838a2ffe39cadf1c3baa`
 | `watcher.get_watch` | :red_circle: | 42/42 | 39/42 | stable | undefined |  |
 | `watcher.put_watch` | :red_circle: | 51/60 | 60/60 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 140/140 | 36/139 | stable | undefined |  |
-| `indices.create` | :red_circle: | 1406/1431 | 1431/1431 | stable | undefined |  |
+| `indices.create` | :red_circle: | 1407/1432 | 1432/1432 | stable | undefined |  |
 | `cluster.stats` | :red_circle: | 27/27 | 0/27 | stable | undefined |  |
 | `xpack.usage` | :red_circle: | 47/47 | 2/43 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 160/162 | 162/162 | stable | undefined |  |
@@ -175,7 +175,7 @@ Elasticsearch build hash: `3d760844def83c6503f7838a2ffe39cadf1c3baa`
 | `get_script_languages` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_source` | :green_circle: | 18/18 | 18/18 | stable | undefined |  |
 | `health_report` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
-| `index` | :green_circle: | 1676/1676 | 1678/1678 | stable | undefined |  |
+| `index` | :green_circle: | 1679/1679 | 1681/1681 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `knn_search` | :green_circle: | 4/4 | 4/4 | experimental | undefined | deprecated |
 | `mget` | :green_circle: | 52/52 | 51/51 | stable | undefined |  |
@@ -438,7 +438,7 @@ Elasticsearch build hash: `3d760844def83c6503f7838a2ffe39cadf1c3baa`
 | `clear_cache` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `clone` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `close` | :green_circle: | 51/51 | 51/51 | stable | undefined |  |
-| `create` | :red_circle: | 1406/1431 | 1431/1431 | stable | undefined |  |
+| `create` | :red_circle: | 1407/1432 | 1432/1432 | stable | undefined |  |
 | `create_data_stream` | :green_circle: | 130/130 | 130/130 | stable | undefined |  |
 | `create_from` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `data_streams_stats` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |

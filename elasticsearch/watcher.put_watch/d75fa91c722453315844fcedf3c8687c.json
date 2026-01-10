@@ -1,0 +1,99 @@
+{
+  "api": "watcher.put_watch",
+  "file": "/test/platinum/painless/10_basic.yml",
+  "name": "Test execute watch api",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "actions": {
+          "email_admin": {
+            "email": {
+              "subject": "404 recently encountered",
+              "to": "someone@domain.host.com"
+            },
+            "transform": {
+              "script": {
+                "lang": "painless",
+                "source": "return ['foo': 'bar']"
+              }
+            }
+          }
+        },
+        "condition": {
+          "script": {
+            "lang": "painless",
+            "source": "ctx.payload.hits.total > 1"
+          }
+        },
+        "input": {
+          "chain": {
+            "inputs": [
+              {
+                "first": {
+                  "search": {
+                    "request": {
+                      "body": {
+                        "query": {
+                          "bool": {
+                            "filter": {
+                              "range": {
+                                "@timestamp": {
+                                  "from": "{{ctx.trigger.scheduled_time}}||-5m",
+                                  "to": "{{ctx.trigger.triggered_time}}"
+                                }
+                              }
+                            },
+                            "must": {
+                              "match": {
+                                "response": 404
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "indices": [
+                        "logstash*"
+                      ],
+                      "rest_total_hits_as_int": true
+                    }
+                  }
+                }
+              },
+              {
+                "second": {
+                  "transform": {
+                    "script": {
+                      "source": "return [ 'hits' : [ 'total' : ctx.payload.first.hits.total ]]"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "trigger": {
+          "schedule": {
+            "cron": "0 0 0 1 * ? 2099"
+          }
+        }
+      },
+      "id": "my_exe_watch"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "80",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "my_exe_watch",
+      "_primary_term": 1,
+      "_seq_no": 8,
+      "_version": 1,
+      "created": true
+    },
+    "statusCode": 201
+  }
+}
