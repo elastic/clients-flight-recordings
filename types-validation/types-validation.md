@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.0-SNAPSHOT`  
-Elasticsearch build hash: `32fef861ed1b96ba24936c95091de0e67d31537d`
+Elasticsearch build hash: `6ce074191b1d69f144a3edb3712cb9e8625c5a52`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -681,7 +681,7 @@ Elasticsearch build hash: `32fef861ed1b96ba24936c95091de0e67d31537d`
 | `set_upgrade_mode` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `start_data_frame_analytics` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `start_datafeed` | :green_circle: | 19/19 | 19/19 | stable | undefined |  |
-| `start_trained_model_deployment` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
+| `start_trained_model_deployment` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `stop_data_frame_analytics` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `stop_datafeed` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `stop_trained_model_deployment` | :green_circle: | 11/11 | 11/11 | stable | undefined |  |
