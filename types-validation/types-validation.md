@@ -1,7 +1,7 @@
 ## Summary
 
-Elasticsearch version: `8.19.10-SNAPSHOT`  
-Elasticsearch build hash: `6442529af93ac57a4ce1cf6c8acd99267ae55150`
+Elasticsearch version: `8.19.11-SNAPSHOT`  
+Elasticsearch build hash: `a34b85bb48262147df6fbd30c89984a9a3859dc6`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ Elasticsearch build hash: `6442529af93ac57a4ce1cf6c8acd99267ae55150`
 | `indices.put_mapping` | :red_circle: | 124/139 | 139/139 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 115/115 | 36/114 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1239/1301 | 1301/1301 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 132/139 | 139/139 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 90/90 | 71/90 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 36/36 | 9/36 | stable | undefined |  |
@@ -661,7 +661,7 @@ Elasticsearch build hash: `6442529af93ac57a4ce1cf6c8acd99267ae55150`
 | `set_upgrade_mode` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `start_data_frame_analytics` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `start_datafeed` | :green_circle: | 19/19 | 19/19 | stable | undefined |  |
-| `start_trained_model_deployment` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
+| `start_trained_model_deployment` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `stop_data_frame_analytics` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `stop_datafeed` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `stop_trained_model_deployment` | :green_circle: | 11/11 | 11/11 | stable | undefined |  |
@@ -1025,8 +1025,8 @@ Elasticsearch build hash: `6442529af93ac57a4ce1cf6c8acd99267ae55150`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 14.3% | | | |
+| `usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 11.9% | | | |
 
 [Back to top](#Summary)
 
