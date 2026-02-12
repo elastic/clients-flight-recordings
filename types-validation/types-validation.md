@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.2.6-SNAPSHOT`  
-Elasticsearch build hash: `766bfaa7c5ed2a38dd3851d1f66f6dea5e084e7c`
+Elasticsearch build hash: `ce5981e2db6eabfe75836d55318104246b1dc9c7`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ Elasticsearch build hash: `766bfaa7c5ed2a38dd3851d1f66f6dea5e084e7c`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 2703/2736 | 2736/2736 | stable | undefined |  |
+| `search` | :red_circle: | 2705/2739 | 2739/2739 | stable | undefined |  |
 | `update_by_query` | :red_circle: | 42/42 | 39/41 | stable | undefined |  |
 | `delete_by_query` | :red_circle: | 27/27 | 24/26 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 204/204 | 198/204 | stable | undefined |  |
@@ -191,7 +191,7 @@ Elasticsearch build hash: `766bfaa7c5ed2a38dd3851d1f66f6dea5e084e7c`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 69/69 | 20/20 | stable | undefined |  |
-| `search` | :red_circle: | 2703/2736 | 2736/2736 | stable | undefined |  |
+| `search` | :red_circle: | 2705/2739 | 2739/2739 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -516,7 +516,7 @@ Elasticsearch build hash: `766bfaa7c5ed2a38dd3851d1f66f6dea5e084e7c`
 | `delete` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `inference` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `put` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
+| `put` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
 | `put_ai21` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_alibabacloud` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_amazonbedrock` | :white_circle: | Missing test | Missing test | stable | undefined |  |
