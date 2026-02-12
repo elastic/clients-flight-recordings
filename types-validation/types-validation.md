@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.4.0-SNAPSHOT`  
-Elasticsearch build hash: `4b4e27cf4f76e8a2daf9bdc72b211b275ffd9501`
+Elasticsearch build hash: `e0ad9eadee07345bf7ebdba2dddda520b5ed4c8d`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 594 | 545 (91.8%) | 49 (8.2%) | 119 (20%) | 0 (0%) |
+| 594 | 546 (91.9%) | 48 (8.1%) | 119 (20%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 493 | 455 (92.3%) | 38 (7.7%) | 101 | 0 |
+| `stable` | 493 | 456 (92.5%) | 37 (7.5%) | 101 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 77 | 69 (89.6%) | 8 (10.4%) | 18 | 0 |
 
@@ -34,7 +34,7 @@ Elasticsearch build hash: `4b4e27cf4f76e8a2daf9bdc72b211b275ffd9501`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 2978/2998 | 2998/2998 | stable | undefined |  |
+| `search` | :red_circle: | 2988/3009 | 3009/3009 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 236/236 | 226/236 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 42/42 | 39/42 | stable | undefined |  |
 | `watcher.put_watch` | :red_circle: | 51/60 | 60/60 | stable | undefined |  |
@@ -54,7 +54,7 @@ Elasticsearch build hash: `4b4e27cf4f76e8a2daf9bdc72b211b275ffd9501`
 | `cluster.get_component_template` | :red_circle: | 16/16 | 15/16 | stable | undefined |  |
 | `indices.get_data_stream` | :red_circle: | 139/139 | 83/139 | stable | undefined |  |
 | `indices.rollover` | :red_circle: | 75/75 | 2/75 | stable | undefined |  |
-| **Summary** | :red_circle: | 98.7% | 93.2% | | | |
+| **Summary** | :red_circle: | 98.7% | 93.3% | | | |
 
 </details>
 
@@ -111,7 +111,7 @@ Elasticsearch build hash: `4b4e27cf4f76e8a2daf9bdc72b211b275ffd9501`
 
 ## Report
 
-:construction: 26.7% namespaces have failures, and the namespace with the most failures is [`streams`](#streams) with 100% failures.
+:construction: 24.4% namespaces have failures, and the namespace with the most failures is [`streams`](#streams) with 100% failures.
 
 ### _internal
 
@@ -155,7 +155,7 @@ Elasticsearch build hash: `4b4e27cf4f76e8a2daf9bdc72b211b275ffd9501`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `bulk` | :green_circle: | 616/616 | 634/634 | stable | undefined |  |
+| `bulk` | :green_circle: | 617/617 | 635/635 | stable | undefined |  |
 | `capabilities` | :green_circle: | 2/2 | 2/2 | experimental | undefined |  |
 | `clear_scroll` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `close_point_in_time` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
@@ -191,7 +191,7 @@ Elasticsearch build hash: `4b4e27cf4f76e8a2daf9bdc72b211b275ffd9501`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 69/69 | 20/20 | stable | undefined |  |
-| `search` | :red_circle: | 2978/2998 | 2998/2998 | stable | undefined |  |
+| `search` | :red_circle: | 2988/3009 | 3009/3009 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -212,7 +212,7 @@ Elasticsearch build hash: `4b4e27cf4f76e8a2daf9bdc72b211b275ffd9501`
 | `allocation` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `circuit_breaker` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
 | `component_templates` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
-| `count` | :red_circle: | 4/9 | 9/9 | stable | undefined |  |
+| `count` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `fielddata` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
 | `health` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `help` | :white_circle: | Missing test | Missing test | stable | undefined |  |
@@ -235,7 +235,7 @@ Elasticsearch build hash: `4b4e27cf4f76e8a2daf9bdc72b211b275ffd9501`
 | `templates` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `thread_pool` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `transforms` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
-| **Summary** | :red_circle: | 97.8% | 100% | | | |
+| **Summary** | :green_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
 
@@ -527,7 +527,7 @@ Elasticsearch build hash: `4b4e27cf4f76e8a2daf9bdc72b211b275ffd9501`
 | `embedding` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `get` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `inference` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `put` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
+| `put` | :green_circle: | 11/11 | 11/11 | stable | undefined |  |
 | `put_ai21` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_alibabacloud` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_amazonbedrock` | :white_circle: | Missing test | Missing test | stable | undefined |  |
