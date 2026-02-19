@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.4.0-SNAPSHOT`  
-Elasticsearch build hash: `22a4df0c8aa3702ad446c87f9b27fc00c15952fa`
+Elasticsearch build hash: `87aeff780a1d3663ee64af3962ae120861ca90a1`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 594 | 549 (92.4%) | 45 (7.6%) | 119 (20%) | 0 (0%) |
+| 594 | 548 (92.3%) | 46 (7.7%) | 119 (20%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 493 | 456 (92.5%) | 37 (7.5%) | 101 | 0 |
+| `stable` | 493 | 455 (92.3%) | 38 (7.7%) | 101 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 77 | 72 (93.5%) | 5 (6.5%) | 18 | 0 |
 
@@ -35,6 +35,7 @@ Elasticsearch build hash: `22a4df0c8aa3702ad446c87f9b27fc00c15952fa`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `search` | :red_circle: | 2994/3029 | 3029/3029 | stable | undefined |  |
+| `xpack.info` | :red_circle: | 8/8 | 1/4 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 236/236 | 216/236 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 42/42 | 39/42 | stable | undefined |  |
 | `watcher.put_watch` | :red_circle: | 51/60 | 60/60 | stable | undefined |  |
@@ -53,8 +54,7 @@ Elasticsearch build hash: `22a4df0c8aa3702ad446c87f9b27fc00c15952fa`
 | `nodes.stats` | :red_circle: | 55/55 | 22/55 | stable | undefined |  |
 | `cluster.get_component_template` | :red_circle: | 16/16 | 15/16 | stable | undefined |  |
 | `indices.get_data_stream` | :red_circle: | 139/139 | 83/139 | stable | undefined |  |
-| `indices.rollover` | :red_circle: | 75/75 | 2/75 | stable | undefined |  |
-| **Summary** | :red_circle: | 98.5% | 93.1% | | | |
+| **Summary** | :red_circle: | 98.5% | 94.2% | | | |
 
 </details>
 
@@ -111,7 +111,7 @@ Elasticsearch build hash: `22a4df0c8aa3702ad446c87f9b27fc00c15952fa`
 
 ## Report
 
-:construction: 22.2% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
+:construction: 22.2% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 100% failures.
 
 ### _internal
 
@@ -1061,9 +1061,9 @@ Elasticsearch build hash: `22a4df0c8aa3702ad446c87f9b27fc00c15952fa`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
+| `info` | :red_circle: | 8/8 | 1/4 | stable | undefined |  |
 | `usage` | :red_circle: | 47/47 | 2/43 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 12.8% | | | |
+| **Summary** | :red_circle: | 100% | 6.4% | | | |
 
 [Back to top](#Summary)
 
