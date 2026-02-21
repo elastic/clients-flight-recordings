@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.4.0-SNAPSHOT`  
-Elasticsearch build hash: `6f2f1999980c20c29f96fe31721898a7266b0fca`
+Elasticsearch build hash: `7c8edd29e5a4f1e718fee461258436e79b8fde08`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -155,7 +155,7 @@ Elasticsearch build hash: `6f2f1999980c20c29f96fe31721898a7266b0fca`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `bulk` | :green_circle: | 617/617 | 635/635 | stable | undefined |  |
+| `bulk` | :green_circle: | 623/623 | 641/641 | stable | undefined |  |
 | `capabilities` | :green_circle: | 2/2 | 2/2 | experimental | undefined |  |
 | `clear_scroll` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `close_point_in_time` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
@@ -971,8 +971,8 @@ Elasticsearch build hash: `6f2f1999980c20c29f96fe31721898a7266b0fca`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `logs_disable` | :green_circle: | 5/5 | 5/5 | experimental | undefined |  |
-| `logs_enable` | :green_circle: | 17/17 | 17/17 | experimental | undefined |  |
-| `status` | :green_circle: | 15/15 | 15/15 | experimental | undefined |  |
+| `logs_enable` | :green_circle: | 20/20 | 20/20 | experimental | undefined |  |
+| `status` | :green_circle: | 18/18 | 18/18 | experimental | undefined |  |
 | **Summary** | :green_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
