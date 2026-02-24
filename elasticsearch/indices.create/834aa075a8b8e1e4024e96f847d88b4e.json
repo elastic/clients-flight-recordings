@@ -1,0 +1,62 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/tsdb/150_runtime_fields.yml",
+  "name": "can't shadow metrics",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "deep": {
+              "properties": {
+                "deeper": {
+                  "properties": {
+                    "deepest": {
+                      "time_series_metric": "gauge",
+                      "type": "long"
+                    }
+                  }
+                }
+              }
+            },
+            "dim": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            },
+            "metric": {
+              "time_series_metric": "gauge",
+              "type": "long"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "number_of_shards": 2,
+            "routing_path": [
+              "dim"
+            ]
+          }
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "63",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
