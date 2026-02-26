@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.4.0-SNAPSHOT`  
-Elasticsearch build hash: `e2ebf77cadf0cf4ed5aad89e063fac5a4bbf6fde`
+Elasticsearch build hash: `3d95f61bafe53cf4b403664fd95643dd7c24e1e0`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 594 | 549 (92.4%) | 45 (7.6%) | 119 (20%) | 0 (0%) |
+| 594 | 548 (92.3%) | 46 (7.7%) | 119 (20%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 493 | 456 (92.5%) | 37 (7.5%) | 101 | 0 |
+| `stable` | 493 | 455 (92.3%) | 38 (7.7%) | 101 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 77 | 72 (93.5%) | 5 (6.5%) | 18 | 0 |
 
@@ -111,7 +111,7 @@ Elasticsearch build hash: `e2ebf77cadf0cf4ed5aad89e063fac5a4bbf6fde`
 
 ## Report
 
-:construction: 22.2% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
+:construction: 24.4% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
 
 ### _internal
 
@@ -660,7 +660,7 @@ Elasticsearch build hash: `e2ebf77cadf0cf4ed5aad89e063fac5a4bbf6fde`
 | `get_overall_buckets` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
 | `get_records` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
 | `get_trained_models` | :green_circle: | 36/36 | 36/36 | stable | undefined |  |
-| `get_trained_models_stats` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
+| `get_trained_models_stats` | :red_circle: | 17/17 | 15/17 | stable | undefined |  |
 | `infer_trained_model` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
 | `info` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `open_job` | :green_circle: | 38/38 | 38/38 | stable | undefined |  |
@@ -696,7 +696,7 @@ Elasticsearch build hash: `e2ebf77cadf0cf4ed5aad89e063fac5a4bbf6fde`
 | `upgrade_job_snapshot` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `validate` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `validate_detector` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| **Summary** | :green_circle: | 100% | 100% | | | |
+| **Summary** | :red_circle: | 100% | 99.7% | | | |
 
 [Back to top](#Summary)
 
