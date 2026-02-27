@@ -1,0 +1,67 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/delete/72_tsdb_synthetic_id_true.yml",
+  "name": "basic tsdb delete",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "humidity": {
+              "time_series_metric": "gauge",
+              "type": "half_float"
+            },
+            "location": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            },
+            "sensor_id": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            },
+            "temperature": {
+              "time_series_metric": "gauge",
+              "type": "half_float"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mapping": {
+              "synthetic_id": true
+            },
+            "mode": "time_series",
+            "number_of_replicas": 0,
+            "number_of_shards": 1,
+            "routing_path": [
+              "sensor_id",
+              "location"
+            ],
+            "time_series": {
+              "end_time": "2099-12-31T23:59:59.999Z",
+              "start_time": "2000-01-01T00:00:00.000Z"
+            }
+          }
+        }
+      },
+      "index": "weather_sensors_synthetic_id_true"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "92",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "weather_sensors_synthetic_id_true",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

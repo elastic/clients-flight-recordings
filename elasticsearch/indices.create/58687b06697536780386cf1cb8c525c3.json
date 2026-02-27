@@ -1,0 +1,61 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/cluster.stats/20_analysis_stats_synonyms.yml",
+  "name": "get cluster stats returns multiple synonym graph filter stats",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "content": {
+              "analyzer": "standard",
+              "search_analyzer": "double_synset_analyzer",
+              "type": "text"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "double_synset_analyzer": {
+                "filter": [
+                  "syn_graph_1",
+                  "syn_graph_2"
+                ],
+                "tokenizer": "standard",
+                "type": "custom"
+              }
+            },
+            "filter": {
+              "syn_graph_1": {
+                "synonyms_set": "test-set-1",
+                "type": "synonym_graph",
+                "updateable": true
+              },
+              "syn_graph_2": {
+                "synonyms_set": "test-set-2",
+                "type": "synonym_graph",
+                "updateable": true
+              }
+            }
+          }
+        }
+      },
+      "index": "test-multiple-synset-graph"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "85",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test-multiple-synset-graph",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
