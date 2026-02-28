@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.4.0-SNAPSHOT`  
-Elasticsearch build hash: `10e4e0964aa0903105b3e215b348f55ba8def464`
+Elasticsearch build hash: `549fbfd137e49005210af7a461564fa034efe8b0`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -155,7 +155,7 @@ Elasticsearch build hash: `10e4e0964aa0903105b3e215b348f55ba8def464`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `bulk` | :green_circle: | 637/637 | 655/655 | stable | undefined |  |
+| `bulk` | :green_circle: | 638/638 | 656/656 | stable | undefined |  |
 | `capabilities` | :green_circle: | 2/2 | 2/2 | experimental | undefined |  |
 | `clear_scroll` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `close_point_in_time` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
@@ -1023,7 +1023,7 @@ Elasticsearch build hash: `10e4e0964aa0903105b3e215b348f55ba8def464`
 | `get_node_stats` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_transform` | :green_circle: | 26/26 | 26/26 | stable | undefined |  |
 | `get_transform_stats` | :green_circle: | 34/34 | 34/34 | stable | undefined |  |
-| `preview_transform` | :green_circle: | 21/21 | 21/21 | stable | undefined |  |
+| `preview_transform` | :green_circle: | 24/24 | 24/24 | stable | undefined |  |
 | `put_transform` | :green_circle: | 28/28 | 28/28 | stable | undefined |  |
 | `reset_transform` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `schedule_now_transform` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
