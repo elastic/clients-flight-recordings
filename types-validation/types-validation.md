@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.2-SNAPSHOT`  
-Elasticsearch build hash: `99fdc299b9364fb10c13e10132a4a6ce0f4a5784`
+Elasticsearch build hash: `847eca69e59e12fb31e23dcb01e7c0a936e4b56b`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -1017,7 +1017,7 @@ Elasticsearch build hash: `99fdc299b9364fb10c13e10132a4a6ce0f4a5784`
 | `get_node_stats` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_transform` | :green_circle: | 26/26 | 26/26 | stable | undefined |  |
 | `get_transform_stats` | :green_circle: | 34/34 | 34/34 | stable | undefined |  |
-| `preview_transform` | :green_circle: | 21/21 | 21/21 | stable | undefined |  |
+| `preview_transform` | :green_circle: | 24/24 | 24/24 | stable | undefined |  |
 | `put_transform` | :green_circle: | 28/28 | 28/28 | stable | undefined |  |
 | `reset_transform` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `schedule_now_transform` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
