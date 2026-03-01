@@ -1,0 +1,86 @@
+{
+  "api": "search",
+  "file": "/test/free/search/630_format_sort_missing_dates.yml",
+  "name": "Format sort values for missing dates",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "size": 3,
+        "sort": [
+          {
+            "timestamp": {
+              "format": "strict_date_optional_time_nanos",
+              "missing": "_last",
+              "order": "desc"
+            }
+          }
+        ]
+      },
+      "index": "test_missing_dates",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "test_missing_dates",
+            "_score": null,
+            "_source": {
+              "name": "with_date_1",
+              "timestamp": "2021-10-13 00:30:04.828"
+            },
+            "sort": [
+              "2021-10-13T00:30:04.828Z"
+            ]
+          },
+          {
+            "_id": "3",
+            "_index": "test_missing_dates",
+            "_score": null,
+            "_source": {
+              "name": "with_date_2",
+              "timestamp": "2021-06-11 04:30:04.828"
+            },
+            "sort": [
+              "2021-06-11T04:30:04.828Z"
+            ]
+          },
+          {
+            "_id": "2",
+            "_index": "test_missing_dates",
+            "_score": null,
+            "_source": {
+              "name": "missing_date"
+            },
+            "sort": [
+              null
+            ]
+          }
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 5
+    },
+    "statusCode": 200
+  }
+}
