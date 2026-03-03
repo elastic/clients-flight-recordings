@@ -1,0 +1,95 @@
+{
+  "api": "search",
+  "file": "/test/platinum/exponential_histogram/40_tdigest_histogram_aggregations_compatibility.yml",
+  "name": "Exists query over tdigest and exponential_histogram",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "exists": {
+            "field": "tdigest_or_exp_histo"
+          }
+        }
+      },
+      "index": "test-data-stream",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "jw1Js5wBonFsgwpuoHkR",
+            "_index": ".ds-test-data-stream-2026.03.03-000001",
+            "_score": 1,
+            "_source": {
+              "@timestamp": "2023-01-01T00:00:00Z",
+              "tdigest_or_exp_histo": {
+                "counts": [
+                  2,
+                  2,
+                  1
+                ],
+                "values": [
+                  0.9,
+                  2,
+                  4
+                ]
+              }
+            }
+          },
+          {
+            "_id": "kA1Js5wBonFsgwpuoHmE",
+            "_index": ".ds-test-data-stream-2026.03.03-000002",
+            "_score": 1,
+            "_source": {
+              "@timestamp": "2023-01-02T00:00:00Z",
+              "tdigest_or_exp_histo": {
+                "max": 10,
+                "min": 1,
+                "positive": {
+                  "counts": [
+                    1,
+                    2,
+                    1
+                  ],
+                  "indices": [
+                    0,
+                    1,
+                    2
+                  ]
+                },
+                "scale": 0,
+                "sum": 100,
+                "zero": {
+                  "count": 1
+                }
+              }
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
