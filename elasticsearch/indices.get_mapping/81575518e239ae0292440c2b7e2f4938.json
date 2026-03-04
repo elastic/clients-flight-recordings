@@ -1,0 +1,57 @@
+{
+  "api": "indices.get_mapping",
+  "file": "/test/free/search.vectors/60_dense_vector_dynamic_mapping.yml",
+  "name": "Dense vector dynamic template with dotted field name and intermediate object",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "index": "dense-vector-dotted-test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "dense-vector-dotted-test": {
+        "mappings": {
+          "dynamic_templates": [
+            {
+              "dense_vector_template": {
+                "mapping": {
+                  "index": true,
+                  "index_options": {
+                    "type": "hnsw"
+                  },
+                  "similarity": "cosine",
+                  "type": "dense_vector"
+                },
+                "path_match": "my_vectors.*"
+              }
+            }
+          ],
+          "properties": {
+            "my_vectors": {
+              "properties": {
+                "vector1": {
+                  "dims": 12,
+                  "index": true,
+                  "index_options": {
+                    "ef_construction": 100,
+                    "m": 16,
+                    "type": "hnsw"
+                  },
+                  "similarity": "cosine",
+                  "type": "dense_vector"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "api": "indices.get_mapping",
+  "file": "/test/platinum/rank_vectors/rank_vectors.yml",
+  "name": "Rank vectors dynamic template with dotted field name and intermediate object",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "index": "rank-vectors-dotted-test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "rank-vectors-dotted-test": {
+        "mappings": {
+          "dynamic_templates": [
+            {
+              "rank_vectors_template": {
+                "mapping": {
+                  "type": "rank_vectors"
+                },
+                "path_match": "my_vectors.*"
+              }
+            }
+          ],
+          "properties": {
+            "my_vectors": {
+              "properties": {
+                "vector1": {
+                  "dims": 3,
+                  "type": "rank_vectors"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}
