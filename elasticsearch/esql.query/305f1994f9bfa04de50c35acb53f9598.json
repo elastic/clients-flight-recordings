@@ -1,0 +1,76 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/40_tsdb.yml",
+  "name": "stats on aggregate_metric_double with partial submetrics missing sum and count",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM test3 | STATS max(agg_metric), min(agg_metric), sum(agg_metric), count(agg_metric), std_dev(agg_metric) BY k8s.pod.uid | SORT k8s.pod.uid"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "16385014",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.4.0-3174d71bdf2037e2eb034eb2d09d160f09843cb3 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "max(agg_metric)",
+          "type": "double"
+        },
+        {
+          "name": "min(agg_metric)",
+          "type": "double"
+        },
+        {
+          "name": "sum(agg_metric)",
+          "type": "double"
+        },
+        {
+          "name": "count(agg_metric)",
+          "type": "long"
+        },
+        {
+          "name": "std_dev(agg_metric)",
+          "type": "double"
+        },
+        {
+          "name": "k8s.pod.uid",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1772707580060,
+      "documents_found": 4,
+      "expiration_time_in_millis": 1773139579954,
+      "is_partial": false,
+      "start_time_in_millis": 1772707580044,
+      "took": 16,
+      "values": [
+        [
+          10,
+          -3,
+          null,
+          null,
+          null,
+          "947e4ced-1786-4e53-9e0c-5c447e959507"
+        ],
+        [
+          17,
+          2,
+          null,
+          null,
+          null,
+          "df3145b3-0563-4d3b-a0f7-897eb2876ea9"
+        ]
+      ],
+      "values_loaded": 10
+    },
+    "statusCode": 200
+  }
+}
