@@ -1,0 +1,60 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/160_union_types.yml",
+  "name": "load two indexes and group by converted client_ip",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM events_*_long | STATS count = COUNT(*) BY client_ip::ip | SORT count DESC, `client_ip::ip` ASC"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "9344854",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.4.0-ef7f5b0880c5dc0b443a6e3df234ffda4e0f69bd \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "count",
+          "type": "long"
+        },
+        {
+          "name": "client_ip::ip",
+          "type": "ip"
+        }
+      ],
+      "completion_time_in_millis": 1772880088178,
+      "documents_found": 14,
+      "expiration_time_in_millis": 1773312087988,
+      "is_partial": false,
+      "start_time_in_millis": 1772880088169,
+      "took": 9,
+      "values": [
+        [
+          8,
+          "172.21.3.15"
+        ],
+        [
+          2,
+          "172.21.0.5"
+        ],
+        [
+          2,
+          "172.21.2.113"
+        ],
+        [
+          2,
+          "172.21.2.162"
+        ]
+      ],
+      "values_loaded": 14
+    },
+    "statusCode": 200
+  }
+}
