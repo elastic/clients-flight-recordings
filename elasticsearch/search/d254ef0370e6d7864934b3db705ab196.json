@@ -1,0 +1,95 @@
+{
+  "api": "search",
+  "file": "/test/platinum/exponential_histogram/30_aggregate_metric_aggregations_compatibility.yml",
+  "name": "Exists query over aggregate_metric_double and exponential_histogram",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "exists": {
+            "field": "histo_or_aggregate_metric"
+          }
+        }
+      },
+      "index": "test-data-stream",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "kHgz0pwB1Ghezp1WB9CP",
+            "_index": ".ds-test-data-stream-2026.03.09-000001",
+            "_score": 1,
+            "_source": {
+              "@timestamp": "2023-01-01T00:00:00Z",
+              "histo_or_aggregate_metric": {
+                "max": 10,
+                "min": 0.9,
+                "sum": 20,
+                "value_count": 3
+              }
+            }
+          },
+          {
+            "_id": "kXgz0pwB1Ghezp1WCNAF",
+            "_index": ".ds-test-data-stream-2026.03.09-000002",
+            "_score": 1,
+            "_source": {
+              "@timestamp": "2023-01-02T00:00:00Z",
+              "histo_or_aggregate_metric": {
+                "max": 10,
+                "min": 1,
+                "negative": {
+                  "counts": [
+                    1
+                  ],
+                  "indices": [
+                    0
+                  ]
+                },
+                "positive": {
+                  "counts": [
+                    2,
+                    3
+                  ],
+                  "indices": [
+                    0,
+                    1
+                  ]
+                },
+                "scale": 1,
+                "sum": 100,
+                "zero": {
+                  "count": 1
+                }
+              }
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
