@@ -1,0 +1,49 @@
+{
+  "api": "indices.put_template",
+  "file": "/test/free/search.vectors/60_dense_vector_dynamic_mapping.yml",
+  "name": "Dense vector dynamic template with dotted field name and intermediate object",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "index_patterns": [
+          "dense-vector-dotted-*"
+        ],
+        "mappings": {
+          "dynamic_templates": [
+            {
+              "dense_vector_template": {
+                "mapping": {
+                  "index": true,
+                  "index_options": {
+                    "type": "hnsw"
+                  },
+                  "similarity": "cosine",
+                  "type": "dense_vector"
+                },
+                "path_match": "my_vectors.*"
+              }
+            }
+          ]
+        },
+        "settings": {
+          "number_of_replicas": 0,
+          "number_of_shards": 1
+        }
+      },
+      "name": "dense-vector-dotted-template"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "warning": "299 Elasticsearch-9.3.2-a12bf4b16ca4c499f86b532c9ede4c611b1dfb32 \"Legacy index templates are deprecated in favor of composable templates.\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
