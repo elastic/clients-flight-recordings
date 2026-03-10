@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.4.0-SNAPSHOT`  
-Elasticsearch build hash: `b1dfc667a2a3c48b0708e419f1c6614fc82f3f2f`
+Elasticsearch build hash: `cd1cb4bb94b72fa7d9e38531cd78537d59aedeea`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -40,7 +40,7 @@ Elasticsearch build hash: `b1dfc667a2a3c48b0708e419f1c6614fc82f3f2f`
 | `watcher.put_watch` | :red_circle: | 51/60 | 60/60 | stable | undefined |  |
 | `indices.put_mapping` | :red_circle: | 168/170 | 173/173 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 141/141 | 36/140 | stable | undefined |  |
-| `indices.create` | :red_circle: | 1501/1540 | 1540/1540 | stable | undefined |  |
+| `indices.create` | :red_circle: | 1502/1541 | 1541/1541 | stable | undefined |  |
 | `cluster.stats` | :red_circle: | 28/28 | 0/28 | stable | undefined |  |
 | `xpack.usage` | :red_circle: | 47/47 | 2/43 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 165/168 | 168/168 | stable | undefined |  |
@@ -169,13 +169,13 @@ Elasticsearch build hash: `b1dfc667a2a3c48b0708e419f1c6614fc82f3f2f`
 | `exists_source` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `explain` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
 | `field_caps` | :green_circle: | 70/70 | 70/70 | stable | undefined |  |
-| `get` | :green_circle: | 364/364 | 361/361 | stable | undefined |  |
+| `get` | :green_circle: | 365/365 | 362/362 | stable | undefined |  |
 | `get_script` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `get_script_context` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_script_languages` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_source` | :green_circle: | 18/18 | 18/18 | stable | undefined |  |
 | `health_report` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
-| `index` | :green_circle: | 1800/1800 | 1802/1802 | stable | undefined |  |
+| `index` | :green_circle: | 1802/1802 | 1804/1804 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `knn_search` | :green_circle: | 4/4 | 4/4 | experimental | undefined | deprecated |
 | `mget` | :green_circle: | 57/57 | 56/56 | stable | undefined |  |
@@ -375,7 +375,7 @@ Elasticsearch build hash: `b1dfc667a2a3c48b0708e419f1c6614fc82f3f2f`
 | `get_view` | :green_circle: | 6/6 | 0/0 | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
 | `put_view` | :green_circle: | 18/18 | 0/0 | experimental | undefined |  |
-| `query` | :green_circle: | 390/390 | 0/0 | stable | undefined |  |
+| `query` | :green_circle: | 391/391 | 0/0 | stable | undefined |  |
 | **Summary** | :green_circle: | 100% | 0% | | | |
 
 [Back to top](#Summary)
@@ -442,7 +442,7 @@ Elasticsearch build hash: `b1dfc667a2a3c48b0708e419f1c6614fc82f3f2f`
 | `clear_cache` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `clone` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `close` | :green_circle: | 52/52 | 52/52 | stable | undefined |  |
-| `create` | :red_circle: | 1501/1540 | 1540/1540 | stable | undefined |  |
+| `create` | :red_circle: | 1502/1541 | 1541/1541 | stable | undefined |  |
 | `create_data_stream` | :green_circle: | 133/133 | 133/133 | stable | undefined |  |
 | `create_from` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `data_streams_stats` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
@@ -492,7 +492,7 @@ Elasticsearch build hash: `b1dfc667a2a3c48b0708e419f1c6614fc82f3f2f`
 | `put_settings` | :red_circle: | 80/82 | 82/82 | stable | undefined |  |
 | `put_template` | :red_circle: | 45/46 | 46/46 | stable | undefined | deprecated |
 | `recovery` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
-| `refresh` | :green_circle: | 465/465 | 465/465 | stable | undefined |  |
+| `refresh` | :green_circle: | 466/466 | 466/466 | stable | undefined |  |
 | `reload_search_analyzers` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `remove_block` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `resolve_cluster` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
