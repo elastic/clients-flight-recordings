@@ -1,0 +1,93 @@
+{
+  "api": "search",
+  "file": "/test/platinum/exponential_histogram/40_tdigest_histogram_aggregations_compatibility.yml",
+  "name": "Range aggregation over tdigest and exponential_histogram",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "range_agg": {
+            "range": {
+              "field": "tdigest_or_exp_histo",
+              "ranges": [
+                {
+                  "to": 1
+                },
+                {
+                  "from": 1,
+                  "to": 3
+                },
+                {
+                  "from": 3,
+                  "to": 6
+                },
+                {
+                  "from": 6
+                }
+              ]
+            }
+          }
+        }
+      },
+      "index": "test-data-stream",
+      "size": 0,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "aggregations": {
+        "range#range_agg": {
+          "buckets": [
+            {
+              "doc_count": 3,
+              "key": "*-1.0",
+              "to": 1
+            },
+            {
+              "doc_count": 5,
+              "from": 1,
+              "key": "1.0-3.0",
+              "to": 3
+            },
+            {
+              "doc_count": 2,
+              "from": 3,
+              "key": "3.0-6.0",
+              "to": 6
+            },
+            {
+              "doc_count": 0,
+              "from": 6,
+              "key": "6.0-*"
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}

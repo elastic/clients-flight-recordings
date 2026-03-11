@@ -1,0 +1,67 @@
+{
+  "api": "search",
+  "file": "/test/platinum/exponential_histogram/40_tdigest_histogram_aggregations_compatibility.yml",
+  "name": "Percentile ranks aggregation over tdigest and exponential_histogram",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "percentile_ranks_agg": {
+            "percentile_ranks": {
+              "field": "tdigest_or_exp_histo",
+              "values": [
+                0,
+                1,
+                2,
+                5,
+                8
+              ]
+            }
+          }
+        }
+      },
+      "index": "test-data-stream",
+      "size": 0,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "aggregations": {
+        "tdigest_percentile_ranks#percentile_ranks_agg": {
+          "values": {
+            "0.0": 0,
+            "1.0": 30,
+            "2.0": 60,
+            "5.0": 90,
+            "8.0": 100
+          }
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}
