@@ -1,0 +1,44 @@
+{
+  "api": "indices.get_mapping",
+  "file": "/test/free/search.vectors/60_dense_vector_dynamic_mapping.yml",
+  "name": "Float arrays inside nested objects respect float dynamic templates and are not mapped as dense_vector",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "index": "my-nested-dynamic-template-index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "my-nested-dynamic-template-index": {
+        "mappings": {
+          "dynamic_templates": [
+            {
+              "my_float_template": {
+                "mapping": {
+                  "type": "float"
+                },
+                "match": "*float*"
+              }
+            }
+          ],
+          "properties": {
+            "my_object": {
+              "properties": {
+                "my_float_field": {
+                  "type": "float"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}
