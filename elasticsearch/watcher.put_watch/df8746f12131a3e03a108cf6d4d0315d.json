@@ -1,0 +1,69 @@
+{
+  "api": "watcher.put_watch",
+  "file": "/test/platinum/mustache/10_webhook.yml",
+  "name": "Test webhook action with mustache integration",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "actions": {
+          "output": {
+            "webhook": {
+              "body": {
+                "params": {
+                },
+                "source": {
+                  "watch_id": "{{ctx.watch_id}}"
+                }
+              },
+              "host": "172.18.0.2",
+              "method": "PUT",
+              "path": "/my_index/_doc/{{ctx.watch_id}}",
+              "port": "9200"
+            }
+          }
+        },
+        "condition": {
+          "always": {
+          }
+        },
+        "input": {
+          "simple": {
+            "key": "value"
+          }
+        },
+        "trigger": {
+          "schedule": {
+            "interval": "1s"
+          }
+        }
+      },
+      "id": "test_watch"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "394",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "reason": "could not parse http request template. unexpected string field [port]",
+          "type": "parse_exception"
+        },
+        "reason": "could not parse [webhook] action [test_watch/output]. failed parsing http request template",
+        "root_cause": [
+          {
+            "reason": "could not parse http request template. unexpected string field [port]",
+            "type": "parse_exception"
+          }
+        ],
+        "type": "parse_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

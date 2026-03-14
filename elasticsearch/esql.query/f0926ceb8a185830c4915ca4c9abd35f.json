@@ -1,0 +1,57 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/40_tsdb.yml",
+  "name": "PromQL sum_over_time with grouping",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "PROMQL index=test2 step=1m sum_agg=(sum by (dim) (sum_over_time(agg_metric[1m]))) | SORT step, dim | LIMIT 5"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "24737209",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "sum_agg",
+          "type": "double"
+        },
+        {
+          "name": "step",
+          "type": "date"
+        },
+        {
+          "name": "dim",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1773484985773,
+      "documents_found": 3,
+      "expiration_time_in_millis": 1773916985744,
+      "is_partial": false,
+      "start_time_in_millis": 1773484985749,
+      "took": 24,
+      "values": [
+        [
+          20,
+          "2021-04-28T18:50:00.000Z",
+          "A"
+        ],
+        [
+          83,
+          "2021-04-28T18:50:00.000Z",
+          "B"
+        ]
+      ],
+      "values_loaded": 11
+    },
+    "statusCode": 200
+  }
+}
