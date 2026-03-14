@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.2-SNAPSHOT`  
-Elasticsearch build hash: `f1159a699e319a0625c0f4489e38433f7262ee01`
+Elasticsearch build hash: `cd03d55f2687b1c78f4d3cb4cfd7414be7dc15c0`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -1038,7 +1038,7 @@ Elasticsearch build hash: `f1159a699e319a0625c0f4489e38433f7262ee01`
 | `activate_watch` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `deactivate_watch` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `delete_watch` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
-| `execute_watch` | :red_circle: | 41/62 | 1/62 | stable | undefined |  |
+| `execute_watch` | :red_circle: | 41/62 | 2/62 | stable | undefined |  |
 | `get_settings` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `get_watch` | :red_circle: | 42/42 | 39/42 | stable | undefined |  |
 | `put_watch` | :red_circle: | 51/60 | 60/60 | stable | undefined |  |
@@ -1047,7 +1047,7 @@ Elasticsearch build hash: `f1159a699e319a0625c0f4489e38433f7262ee01`
 | `stats` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `stop` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `update_settings` | :red_circle: | 0/3 | 3/3 | stable | undefined |  |
-| **Summary** | :red_circle: | 83.6% | 67.7% | | | |
+| **Summary** | :red_circle: | 83.6% | 68.2% | | | |
 
 [Back to top](#Summary)
 
