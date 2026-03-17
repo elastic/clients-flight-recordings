@@ -1,0 +1,105 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/220_explain.yml",
+  "name": "explainQuery",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "EXPLAIN (from test | where color == \"red\" | eval b = 20)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "5890242",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.4.0-a4895c5ef7a935c45026dbd6dc6022bf95c01520 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "cluster",
+          "type": "keyword"
+        },
+        {
+          "name": "node",
+          "type": "keyword"
+        },
+        {
+          "name": "role",
+          "type": "keyword"
+        },
+        {
+          "name": "type",
+          "type": "keyword"
+        },
+        {
+          "name": "plan",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1773743996618,
+      "documents_found": 0,
+      "expiration_time_in_millis": 1774175996535,
+      "is_partial": false,
+      "start_time_in_millis": 1773743996613,
+      "took": 5,
+      "values": [
+        [
+          "",
+          "elasticsearch-x86-64-rest-test",
+          "coordinator",
+          "parsedPlan",
+          "Eval[[20[INTEGER] AS b#1818]]\n\\_Filter[?color == red[KEYWORD]]\n  \\_UnresolvedRelation[test]"
+        ],
+        [
+          "",
+          "elasticsearch-x86-64-rest-test",
+          "coordinator",
+          "optimizedLogicalPlan",
+          "Eval[[20[INTEGER] AS b#1818]]\n\\_Limit[1000[INTEGER],false,false]\n  \\_Filter[color{f}#1819 == red[KEYWORD]]\n    \\_EsRelation[test][color{f}#1819, color.keyword{f}#1820, description{f..]"
+        ],
+        [
+          "",
+          "elasticsearch-x86-64-rest-test",
+          "coordinator",
+          "optimizedPhysicalPlan",
+          "EvalExec[[20[INTEGER] AS b#1818]]\n\\_LimitExec[1000[INTEGER],2148]\n  \\_ExchangeExec[[color{f}#1819, color.keyword{f}#1820, description{f}#1821, description.keyword{f}#1822],false]\n    \\_FragmentExec[filter=null, estimatedRowSize=4, reducer=[], fragment=[<>\nProject[[color{f}#1819, color.keyword{f}#1820, description{f}#1821, description.keyword{f}#1822]]\n\\_Limit[1000[INTEGER],false,false]\n  \\_Filter[color{f}#1819 == red[KEYWORD]]\n    \\_EsRelation[test][color{f}#1819, color.keyword{f}#1820, description{f..]<>]]"
+        ],
+        [
+          "elasticsearch-x86-64-rest-test",
+          "localhost",
+          "data",
+          "optimizedLocalLogicalPlan",
+          "Project[[color{f}#1819, color.keyword{f}#1820, description{f}#1821, description.keyword{f}#1822]]\n\\_Limit[1000[INTEGER],false,false]\n  \\_Filter[color{f}#1819 == red[KEYWORD]]\n    \\_EsRelation[test][color{f}#1819, color.keyword{f}#1820, description{f..]"
+        ],
+        [
+          "elasticsearch-x86-64-rest-test",
+          "localhost",
+          "data",
+          "localPhysicalPlan",
+          "ExchangeSinkExec[[color{f}#1819, color.keyword{f}#1820, description{f}#1821, description.keyword{f}#1822],false]\n\\_ProjectExec[[color{f}#1819, color.keyword{f}#1820, description{f}#1821, description.keyword{f}#1822]]\n  \\_FieldExtractExec[color{f}#1819, color.keyword{f}#1820, description{f..]<[],[]>\n    \\_EsQueryExec[test], indexMode[standard], [_doc{f}#1823], limit[1000], sort[] estimatedRowSize[2156] queryBuilderAndTags [[QueryBuilderAndTags[query={\n  \"esql_single_value\" : {\n    \"field\" : \"color:synthetic_source_delegate\",\n    \"next\" : {\n      \"equals_synthetic_source_delegate\" : {\n        \"color\" : {\n          \"value\" : \"red\",\n          \"boost\" : 0.0\n        }\n      }\n    },\n    \"source\" : \"color == \\\"red\\\"@1:28\"\n  }\n}, tags=[]]]]"
+        ],
+        [
+          "elasticsearch-x86-64-rest-test",
+          "localhost",
+          "node_reduce",
+          "physicalPlan",
+          "ExchangeSinkExec[[color{f}#1819, color.keyword{f}#1820, description{f}#1821, description.keyword{f}#1822],false]\n\\_ExchangeSourceExec[[color{f}#1819, color.keyword{f}#1820, description{f}#1821, description.keyword{f}#1822],false]"
+        ],
+        [
+          "elasticsearch-x86-64-rest-test",
+          "localhost",
+          "final",
+          "physicalPlan",
+          "OutputExec[org.elasticsearch.xpack.esql.plugin.ComputeService$$Lambda/0x000000000b2ecf60@4025f9bc]\n\\_EvalExec[[20[INTEGER] AS b#1818]]\n  \\_LimitExec[1000[INTEGER],2148]\n    \\_ExchangeSourceExec[[color{f}#1819, color.keyword{f}#1820, description{f}#1821, description.keyword{f}#1822],false]"
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}
