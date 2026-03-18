@@ -1,0 +1,65 @@
+{
+  "api": "search",
+  "file": "/test/free/search.retrievers/result-diversification/10_mmr_result_diversification_retriever.yml",
+  "name": "Test MMR diversification with arbitrary shards",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "retriever": {
+          "diversify": {
+            "field": "textvector",
+            "lambda": 0.9,
+            "retriever": {
+              "standard": {
+                "query": {
+                  "function_score": {
+                    "field_value_factor": {
+                      "factor": 1,
+                      "field": "rankfield",
+                      "missing": 1
+                    }
+                  }
+                },
+                "sort": {
+                  "_score": "desc"
+                }
+              }
+            },
+            "size": 3,
+            "type": "mmr"
+          }
+        }
+      },
+      "index": "any-shards-test-result-diversification-index",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 0
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
