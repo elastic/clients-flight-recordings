@@ -1,0 +1,68 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/161_union_types_subfields.yml",
+  "name": "load two indices with to_version and to_string",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM test* METADATA _id | EVAL v = TO_VERSION(TO_STRING(obj.integer)), s = TO_STRING(obj.keyword) | KEEP _id, v, s | SORT _id ASC"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "21326069",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.3.3-2fd602ccd16bf06edbcb77399901bb68cb619601 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "_id",
+          "type": "keyword"
+        },
+        {
+          "name": "v",
+          "type": "version"
+        },
+        {
+          "name": "s",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1774003294385,
+      "documents_found": 4,
+      "expiration_time_in_millis": 1774435294241,
+      "is_partial": false,
+      "start_time_in_millis": 1774003294364,
+      "took": 21,
+      "values": [
+        [
+          "11",
+          "100",
+          "true"
+        ],
+        [
+          "12",
+          "20",
+          "US"
+        ],
+        [
+          "21",
+          "50",
+          "true"
+        ],
+        [
+          "22",
+          "1.2.3",
+          "false"
+        ]
+      ],
+      "values_loaded": 12
+    },
+    "statusCode": 200
+  }
+}
