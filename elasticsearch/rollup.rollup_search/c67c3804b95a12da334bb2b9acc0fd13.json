@@ -1,0 +1,89 @@
+{
+  "api": "rollup.rollup_search",
+  "file": "/test/platinum/rollup/rollup_search.yml",
+  "name": "Obsolete Timezone",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "histo": {
+            "aggs": {
+              "the_max": {
+                "max": {
+                  "field": "price"
+                }
+              }
+            },
+            "date_histogram": {
+              "field": "timestamp",
+              "fixed_interval": "5m",
+              "time_zone": "America/Edmonton"
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "tz_rollup",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "date_histogram#histo": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": 1531221000000,
+              "key_as_string": "2018-07-10T05:10:00.000-06:00",
+              "max#the_max": {
+                "value": 1
+              }
+            },
+            {
+              "doc_count": 2,
+              "key": 1531221300000,
+              "key_as_string": "2018-07-10T05:15:00.000-06:00",
+              "max#the_max": {
+                "value": 2
+              }
+            },
+            {
+              "doc_count": 10,
+              "key": 1531221600000,
+              "key_as_string": "2018-07-10T05:20:00.000-06:00",
+              "max#the_max": {
+                "value": 3
+              }
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": 0,
+        "total": {
+          "relation": "eq",
+          "value": 0
+        }
+      },
+      "terminated_early": false,
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}
