@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.3-SNAPSHOT`  
-Elasticsearch build hash: `a209b36d125a299c3a2dfef14dddf6cc591ea808`
+Elasticsearch build hash: `ecea889fa001655e8ba3349cdc39465657d2298c`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -375,8 +375,8 @@ Elasticsearch build hash: `a209b36d125a299c3a2dfef14dddf6cc591ea808`
 | `get_view` | :green_circle: | 6/6 | 0/0 | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
 | `put_view` | :green_circle: | 2/2 | 0/0 | experimental | undefined |  |
-| `query` | :red_circle: | 375/378 | 0/0 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.2% | 0% | | | |
+| `query` | :red_circle: | 376/378 | 0/0 | stable | undefined |  |
+| **Summary** | :red_circle: | 99.5% | 0% | | | |
 
 [Back to top](#Summary)
 
