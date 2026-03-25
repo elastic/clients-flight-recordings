@@ -1,0 +1,174 @@
+{
+  "api": "watcher.execute_watch",
+  "file": "/test/platinum/watcher/execute_watch/80_foreach.yml",
+  "name": "Test execute watch api with foreach action",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "watch": {
+          "actions": {
+            "log_hits": {
+              "foreach": "ctx.payload.hits.hits",
+              "logging": {
+                "text": "Logging {{ctx.payload.key}}"
+              }
+            }
+          },
+          "input": {
+            "simple": {
+              "hits": {
+                "hits": [
+                  {
+                    "key": "first"
+                  },
+                  {
+                    "key": "second"
+                  },
+                  {
+                    "key": "third"
+                  }
+                ]
+              }
+            }
+          },
+          "trigger": {
+            "schedule": {
+              "cron": "0 0 0 1 * ? 2099"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1499",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "_inlined__9336820f-ef0f-4c93-bfb7-8b27ecc49ab5-2026-03-25T11:05:35.240913138Z",
+      "watch_record": {
+        "@timestamp": "2026-03-25T11:05:35.240879491Z",
+        "condition": {
+          "always": {
+          }
+        },
+        "input": {
+          "simple": {
+            "hits": {
+              "hits": [
+                {
+                  "key": "first"
+                },
+                {
+                  "key": "second"
+                },
+                {
+                  "key": "third"
+                }
+              ]
+            }
+          }
+        },
+        "messages": [
+        ],
+        "node": "go_jDIm6RuKsqgW11Lk0wQ",
+        "result": {
+          "actions": [
+            {
+              "foreach": [
+                {
+                  "logging": {
+                    "logged_text": "Logging first"
+                  }
+                },
+                {
+                  "logging": {
+                    "logged_text": "Logging second"
+                  }
+                },
+                {
+                  "logging": {
+                    "logged_text": "Logging third"
+                  }
+                }
+              ],
+              "id": "log_hits",
+              "max_iterations": 100,
+              "number_of_actions_executed": 3,
+              "status": "success",
+              "type": "logging"
+            }
+          ],
+          "condition": {
+            "met": true,
+            "status": "success",
+            "type": "always"
+          },
+          "execution_duration": 1,
+          "execution_time": "2026-03-25T11:05:35.240Z",
+          "input": {
+            "payload": {
+              "hits": {
+                "hits": [
+                  {
+                    "key": "first"
+                  },
+                  {
+                    "key": "second"
+                  },
+                  {
+                    "key": "third"
+                  }
+                ]
+              }
+            },
+            "status": "success",
+            "type": "simple"
+          }
+        },
+        "state": "executed",
+        "status": {
+          "actions": {
+            "log_hits": {
+              "ack": {
+                "state": "ackable",
+                "timestamp": "2026-03-25T11:05:35.240Z"
+              },
+              "last_execution": {
+                "successful": true,
+                "timestamp": "2026-03-25T11:05:35.240Z"
+              },
+              "last_successful_execution": {
+                "successful": true,
+                "timestamp": "2026-03-25T11:05:35.240Z"
+              }
+            }
+          },
+          "execution_state": "executed",
+          "last_checked": "2026-03-25T11:05:35.240Z",
+          "last_met_condition": "2026-03-25T11:05:35.240Z",
+          "state": {
+            "active": true,
+            "timestamp": "2026-03-25T11:05:35.240Z"
+          },
+          "version": -1
+        },
+        "trigger_event": {
+          "manual": {
+            "schedule": {
+              "scheduled_time": "2026-03-25T11:05:35.240Z"
+            }
+          },
+          "triggered_time": "2026-03-25T11:05:35.240Z",
+          "type": "manual"
+        },
+        "user": "elastic",
+        "watch_id": "_inlined_"
+      }
+    },
+    "statusCode": 200
+  }
+}
