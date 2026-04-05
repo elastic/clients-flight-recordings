@@ -1,0 +1,184 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/100_knn_nested_search.yml",
+  "name": "Filter on nested fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "_source": false,
+        "knn": {
+          "boost": 2,
+          "field": "nested.vector",
+          "filter": {
+            "match": {
+              "nested.language": "FR"
+            }
+          },
+          "inner_hits": {
+            "_source": false,
+            "fields": [
+              "nested.paragraph_id",
+              "nested.language"
+            ],
+            "size": 3
+          },
+          "k": 3,
+          "query_vector": [
+            -0.5,
+            90,
+            -10,
+            14.8,
+            -156
+          ]
+        }
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "3",
+            "_index": "test",
+            "_score": 0.0043039434,
+            "inner_hits": {
+              "nested": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "3",
+                      "_index": "test",
+                      "_nested": {
+                        "field": "nested",
+                        "offset": 0
+                      },
+                      "_score": 0.0043039434,
+                      "fields": {
+                        "nested": [
+                          {
+                            "language": [
+                              "FR"
+                            ],
+                            "paragraph_id": [
+                              "0"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 0.0043039434,
+                  "total": {
+                    "relation": "eq",
+                    "value": 1
+                  }
+                }
+              }
+            }
+          },
+          {
+            "_id": "2",
+            "_index": "test",
+            "_score": 0.000071244736,
+            "inner_hits": {
+              "nested": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "2",
+                      "_index": "test",
+                      "_nested": {
+                        "field": "nested",
+                        "offset": 2
+                      },
+                      "_score": 0.000071244736,
+                      "fields": {
+                        "nested": [
+                          {
+                            "language": [
+                              "FR"
+                            ],
+                            "paragraph_id": [
+                              "3"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 0.000071244736,
+                  "total": {
+                    "relation": "eq",
+                    "value": 1
+                  }
+                }
+              }
+            }
+          },
+          {
+            "_id": "1",
+            "_index": "test",
+            "_score": 0.000016573209,
+            "inner_hits": {
+              "nested": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "1",
+                      "_index": "test",
+                      "_nested": {
+                        "field": "nested",
+                        "offset": 1
+                      },
+                      "_score": 0.000016573209,
+                      "fields": {
+                        "nested": [
+                          {
+                            "language": [
+                              "FR"
+                            ],
+                            "paragraph_id": [
+                              "1"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 0.000016573209,
+                  "total": {
+                    "relation": "eq",
+                    "value": 1
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "max_score": 0.0043039434,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 11
+    },
+    "statusCode": 200
+  }
+}
