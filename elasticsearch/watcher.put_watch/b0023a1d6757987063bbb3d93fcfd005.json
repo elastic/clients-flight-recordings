@@ -1,0 +1,54 @@
+{
+  "api": "watcher.put_watch",
+  "file": "/test/platinum/painless/70_json_in_watch.yml",
+  "name": "Test json in watch",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "actions": {
+          "logging": {
+            "logging": {
+              "text": "{{ctx.payload.test.count}}"
+            }
+          }
+        },
+        "condition": {
+          "script": {
+            "lang": "painless",
+            "source": "String s = Json.dump(ctx.payload); Map m = Json.load(s); m.count == 1;"
+          }
+        },
+        "input": {
+          "simple": {
+            "count": 1
+          }
+        },
+        "transform": {
+          "script": "String s = Json.dump(ctx.payload); Map m = Json.load(s); return ['test': m];"
+        },
+        "trigger": {
+          "schedule": {
+            "cron": "0 0 0 1 * ? 2099"
+          }
+        }
+      },
+      "id": "my_json_watch"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "82",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "my_json_watch",
+      "_primary_term": 1,
+      "_seq_no": 21,
+      "_version": 1,
+      "created": true
+    },
+    "statusCode": 201
+  }
+}
