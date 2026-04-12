@@ -1,0 +1,88 @@
+{
+  "api": "search",
+  "file": "/test/platinum/analytics/normalize.yml",
+  "name": "percent_of_sum",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "users_by_day": {
+            "aggs": {
+              "percent_of_total_users": {
+                "normalize": {
+                  "buckets_path": "_count",
+                  "method": "percent_of_sum"
+                }
+              }
+            },
+            "date_histogram": {
+              "calendar_interval": "day",
+              "field": "timestamp"
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "foo",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "date_histogram#users_by_day": {
+          "buckets": [
+            {
+              "doc_count": 3,
+              "key": 1483228800000,
+              "key_as_string": "2017-01-01T00:00:00.000Z",
+              "simple_value#percent_of_total_users": {
+                "value": 0.5
+              }
+            },
+            {
+              "doc_count": 2,
+              "key": 1483315200000,
+              "key_as_string": "2017-01-02T00:00:00.000Z",
+              "simple_value#percent_of_total_users": {
+                "value": 0.3333333333333333
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": 1483401600000,
+              "key_as_string": "2017-01-03T00:00:00.000Z",
+              "simple_value#percent_of_total_users": {
+                "value": 0.16666666666666666
+              }
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 6
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
