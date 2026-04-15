@@ -1,11 +1,11 @@
 ## Summary
 
-Elasticsearch version: `9.4.0-SNAPSHOT`  
-Elasticsearch build hash: `043eddc6f0a0a18b0f65ed40a199da24eac97c9b`
+Elasticsearch version: `9.5.0-SNAPSHOT`  
+Elasticsearch build hash: `86f14242ec1c03a801aad7be907007b470bc38c5`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 589 | 547 (92.9%) | 42 (7.1%) | 120 (20.4%) | 0 (0%) |
+| 590 | 548 (92.9%) | 42 (7.1%) | 121 (20.5%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
@@ -14,7 +14,7 @@ Elasticsearch build hash: `043eddc6f0a0a18b0f65ed40a199da24eac97c9b`
 | --- | --- | --- | --- | --- | --- |
 | `stable` | 494 | 459 (92.9%) | 35 (7.1%) | 102 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 71 | 67 (94.4%) | 4 (5.6%) | 18 | 0 |
+| `experimental` | 72 | 68 (94.4%) | 4 (5.6%) | 19 | 0 |
 
 </details>
 
@@ -375,7 +375,7 @@ Elasticsearch build hash: `043eddc6f0a0a18b0f65ed40a199da24eac97c9b`
 | `get_view` | :green_circle: | 14/14 | 0/0 | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
 | `put_view` | :green_circle: | 29/29 | 0/0 | experimental | undefined |  |
-| `query` | :green_circle: | 451/451 | 0/0 | stable | undefined |  |
+| `query` | :green_circle: | 443/443 | 0/0 | stable | undefined |  |
 | **Summary** | :red_circle: | 99.8% | 0% | | | |
 
 [Back to top](#Summary)
@@ -822,6 +822,7 @@ Elasticsearch build hash: `043eddc6f0a0a18b0f65ed40a199da24eac97c9b`
 | `clear_cached_realms` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `clear_cached_roles` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `clear_cached_service_tokens` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
+| `clone_api_key` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `create_api_key` | :green_circle: | 78/78 | 69/69 | stable | undefined |  |
 | `create_cross_cluster_api_key` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `create_service_token` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
