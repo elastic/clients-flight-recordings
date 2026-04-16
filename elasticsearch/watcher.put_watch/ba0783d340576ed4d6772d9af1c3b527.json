@@ -1,0 +1,69 @@
+{
+  "api": "watcher.put_watch",
+  "file": "/test/platinum/mustache/50_webhook_url_escaping.yml",
+  "name": "Test url escaping with url mustache function",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "actions": {
+          "output": {
+            "webhook": {
+              "body": "{ \"foo\": \"bar\" }",
+              "host": "172.18.0.2",
+              "method": "PUT",
+              "params": {
+                "refresh": "true"
+              },
+              "path": "/{{#url}}{{ctx.metadata.index}}{{/url}}/_doc/2",
+              "port": 9200
+            }
+          }
+        },
+        "condition": {
+          "compare": {
+            "ctx.payload.hits.total": {
+              "eq": 1
+            }
+          }
+        },
+        "input": {
+          "http": {
+            "request": {
+              "host": "172.18.0.2",
+              "params": {
+                "rest_total_hits_as_int": "true"
+              },
+              "path": "/{{#url}}{{ctx.metadata.index}}{{/url}}/_search",
+              "port": 9200
+            }
+          }
+        },
+        "metadata": {
+          "index": "<date-index-{now/d}>"
+        },
+        "trigger": {
+          "schedule": {
+            "interval": "1h"
+          }
+        }
+      },
+      "id": "test_watch"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "81",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "test_watch",
+      "_primary_term": 1,
+      "_seq_no": 13,
+      "_version": 14,
+      "created": false
+    },
+    "statusCode": 200
+  }
+}
