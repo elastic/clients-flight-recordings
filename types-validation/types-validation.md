@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.5.0-SNAPSHOT`  
-Elasticsearch build hash: `5ec4e8dc480b73a0450274398890719f28a85448`
+Elasticsearch build hash: `404bb458ad2e73cb3c215f4e5d4bc6b19a8f8e14`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -278,7 +278,7 @@ Elasticsearch build hash: `5ec4e8dc480b73a0450274398890719f28a85448`
 | `pending_tasks` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `post_voting_config_exclusions` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `put_component_template` | :green_circle: | 41/41 | 41/41 | stable | undefined |  |
-| `put_settings` | :green_circle: | 76/76 | 75/75 | stable | undefined |  |
+| `put_settings` | :green_circle: | 78/78 | 77/77 | stable | undefined |  |
 | `remote_info` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `reroute` | :green_circle: | 8/8 | 7/7 | stable | undefined |  |
 | `state` | :green_circle: | 93/93 | 92/92 | stable | undefined |  |
@@ -985,8 +985,8 @@ Elasticsearch build hash: `5ec4e8dc480b73a0450274398890719f28a85448`
 | `get_synonym` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `get_synonym_rule` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `get_synonyms_sets` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
-| `put_synonym` | :green_circle: | 34/34 | 34/34 | stable | undefined |  |
-| `put_synonym_rule` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
+| `put_synonym` | :green_circle: | 35/35 | 35/35 | stable | undefined |  |
+| `put_synonym_rule` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
 | **Summary** | :green_circle: | 100% | 100% | | | |
 
 [Back to top](#Summary)
