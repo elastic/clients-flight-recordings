@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.5.0-SNAPSHOT`  
-Elasticsearch build hash: `e8b9509fa069be9c532f91decf1f38dc24374062`
+Elasticsearch build hash: `d45aedd8cbcde061934270869a8d80d7fb141a0e`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ Elasticsearch build hash: `e8b9509fa069be9c532f91decf1f38dc24374062`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 3065/3111 | 3111/3111 | stable | undefined |  |
+| `search` | :red_circle: | 3067/3113 | 3113/3113 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 234/234 | 214/234 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 42/42 | 39/42 | stable | undefined |  |
 | `watcher.put_watch` | :red_circle: | 51/60 | 60/60 | stable | undefined |  |
@@ -194,7 +194,7 @@ Elasticsearch build hash: `e8b9509fa069be9c532f91decf1f38dc24374062`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 69/69 | 20/20 | stable | undefined |  |
-| `search` | :red_circle: | 3065/3111 | 3111/3111 | stable | undefined |  |
+| `search` | :red_circle: | 3067/3113 | 3113/3113 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
