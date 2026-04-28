@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.4-SNAPSHOT`  
-Elasticsearch build hash: `c37083242f6322f8525e029d03ab233c5dd295a4`
+Elasticsearch build hash: `6234263e637bbcc249ccd6eb005e3928fec9b0db`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -12,9 +12,9 @@ Elasticsearch build hash: `c37083242f6322f8525e029d03ab233c5dd295a4`
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 493 | 459 (93.1%) | 34 (6.9%) | 101 | 0 |
+| `stable` | 494 | 460 (93.1%) | 34 (6.9%) | 101 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 71 | 66 (93%) | 5 (7%) | 12 | 0 |
+| `experimental` | 70 | 65 (92.9%) | 5 (7.1%) | 12 | 0 |
 
 </details>
 
@@ -455,7 +455,7 @@ Elasticsearch build hash: `c37083242f6322f8525e029d03ab233c5dd295a4`
 | `delete_sample_configuration` | :green_circle: | 15/15 | 15/15 | experimental | undefined |  |
 | `delete_template` | :green_circle: | 9/9 | 9/9 | stable | undefined | deprecated |
 | `disk_usage` | :green_circle: | 6/6 | 6/6 | experimental | undefined |  |
-| `downsample` | :green_circle: | 48/48 | 48/48 | experimental | undefined |  |
+| `downsample` | :green_circle: | 48/48 | 48/48 | stable | undefined |  |
 | `exists` | :green_circle: | 45/45 | 45/45 | stable | undefined |  |
 | `exists_alias` | :green_circle: | 37/37 | 37/37 | stable | undefined |  |
 | `exists_index_template` | :white_circle: | Missing test | Missing test | stable | undefined |  |
