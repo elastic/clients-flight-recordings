@@ -1,20 +1,20 @@
 ## Summary
 
 Elasticsearch version: `9.5.0-SNAPSHOT`  
-Elasticsearch build hash: `3d5712731efc5eb3d0898e726c76301eab0226f9`
+Elasticsearch build hash: `8e6313b633bc7f816c1fef1942a04bee95a62311`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 593 | 552 (93.1%) | 41 (6.9%) | 124 (20.9%) | 0 (0%) |
+| 593 | 551 (92.9%) | 42 (7.1%) | 124 (20.9%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 494 | 460 (93.1%) | 34 (6.9%) | 102 | 0 |
+| `stable` | 495 | 460 (92.9%) | 35 (7.1%) | 102 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 75 | 71 (94.7%) | 4 (5.3%) | 22 | 0 |
+| `experimental` | 74 | 70 (94.6%) | 4 (5.4%) | 22 | 0 |
 
 </details>
 
@@ -34,7 +34,7 @@ Elasticsearch build hash: `3d5712731efc5eb3d0898e726c76301eab0226f9`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 3075/3121 | 3121/3121 | stable | undefined |  |
+| `search` | :red_circle: | 3075/3122 | 3122/3122 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 236/236 | 214/236 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 42/42 | 39/42 | stable | undefined |  |
 | `watcher.put_watch` | :red_circle: | 51/60 | 60/60 | stable | undefined |  |
@@ -110,7 +110,7 @@ Elasticsearch build hash: `3d5712731efc5eb3d0898e726c76301eab0226f9`
 
 ## Report
 
-:construction: 26.7% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
+:construction: 28.9% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
 
 ### _internal
 
@@ -176,7 +176,7 @@ Elasticsearch build hash: `3d5712731efc5eb3d0898e726c76301eab0226f9`
 | `get_script_languages` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_source` | :green_circle: | 18/18 | 18/18 | stable | undefined |  |
 | `health_report` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
-| `index` | :green_circle: | 1810/1810 | 1812/1812 | stable | undefined |  |
+| `index` | :green_circle: | 1811/1811 | 1813/1813 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `knn_search` | :green_circle: | 4/4 | 4/4 | experimental | undefined | deprecated |
 | `list_reindex` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
@@ -193,7 +193,7 @@ Elasticsearch build hash: `3d5712731efc5eb3d0898e726c76301eab0226f9`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 69/69 | 20/20 | stable | undefined |  |
-| `search` | :red_circle: | 3075/3121 | 3121/3121 | stable | undefined |  |
+| `search` | :red_circle: | 3075/3122 | 3122/3122 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -456,7 +456,7 @@ Elasticsearch build hash: `3d5712731efc5eb3d0898e726c76301eab0226f9`
 | `delete_index_template` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
 | `delete_template` | :green_circle: | 9/9 | 9/9 | stable | undefined | deprecated |
 | `disk_usage` | :green_circle: | 6/6 | 6/6 | experimental | undefined |  |
-| `downsample` | :green_circle: | 50/50 | 50/50 | experimental | undefined |  |
+| `downsample` | :green_circle: | 50/50 | 50/50 | stable | undefined |  |
 | `exists` | :green_circle: | 45/45 | 45/45 | stable | undefined |  |
 | `exists_alias` | :green_circle: | 37/37 | 37/37 | stable | undefined |  |
 | `exists_index_template` | :white_circle: | Missing test | Missing test | stable | undefined |  |
@@ -981,12 +981,12 @@ Elasticsearch build hash: `3d5712731efc5eb3d0898e726c76301eab0226f9`
 | --- | --- | --- | --- | --- | --- | --- |
 | `delete_synonym` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
 | `delete_synonym_rule` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
-| `get_synonym` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
+| `get_synonym` | :red_circle: | 19/21 | 21/21 | stable | undefined |  |
 | `get_synonym_rule` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `get_synonyms_sets` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
-| `put_synonym` | :green_circle: | 35/35 | 35/35 | stable | undefined |  |
+| `put_synonym` | :green_circle: | 36/36 | 36/36 | stable | undefined |  |
 | `put_synonym_rule` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
-| **Summary** | :green_circle: | 100% | 100% | | | |
+| **Summary** | :red_circle: | 97.7% | 100% | | | |
 
 [Back to top](#Summary)
 
