@@ -1,0 +1,85 @@
+{
+  "api": "search",
+  "file": "/test/platinum/exponential_histogram/40_tdigest_histogram_aggregations_compatibility.yml",
+  "name": "Histogram aggregation over tdigest and exponential_histogram",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "histo_agg": {
+            "histogram": {
+              "field": "tdigest_or_exp_histo",
+              "interval": 0.5,
+              "min_doc_count": 1
+            }
+          }
+        }
+      },
+      "index": "test-data-stream",
+      "size": 0,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "aggregations": {
+        "histogram#histo_agg": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": 0
+            },
+            {
+              "doc_count": 2,
+              "key": 0.5
+            },
+            {
+              "doc_count": 1,
+              "key": 1
+            },
+            {
+              "doc_count": 2,
+              "key": 2
+            },
+            {
+              "doc_count": 2,
+              "key": 2.5
+            },
+            {
+              "doc_count": 1,
+              "key": 4
+            },
+            {
+              "doc_count": 1,
+              "key": 5
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
