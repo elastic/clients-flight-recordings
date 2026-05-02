@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.5-SNAPSHOT`  
-Elasticsearch build hash: `436045f173d9f14fff3e212310f910d0e793328a`
+Elasticsearch build hash: `27b2a31fdf0bbfc8b01352643db190fd7827e5aa`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ Elasticsearch build hash: `436045f173d9f14fff3e212310f910d0e793328a`
 | `indices.stats` | :red_circle: | 141/141 | 36/140 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1532/1566 | 1566/1566 | stable | undefined |  |
 | `cluster.stats` | :red_circle: | 27/27 | 0/27 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 47/47 | 1/43 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 47/47 | 2/43 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 172/174 | 174/174 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 93/93 | 73/93 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 36/36 | 9/36 | stable | undefined |  |
@@ -54,7 +54,7 @@ Elasticsearch build hash: `436045f173d9f14fff3e212310f910d0e793328a`
 | `indices.rollover` | :red_circle: | 75/75 | 2/75 | stable | undefined |  |
 | `snapshot.get_repository` | :red_circle: | 19/19 | 7/19 | stable | undefined |  |
 | `indices.simulate_template` | :red_circle: | 5/5 | 4/5 | stable | undefined |  |
-| **Summary** | :red_circle: | 98.8% | 92.5% | | | |
+| **Summary** | :red_circle: | 98.8% | 92.6% | | | |
 
 </details>
 
@@ -270,7 +270,7 @@ Elasticsearch build hash: `436045f173d9f14fff3e212310f910d0e793328a`
 | `exists_component_template` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_component_template` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
 | `get_settings` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
-| `health` | :green_circle: | 234/234 | 234/234 | stable | undefined |  |
+| `health` | :green_circle: | 236/236 | 236/236 | stable | undefined |  |
 | `info` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `pending_tasks` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `post_voting_config_exclusions` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
@@ -1056,8 +1056,8 @@ Elasticsearch build hash: `436045f173d9f14fff3e212310f910d0e793328a`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 47/47 | 1/43 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 10.6% | | | |
+| `usage` | :red_circle: | 47/47 | 2/43 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 12.8% | | | |
 
 [Back to top](#Summary)
 
