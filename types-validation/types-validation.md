@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `8.19.16-SNAPSHOT`  
-Elasticsearch build hash: `3673872215bc5ade36191c296e72d190c9cd2b93`
+Elasticsearch build hash: `b70362d84ae9c1763c2db2ead1edeb60b6954e35`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ Elasticsearch build hash: `3673872215bc5ade36191c296e72d190c9cd2b93`
 | `ml.get_calendar_events` | :red_circle: | 15/15 | 5/15 | stable | undefined |  |
 | `indices.put_mapping` | :red_circle: | 126/143 | 143/143 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 115/115 | 36/114 | stable | undefined |  |
-| `indices.create` | :red_circle: | 1247/1310 | 1310/1310 | stable | undefined |  |
+| `indices.create` | :red_circle: | 1248/1311 | 1311/1311 | stable | undefined |  |
 | `xpack.usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 132/139 | 139/139 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 90/90 | 71/90 | stable | undefined |  |
@@ -435,11 +435,11 @@ Elasticsearch build hash: `3673872215bc5ade36191c296e72d190c9cd2b93`
 | `clear_cache` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `clone` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `close` | :green_circle: | 53/53 | 53/53 | stable | undefined |  |
-| `create` | :red_circle: | 1247/1310 | 1310/1310 | stable | undefined |  |
+| `create` | :red_circle: | 1248/1311 | 1311/1311 | stable | undefined |  |
 | `create_data_stream` | :green_circle: | 119/119 | 119/119 | stable | undefined |  |
 | `create_from` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `data_streams_stats` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
-| `delete` | :green_circle: | 114/114 | 114/114 | stable | undefined |  |
+| `delete` | :green_circle: | 115/115 | 115/115 | stable | undefined |  |
 | `delete_alias` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
 | `delete_data_lifecycle` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `delete_data_stream` | :green_circle: | 96/96 | 96/96 | stable | undefined |  |
