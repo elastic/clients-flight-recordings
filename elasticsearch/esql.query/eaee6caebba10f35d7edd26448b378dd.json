@@ -1,0 +1,60 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/63_enrich_int_range.yml",
+  "name": "ages as typecast keywords",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM employees | EVAL aki = ak::integer | ENRICH ages-policy ON aki | STATS count=COUNT(*) BY description | SORT count DESC, description ASC"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "19861261",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.3.5-dfe997e9ee147117964a4c93154ebb9f60596a7f \"No limit defined, adding default limit of [1000]\", 299 Elasticsearch-9.3.5-dfe997e9ee147117964a4c93154ebb9f60596a7f \"Line 1:29: evaluation of [ak::integer] failed, treating result as null. Only first 20 failures recorded.\", 299 Elasticsearch-9.3.5-dfe997e9ee147117964a4c93154ebb9f60596a7f \"Line 1:29: org.elasticsearch.xpack.esql.core.InvalidArgumentException: Cannot parse number [immortal]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "count",
+          "type": "long"
+        },
+        {
+          "name": "description",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1777978101491,
+      "documents_found": 5,
+      "expiration_time_in_millis": 1778410101485,
+      "is_partial": false,
+      "start_time_in_millis": 1777978101472,
+      "took": 19,
+      "values": [
+        [
+          2,
+          "Young Adult"
+        ],
+        [
+          1,
+          "Middle-aged"
+        ],
+        [
+          1,
+          "Senior"
+        ],
+        [
+          1,
+          null
+        ]
+      ],
+      "values_loaded": 5
+    },
+    "statusCode": 200
+  }
+}
