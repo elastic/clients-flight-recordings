@@ -42,7 +42,7 @@ Elasticsearch build hash: `78c313d00217a46f007d1129485144bdb45f99b7`
 | `indices.stats` | :red_circle: | 141/141 | 36/140 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1505/1569 | 1569/1569 | stable | undefined |  |
 | `cluster.stats` | :red_circle: | 28/28 | 0/28 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 51/51 | 1/47 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 51/51 | 2/47 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 93/93 | 73/93 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 36/36 | 9/36 | stable | undefined |  |
 | `indices.put_alias` | :red_circle: | 67/67 | 22/67 | stable | undefined |  |
@@ -53,7 +53,7 @@ Elasticsearch build hash: `78c313d00217a46f007d1129485144bdb45f99b7`
 | `indices.rollover` | :red_circle: | 65/65 | 2/65 | stable | undefined |  |
 | `snapshot.get_repository` | :red_circle: | 24/24 | 11/24 | stable | undefined |  |
 | `indices.simulate_template` | :red_circle: | 5/5 | 4/5 | stable | undefined |  |
-| **Summary** | :red_circle: | 97.9% | 92.3% | | | |
+| **Summary** | :red_circle: | 97.9% | 92.4% | | | |
 
 </details>
 
@@ -1060,8 +1060,8 @@ Elasticsearch build hash: `78c313d00217a46f007d1129485144bdb45f99b7`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 51/51 | 1/47 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 9.8% | | | |
+| `usage` | :red_circle: | 51/51 | 2/47 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 11.8% | | | |
 
 [Back to top](#Summary)
 
