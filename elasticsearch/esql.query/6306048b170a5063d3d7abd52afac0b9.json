@@ -1,0 +1,48 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/64_enrich_int_match.yml",
+  "name": "Invalid decade as double",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM songs | EVAL decade = 10.0*FLOOR(year/10) | ENRICH decades-policy ON decade | STATS count=COUNT(*) BY description | SORT count DESC, description ASC"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "20645663",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.3.5-08070876b3af534ff61b4b9738c9eff4dc185aed \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "count",
+          "type": "long"
+        },
+        {
+          "name": "description",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1779187533291,
+      "documents_found": 20,
+      "expiration_time_in_millis": 1779619533205,
+      "is_partial": false,
+      "start_time_in_millis": 1779187533271,
+      "took": 20,
+      "values": [
+        [
+          20,
+          null
+        ]
+      ],
+      "values_loaded": 20
+    },
+    "statusCode": 200
+  }
+}
