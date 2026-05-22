@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.5.0-SNAPSHOT`  
-Elasticsearch build hash: `e27b4df662a6ecca783c77e820674ec9a64841df`
+Elasticsearch build hash: `ebc268971e86bb766da07832ac498a20ce7ffbb7`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ Elasticsearch build hash: `e27b4df662a6ecca783c77e820674ec9a64841df`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 3124/3162 | 3162/3162 | stable | undefined |  |
+| `search` | :red_circle: | 3132/3170 | 3170/3170 | stable | undefined |  |
 | `count` | :red_circle: | 53/57 | 57/57 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 241/241 | 217/241 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 42/42 | 39/42 | stable | undefined |  |
@@ -53,7 +53,7 @@ Elasticsearch build hash: `e27b4df662a6ecca783c77e820674ec9a64841df`
 | `indices.rollover` | :red_circle: | 65/65 | 2/65 | stable | undefined |  |
 | `snapshot.get_repository` | :red_circle: | 24/24 | 11/24 | stable | undefined |  |
 | `indices.simulate_template` | :red_circle: | 5/5 | 4/5 | stable | undefined |  |
-| **Summary** | :red_circle: | 98.1% | 92.9% | | | |
+| **Summary** | :red_circle: | 98.1% | 93% | | | |
 
 </details>
 
@@ -193,7 +193,7 @@ Elasticsearch build hash: `e27b4df662a6ecca783c77e820674ec9a64841df`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 72/72 | 23/23 | stable | undefined |  |
-| `search` | :red_circle: | 3124/3162 | 3162/3162 | stable | undefined |  |
+| `search` | :red_circle: | 3132/3170 | 3170/3170 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
