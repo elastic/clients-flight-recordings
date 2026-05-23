@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.3.5-SNAPSHOT`  
-Elasticsearch build hash: `2d96faed4dda3bcba6b465916d5d5c30d08d0879`
+Elasticsearch build hash: `fe028cdeabce71900e2b0bb7f53a78617fb38c70`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -169,13 +169,13 @@ Elasticsearch build hash: `2d96faed4dda3bcba6b465916d5d5c30d08d0879`
 | `exists_source` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `explain` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
 | `field_caps` | :green_circle: | 70/70 | 70/70 | stable | undefined |  |
-| `get` | :green_circle: | 357/357 | 354/354 | stable | undefined |  |
+| `get` | :green_circle: | 358/358 | 355/355 | stable | undefined |  |
 | `get_script` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `get_script_context` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_script_languages` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_source` | :green_circle: | 18/18 | 18/18 | stable | undefined |  |
 | `health_report` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
-| `index` | :green_circle: | 1773/1773 | 1775/1775 | stable | undefined |  |
+| `index` | :green_circle: | 1774/1774 | 1776/1776 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `knn_search` | :green_circle: | 4/4 | 4/4 | experimental | undefined | deprecated |
 | `mget` | :green_circle: | 55/55 | 54/54 | stable | undefined |  |
