@@ -1,0 +1,53 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/26_aggs_bucket.yml",
+  "name": "BUCKET column metadata in REST response",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM test_numbers | STATS c = COUNT(*) BY b = BUCKET(number, 10)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "11595675",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.5.0-e0de7f828781a2385d8ef1bb68e1435f35b0947d \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "columns": [
+        {
+          "name": "c",
+          "type": "long"
+        },
+        {
+          "_meta": {
+            "bucket": {
+              "interval": 10
+            }
+          },
+          "name": "b",
+          "type": "double"
+        }
+      ],
+      "completion_time_in_millis": 1779619746408,
+      "documents_found": 1,
+      "expiration_time_in_millis": 1780051746279,
+      "is_partial": false,
+      "start_time_in_millis": 1779619746397,
+      "took": 11,
+      "values": [
+        [
+          1,
+          0
+        ]
+      ],
+      "values_loaded": 1
+    },
+    "statusCode": 200
+  }
+}
