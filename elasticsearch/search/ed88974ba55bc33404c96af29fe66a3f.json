@@ -1,0 +1,60 @@
+{
+  "api": "search",
+  "file": "/test/free/mapping/20_synthetic_source.yml",
+  "name": "synthetic_source text with ignored multi-field and multiple values in the same doc",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "match_phrase": {
+            "foo": "this value is"
+          }
+        }
+      },
+      "index": "synthetic_source_test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_ignored": [
+              "foo.raw"
+            ],
+            "_index": "synthetic_source_test",
+            "_score": 1.1866887,
+            "_source": {
+              "foo": [
+                "This value is too long and will be ignored",
+                "This value is short"
+              ]
+            }
+          }
+        ],
+        "max_score": 1.1866887,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
