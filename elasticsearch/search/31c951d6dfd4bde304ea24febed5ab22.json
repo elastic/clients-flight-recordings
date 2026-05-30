@@ -1,0 +1,135 @@
+{
+  "api": "search",
+  "file": "/test/platinum/constant_keyword/10_basic.yml",
+  "name": "Filter with histogram",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "agg": {
+            "aggs": {
+              "0-bucket": {
+                "filter": {
+                  "bool": {
+                    "filter": [
+                      {
+                        "bool": {
+                          "filter": [
+                            {
+                              "bool": {
+                                "filter": [
+                                  {
+                                    "bool": {
+                                      "minimum_should_match": 1,
+                                      "should": [
+                                        {
+                                          "term": {
+                                            "id": 1
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "bool": {
+                                      "minimum_should_match": 1,
+                                      "should": [
+                                        {
+                                          "term": {
+                                            "cycle_type": "bicycle"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "bool": {
+                                "minimum_should_match": 1,
+                                "should": [
+                                  {
+                                    "term": {
+                                      "status": "up"
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "histogram": {
+              "field": "price",
+              "interval": 50
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "bicycles",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "histogram#agg": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "filter#0-bucket": {
+                "doc_count": 1
+              },
+              "key": 100
+            },
+            {
+              "doc_count": 1,
+              "filter#0-bucket": {
+                "doc_count": 0
+              },
+              "key": 150
+            },
+            {
+              "doc_count": 1,
+              "filter#0-bucket": {
+                "doc_count": 0
+              },
+              "key": 200
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 5
+    },
+    "statusCode": 200
+  }
+}

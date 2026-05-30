@@ -12,9 +12,9 @@ Elasticsearch build hash: `af328d7d33ae419957d8e12beec76219710760fb`
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 495 | 463 (93.5%) | 32 (6.5%) | 102 | 0 |
+| `stable` | 498 | 466 (93.6%) | 32 (6.4%) | 105 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 74 | 71 (95.9%) | 3 (4.1%) | 22 | 0 |
+| `experimental` | 71 | 68 (95.8%) | 3 (4.2%) | 19 | 0 |
 
 </details>
 
@@ -156,7 +156,7 @@ Elasticsearch build hash: `af328d7d33ae419957d8e12beec76219710760fb`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `bulk` | :green_circle: | 649/649 | 667/667 | stable | undefined |  |
-| `cancel_reindex` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| `cancel_reindex` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `capabilities` | :green_circle: | 2/2 | 2/2 | experimental | undefined |  |
 | `clear_scroll` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `close_point_in_time` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
@@ -171,7 +171,7 @@ Elasticsearch build hash: `af328d7d33ae419957d8e12beec76219710760fb`
 | `explain` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
 | `field_caps` | :green_circle: | 72/72 | 72/72 | stable | undefined |  |
 | `get` | :green_circle: | 379/379 | 376/376 | stable | undefined |  |
-| `get_reindex` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| `get_reindex` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_script` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `get_script_context` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_script_languages` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
@@ -180,7 +180,7 @@ Elasticsearch build hash: `af328d7d33ae419957d8e12beec76219710760fb`
 | `index` | :green_circle: | 1843/1843 | 1845/1845 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `knn_search` | :green_circle: | 4/4 | 4/4 | experimental | undefined | deprecated |
-| `list_reindex` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| `list_reindex` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `mget` | :green_circle: | 57/57 | 56/56 | stable | undefined |  |
 | `msearch` | :green_circle: | 18/18 | 17/17 | stable | undefined |  |
 | `msearch_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
