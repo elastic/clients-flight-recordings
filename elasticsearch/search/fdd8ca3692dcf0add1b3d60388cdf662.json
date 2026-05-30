@@ -1,0 +1,162 @@
+{
+  "api": "search",
+  "file": "/test/platinum/analytics/multi_terms.yml",
+  "name": "order parameter",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "genres_and_products": {
+            "aggs": {
+              "total_quantity": {
+                "sum": {
+                  "field": "quantity"
+                }
+              }
+            },
+            "multi_terms": {
+              "order": {
+                "total_quantity": "desc"
+              },
+              "terms": [
+                {
+                  "field": "genre"
+                },
+                {
+                  "field": "product"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "index": "products*",
+      "size": 0,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "aggregations": {
+        "multi_terms#genres_and_products": {
+          "buckets": [
+            {
+              "doc_count": 2,
+              "key": [
+                "soul",
+                "Product E"
+              ],
+              "key_as_string": "soul|Product E",
+              "sum#total_quantity": {
+                "value": 237
+              }
+            },
+            {
+              "doc_count": 2,
+              "key": [
+                "trance",
+                "Product G"
+              ],
+              "key_as_string": "trance|Product G",
+              "sum#total_quantity": {
+                "value": 232
+              }
+            },
+            {
+              "doc_count": 2,
+              "key": [
+                "dance",
+                "Product D"
+              ],
+              "key_as_string": "dance|Product D",
+              "sum#total_quantity": {
+                "value": 131
+              }
+            },
+            {
+              "doc_count": 2,
+              "key": [
+                "pop",
+                "Product C"
+              ],
+              "key_as_string": "pop|Product C",
+              "sum#total_quantity": {
+                "value": 112
+              }
+            },
+            {
+              "doc_count": 3,
+              "key": [
+                "rock",
+                "Product A"
+              ],
+              "key_as_string": "rock|Product A",
+              "sum#total_quantity": {
+                "value": 43
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": [
+                "jazz",
+                "Product B"
+              ],
+              "key_as_string": "jazz|Product B",
+              "sum#total_quantity": {
+                "value": 10
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": [
+                "electronic",
+                "Product B"
+              ],
+              "key_as_string": "electronic|Product B",
+              "sum#total_quantity": {
+                "value": 3
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": [
+                "rock",
+                "Product B"
+              ],
+              "key_as_string": "rock|Product B",
+              "sum#total_quantity": {
+                "value": 1
+              }
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 15
+        }
+      },
+      "timed_out": false,
+      "took": 8
+    },
+    "statusCode": 200
+  }
+}
