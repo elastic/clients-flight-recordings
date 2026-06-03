@@ -1,0 +1,306 @@
+{
+  "api": "search",
+  "file": "/test/free/search/370_profile.yml",
+  "name": "fetch nested source",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "profile": true,
+        "query": {
+          "nested": {
+            "inner_hits": {
+            },
+            "path": "nested",
+            "query": {
+              "match_all": {
+              }
+            }
+          }
+        }
+      },
+      "index": "test_nested",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "test_nested",
+            "_score": 1,
+            "_source": {
+              "keyword": [
+                "a",
+                "b"
+              ],
+              "nested": [
+                {
+                  "text": "the quick brown fox"
+                },
+                {
+                  "text": "jumped over the"
+                },
+                {
+                  "text": "lazy dog"
+                }
+              ]
+            },
+            "inner_hits": {
+              "nested": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "1",
+                      "_index": "test_nested",
+                      "_nested": {
+                        "field": "nested",
+                        "offset": 0
+                      },
+                      "_score": 1,
+                      "_source": {
+                        "text": "the quick brown fox"
+                      }
+                    },
+                    {
+                      "_id": "1",
+                      "_index": "test_nested",
+                      "_nested": {
+                        "field": "nested",
+                        "offset": 1
+                      },
+                      "_score": 1,
+                      "_source": {
+                        "text": "jumped over the"
+                      }
+                    },
+                    {
+                      "_id": "1",
+                      "_index": "test_nested",
+                      "_nested": {
+                        "field": "nested",
+                        "offset": 2
+                      },
+                      "_score": 1,
+                      "_source": {
+                        "text": "lazy dog"
+                      }
+                    }
+                  ],
+                  "max_score": 1,
+                  "total": {
+                    "relation": "eq",
+                    "value": 3
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "profile": {
+        "request": {
+          "indices": [
+            "test_nested"
+          ],
+          "source": {
+            "profile": true,
+            "query": {
+              "nested": {
+                "boost": 1,
+                "ignore_unmapped": false,
+                "inner_hits": {
+                },
+                "path": "nested",
+                "query": {
+                  "match_all": {
+                    "boost": 1
+                  }
+                },
+                "score_mode": "avg"
+              }
+            }
+          }
+        },
+        "shards": [
+          {
+            "aggregations": [
+            ],
+            "cluster": "(local)",
+            "fetch": {
+              "breakdown": {
+                "load_source": 8559,
+                "load_source_count": 1,
+                "load_stored_fields": 20427,
+                "load_stored_fields_count": 1,
+                "next_reader": 113389,
+                "next_reader_count": 1
+              },
+              "children": [
+                {
+                  "breakdown": {
+                    "next_reader": 15815,
+                    "next_reader_count": 1,
+                    "process": 11737,
+                    "process_count": 1
+                  },
+                  "description": "",
+                  "time_in_nanos": 27552,
+                  "type": "FetchFieldsPhase"
+                },
+                {
+                  "breakdown": {
+                    "next_reader": 819,
+                    "next_reader_count": 1,
+                    "process": 3190,
+                    "process_count": 1
+                  },
+                  "debug": {
+                    "fast_path": 1
+                  },
+                  "description": "",
+                  "time_in_nanos": 4009,
+                  "type": "FetchSourcePhase"
+                },
+                {
+                  "breakdown": {
+                    "next_reader": 624,
+                    "next_reader_count": 1,
+                    "process": 779598,
+                    "process_count": 1
+                  },
+                  "description": "",
+                  "time_in_nanos": 780222,
+                  "type": "InnerHitsPhase"
+                },
+                {
+                  "breakdown": {
+                    "next_reader": 1036,
+                    "next_reader_count": 1,
+                    "process": 920,
+                    "process_count": 1
+                  },
+                  "description": "",
+                  "time_in_nanos": 1956,
+                  "type": "StoredFieldsPhase"
+                }
+              ],
+              "debug": {
+                "stored_fields": [
+                  "_id",
+                  "_routing",
+                  "_source"
+                ]
+              },
+              "description": "",
+              "time_in_nanos": 1159429,
+              "type": "fetch"
+            },
+            "id": "[zLEynptkQRCFqLyPRdOx7g][test_nested][0]",
+            "index": "test_nested",
+            "node_id": "zLEynptkQRCFqLyPRdOx7g",
+            "searches": [
+              {
+                "collector": [
+                  {
+                    "children": [
+                      {
+                        "name": "TopScoreDocCollector",
+                        "reason": "search_top_hits",
+                        "time_in_nanos": 37522
+                      }
+                    ],
+                    "name": "QueryPhaseCollector",
+                    "reason": "search_query_phase",
+                    "time_in_nanos": 45136
+                  }
+                ],
+                "query": [
+                  {
+                    "breakdown": {
+                      "advance": 0,
+                      "advance_count": 0,
+                      "build_scorer": 70279,
+                      "build_scorer_count": 2,
+                      "compute_max_score": 0,
+                      "compute_max_score_count": 0,
+                      "count_weight": 0,
+                      "count_weight_count": 0,
+                      "create_weight": 22530,
+                      "create_weight_count": 1,
+                      "match": 0,
+                      "match_count": 0,
+                      "next_doc": 7514,
+                      "next_doc_count": 2,
+                      "score": 24476,
+                      "score_count": 1,
+                      "set_min_competitive_score": 0,
+                      "set_min_competitive_score_count": 0,
+                      "shallow_advance": 0,
+                      "shallow_advance_count": 0
+                    },
+                    "children": [
+                      {
+                        "breakdown": {
+                          "advance": 3836,
+                          "advance_count": 1,
+                          "build_scorer": 43805,
+                          "build_scorer_count": 2,
+                          "compute_max_score": 0,
+                          "compute_max_score_count": 0,
+                          "count_weight": 0,
+                          "count_weight_count": 0,
+                          "create_weight": 8745,
+                          "create_weight_count": 1,
+                          "match": 0,
+                          "match_count": 0,
+                          "next_doc": 2867,
+                          "next_doc_count": 3,
+                          "score": 0,
+                          "score_count": 0,
+                          "set_min_competitive_score": 0,
+                          "set_min_competitive_score_count": 0,
+                          "shallow_advance": 0,
+                          "shallow_advance_count": 0
+                        },
+                        "description": "_nested_path:nested",
+                        "time_in_nanos": 59253,
+                        "type": "TermQuery"
+                      }
+                    ],
+                    "description": "ToParentBlockJoinQuery (ConstantScore(_nested_path:nested))",
+                    "time_in_nanos": 124799,
+                    "type": "ESToParentBlockJoinQuery"
+                  }
+                ],
+                "rewrite_time": 33461
+              }
+            ],
+            "shard_id": 0
+          }
+        ]
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
