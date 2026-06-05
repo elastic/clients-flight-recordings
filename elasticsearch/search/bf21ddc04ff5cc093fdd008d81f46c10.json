@@ -1,0 +1,64 @@
+{
+  "api": "search",
+  "file": "/test/platinum/entsearch/rules/40_rule_query_search.yml",
+  "name": "Perform a query that matches multiple exclude rules",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "rule": {
+            "match_criteria": {
+              "foo": "bar"
+            },
+            "organic": {
+              "query_string": {
+                "query": "elasticsearch is elastic search"
+              }
+            },
+            "ruleset_ids": [
+              "multiple-exclude-ruleset"
+            ]
+          }
+        }
+      },
+      "index": "test-index1",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "doc4",
+            "_index": "test-index1",
+            "_score": 1.006046,
+            "_source": {
+              "text": "you know, for search"
+            }
+          }
+        ],
+        "max_score": 1.006046,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 6
+    },
+    "statusCode": 200
+  }
+}
