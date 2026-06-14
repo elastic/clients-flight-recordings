@@ -1,0 +1,77 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/40_tsdb.yml",
+  "name": "PromQL rate on counter field",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "PROMQL index=test step=1m tx_rate=(sum by (k8s.pod.name) (rate(k8s.pod.network.tx[1m]))) | SORT step, k8s.pod.name | LIMIT 5"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "96676905",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 5273,
+      "columns": [
+        {
+          "name": "tx_rate",
+          "type": "double"
+        },
+        {
+          "_meta": {
+            "bucket": {
+              "interval": 1,
+              "unit": "minute"
+            }
+          },
+          "name": "step",
+          "type": "date"
+        },
+        {
+          "name": "k8s.pod.name",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1781433824369,
+      "cpu_nanos": 7868522,
+      "documents_found": 8,
+      "expiration_time_in_millis": 1781865824288,
+      "is_partial": false,
+      "read_nanos": 0,
+      "rows_emitted": 80,
+      "start_time_in_millis": 1781433824273,
+      "took": 96,
+      "values": [
+        [
+          168244.7075431188,
+          "2021-04-28T18:51:00.000Z",
+          "cat"
+        ],
+        [
+          1253.3137216289838,
+          "2021-04-28T18:51:00.000Z",
+          "dog"
+        ],
+        [
+          334623.25,
+          "2021-04-28T18:52:00.000Z",
+          "cat"
+        ],
+        [
+          757.7999999696475,
+          "2021-04-28T18:52:00.000Z",
+          "dog"
+        ]
+      ],
+      "values_loaded": 32
+    },
+    "statusCode": 200
+  }
+}
