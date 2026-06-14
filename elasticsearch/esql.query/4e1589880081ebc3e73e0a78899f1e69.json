@@ -1,0 +1,67 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/40_tsdb.yml",
+  "name": "flattened field with time_series_dimensions",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM test_flattened_tsdb_dim\n| WHERE @timestamp == \"2021-04-28T18:35:24.467Z\"\n| SORT uid\n| KEEP uid, deployment, voltage\n| LIMIT 10\n"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "10684941",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 7370,
+      "columns": [
+        {
+          "name": "uid",
+          "type": "keyword"
+        },
+        {
+          "name": "deployment",
+          "type": "flattened"
+        },
+        {
+          "name": "voltage",
+          "type": "double"
+        }
+      ],
+      "completion_time_in_millis": 1781433916557,
+      "cpu_nanos": 3107194,
+      "documents_found": 2,
+      "expiration_time_in_millis": 1781865916542,
+      "is_partial": false,
+      "read_nanos": 0,
+      "rows_emitted": 20,
+      "start_time_in_millis": 1781433916547,
+      "took": 10,
+      "values": [
+        [
+          "host-a",
+          {
+            "build.tag": "v1.0",
+            "region": "us-east-1"
+          },
+          7.2
+        ],
+        [
+          "host-b",
+          {
+            "build.tag": "v2.0",
+            "region": "eu-west-1"
+          },
+          5.1
+        ]
+      ],
+      "values_loaded": 6
+    },
+    "statusCode": 200
+  }
+}
