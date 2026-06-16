@@ -1,0 +1,66 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/security/authz_api_keys/40_document_level_security_synthetic_source.yml",
+  "name": "Filter on field within a disabled object",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "name": {
+              "type": "keyword"
+            },
+            "object": {
+              "enabled": false,
+              "type": "object"
+            }
+          },
+          "runtime": {
+            "secret": {
+              "script": {
+                "source": "emit(params._source.object.secret)"
+              },
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mapping": {
+              "source": {
+                "mode": "synthetic"
+              }
+            }
+          }
+        }
+      },
+      "index": "index_dls"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "377",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "index": "index_dls",
+        "index_uuid": "_HxmYVryQPe8qPEdOsrRHg",
+        "reason": "index [index_dls/_HxmYVryQPe8qPEdOsrRHg] already exists",
+        "root_cause": [
+          {
+            "index": "index_dls",
+            "index_uuid": "_HxmYVryQPe8qPEdOsrRHg",
+            "reason": "index [index_dls/_HxmYVryQPe8qPEdOsrRHg] already exists",
+            "type": "resource_already_exists_exception"
+          }
+        ],
+        "type": "resource_already_exists_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}
