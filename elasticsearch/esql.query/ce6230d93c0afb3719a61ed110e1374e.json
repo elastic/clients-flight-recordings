@@ -1,0 +1,391 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/120_profile.yml",
+  "name": "avg 8.14 or after",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "columnar": true,
+        "profile": true,
+        "query": "FROM test | STATS AVG(data) | LIMIT 1"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "14468250",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 40,
+      "columns": [
+        {
+          "name": "AVG(data)",
+          "type": "double"
+        }
+      ],
+      "completion_time_in_millis": 1781606623420,
+      "cpu_nanos": 1212635,
+      "documents_found": 40,
+      "expiration_time_in_millis": 1782038623288,
+      "is_partial": false,
+      "profile": {
+        "analysis": {
+          "start_millis": 1781606623408,
+          "stop_millis": 1781606623409,
+          "took_millis": 1,
+          "took_nanos": 752382
+        },
+        "dataset_resolution": {
+          "start_millis": 1781606623407,
+          "stop_millis": 1781606623407,
+          "took_millis": 0,
+          "took_nanos": 3046
+        },
+        "drivers": [
+          {
+            "bytes_read": 0,
+            "cluster_name": "elasticsearch-x86-64-rest-test",
+            "cpu_nanos": 145899,
+            "description": "node_reduce",
+            "documents_found": 0,
+            "iterations": 3,
+            "node_name": "localhost",
+            "operators": [
+              {
+                "operator": "ExchangeSourceOperator",
+                "status": {
+                  "pages_emitted": 1,
+                  "pages_waiting": 0,
+                  "rows_emitted": 1
+                }
+              },
+              {
+                "operator": "ExchangeSinkOperator",
+                "status": {
+                  "pages_received": 1,
+                  "rows_received": 1
+                }
+              }
+            ],
+            "read_nanos": 0,
+            "rows_emitted": 1,
+            "sleeps": {
+              "counts": {
+                "exchange empty": 1
+              },
+              "first": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1781606623418,
+                  "thread_name": "elasticsearch[localhost][esql_worker][T#1]",
+                  "wake_millis": 1781606623420
+                }
+              ],
+              "last": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1781606623418,
+                  "thread_name": "elasticsearch[localhost][esql_worker][T#1]",
+                  "wake_millis": 1781606623420
+                }
+              ]
+            },
+            "start_millis": 1781606623417,
+            "stop_millis": 1781606623420,
+            "took_nanos": 2847078,
+            "values_loaded": 0
+          },
+          {
+            "bytes_read": 40,
+            "cluster_name": "elasticsearch-x86-64-rest-test",
+            "cpu_nanos": 718802,
+            "description": "data",
+            "documents_found": 40,
+            "iterations": 2,
+            "node_name": "localhost",
+            "operators": [
+              {
+                "operator": "LuceneSourceOperator[shards = [test:0], maxPageSize = 13107, remainingDocs = 2147483607]",
+                "status": {
+                  "bytes_read": 0,
+                  "current": 2147483647,
+                  "pages_emitted": 1,
+                  "partitioning_strategies": {
+                    "test:0": "SHARD"
+                  },
+                  "process_nanos": 200800,
+                  "processed_queries": [
+                    "*:*"
+                  ],
+                  "processed_shards": [
+                    "test:0"
+                  ],
+                  "processed_slices": 1,
+                  "rows_emitted": 40,
+                  "slice_index": 0,
+                  "slice_max": 0,
+                  "slice_min": 0,
+                  "total_slices": 1
+                }
+              },
+              {
+                "operator": "ValuesSourceReaderOperator[fields = [data]]",
+                "status": {
+                  "bytes_read": 40,
+                  "pages_emitted": 1,
+                  "pages_received": 1,
+                  "process_nanos": 140539,
+                  "readers_built": {
+                    "data:column_at_a_time:LongsFromDocValues.Singleton": 1
+                  },
+                  "rows_emitted": 40,
+                  "rows_received": 40,
+                  "values_loaded": 40
+                }
+              },
+              {
+                "operator": "EvalOperator[evaluator=ToDoubleFromLongEvaluator[l=Attribute[channel=1]]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 47571,
+                  "rows_emitted": 40,
+                  "rows_received": 40
+                }
+              },
+              {
+                "operator": "AggregationOperator[aggregators=[Aggregator[aggregatorFunction=SumDoubleAggregatorFunction[channels=[2]], mode=INITIAL], Aggregator[aggregatorFunction=CountAggregatorFunction[channels=[1]], mode=INITIAL]]]",
+                "status": {
+                  "aggregation_finish_nanos": 43738,
+                  "aggregation_nanos": 67950,
+                  "pages_processed": 1,
+                  "rows_emitted": 1,
+                  "rows_received": 40
+                }
+              },
+              {
+                "operator": "ExchangeSinkOperator",
+                "status": {
+                  "pages_received": 1,
+                  "rows_received": 1
+                }
+              }
+            ],
+            "read_nanos": 0,
+            "rows_emitted": 121,
+            "sleeps": {
+              "counts": {
+              },
+              "first": [
+              ],
+              "last": [
+              ]
+            },
+            "start_millis": 1781606623415,
+            "stop_millis": 1781606623418,
+            "took_nanos": 2442166,
+            "values_loaded": 40
+          },
+          {
+            "bytes_read": 0,
+            "cluster_name": "elasticsearch-x86-64-rest-test",
+            "cpu_nanos": 347934,
+            "description": "final",
+            "documents_found": 0,
+            "iterations": 4,
+            "node_name": "localhost",
+            "operators": [
+              {
+                "operator": "ExchangeSourceOperator",
+                "status": {
+                  "pages_emitted": 1,
+                  "pages_waiting": 0,
+                  "rows_emitted": 1
+                }
+              },
+              {
+                "operator": "AggregationOperator[aggregators=[Aggregator[aggregatorFunction=SumDoubleAggregatorFunction[channels=[0, 1, 2]], mode=FINAL], Aggregator[aggregatorFunction=CountAggregatorFunction[channels=[3, 4]], mode=FINAL]]]",
+                "status": {
+                  "aggregation_finish_nanos": 34913,
+                  "aggregation_nanos": 22871,
+                  "pages_processed": 1,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "ProjectOperator[projection = [0, 1]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 5140,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "LimitOperator[limit = 0/1]",
+                "status": {
+                  "limit": 1,
+                  "limit_remaining": 0,
+                  "pages_processed": 1,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "EvalOperator[evaluator=DivDoublesEvaluator[lhs=Attribute[channel=0], rhs=CastLongToDoubleEvaluator[v=Attribute[channel=1]]]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 33625,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "ProjectOperator[projection = [2]]",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 2761,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "OutputOperator[columns = [AVG(data)]]"
+              }
+            ],
+            "read_nanos": 0,
+            "rows_emitted": 6,
+            "sleeps": {
+              "counts": {
+                "exchange empty": 2
+              },
+              "first": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1781606623413,
+                  "thread_name": "elasticsearch[localhost][esql_worker][T#3]",
+                  "wake_millis": 1781606623418
+                },
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1781606623418,
+                  "thread_name": "elasticsearch[localhost][esql_worker][T#2]",
+                  "wake_millis": 1781606623421
+                }
+              ],
+              "last": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1781606623413,
+                  "thread_name": "elasticsearch[localhost][esql_worker][T#3]",
+                  "wake_millis": 1781606623418
+                },
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1781606623418,
+                  "thread_name": "elasticsearch[localhost][esql_worker][T#2]",
+                  "wake_millis": 1781606623421
+                }
+              ]
+            },
+            "start_millis": 1781606623412,
+            "stop_millis": 1781606623421,
+            "took_nanos": 8660098,
+            "values_loaded": 0
+          }
+        ],
+        "enrich_resolution": {
+          "start_millis": 1781606623408,
+          "stop_millis": 1781606623408,
+          "took_millis": 0,
+          "took_nanos": 5054
+        },
+        "field_caps_calls": 1,
+        "indices_resolution": {
+          "start_millis": 1781606623408,
+          "stop_millis": 1781606623408,
+          "took_millis": 0,
+          "took_nanos": 683075
+        },
+        "inference_resolution": {
+          "start_millis": 1781606623408,
+          "stop_millis": 1781606623408,
+          "took_millis": 0,
+          "took_nanos": 4234
+        },
+        "minimumTransportVersion": 9422000,
+        "parsing": {
+          "start_millis": 1781606623406,
+          "stop_millis": 1781606623407,
+          "took_millis": 1,
+          "took_nanos": 850836
+        },
+        "planning": {
+          "start_millis": 1781606623406,
+          "stop_millis": 1781606623411,
+          "took_millis": 5,
+          "took_nanos": 4480228
+        },
+        "plans": [
+          {
+            "cluster_name": "elasticsearch-x86-64-rest-test",
+            "description": "node_reduce",
+            "node_name": "localhost",
+            "plan": "ExchangeSinkExec[[$$SUM$AVG(data)$0$value{r}#671, $$SUM$AVG(data)$0$delta{r}#672, $$SUM$AVG(data)$0$seen{r}#673, $$COUNT$AVG(da\nta)$1$count{r}#674, $$COUNT$AVG(data)$1$seen{r}#675],true]\n\\_ExchangeSourceExec[[$$SUM$AVG(data)$0$value{r}#671, $$SUM$AVG(data)$0$delta{r}#672, $$SUM$AVG(data)$0$seen{r}#673, $$COUNT$AVG(da\nta)$1$count{r}#674, $$COUNT$AVG(data)$1$seen{r}#675],true]",
+            "reduction_nanos": 0
+          },
+          {
+            "cluster_name": "elasticsearch-x86-64-rest-test",
+            "description": "data",
+            "logical_optimization_nanos": 511357,
+            "logical_plan": "Aggregate[[],[SUM($$AVG(data)$SUM$0{r$}#670,true[BOOLEAN],PT0S[TIME_DURATION],compensated[KEYWORD],long_overflow_warn[KE\nYWORD]) AS $$SUM$AVG(data)$0#668, COUNT(data{f}#667,true[BOOLEAN],PT0S[TIME_DURATION]) AS $$COUNT$AVG(data)$1#\n669]]\n\\_Eval[[TODOUBLE(data{f}#667) AS $$AVG(data)$SUM$0#670]]\n  \\_EsRelation[test][data{f}#667]",
+            "node_name": "localhost",
+            "physical_optimization_nanos": 449040,
+            "plan": "ExchangeSinkExec[[$$SUM$AVG(data)$0$value{r}#671, $$SUM$AVG(data)$0$delta{r}#672, $$SUM$AVG(data)$0$seen{r}#673, $$COUNT$AVG(da\nta)$1$count{r}#674, $$COUNT$AVG(data)$1$seen{r}#675],true]\n\\_AggregateExec[[],[SUM($$AVG(data)$SUM$0{r$}#670,true[BOOLEAN],PT0S[TIME_DURATION],compensated[KEYWORD],long_overflow_warn[KE\nYWORD]) AS $$SUM$AVG(data)$0#668, COUNT(data{f}#667,true[BOOLEAN],PT0S[TIME_DURATION]) AS $$COUNT$AVG(data)$1#\n669],INITIAL,[$$SUM$AVG(data)$0$value{r}#681, $$SUM$AVG(data)$0$delta{r}#682, $$SUM$AVG(data)$0$seen{r}#683, $\n$COUNT$AVG(data)$1$count{r}#684, $$COUNT$AVG(data)$1$seen{r}#685],16]\n  \\_EvalExec[[TODOUBLE(data{f}#667) AS $$AVG(data)$SUM$0#670]]\n    \\_FieldExtractExec[data{f}#667]<[],[],[]>\n      \\_EsQueryExec[test], indexMode[standard], [_doc{f}#686], limit[], sort[] estimatedRowSize[20] queryBuilderAndTags [[QueryBuilderAndTags[query=null, tags=[]]]]"
+          },
+          {
+            "cluster_name": "elasticsearch-x86-64-rest-test",
+            "description": "final",
+            "logical_optimization_nanos": 1608609,
+            "node_name": "localhost",
+            "physical_optimization_nanos": 436528,
+            "plan": "OutputExec[org.elasticsearch.xpack.esql.plugin.ComputeService$$Lambda/0x000000002c4206f8@541d72fa]\n\\_ProjectExec[[AVG(data){r}#666]]\n  \\_EvalExec[[$$SUM$AVG(data)$0{r$}#668 / $$COUNT$AVG(data)$1{r$}#669 AS AVG(data)#666]]\n    \\_LimitExec[1[INTEGER],16]\n      \\_AggregateExec[[],[SUM($$AVG(data)$SUM$0{r$}#670,true[BOOLEAN],PT0S[TIME_DURATION],compensated[KEYWORD],long_overflow_warn[KE\nYWORD]) AS $$SUM$AVG(data)$0#668, COUNT(data{f}#667,true[BOOLEAN],PT0S[TIME_DURATION]) AS $$COUNT$AVG(data)$1#\n669],FINAL,[$$SUM$AVG(data)$0$value{r}#671, $$SUM$AVG(data)$0$delta{r}#672, $$SUM$AVG(data)$0$seen{r}#673, $$C\nOUNT$AVG(data)$1$count{r}#674, $$COUNT$AVG(data)$1$seen{r}#675],24]\n        \\_ExchangeSourceExec[[$$SUM$AVG(data)$0$value{r}#671, $$SUM$AVG(data)$0$delta{r}#672, $$SUM$AVG(data)$0$seen{r}#673, $$COUNT$AVG(da\nta)$1$count{r}#674, $$COUNT$AVG(data)$1$seen{r}#675],true]"
+          }
+        ],
+        "preanalysis": {
+          "start_millis": 1781606623407,
+          "stop_millis": 1781606623407,
+          "took_millis": 0,
+          "took_nanos": 39690
+        },
+        "query": {
+          "start_millis": 1781606623406,
+          "stop_millis": 1781606623421,
+          "took_millis": 15,
+          "took_nanos": 14468250
+        },
+        "view_resolution": {
+          "start_millis": 1781606623407,
+          "stop_millis": 1781606623407,
+          "took_millis": 0,
+          "took_nanos": 17391
+        }
+      },
+      "read_nanos": 0,
+      "rows_emitted": 128,
+      "start_time_in_millis": 1781606623406,
+      "took": 14,
+      "values": [
+        [
+          1.5
+        ]
+      ],
+      "values_loaded": 40
+    },
+    "statusCode": 200
+  }
+}
