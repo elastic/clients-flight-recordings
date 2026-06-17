@@ -1,0 +1,153 @@
+{
+  "api": "watcher.execute_watch",
+  "file": "/test/platinum/watcher/execute_watch/60_http_input.yml",
+  "name": "HTTP input supports extracting of keys",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "watch": {
+          "actions": {
+            "log": {
+              "logging": {
+                "text": "executed at {{ctx.execution_time}}"
+              }
+            }
+          },
+          "input": {
+            "http": {
+              "extract": [
+                "timed_out",
+                "cluster_name"
+              ],
+              "request": {
+                "auth": {
+                  "basic": {
+                    "password": "x-pack-test-password",
+                    "username": "x_pack_rest_user"
+                  }
+                },
+                "url": "http://172.18.0.2:9200/_cluster/health"
+              }
+            }
+          },
+          "trigger": {
+            "schedule": {
+              "interval": "1s"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1448",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "_inlined__691a9115-bbbb-4178-a5d2-bbe53c6998af-2026-06-17T11:18:32.32550255Z",
+      "watch_record": {
+        "@timestamp": "2026-06-17T11:18:32.325487389Z",
+        "condition": {
+          "always": {
+          }
+        },
+        "input": {
+          "http": {
+            "extract": [
+              "cluster_name",
+              "timed_out"
+            ],
+            "request": {
+              "auth": {
+                "basic": {
+                  "password": "::es_redacted::",
+                  "username": "x_pack_rest_user"
+                }
+              },
+              "headers": {
+              },
+              "host": "172.18.0.2",
+              "method": "get",
+              "params": {
+              },
+              "path": "/_cluster/health",
+              "port": 9200,
+              "scheme": "http"
+            }
+          }
+        },
+        "messages": [
+          "failed to execute watch input"
+        ],
+        "node": "WcugkN9iTISzRQDNdqacCQ",
+        "result": {
+          "actions": [
+          ],
+          "execution_duration": 15,
+          "execution_time": "2026-06-17T11:18:32.325Z",
+          "input": {
+            "error": {
+              "reason": "172.18.0.2:9200 failed to respond",
+              "root_cause": [
+                {
+                  "reason": "172.18.0.2:9200 failed to respond",
+                  "type": "no_http_response_exception"
+                }
+              ],
+              "type": "no_http_response_exception"
+            },
+            "http": {
+              "request": {
+                "auth": {
+                  "basic": {
+                    "password": "::es_redacted::",
+                    "username": "x_pack_rest_user"
+                  }
+                },
+                "host": "172.18.0.2",
+                "method": "get",
+                "path": "/_cluster/health",
+                "port": 9200,
+                "scheme": "http"
+              }
+            },
+            "status": "failure",
+            "type": "http"
+          }
+        },
+        "state": "failed",
+        "status": {
+          "actions": {
+            "log": {
+              "ack": {
+                "state": "awaits_successful_execution",
+                "timestamp": "2026-06-17T11:18:32.324Z"
+              }
+            }
+          },
+          "execution_state": "failed",
+          "state": {
+            "active": true,
+            "timestamp": "2026-06-17T11:18:32.324Z"
+          },
+          "version": -1
+        },
+        "trigger_event": {
+          "manual": {
+            "schedule": {
+              "scheduled_time": "2026-06-17T11:18:32.325Z"
+            }
+          },
+          "triggered_time": "2026-06-17T11:18:32.325Z",
+          "type": "manual"
+        },
+        "user": "elastic",
+        "watch_id": "_inlined_"
+      }
+    },
+    "statusCode": 200
+  }
+}

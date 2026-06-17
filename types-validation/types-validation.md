@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.5.0-SNAPSHOT`  
-Elasticsearch build hash: `ec17f7e98ce38b147735f817d3bf85764d189d29`
+Elasticsearch build hash: `53d567d0054e37b18139967b465a1f7c834b03bd`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -273,7 +273,7 @@ Elasticsearch build hash: `ec17f7e98ce38b147735f817d3bf85764d189d29`
 | `exists_component_template` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_component_template` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `get_settings` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
-| `health` | :green_circle: | 256/256 | 256/256 | stable | undefined |  |
+| `health` | :green_circle: | 258/258 | 258/258 | stable | undefined |  |
 | `info` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `pending_tasks` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `post_voting_config_exclusions` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
@@ -495,7 +495,7 @@ Elasticsearch build hash: `ec17f7e98ce38b147735f817d3bf85764d189d29`
 | `put_settings` | :red_circle: | 90/92 | 92/92 | stable | undefined |  |
 | `put_template` | :red_circle: | 45/46 | 46/46 | stable | undefined | deprecated |
 | `recovery` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
-| `refresh` | :green_circle: | 481/481 | 481/481 | stable | undefined |  |
+| `refresh` | :green_circle: | 482/482 | 482/482 | stable | undefined |  |
 | `reload_search_analyzers` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `remove_block` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `resolve_cluster` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |

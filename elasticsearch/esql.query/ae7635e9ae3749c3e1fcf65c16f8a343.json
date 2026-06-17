@@ -1,0 +1,81 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/191_lookup_join_text.yml",
+  "name": "text-keyword",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM test | SORT color | RENAME color AS x | EVAL color.keyword = x | LOOKUP JOIN test-lookup ON color.keyword | LIMIT 3"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "19051560",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.5.0-53d567d0054e37b18139967b465a1f7c834b03bd \"Line 1:13: SORT is followed by a LOOKUP JOIN which does not preserve order; add another SORT after the LOOKUP JOIN if order is required\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 20,
+      "columns": [
+        {
+          "name": "x",
+          "type": "text"
+        },
+        {
+          "name": "color.keyword",
+          "type": "text"
+        },
+        {
+          "name": "color",
+          "type": "text"
+        },
+        {
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "description.keyword",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1781693261931,
+      "cpu_nanos": 1517286,
+      "documents_found": 3,
+      "expiration_time_in_millis": 1782125261761,
+      "is_partial": false,
+      "read_nanos": 0,
+      "rows_emitted": 42,
+      "start_time_in_millis": 1781693261912,
+      "took": 19,
+      "values": [
+        [
+          "blue",
+          "blue",
+          "blue",
+          "As blue as the sky",
+          "As blue as the sky"
+        ],
+        [
+          "green",
+          "green",
+          null,
+          null,
+          null
+        ],
+        [
+          "red",
+          "red",
+          "red",
+          "As red as a tomato",
+          "As red as a tomato"
+        ]
+      ],
+      "values_loaded": 3
+    },
+    "statusCode": 200
+  }
+}
