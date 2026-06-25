@@ -1,0 +1,68 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/270_unmapped_load_on_aliases.yml",
+  "name": "coalesce on unmapped field via alias",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"load\"; FROM alias-test-both | EVAL s = COALESCE(status, \"unknown\") | KEEP message, s | SORT message"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "7428767",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.5.0-60396f4623b88b4003bb3b4558fe0c2ef35e6862 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 321,
+      "columns": [
+        {
+          "name": "message",
+          "type": "keyword"
+        },
+        {
+          "name": "s",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1782384432211,
+      "cpu_nanos": 1689629,
+      "documents_found": 5,
+      "expiration_time_in_millis": 1782816432082,
+      "is_partial": false,
+      "read_nanos": 0,
+      "rows_emitted": 55,
+      "start_time_in_millis": 1782384432204,
+      "took": 7,
+      "values": [
+        [
+          "err",
+          "red"
+        ],
+        [
+          "ok",
+          "green"
+        ],
+        [
+          "partial1",
+          "unknown"
+        ],
+        [
+          "partial2",
+          "unknown"
+        ],
+        [
+          "warn",
+          "yellow"
+        ]
+      ],
+      "values_loaded": 8
+    },
+    "statusCode": 200
+  }
+}
