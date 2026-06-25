@@ -1,7 +1,7 @@
 ## Summary
 
-Elasticsearch version: `9.3.6-SNAPSHOT`  
-Elasticsearch build hash: `1f329ea4cc267d4c8f5346ee8964245644e425ef`
+Elasticsearch version: `9.3.7-SNAPSHOT`  
+Elasticsearch build hash: `334be1bad2d07730c40081ae2590afa26e61c63b`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -567,7 +567,7 @@ Elasticsearch build hash: `1f329ea4cc267d4c8f5346ee8964245644e425ef`
 | --- | --- | --- | --- | --- | --- | --- |
 | `delete_geoip_database` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `delete_ip_location_database` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| `delete_pipeline` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
+| `delete_pipeline` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `geo_ip_stats` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_geoip_database` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
 | `get_ip_location_database` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
@@ -575,7 +575,7 @@ Elasticsearch build hash: `1f329ea4cc267d4c8f5346ee8964245644e425ef`
 | `processor_grok` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `put_geoip_database` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `put_ip_location_database` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
-| `put_pipeline` | :green_circle: | 80/80 | 80/80 | stable | undefined |  |
+| `put_pipeline` | :green_circle: | 81/81 | 81/81 | stable | undefined |  |
 | `simulate` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | **Summary** | :green_circle: | 100% | 100% | | | |
 
@@ -634,7 +634,7 @@ Elasticsearch build hash: `1f329ea4cc267d4c8f5346ee8964245644e425ef`
 | `delete_forecast` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `delete_job` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `delete_model_snapshot` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| `delete_trained_model` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
+| `delete_trained_model` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `delete_trained_model_alias` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `estimate_model_memory` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
 | `evaluate_data_frame` | :green_circle: | 22/22 | 22/22 | stable | undefined |  |
