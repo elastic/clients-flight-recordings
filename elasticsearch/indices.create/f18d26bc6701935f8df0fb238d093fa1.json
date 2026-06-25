@@ -1,0 +1,60 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/indices.sort/30_multi_value.yml",
+  "name": "Index Sort with doc_values multi_value false - secondary sort field",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "category": {
+              "type": "keyword"
+            },
+            "rank": {
+              "doc_values": {
+                "multi_value": false
+              },
+              "type": "integer"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "sort": {
+              "field": [
+                "category",
+                "rank"
+              ],
+              "order": [
+                "asc",
+                "asc"
+              ]
+            }
+          },
+          "number_of_shards": 1,
+          "refresh_interval": -1,
+          "routing": {
+            "rebalance": {
+              "enable": "none"
+            }
+          }
+        }
+      },
+      "index": "test_secondary"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "73",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test_secondary",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

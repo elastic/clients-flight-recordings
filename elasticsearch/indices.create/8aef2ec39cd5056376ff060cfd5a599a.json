@@ -1,0 +1,60 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/downsample/110_downsample_temporality.yml",
+  "name": "Downsample cumulative temporality exponential histogram",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "latency": {
+              "time_series_metric": "histogram",
+              "type": "exponential_histogram"
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            },
+            "temporality": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "routing_path": [
+              "metricset",
+              "temporality"
+            ],
+            "time_series": {
+              "end_time": "2021-04-29T00:00:00Z",
+              "start_time": "2021-04-28T00:00:00Z",
+              "temporality_field": "temporality"
+            }
+          },
+          "number_of_shards": 1
+        }
+      },
+      "index": "test-cumulative-histogram"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "84",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test-cumulative-histogram",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
