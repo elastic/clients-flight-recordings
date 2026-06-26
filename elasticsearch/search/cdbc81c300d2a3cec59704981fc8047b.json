@@ -1,0 +1,71 @@
+{
+  "api": "search",
+  "file": "/test/platinum/ml/search_knn_query_vector_builder.yml",
+  "name": "nested kNN search with inner_hits size",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "name"
+        ],
+        "query": {
+          "nested": {
+            "inner_hits": {
+              "_source": false,
+              "fields": [
+                "nested.paragraph_id"
+              ],
+              "size": 2
+            },
+            "path": "nested",
+            "query": {
+              "knn": {
+                "field": "nested.vector",
+                "num_candidates": 7,
+                "query_vector_builder": {
+                  "text_embedding": {
+                    "model_id": "text_embedding_model",
+                    "model_text": "the machine smells"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "index": "test",
+      "size": 5,
+      "typed_keys": true
+    },
+    "headers": {
+      "Authorization": "Basic eF9wYWNrX3Jlc3RfdXNlcjp4LXBhY2stdGVzdC1wYXNzd29yZA==",
+      "Content-Type": "application/vnd.elasticsearch+json; compatible-with=8"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "548",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "reason": "A compatible version is required on both Content-Type and Accept headers if either one has requested a compatible version and the compatible versions must match. Accept=null, Content-Type=application/vnd.elasticsearch+json; compatible-with=8",
+          "type": "status_exception"
+        },
+        "reason": "Invalid media-type value on headers [Accept, Content-Type]",
+        "root_cause": [
+          {
+            "reason": "Invalid media-type value on headers [Accept, Content-Type]",
+            "type": "media_type_header_exception"
+          }
+        ],
+        "type": "media_type_header_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

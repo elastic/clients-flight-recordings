@@ -1,0 +1,83 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/26_aggs_bucket.yml",
+  "name": "BUCKET column metadata coexists with approximation metadata",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET approximation={\"rows\":10000}; FROM test_dates | STATS c=COUNT(*) BY bucket=BUCKET(date, 1 month)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "60298608",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.5.0-7b9d0f4eeb92fd7ffc57b7aeeb9daa54aaf0893f \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 0,
+      "columns": [
+        {
+          "name": "c",
+          "type": "long"
+        },
+        {
+          "_meta": {
+            "bucket": {
+              "interval": 1,
+              "unit": "month"
+            }
+          },
+          "name": "bucket",
+          "type": "date"
+        },
+        {
+          "_meta": {
+            "approximation": {
+              "column": "c",
+              "type": "confidence_interval"
+            }
+          },
+          "name": "_approximation_confidence_interval(c)",
+          "type": "long"
+        },
+        {
+          "_meta": {
+            "approximation": {
+              "column": "c",
+              "type": "certified"
+            }
+          },
+          "name": "_approximation_certified(c)",
+          "type": "boolean"
+        }
+      ],
+      "completion_time_in_millis": 1782471390440,
+      "cpu_nanos": 3136320,
+      "documents_found": 2,
+      "expiration_time_in_millis": 1782903390280,
+      "is_partial": false,
+      "read_nanos": 0,
+      "rows_emitted": 18,
+      "start_time_in_millis": 1782471390380,
+      "took": 60,
+      "values": [
+        [
+          1,
+          "1985-07-01T00:00:00.000Z",
+          [
+            1,
+            1
+          ],
+          true
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}
