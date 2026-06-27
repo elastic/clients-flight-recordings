@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.5.0-SNAPSHOT`  
-Elasticsearch build hash: `7b9d0f4eeb92fd7ffc57b7aeeb9daa54aaf0893f`
+Elasticsearch build hash: `329b98498d071dc5be1f9abb08aab9629cc31bf7`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 593 | 554 (93.4%) | 39 (6.6%) | 124 (20.9%) | 0 (0%) |
+| 593 | 553 (93.3%) | 40 (6.7%) | 124 (20.9%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 498 | 465 (93.4%) | 33 (6.6%) | 105 | 0 |
+| `stable` | 498 | 464 (93.2%) | 34 (6.8%) | 105 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 71 | 68 (95.8%) | 3 (4.2%) | 19 | 0 |
 
@@ -111,7 +111,7 @@ Elasticsearch build hash: `7b9d0f4eeb92fd7ffc57b7aeeb9daa54aaf0893f`
 
 ## Report
 
-:construction: 22.2% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
+:construction: 24.4% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
 
 ### _internal
 
@@ -378,8 +378,8 @@ Elasticsearch build hash: `7b9d0f4eeb92fd7ffc57b7aeeb9daa54aaf0893f`
 | `get_view` | :green_circle: | 14/14 | 0/0 | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
 | `put_view` | :green_circle: | 29/29 | 0/0 | experimental | undefined |  |
-| `query` | :green_circle: | 495/495 | 0/0 | stable | undefined |  |
-| **Summary** | :green_circle: | 100% | 0% | | | |
+| `query` | :red_circle: | 517/518 | 0/0 | stable | undefined |  |
+| **Summary** | :red_circle: | 99.8% | 0% | | | |
 
 [Back to top](#Summary)
 
