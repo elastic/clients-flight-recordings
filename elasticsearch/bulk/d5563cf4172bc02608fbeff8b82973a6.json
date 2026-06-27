@@ -1,0 +1,43 @@
+{
+  "api": "bulk",
+  "file": "/test/platinum/security/authz/70_tsdb.yml",
+  "name": "create_doc permission can't overwrite",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"index\": {}}",
+        "{\"@timestamp\": \"2021-04-28T18:50:04.467Z\", \"metricset\": \"pod\", \"k8s\": {\"pod\": {\"name\": \"cat\", \"uid\":\"947e4ced-1786-4e53-9e0c-5c447e959507\", \"ip\": \"10.10.55.1\", \"network\": {\"tx\": 2001818691, \"rx\": 802133794}}}}"
+      ],
+      "index": "test"
+    },
+    "headers": {
+      "Authorization": "Basic bGltaXRlZDp4LXBhY2stdGVzdC1wYXNzd29yZA=="
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "index": {
+            "_id": null,
+            "_index": "test",
+            "error": {
+              "reason": "action [indices:data/write/index:op_type/index] is unauthorized for user [limited] with effective roles [createonly] on indices [test], this action is granted by the index privileges [create,index,write,all]",
+              "type": "security_exception"
+            },
+            "status": 403
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}
