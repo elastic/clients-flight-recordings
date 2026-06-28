@@ -1,0 +1,67 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/40_tsdb.yml",
+  "name": "TS command spurious grouping when non-dimension flattened keys vary",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "TS test_flattened_tsdb_dim_varying\n| STATS avg_v = avg(voltage) BY uid, deployment\n| SORT uid\n| LIMIT 10\n"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "14148899",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 3600,
+      "columns": [
+        {
+          "name": "avg_v",
+          "type": "double"
+        },
+        {
+          "name": "uid",
+          "type": "keyword"
+        },
+        {
+          "name": "deployment",
+          "type": "flattened"
+        }
+      ],
+      "completion_time_in_millis": 1782643764683,
+      "cpu_nanos": 2165498,
+      "documents_found": 4,
+      "expiration_time_in_millis": 1783075764621,
+      "is_partial": false,
+      "read_nanos": 0,
+      "rows_emitted": 44,
+      "start_time_in_millis": 1782643764669,
+      "took": 14,
+      "values": [
+        [
+          7.4,
+          "host-a",
+          {
+            "build.tag": "v1.0",
+            "region": "us-east-2"
+          }
+        ],
+        [
+          5.4,
+          "host-b",
+          {
+            "build.tag": "v2.0",
+            "region": "eu-west-1"
+          }
+        ]
+      ],
+      "values_loaded": 16
+    },
+    "statusCode": 200
+  }
+}
