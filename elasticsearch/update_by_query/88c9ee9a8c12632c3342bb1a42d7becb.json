@@ -1,0 +1,29 @@
+{
+  "api": "update_by_query",
+  "file": "/test/free/update_by_query/85_script_cancellation.yml",
+  "name": "Task cancellation interrupts a long-running update_by_query script loop",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "script": {
+          "lang": "painless",
+          "source": "long start = System.currentTimeMillis();\nwhile (System.currentTimeMillis() - start < 60000L) {\n  /* spin: task cancellation will interrupt via Painless cancellation check */\n}\nctx._source.processed = true;\n"
+        }
+      },
+      "index": "test_ubq_cancel",
+      "wait_for_completion": false
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "40",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "task": "FhQn4BqJRqWs7FqzmG6yjw:241738"
+    },
+    "statusCode": 200
+  }
+}

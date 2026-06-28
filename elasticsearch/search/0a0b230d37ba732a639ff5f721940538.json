@@ -1,0 +1,64 @@
+{
+  "api": "search",
+  "file": "/test/free/mapping/60_columnar_runtime_fields.yml",
+  "name": "columnar accepts query-time runtime mappings",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "_source": false,
+        "fields": [
+          "runtime_upper"
+        ],
+        "runtime_mappings": {
+          "runtime_upper": {
+            "script": {
+              "source": "emit(doc['kwd'].value.toUpperCase())"
+            },
+            "type": "keyword"
+          }
+        }
+      },
+      "index": "test_columnar_query_runtime",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=88"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "test_columnar_query_runtime",
+            "_score": 1,
+            "fields": {
+              "runtime_upper": [
+                "FOO"
+              ]
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 11
+    },
+    "statusCode": 200
+  }
+}
