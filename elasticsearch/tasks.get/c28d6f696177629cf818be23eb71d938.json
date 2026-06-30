@@ -1,0 +1,57 @@
+{
+  "api": "tasks.get",
+  "file": "/test/free/update_by_query/85_script_cancellation.yml",
+  "name": "Task cancellation interrupts a long-running update_by_query script loop",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "task_id": "T4WN2SIpR_6WZPbwDNwGeg:242321",
+      "wait_for_completion": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "909",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "completed": true,
+      "error": {
+        "reason": "by user request",
+        "type": "task_cancelled_exception"
+      },
+      "task": {
+        "action": "indices:data/write/update/byquery",
+        "cancellable": true,
+        "cancelled": false,
+        "description": "update-by-query [test_ubq_cancel] updated with Script{type=inline, lang='painless', idOrCode='long start = System.currentTimeMillis();\nwhile (System.currentTimeMillis() - start < 60000L) {\n  /* spin: task cancellation will interrupt via Painless cancellation check */\n}\nctx._source.processed = true;\n', options={}, params={}}",
+        "headers": {
+        },
+        "id": 242321,
+        "node": "T4WN2SIpR_6WZPbwDNwGeg",
+        "running_time_in_nanos": 7790061,
+        "start_time_in_millis": 1782815859237,
+        "status": {
+          "batches": 1,
+          "canceled": "by user request",
+          "created": 0,
+          "deleted": 0,
+          "noops": 0,
+          "requests_per_second": -1,
+          "retries": {
+            "bulk": 0,
+            "search": 0
+          },
+          "throttled_millis": 0,
+          "throttled_until_millis": 0,
+          "total": 1,
+          "updated": 0,
+          "version_conflicts": 0
+        },
+        "type": "transport"
+      }
+    },
+    "statusCode": 200
+  }
+}
