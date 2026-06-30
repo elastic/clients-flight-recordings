@@ -1,0 +1,43 @@
+{
+  "api": "bulk",
+  "file": "/test/platinum/inference/150_semantic_field_inference.yml",
+  "name": "Explicit null in bulk update request clears inference results",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"update\": {\"_index\": \"test-semantic-field-copy-to-index\", \"_id\": \"doc_1\"}}",
+        "{\"doc\": { \"semantic_field\": null }}"
+      ],
+      "refresh": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "update": {
+            "_id": "doc_1",
+            "_index": "test-semantic-field-copy-to-index",
+            "error": {
+              "index": "test-semantic-field-copy-to-index",
+              "index_uuid": "2IRJ2H1qTiK9YAI5V5jMrw",
+              "reason": "[doc_1]: document missing",
+              "shard": "0",
+              "type": "document_missing_exception"
+            },
+            "status": 404
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}

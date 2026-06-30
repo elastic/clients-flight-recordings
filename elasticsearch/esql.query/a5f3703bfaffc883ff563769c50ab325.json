@@ -1,0 +1,87 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/62_extra_enrich.yml",
+  "name": "movies",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM esql-movie-logs-* |\nWHERE kubernetes.pod.name LIKE \"*python*\" |\nWHERE message LIKE \"Added*\" |\nKEEP @timestamp, message |\nGROK message \"%{NUMBER:id}\" |\nSTATS total = count(id) BY id |\nENRICH movies ON id |\nSORT total DESC, title ASC |\nKEEP total, title |\nLIMIT 10\n"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "128542899",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 1419,
+      "columns": [
+        {
+          "name": "total",
+          "type": "long"
+        },
+        {
+          "name": "title",
+          "type": "text"
+        }
+      ],
+      "completion_time_in_millis": 1782817246741,
+      "cpu_nanos": 4259970,
+      "documents_found": 10,
+      "expiration_time_in_millis": 1783249246700,
+      "is_partial": false,
+      "read_nanos": 0,
+      "rows_emitted": 110,
+      "start_time_in_millis": 1782817246613,
+      "took": 128,
+      "values": [
+        [
+          1,
+          "Billy Elliot"
+        ],
+        [
+          1,
+          "Brokeback Mountain"
+        ],
+        [
+          1,
+          "Forrest Gump"
+        ],
+        [
+          1,
+          "Metropolis"
+        ],
+        [
+          1,
+          "Paradise Now"
+        ],
+        [
+          1,
+          "Spirited Away"
+        ],
+        [
+          1,
+          "The Lord of the Rings: The Return of the King"
+        ],
+        [
+          1,
+          null
+        ],
+        [
+          1,
+          null
+        ],
+        [
+          1,
+          null
+        ]
+      ],
+      "values_loaded": 20
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "api": "reindex",
+  "file": "/test/free/reindex/85_scripting.yml",
+  "name": "Add slice alias",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "dest": {
+          "_slice": "discard",
+          "index": "new_twitter"
+        },
+        "script": {
+          "lang": "painless",
+          "source": "ctx._slice = ctx._source.user"
+        },
+        "source": {
+          "index": "twitter"
+        }
+      },
+      "refresh": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "424",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "caused_by": {
+            "reason": "request does not support [_slice]",
+            "type": "illegal_argument_exception"
+          },
+          "reason": "[1:70] [dest] failed to parse field [_slice]",
+          "type": "x_content_parse_exception"
+        },
+        "reason": "[1:70] [reindex] failed to parse field [dest]",
+        "root_cause": [
+          {
+            "reason": "[1:70] [dest] failed to parse field [_slice]",
+            "type": "x_content_parse_exception"
+          }
+        ],
+        "type": "x_content_parse_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

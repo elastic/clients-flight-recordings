@@ -1,0 +1,73 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/date_histogram.yml",
+  "name": "date_histogram with hard_bounds outside data under a parent agg",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "allow_partial_search_results": false,
+      "body": {
+        "aggs": {
+          "outer": {
+            "aggs": {
+              "histo": {
+                "date_histogram": {
+                  "field": "date",
+                  "fixed_interval": "1d",
+                  "hard_bounds": {
+                    "max": "2030-01-02",
+                    "min": "2030-01-01"
+                  }
+                }
+              }
+            },
+            "filter": {
+              "match_all": {
+              }
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "hard_bounds_outside_data",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=0"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "filter#outer": {
+          "date_histogram#histo": {
+            "buckets": [
+            ]
+          },
+          "doc_count": 1
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 12
+    },
+    "statusCode": 200
+  }
+}
