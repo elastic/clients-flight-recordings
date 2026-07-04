@@ -1,0 +1,83 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/100_knn_nested_search.yml",
+  "name": "Test filter on sibling nested fields works",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "_source": false,
+        "knn": {
+          "field": "nested.vector",
+          "filter": {
+            "nested": {
+              "path": "nested2",
+              "query": {
+                "bool": {
+                  "filter": [
+                    {
+                      "match": {
+                        "nested2.key": "category"
+                      }
+                    },
+                    {
+                      "match": {
+                        "nested2.value": "domestic"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "query_vector": [
+            -0.5,
+            90,
+            -10,
+            14.8,
+            -156
+          ]
+        }
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "3",
+            "_index": "test",
+            "_score": 0.0021519717
+          },
+          {
+            "_id": "1",
+            "_index": "test",
+            "_score": 0.000010007358
+          }
+        ],
+        "max_score": 0.0021519717,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}
