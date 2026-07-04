@@ -1,0 +1,51 @@
+{
+  "api": "bulk",
+  "file": "/test/free/data_stream/200_require_data_stream.yml",
+  "name": "Testing require_data_stream in bulk requests",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        {
+          "index": {
+            "_index": "other-myindex",
+            "op_type": "create",
+            "require_data_stream": true
+          }
+        },
+        {
+          "@timestamp": "2024-01-01"
+        }
+      ],
+      "refresh": true,
+      "require_data_stream": false
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "create": {
+            "_id": null,
+            "_index": "other-myindex",
+            "error": {
+              "index": "other-myindex",
+              "index_uuid": "_na_",
+              "reason": "no such index [other-myindex] and the index creation request requires a data stream, but no matching index template with data stream template was found for it",
+              "type": "index_not_found_exception"
+            },
+            "status": 404
+          }
+        }
+      ],
+      "took": 200
+    },
+    "statusCode": 200
+  }
+}
