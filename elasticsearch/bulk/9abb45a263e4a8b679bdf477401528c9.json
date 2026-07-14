@@ -1,0 +1,39 @@
+{
+  "api": "bulk",
+  "file": "/test/platinum/inference/60_semantic_text_inference_update.yml",
+  "name": "Calculates embeddings for bulk operations - update",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"update\": {\"_index\": \"test-index\", \"_id\": \"doc_1\"}}",
+        "{\"script\": {\"source\": {\"ctx.sparse_field\": \"updated inference test\"}}}"
+      ]
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "update": {
+            "_id": "doc_1",
+            "_index": "test-index",
+            "error": {
+              "reason": "Cannot apply update with a script on indices that contain [semantic_text] field(s)",
+              "type": "status_exception"
+            },
+            "status": 400
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}
