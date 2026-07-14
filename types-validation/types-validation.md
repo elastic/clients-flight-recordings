@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `8.19.19-SNAPSHOT`  
-Elasticsearch build hash: `fd8b73c3f802e37720e0b805f544fde75f44b0cb`
+Elasticsearch build hash: `91979d2573b76dd2311fc279e5c2841ba34c2a32`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ Elasticsearch build hash: `fd8b73c3f802e37720e0b805f544fde75f44b0cb`
 | `indices.put_mapping` | :red_circle: | 126/143 | 143/143 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 115/115 | 36/114 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1249/1312 | 1312/1312 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 132/139 | 139/139 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 90/90 | 71/90 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 36/36 | 9/36 | stable | undefined |  |
@@ -546,7 +546,7 @@ Elasticsearch build hash: `fd8b73c3f802e37720e0b805f544fde75f44b0cb`
 | --- | --- | --- | --- | --- | --- | --- |
 | `delete_geoip_database` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `delete_ip_location_database` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| `delete_pipeline` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
+| `delete_pipeline` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `geo_ip_stats` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_geoip_database` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
 | `get_ip_location_database` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
@@ -554,7 +554,7 @@ Elasticsearch build hash: `fd8b73c3f802e37720e0b805f544fde75f44b0cb`
 | `processor_grok` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `put_geoip_database` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `put_ip_location_database` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
-| `put_pipeline` | :green_circle: | 74/74 | 74/74 | stable | undefined |  |
+| `put_pipeline` | :green_circle: | 75/75 | 75/75 | stable | undefined |  |
 | `simulate` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | **Summary** | :green_circle: | 100% | 100% | | | |
 
@@ -613,7 +613,7 @@ Elasticsearch build hash: `fd8b73c3f802e37720e0b805f544fde75f44b0cb`
 | `delete_forecast` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `delete_job` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `delete_model_snapshot` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| `delete_trained_model` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
+| `delete_trained_model` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `delete_trained_model_alias` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `estimate_model_memory` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
 | `evaluate_data_frame` | :green_circle: | 15/15 | 15/15 | stable | undefined |  |
@@ -1025,8 +1025,8 @@ Elasticsearch build hash: `fd8b73c3f802e37720e0b805f544fde75f44b0cb`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 14.3% | | | |
+| `usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 11.9% | | | |
 
 [Back to top](#Summary)
 
