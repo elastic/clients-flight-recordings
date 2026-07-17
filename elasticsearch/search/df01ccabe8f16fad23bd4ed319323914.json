@@ -1,0 +1,64 @@
+{
+  "api": "search",
+  "file": "/test/platinum/entsearch/rules/40_rule_query_search.yml",
+  "name": "Perform a rule query over a ruleset with combined numeric and text rule matching",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "rule": {
+            "match_criteria": {
+              "foo": "baz"
+            },
+            "organic": {
+              "query_string": {
+                "default_field": "text",
+                "query": "blah blah blah"
+              }
+            },
+            "ruleset_ids": [
+              "combined-ruleset"
+            ]
+          }
+        }
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "doc1",
+            "_index": "test-index1",
+            "_score": 1.7014122e+38,
+            "_source": {
+              "text": "elastic"
+            }
+          }
+        ],
+        "max_score": 1.7014122e+38,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 5
+    },
+    "statusCode": 200
+  }
+}
