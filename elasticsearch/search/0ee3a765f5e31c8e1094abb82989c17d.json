@@ -1,0 +1,335 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/terms.yml",
+  "name": "string profiler via global ordinals native implementation",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "bool": {
+            "aggs": {
+              "str_terms": {
+                "aggs": {
+                  "max_number": {
+                    "max": {
+                      "field": "number"
+                    }
+                  }
+                },
+                "terms": {
+                  "collect_mode": "breadth_first",
+                  "execution_hint": "global_ordinals",
+                  "field": "str"
+                }
+              }
+            },
+            "terms": {
+              "field": "boolean"
+            }
+          }
+        },
+        "profile": true,
+        "size": 0
+      },
+      "index": "test_3",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=30"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "lterms#bool": {
+          "buckets": [
+            {
+              "doc_count": 1,
+              "key": 1,
+              "key_as_string": "true",
+              "sterms#str_terms": {
+                "buckets": [
+                  {
+                    "doc_count": 1,
+                    "key": "pig",
+                    "max#max_number": {
+                      "value": 100
+                    }
+                  },
+                  {
+                    "doc_count": 1,
+                    "key": "sheep",
+                    "max#max_number": {
+                      "value": 100
+                    }
+                  }
+                ],
+                "doc_count_error_upper_bound": 0,
+                "sum_other_doc_count": 0
+              }
+            }
+          ],
+          "doc_count_error_upper_bound": 0,
+          "sum_other_doc_count": 0
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "profile": {
+        "request": {
+          "indices": [
+            "test_3"
+          ],
+          "source": {
+            "aggregations": {
+              "bool": {
+                "aggregations": {
+                  "str_terms": {
+                    "aggregations": {
+                      "max_number": {
+                        "max": {
+                          "field": "number"
+                        }
+                      }
+                    },
+                    "terms": {
+                      "collect_mode": "breadth_first",
+                      "execution_hint": "global_ordinals",
+                      "field": "str",
+                      "min_doc_count": 1,
+                      "order": [
+                        {
+                          "_count": "desc"
+                        },
+                        {
+                          "_key": "asc"
+                        }
+                      ],
+                      "shard_min_doc_count": 0,
+                      "show_term_doc_count_error": false,
+                      "size": 10
+                    }
+                  }
+                },
+                "terms": {
+                  "field": "boolean",
+                  "min_doc_count": 1,
+                  "order": [
+                    {
+                      "_count": "desc"
+                    },
+                    {
+                      "_key": "asc"
+                    }
+                  ],
+                  "shard_min_doc_count": 0,
+                  "show_term_doc_count_error": false,
+                  "size": 10
+                }
+              }
+            },
+            "profile": true,
+            "size": 0
+          }
+        },
+        "shards": [
+          {
+            "aggregations": [
+              {
+                "breakdown": {
+                  "build_aggregation": 262247,
+                  "build_aggregation_count": 1,
+                  "build_leaf_collector": 26056,
+                  "build_leaf_collector_count": 1,
+                  "collect": 12358,
+                  "collect_count": 1,
+                  "initialize": 35706,
+                  "initialize_count": 1,
+                  "post_collection": 5067,
+                  "post_collection_count": 1,
+                  "reduce": 0,
+                  "reduce_count": 0
+                },
+                "children": [
+                  {
+                    "breakdown": {
+                      "build_aggregation": 133032,
+                      "build_aggregation_count": 1,
+                      "build_leaf_collector": 10963,
+                      "build_leaf_collector_count": 1,
+                      "collect": 24763,
+                      "collect_count": 1,
+                      "initialize": 12448,
+                      "initialize_count": 1,
+                      "post_collection": 7410,
+                      "post_collection_count": 1,
+                      "reduce": 0,
+                      "reduce_count": 0
+                    },
+                    "children": [
+                      {
+                        "breakdown": {
+                          "build_aggregation": 7905,
+                          "build_aggregation_count": 1,
+                          "build_leaf_collector": 15020,
+                          "build_leaf_collector_count": 1,
+                          "collect": 18804,
+                          "collect_count": 2,
+                          "initialize": 1217,
+                          "initialize_count": 1,
+                          "post_collection": 543,
+                          "post_collection_count": 1,
+                          "reduce": 0,
+                          "reduce_count": 0
+                        },
+                        "debug": {
+                          "built_buckets": 2
+                        },
+                        "description": "max_number",
+                        "time_in_nanos": 43489,
+                        "type": "MaxAggregator"
+                      }
+                    ],
+                    "debug": {
+                      "built_buckets": 1,
+                      "collection_strategy": "remap using many bucket ords",
+                      "deferred_aggregators": [
+                        "max_number"
+                      ],
+                      "has_filter": false,
+                      "result_strategy": "terms",
+                      "segments_with_multi_valued_ords": 1,
+                      "segments_with_single_valued_ords": 0,
+                      "total_buckets": 2
+                    },
+                    "description": "str_terms",
+                    "time_in_nanos": 188616,
+                    "type": "GlobalOrdinalsStringTermsAggregator"
+                  }
+                ],
+                "debug": {
+                  "built_buckets": 1,
+                  "deferred_aggregators": [
+                    "str_terms"
+                  ],
+                  "result_strategy": "long_terms",
+                  "total_buckets": 1
+                },
+                "description": "bool",
+                "time_in_nanos": 341434,
+                "type": "NumericTermsAggregator"
+              }
+            ],
+            "cluster": "(local)",
+            "id": "[JUXuuHqtRv-jR9E1nw4SMg][test_3][0]",
+            "index": "test_3",
+            "node_id": "JUXuuHqtRv-jR9E1nw4SMg",
+            "searches": [
+              {
+                "collector": [
+                  {
+                    "children": [
+                      {
+                        "name": "PartialHitCountCollector",
+                        "reason": "search_count",
+                        "time_in_nanos": 13078
+                      },
+                      {
+                        "name": "AggregatorCollector: [bool]",
+                        "reason": "aggregation",
+                        "time_in_nanos": 48913
+                      }
+                    ],
+                    "name": "QueryPhaseCollector",
+                    "reason": "search_query_phase",
+                    "time_in_nanos": 71206
+                  }
+                ],
+                "query": [
+                  {
+                    "breakdown": {
+                      "advance": 0,
+                      "advance_count": 0,
+                      "build_scorer": 9795,
+                      "build_scorer_count": 2,
+                      "compute_max_score": 0,
+                      "compute_max_score_count": 0,
+                      "count_weight": 1566,
+                      "count_weight_count": 1,
+                      "create_weight": 7320,
+                      "create_weight_count": 1,
+                      "match": 0,
+                      "match_count": 0,
+                      "next_doc": 1068,
+                      "next_doc_count": 2,
+                      "score": 0,
+                      "score_count": 0,
+                      "set_min_competitive_score": 0,
+                      "set_min_competitive_score_count": 0,
+                      "shallow_advance": 0,
+                      "shallow_advance_count": 0
+                    },
+                    "children": [
+                      {
+                        "breakdown": {
+                          "advance": 0,
+                          "advance_count": 0,
+                          "build_scorer": 6736,
+                          "build_scorer_count": 2,
+                          "compute_max_score": 0,
+                          "compute_max_score_count": 0,
+                          "count_weight": 863,
+                          "count_weight_count": 1,
+                          "create_weight": 800,
+                          "create_weight_count": 1,
+                          "match": 0,
+                          "match_count": 0,
+                          "next_doc": 616,
+                          "next_doc_count": 2,
+                          "score": 0,
+                          "score_count": 0,
+                          "set_min_competitive_score": 0,
+                          "set_min_competitive_score_count": 0,
+                          "shallow_advance": 0,
+                          "shallow_advance_count": 0
+                        },
+                        "description": "*:*",
+                        "time_in_nanos": 9015,
+                        "type": "MatchAllDocsQuery"
+                      }
+                    ],
+                    "description": "ConstantScore(*:*)",
+                    "time_in_nanos": 19749,
+                    "type": "ConstantScoreQuery"
+                  }
+                ],
+                "rewrite_time": 18095
+              }
+            ],
+            "shard_id": 0
+          }
+        ]
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
