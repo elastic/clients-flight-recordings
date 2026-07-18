@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `638252efbc4edb6a9fea0fe4c9ec60ad0c6f2bb5`
+Elasticsearch build hash: `49feed21a2a42976d92c70e107c06933d9efc435`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 603 | 568 (94.2%) | 35 (5.8%) | 125 (20.7%) | 0 (0%) |
+| 603 | 567 (94%) | 36 (6%) | 125 (20.7%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 501 | 472 (94.2%) | 29 (5.8%) | 105 | 0 |
+| `stable` | 501 | 471 (94%) | 30 (6%) | 105 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 78 | 75 (96.2%) | 3 (3.8%) | 20 | 0 |
 
@@ -35,6 +35,7 @@ Elasticsearch build hash: `638252efbc4edb6a9fea0fe4c9ec60ad0c6f2bb5`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `search` | :red_circle: | 3219/3294 | 3294/3294 | stable | undefined |  |
+| `nodes.info` | :red_circle: | 125/125 | 29/125 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 276/276 | 230/276 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 42/42 | 39/42 | stable | undefined |  |
 | `watcher.put_watch` | :red_circle: | 56/60 | 60/60 | stable | undefined |  |
@@ -52,7 +53,7 @@ Elasticsearch build hash: `638252efbc4edb6a9fea0fe4c9ec60ad0c6f2bb5`
 | `snapshot.get_repository` | :red_circle: | 24/24 | 11/24 | stable | undefined |  |
 | `security.get_role` | :red_circle: | 24/24 | 23/24 | stable | undefined |  |
 | `indices.simulate_template` | :red_circle: | 5/5 | 4/5 | stable | undefined |  |
-| **Summary** | :red_circle: | 97.5% | 93.5% | | | |
+| **Summary** | :red_circle: | 97.6% | 92.1% | | | |
 
 </details>
 
@@ -110,7 +111,7 @@ Elasticsearch build hash: `638252efbc4edb6a9fea0fe4c9ec60ad0c6f2bb5`
 
 ## Report
 
-:construction: 17.4% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
+:construction: 19.6% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
 
 ### _internal
 
@@ -731,11 +732,11 @@ Elasticsearch build hash: `638252efbc4edb6a9fea0fe4c9ec60ad0c6f2bb5`
 | `clear_repositories_metering_archive` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `get_repositories_metering_info` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `hot_threads` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
-| `info` | :green_circle: | 125/125 | 125/125 | stable | undefined |  |
+| `info` | :red_circle: | 125/125 | 29/125 | stable | undefined |  |
 | `reload_secure_settings` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `stats` | :green_circle: | 55/55 | 55/55 | stable | undefined |  |
 | `usage` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| **Summary** | :green_circle: | 100% | 100% | | | |
+| **Summary** | :red_circle: | 100% | 48.9% | | | |
 
 [Back to top](#Summary)
 
