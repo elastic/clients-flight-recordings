@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `148c34afc3ffb3ec06d54bccc32275f641a95146`
+Elasticsearch build hash: `a9062867f7b39d65adf9236d79b2c1855c9095c0`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -14,7 +14,7 @@ Elasticsearch build hash: `148c34afc3ffb3ec06d54bccc32275f641a95146`
 | --- | --- | --- | --- | --- | --- |
 | `stable` | 501 | 470 (93.8%) | 31 (6.2%) | 105 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 78 | 75 (96.2%) | 3 (3.8%) | 20 | 0 |
+| `experimental` | 72 | 69 (95.8%) | 3 (4.2%) | 20 | 0 |
 
 </details>
 
@@ -382,16 +382,16 @@ Elasticsearch build hash: `148c34afc3ffb3ec06d54bccc32275f641a95146`
 | `async_query_delete` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `async_query_get` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `async_query_stop` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `delete_data_source` | :green_circle: | 2/2 | 0/0 | experimental | undefined |  |
-| `delete_dataset` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
+| `delete_data_source` | :green_circle: | 2/2 | 0/0 | tech_preview | undefined |  |
+| `delete_dataset` | :green_circle: | 1/1 | 0/0 | tech_preview | undefined |  |
 | `delete_view` | :green_circle: | 6/6 | 0/0 | experimental | undefined |  |
-| `get_data_source` | :green_circle: | 3/3 | 0/0 | experimental | undefined |  |
-| `get_dataset` | :green_circle: | 3/3 | 0/0 | experimental | undefined |  |
+| `get_data_source` | :green_circle: | 3/3 | 0/0 | tech_preview | undefined |  |
+| `get_dataset` | :green_circle: | 3/3 | 0/0 | tech_preview | undefined |  |
 | `get_query` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `get_view` | :green_circle: | 14/14 | 0/0 | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
-| `put_data_source` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
-| `put_dataset` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
+| `put_data_source` | :green_circle: | 1/1 | 0/0 | tech_preview | undefined |  |
+| `put_dataset` | :green_circle: | 1/1 | 0/0 | tech_preview | undefined |  |
 | `put_view` | :green_circle: | 36/36 | 0/0 | experimental | undefined |  |
 | `query` | :green_circle: | 545/545 | 0/0 | stable | undefined |  |
 | **Summary** | :green_circle: | 100% | 0% | | | |
