@@ -1,7 +1,7 @@
 ## Summary
 
-Elasticsearch version: `8.19.19-SNAPSHOT`  
-Elasticsearch build hash: `089000f7f2e25564ca32af3899da52926ccd73ed`
+Elasticsearch version: `8.19.20-SNAPSHOT`  
+Elasticsearch build hash: `bb89f2eb7f07f6377f2b514f600e215a4e36c699`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -154,7 +154,7 @@ Elasticsearch build hash: `089000f7f2e25564ca32af3899da52926ccd73ed`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `bulk` | :green_circle: | 547/547 | 565/565 | stable | undefined |  |
+| `bulk` | :green_circle: | 546/546 | 564/564 | stable | undefined |  |
 | `capabilities` | :green_circle: | 2/2 | 2/2 | experimental | undefined |  |
 | `clear_scroll` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `close_point_in_time` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
@@ -664,7 +664,7 @@ Elasticsearch build hash: `089000f7f2e25564ca32af3899da52926ccd73ed`
 | `start_trained_model_deployment` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `stop_data_frame_analytics` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `stop_datafeed` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
-| `stop_trained_model_deployment` | :green_circle: | 11/11 | 11/11 | stable | undefined |  |
+| `stop_trained_model_deployment` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `update_data_frame_analytics` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `update_datafeed` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
 | `update_filter` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
