@@ -1,0 +1,67 @@
+{
+  "api": "search",
+  "file": "/test/platinum/inference/90_semantic_text_highlighter.yml",
+  "name": "semantic highlighter ignores non-inference fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "highlight": {
+          "fields": {
+            "title": {
+              "number_of_fragments": 2,
+              "type": "semantic"
+            }
+          }
+        },
+        "query": {
+          "match": {
+            "title": "Elasticsearch"
+          }
+        }
+      },
+      "index": "test-dense-index",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=333"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "doc_1",
+            "_index": "test-dense-index",
+            "_score": 0.2876821,
+            "_source": {
+              "body": [
+                "ElasticSearch is an open source, distributed, RESTful, search engine which is built on top of Lucene internally and enjoys all the features it provides.",
+                "You Know, for Search!"
+              ],
+              "title": "Elasticsearch"
+            }
+          }
+        ],
+        "max_score": 0.2876821,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
