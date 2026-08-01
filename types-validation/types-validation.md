@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `f39f096b55ff51828e86380e27731653fe850fb0`
+Elasticsearch build hash: `567e0b39e8d7e188e18dc7fde6a2338c46ab38ad`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -274,7 +274,7 @@ Elasticsearch build hash: `f39f096b55ff51828e86380e27731653fe850fb0`
 | `exists_component_template` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_component_template` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `get_settings` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
-| `health` | :green_circle: | 266/266 | 266/266 | stable | undefined |  |
+| `health` | :green_circle: | 272/272 | 272/272 | stable | undefined |  |
 | `info` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `pending_tasks` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `post_voting_config_exclusions` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
