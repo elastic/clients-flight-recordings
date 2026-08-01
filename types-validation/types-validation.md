@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `f39f096b55ff51828e86380e27731653fe850fb0`
+Elasticsearch build hash: `567e0b39e8d7e188e18dc7fde6a2338c46ab38ad`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -50,7 +50,7 @@ Elasticsearch build hash: `f39f096b55ff51828e86380e27731653fe850fb0`
 | `indices.put_mapping` | :red_circle: | 172/174 | 177/177 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 141/141 | 35/140 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1605/1695 | 1695/1695 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 61/61 | 1/57 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 61/61 | 2/57 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 102/102 | 78/102 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 36/36 | 9/36 | stable | undefined |  |
 | `indices.put_alias` | :red_circle: | 67/67 | 22/67 | stable | undefined |  |
@@ -273,7 +273,7 @@ Elasticsearch build hash: `f39f096b55ff51828e86380e27731653fe850fb0`
 | `exists_component_template` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `get_component_template` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `get_settings` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
-| `health` | :green_circle: | 266/266 | 266/266 | stable | undefined |  |
+| `health` | :green_circle: | 272/272 | 272/272 | stable | undefined |  |
 | `info` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `pending_tasks` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `post_voting_config_exclusions` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
@@ -1061,8 +1061,8 @@ Elasticsearch build hash: `f39f096b55ff51828e86380e27731653fe850fb0`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 61/61 | 1/57 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 8.2% | | | |
+| `usage` | :red_circle: | 61/61 | 2/57 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 9.8% | | | |
 
 [Back to top](#Summary)
 
