@@ -1,0 +1,52 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/280_unmapped_load_fork.yml",
+  "name": "one-branch-one-index",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"load\"; FROM index2 | FORK (WHERE NOT BYTE_LENGTH(lambda) < 11) | KEEP lambda, _fork | SORT _fork, lambda"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "took-nanos": "10682570",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.6.0-ed47f3d95205405946ec92a02695643a7d4e57fc \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 23,
+      "columns": [
+        {
+          "name": "lambda",
+          "type": "keyword"
+        },
+        {
+          "name": "_fork",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1785927325203,
+      "cpu_nanos": 1089384,
+      "documents_found": 2,
+      "expiration_time_in_millis": 1786359325088,
+      "is_partial": false,
+      "read_nanos": 0,
+      "rows_emitted": 17,
+      "start_time_in_millis": 1785927325193,
+      "took": 10,
+      "values": [
+        [
+          "observability",
+          "fork1"
+        ]
+      ],
+      "values_loaded": 2
+    },
+    "statusCode": 200
+  }
+}
