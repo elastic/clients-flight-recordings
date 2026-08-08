@@ -1,0 +1,69 @@
+{
+  "api": "search",
+  "file": "/test/platinum/inference/47_semantic_text_knn.yml",
+  "name": "knn query with semantic match query filter",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "knn": {
+            "field": "inference_field",
+            "filter": {
+              "match": {
+                "another_dense_inference_field": {
+                  "query": "some"
+                }
+              }
+            },
+            "k": 10,
+            "num_candidates": 100,
+            "query_vector_builder": {
+              "text_embedding": {
+                "model_text": "test"
+              }
+            }
+          }
+        }
+      },
+      "index": [
+        "test-semantic-text-index",
+        "test-semantic-text-index-2"
+      ],
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "475",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "Inference endpoint not found [dense-inference-id]",
+        "root_cause": [
+          {
+            "reason": "Inference endpoint not found [dense-inference-id]",
+            "suppressed": [
+              {
+                "reason": "Inference endpoint not found [dense-inference-id-2]",
+                "type": "resource_not_found_exception"
+              }
+            ],
+            "type": "resource_not_found_exception"
+          }
+        ],
+        "suppressed": [
+          {
+            "reason": "Inference endpoint not found [dense-inference-id-2]",
+            "type": "resource_not_found_exception"
+          }
+        ],
+        "type": "resource_not_found_exception"
+      },
+      "status": 404
+    },
+    "statusCode": 404
+  }
+}
