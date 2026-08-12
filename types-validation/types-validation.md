@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `02644464d74fe61404ef594e3bb20732ee96b682`
+Elasticsearch build hash: `d187992754eef72110cd911379fe76b5316d6853`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 593 | 538 (90.7%) | 55 (9.3%) | 124 (20.9%) | 0 (0%) |
+| 593 | 537 (90.6%) | 56 (9.4%) | 124 (20.9%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 495 | 447 (90.3%) | 48 (9.7%) | 102 | 0 |
+| `stable` | 495 | 446 (90.1%) | 49 (9.9%) | 102 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 74 | 70 (94.6%) | 4 (5.4%) | 22 | 0 |
 
@@ -111,7 +111,7 @@ Elasticsearch build hash: `02644464d74fe61404ef594e3bb20732ee96b682`
 
 ## Report
 
-:construction: 31.1% namespaces have failures, and the namespace with the most failures is [`async_search`](#async_search) with 50% failures.
+:construction: 33.3% namespaces have failures, and the namespace with the most failures is [`async_search`](#async_search) with 50% failures.
 
 ### _internal
 
@@ -1027,11 +1027,11 @@ Elasticsearch build hash: `02644464d74fe61404ef594e3bb20732ee96b682`
 | `reset_transform` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `schedule_now_transform` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `set_upgrade_mode` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `start_transform` | :green_circle: | 29/29 | 29/29 | stable | undefined |  |
+| `start_transform` | :red_circle: | 29/30 | 30/30 | stable | undefined |  |
 | `stop_transform` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `update_transform` | :green_circle: | 14/14 | 14/14 | stable | undefined |  |
 | `upgrade_transforms` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| **Summary** | :green_circle: | 100% | 100% | | | |
+| **Summary** | :red_circle: | 99.5% | 100% | | | |
 
 [Back to top](#Summary)
 
