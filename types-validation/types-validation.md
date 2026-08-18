@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `039492bf6a24c6a1bb1db8d211777f392acd9af8`
+Elasticsearch build hash: `e81320f27a81a1f0556f16b40d3cb5bf226d6c87`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -500,7 +500,7 @@ Elasticsearch build hash: `039492bf6a24c6a1bb1db8d211777f392acd9af8`
 | `remove_block` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `resolve_cluster` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
 | `resolve_index` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
-| `rollover` | :red_circle: | 66/66 | 2/66 | stable | undefined |  |
+| `rollover` | :red_circle: | 67/67 | 2/67 | stable | undefined |  |
 | `segments` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `shard_stores` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `shrink` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
