@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `039492bf6a24c6a1bb1db8d211777f392acd9af8`
+Elasticsearch build hash: `e81320f27a81a1f0556f16b40d3cb5bf226d6c87`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -53,7 +53,7 @@ Elasticsearch build hash: `039492bf6a24c6a1bb1db8d211777f392acd9af8`
 | `indices.put_settings` | :red_circle: | 99/101 | 101/101 | stable | undefined |  |
 | `indices.put_template` | :red_circle: | 45/46 | 46/46 | stable | undefined | deprecated |
 | `indices.get_data_stream` | :red_circle: | 142/142 | 91/142 | stable | undefined |  |
-| `indices.rollover` | :red_circle: | 66/66 | 2/66 | stable | undefined |  |
+| `indices.rollover` | :red_circle: | 67/67 | 2/67 | stable | undefined |  |
 | **Summary** | :red_circle: | 97.9% | 94.4% | | | |
 
 </details>
@@ -516,7 +516,7 @@ Elasticsearch build hash: `039492bf6a24c6a1bb1db8d211777f392acd9af8`
 | `remove_block` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `resolve_cluster` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
 | `resolve_index` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
-| `rollover` | :red_circle: | 66/66 | 2/66 | stable | undefined |  |
+| `rollover` | :red_circle: | 67/67 | 2/67 | stable | undefined |  |
 | `segments` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `shard_stores` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `shrink` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
