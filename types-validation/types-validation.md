@@ -1,18 +1,18 @@
 ## Summary
 
-Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `3d6d955c19cf7a09d98e964efbfdb2d6bef8ce6f`
+Elasticsearch version: `undefined`  
+Elasticsearch build hash: `undefined`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 593 | 534 (90.1%) | 59 (9.9%) | 124 (20.9%) | 0 (0%) |
+| 593 | 533 (89.9%) | 60 (10.1%) | 124 (20.9%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 495 | 443 (89.5%) | 52 (10.5%) | 102 | 0 |
+| `stable` | 495 | 442 (89.3%) | 53 (10.7%) | 102 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 74 | 70 (94.6%) | 4 (5.4%) | 22 | 0 |
 
@@ -495,7 +495,7 @@ Elasticsearch build hash: `3d6d955c19cf7a09d98e964efbfdb2d6bef8ce6f`
 | `put_settings` | :red_circle: | 99/101 | 101/101 | stable | undefined |  |
 | `put_template` | :red_circle: | 45/46 | 46/46 | stable | undefined | deprecated |
 | `recovery` | :red_circle: | 10/10 | 3/10 | stable | undefined |  |
-| `refresh` | :green_circle: | 510/510 | 510/510 | stable | undefined |  |
+| `refresh` | :green_circle: | 511/511 | 511/511 | stable | undefined |  |
 | `reload_search_analyzers` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `remove_block` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `resolve_cluster` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
@@ -927,7 +927,7 @@ Elasticsearch build hash: `3d6d955c19cf7a09d98e964efbfdb2d6bef8ce6f`
 | --- | --- | --- | --- | --- | --- | --- |
 | `cleanup_repository` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `clone` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
-| `create` | :green_circle: | 30/30 | 30/30 | stable | undefined |  |
+| `create` | :red_circle: | 29/30 | 30/30 | stable | undefined |  |
 | `create_repository` | :red_circle: | 27/32 | 32/32 | stable | undefined |  |
 | `delete` | :green_circle: | 24/24 | 24/24 | stable | undefined |  |
 | `delete_repository` | :green_circle: | 14/14 | 14/14 | stable | undefined |  |
@@ -938,7 +938,7 @@ Elasticsearch build hash: `3d6d955c19cf7a09d98e964efbfdb2d6bef8ce6f`
 | `restore` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `status` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `verify_repository` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| **Summary** | :red_circle: | 96.8% | 91.7% | | | |
+| **Summary** | :red_circle: | 96.2% | 91.7% | | | |
 
 [Back to top](#Summary)
 
