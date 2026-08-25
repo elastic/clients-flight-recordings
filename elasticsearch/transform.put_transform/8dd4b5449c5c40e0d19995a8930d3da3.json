@@ -1,0 +1,60 @@
+{
+  "api": "transform.put_transform",
+  "file": "/test/platinum/multi_cluster/80_transform.yml",
+  "name": "Batch transform from remote cluster",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "dest": {
+          "index": "simple-remote-transform"
+        },
+        "pivot": {
+          "aggs": {
+            "avg_stars": {
+              "avg": {
+                "field": "stars"
+              }
+            }
+          },
+          "group_by": {
+            "user": {
+              "terms": {
+                "field": "user"
+              }
+            }
+          }
+        },
+        "source": {
+          "index": "my_remote_cluster:remote_test_index"
+        }
+      },
+      "transform_id": "simple-remote-transform"
+    },
+    "headers": {
+      "Authorization": "Basic am9lOnRyYW5zZm9ybS1wYXNzd29yZA=="
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "257",
+      "content-type": "application/json",
+      "date": "Tue, 25 Aug 2026 11:15:01 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "Validation Failed: 1: no such remote cluster: [my_remote_cluster];",
+        "root_cause": [
+          {
+            "reason": "Validation Failed: 1: no such remote cluster: [my_remote_cluster];",
+            "type": "validation_exception"
+          }
+        ],
+        "type": "validation_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}
