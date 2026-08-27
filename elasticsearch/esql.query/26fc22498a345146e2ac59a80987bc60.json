@@ -1,0 +1,59 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/26_aggs_bucket.yml",
+  "name": "BUCKET column metadata in REST response",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET column_metadata=true; FROM test_dates | STATS date=VALUES(date) BY bucket=BUCKET(date, 20, \"1985-01-01T00:00:00Z\", \"1986-01-01T00:00:00Z\")"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Thu, 27 Aug 2026 10:56:14 GMT",
+      "took-nanos": "12541226",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.6.0-c1cbeac478152f56bb7913ff772d49608dd6c231 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 0,
+      "columns": [
+        {
+          "name": "date",
+          "type": "date"
+        },
+        {
+          "_meta": {
+            "bucket": {
+              "interval": 1,
+              "unit": "month"
+            }
+          },
+          "name": "bucket",
+          "type": "date"
+        }
+      ],
+      "completion_time_in_millis": 1787828174861,
+      "cpu_nanos": 1608514,
+      "documents_found": 1,
+      "expiration_time_in_millis": 1788260174710,
+      "is_partial": false,
+      "read_nanos": 0,
+      "rows_emitted": 9,
+      "start_time_in_millis": 1787828174849,
+      "took": 12,
+      "values": [
+        [
+          "1985-07-09T00:00:00.000Z",
+          "1985-07-01T00:00:00.000Z"
+        ]
+      ],
+      "values_loaded": 1
+    },
+    "statusCode": 200
+  }
+}
