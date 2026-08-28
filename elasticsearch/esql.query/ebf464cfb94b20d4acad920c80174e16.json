@@ -1,0 +1,70 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/100_bug_fix.yml",
+  "name": "Coalesce and to_ip functions",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM test | sort emp_no | eval x1 = concat(ip1, ip2), x2 = coalesce(x1, \"255.255.255.255\"), x3 = to_ip(x2) | keep emp_no, x*"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Fri, 28 Aug 2026 10:53:18 GMT",
+      "took-nanos": "67611463",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.6.0-4e6e0654ebb04442b9b77a3775fb8109ec43e06e \"No limit defined, adding default limit of [1000]\", 299 Elasticsearch-9.6.0-4e6e0654ebb04442b9b77a3775fb8109ec43e06e \"Line 1:98: evaluation of [to_ip(x2)] failed, treating result as null. Only first 20 failures recorded.\", 299 Elasticsearch-9.6.0-4e6e0654ebb04442b9b77a3775fb8109ec43e06e \"Line 1:98: java.lang.IllegalArgumentException: '127.00.1' is not an IP string literal.\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 26,
+      "columns": [
+        {
+          "name": "emp_no",
+          "type": "long"
+        },
+        {
+          "name": "x1",
+          "type": "keyword"
+        },
+        {
+          "name": "x2",
+          "type": "keyword"
+        },
+        {
+          "name": "x3",
+          "type": "ip"
+        }
+      ],
+      "completion_time_in_millis": 1787914398347,
+      "cpu_nanos": 4677637,
+      "documents_found": 2,
+      "expiration_time_in_millis": 1788346398183,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 26,
+      "start_time_in_millis": 1787914398280,
+      "took": 67,
+      "values": [
+        [
+          10,
+          "127.00.1",
+          "127.00.1",
+          null
+        ],
+        [
+          20,
+          null,
+          "255.255.255.255",
+          "255.255.255.255"
+        ]
+      ],
+      "values_loaded": 4
+    },
+    "statusCode": 200
+  }
+}
