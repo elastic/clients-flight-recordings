@@ -1,0 +1,69 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/150_lookup.yml",
+  "name": "read multivalue keyword",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "columnar": true,
+        "query": "FROM test | SORT time | KEEP color | LOOKUP color_associations ON color | LIMIT 2",
+        "tables": {
+          "color_associations": {
+            "association": {
+              "keyword": [
+                [
+                  "love",
+                  "passion",
+                  "blood",
+                  "happiness"
+                ],
+                [
+                  "nature",
+                  "healing",
+                  "health",
+                  "youth"
+                ],
+                [
+                  "serenity",
+                  "wisdom",
+                  "ocean",
+                  "sky"
+                ]
+              ]
+            },
+            "color": {
+              "keyword": [
+                "red",
+                "green",
+                "blue"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "217",
+      "content-type": "application/json",
+      "date": "Fri, 28 Aug 2026 10:53:01 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "line 1:45: missing 'join' at 'color_associations'",
+        "root_cause": [
+          {
+            "reason": "line 1:45: missing 'join' at 'color_associations'",
+            "type": "parsing_exception"
+          }
+        ],
+        "type": "parsing_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}
