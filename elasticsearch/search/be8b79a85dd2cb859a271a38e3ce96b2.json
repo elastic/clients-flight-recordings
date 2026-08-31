@@ -1,0 +1,62 @@
+{
+  "api": "search",
+  "file": "/test/platinum/inference/30_semantic_text_inference.yml",
+  "name": "Source-reading clause in nested scope over multi-valued semantic_text does not fail the shard",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "nested": {
+            "path": "sparse_field.inference.chunks",
+            "query": {
+              "term": {
+                "rt_project": "proj"
+              }
+            }
+          }
+        },
+        "runtime_mappings": {
+          "rt_project": {
+            "script": {
+              "source": "def v = params._source['non_inference_field'];\nif (v != null) { emit(v); }\n"
+            },
+            "type": "keyword"
+          }
+        },
+        "size": 0
+      },
+      "index": "test-index",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Mon, 31 Aug 2026 11:03:51 GMT",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=0"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 0
+        }
+      },
+      "timed_out": false,
+      "took": 6
+    },
+    "statusCode": 200
+  }
+}
