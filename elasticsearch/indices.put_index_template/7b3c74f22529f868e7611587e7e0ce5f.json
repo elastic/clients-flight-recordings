@@ -1,0 +1,49 @@
+{
+  "api": "indices.put_index_template",
+  "file": "/test/free/indices.put_index_template/10_basic.yml",
+  "name": "PUT index template with duplicate dynamic template names emits a warning",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "index_patterns": "test-dup-*",
+        "template": {
+          "mappings": {
+            "dynamic_templates": [
+              {
+                "my_template": {
+                  "mapping": {
+                    "type": "keyword"
+                  },
+                  "match": "foo_*"
+                }
+              },
+              {
+                "my_template": {
+                  "mapping": {
+                    "type": "text"
+                  },
+                  "match": "bar_*"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "name": "test-dup-dynamic-templates"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "date": "Mon, 31 Aug 2026 10:24:55 GMT",
+      "warning": "299 Elasticsearch-9.6.0-fb6c326106bd340b4701a071e59b36dc30be829e \"Dynamic template [my_template] in template [test-dup-dynamic-templates] is defined more than once. It is not defined which of the duplicate definitions takes effect. Defining multiple dynamic templates with the same name will be rejected in a future version.\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

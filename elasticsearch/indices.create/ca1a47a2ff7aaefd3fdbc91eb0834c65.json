@@ -1,0 +1,80 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/aggregate-metrics/90_tsdb_mappings.yml",
+  "name": "aggregate_double_metric with time series mappings",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "k8s": {
+              "properties": {
+                "pod": {
+                  "properties": {
+                    "name": {
+                      "type": "keyword"
+                    },
+                    "network": {
+                      "properties": {
+                        "rx": {
+                          "default_metric": "max",
+                          "metrics": [
+                            "min",
+                            "max",
+                            "sum",
+                            "value_count"
+                          ],
+                          "time_series_metric": "gauge",
+                          "type": "aggregate_metric_double"
+                        },
+                        "tx": {
+                          "default_metric": "max",
+                          "metrics": [
+                            "min",
+                            "max",
+                            "sum",
+                            "value_count"
+                          ],
+                          "time_series_metric": "gauge",
+                          "type": "aggregate_metric_double"
+                        }
+                      }
+                    },
+                    "uid": {
+                      "time_series_dimension": true,
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          }
+        }
+      },
+      "index": "test_index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "69",
+      "content-type": "application/json",
+      "date": "Mon, 31 Aug 2026 10:43:48 GMT",
+      "warning": "299 Elasticsearch-9.6.0-fb6c326106bd340b4701a071e59b36dc30be829e \"Parameter [default_metric] is deprecated and will be removed in a future version\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test_index",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

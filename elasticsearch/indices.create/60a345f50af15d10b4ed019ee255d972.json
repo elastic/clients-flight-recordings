@@ -1,0 +1,58 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/security/authz_api_keys/30_field_level_security_synthetic_source.yml",
+  "name": "on_failure sidecar of a denied field is not exposed under FLS (logsdb_columnar)",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "name": {
+              "doc_values": {
+                "multi_value": false,
+                "on_failure": "ignore"
+              },
+              "type": "keyword"
+            },
+            "secret": {
+              "doc_values": {
+                "multi_value": false,
+                "on_failure": "ignore"
+              },
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mapping": {
+              "source": {
+                "mode": "synthetic"
+              }
+            },
+            "mode": "logsdb_columnar"
+          }
+        }
+      },
+      "index": "index_fls_on_failure_deny"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "84",
+      "content-type": "application/json",
+      "date": "Mon, 31 Aug 2026 11:17:43 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "index_fls_on_failure_deny",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
