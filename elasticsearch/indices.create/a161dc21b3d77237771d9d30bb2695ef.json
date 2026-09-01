@@ -1,0 +1,63 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/synonyms/91_multiple_synsets_per_filter.yml",
+  "name": "Lenient filter with a missing synonym set still applies the valid set's rules",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "my_field": {
+              "search_analyzer": "lenient_analyzer",
+              "type": "text"
+            }
+          }
+        },
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "lenient_analyzer": {
+                "filter": [
+                  "lowercase",
+                  "lenient_synonym_filter"
+                ],
+                "tokenizer": "standard",
+                "type": "custom"
+              }
+            },
+            "filter": {
+              "lenient_synonym_filter": {
+                "lenient": true,
+                "synonyms_set": [
+                  "set-c",
+                  "set-does-not-exist"
+                ],
+                "type": "synonym_graph",
+                "updateable": true
+              }
+            }
+          },
+          "index": {
+            "number_of_shards": 1
+          }
+        }
+      },
+      "index": "lenient_index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "72",
+      "content-type": "application/json",
+      "date": "Tue, 01 Sep 2026 10:40:50 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "lenient_index",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
