@@ -1,0 +1,108 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/random_sampler.yml",
+  "name": "Test random_sampler aggregation with scored subagg",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "sampled": {
+            "aggs": {
+              "top": {
+                "top_hits": {
+                }
+              }
+            },
+            "random_sampler": {
+              "probability": 0.5
+            }
+          }
+        },
+        "query": {
+          "function_score": {
+            "random_score": {
+            }
+          }
+        }
+      },
+      "index": "data",
+      "size": 0,
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Wed, 02 Sep 2026 10:09:10 GMT",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=284"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "random_sampler#sampled": {
+          "doc_count": 5,
+          "probability": 0.5,
+          "seed": 1731997914,
+          "top_hits#top": {
+            "hits": {
+              "hits": [
+                {
+                  "_id": "tkmYYaABkDOSOM0ND5uC",
+                  "_index": "data",
+                  "_score": 0.74392474,
+                  "_source": {
+                    "product": "server",
+                    "value": 1
+                  }
+                },
+                {
+                  "_id": "uEmYYaABkDOSOM0ND5uC",
+                  "_index": "data",
+                  "_score": 0.43532664,
+                  "_source": {
+                    "product": "VCR",
+                    "value": 4
+                  }
+                },
+                {
+                  "_id": "ukmYYaABkDOSOM0ND5uC",
+                  "_index": "data",
+                  "_score": 0.3753541,
+                  "_source": {
+                    "product": "VCR",
+                    "value": 4
+                  }
+                }
+              ],
+              "max_score": 0.74392474,
+              "total": {
+                "relation": "eq",
+                "value": 5
+              }
+            }
+          }
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 6
+        }
+      },
+      "timed_out": false,
+      "took": 5
+    },
+    "statusCode": 200
+  }
+}

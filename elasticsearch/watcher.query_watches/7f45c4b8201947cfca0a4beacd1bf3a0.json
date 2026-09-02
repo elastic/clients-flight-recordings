@@ -1,0 +1,611 @@
+{
+  "api": "watcher.query_watches",
+  "file": "/test/platinum/watcher/query_watches/10_basic.yml",
+  "name": "Test query watches api",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "6324",
+      "content-type": "application/json",
+      "date": "Wed, 02 Sep 2026 11:37:45 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "count": 12,
+      "watches": [
+        {
+          "_id": "my_json_watch",
+          "_primary_term": 1,
+          "_seq_no": 12,
+          "status": {
+            "actions": {
+              "logging": {
+                "ack": {
+                  "state": "awaits_successful_execution",
+                  "timestamp": "2026-09-02T11:25:23.937Z"
+                }
+              }
+            },
+            "state": {
+              "active": true,
+              "timestamp": "2026-09-02T11:25:23.937Z"
+            },
+            "version": -1
+          },
+          "watch": {
+            "actions": {
+              "logging": {
+                "logging": {
+                  "level": "info",
+                  "text": "{{ctx.payload.test.count}}"
+                }
+              }
+            },
+            "condition": {
+              "script": {
+                "lang": "painless",
+                "source": "String s = Json.dump(ctx.payload); Map m = Json.load(s); m.count == 1;"
+              }
+            },
+            "input": {
+              "simple": {
+                "count": 1
+              }
+            },
+            "transform": {
+              "script": {
+                "lang": "painless",
+                "source": "String s = Json.dump(ctx.payload); Map m = Json.load(s); return ['test': m];"
+              }
+            },
+            "trigger": {
+              "schedule": {
+                "cron": "0 0 0 1 * ? 2099"
+              }
+            }
+          }
+        },
+        {
+          "_id": "my_exe_watch",
+          "_primary_term": 1,
+          "_seq_no": 7,
+          "status": {
+            "actions": {
+              "email_admin": {
+                "ack": {
+                  "state": "ackable",
+                  "timestamp": "2026-09-02T11:25:17.716Z"
+                },
+                "last_execution": {
+                  "successful": true,
+                  "timestamp": "2026-09-02T11:25:17.716Z"
+                },
+                "last_successful_execution": {
+                  "successful": true,
+                  "timestamp": "2026-09-02T11:25:17.716Z"
+                }
+              }
+            },
+            "execution_state": "executed",
+            "last_checked": "2026-09-02T11:25:17.716Z",
+            "last_met_condition": "2026-09-02T11:25:17.716Z",
+            "state": {
+              "active": true,
+              "timestamp": "2026-09-02T11:25:17.692Z"
+            },
+            "version": 3
+          },
+          "watch": {
+            "actions": {
+              "email_admin": {
+                "email": {
+                  "profile": "standard",
+                  "subject": "404 recently encountered",
+                  "to": [
+                    "someone@domain.host.com"
+                  ]
+                },
+                "transform": {
+                  "script": {
+                    "lang": "painless",
+                    "source": "return ['foo': 'bar']"
+                  }
+                }
+              }
+            },
+            "condition": {
+              "script": {
+                "lang": "painless",
+                "source": "ctx.payload.hits.total > 1"
+              }
+            },
+            "input": {
+              "chain": {
+                "inputs": [
+                  {
+                    "first": {
+                      "search": {
+                        "request": {
+                          "body": {
+                            "query": {
+                              "bool": {
+                                "filter": {
+                                  "range": {
+                                    "@timestamp": {
+                                      "gte": "{{ctx.trigger.scheduled_time}}||-5m",
+                                      "lte": "{{ctx.trigger.triggered_time}}"
+                                    }
+                                  }
+                                },
+                                "must": {
+                                  "match": {
+                                    "response": 404
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "indices": [
+                            "logstash*"
+                          ],
+                          "rest_total_hits_as_int": true,
+                          "search_type": "query_then_fetch"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "second": {
+                      "transform": {
+                        "script": {
+                          "lang": "painless",
+                          "source": "return [ 'hits' : [ 'total' : ctx.payload.first.hits.total ]]"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "trigger": {
+              "schedule": {
+                "cron": "0 0 0 1 * ? 2099"
+              }
+            }
+          }
+        },
+        {
+          "_id": "my_logging_watch",
+          "_primary_term": 1,
+          "_seq_no": 9,
+          "status": {
+            "actions": {
+              "logging": {
+                "ack": {
+                  "state": "awaits_successful_execution",
+                  "timestamp": "2026-09-02T11:25:19.231Z"
+                }
+              }
+            },
+            "state": {
+              "active": true,
+              "timestamp": "2026-09-02T11:25:19.231Z"
+            },
+            "version": -1
+          },
+          "watch": {
+            "actions": {
+              "logging": {
+                "logging": {
+                  "level": "info",
+                  "text": "foobar"
+                }
+              }
+            },
+            "condition": {
+              "script": {
+                "lang": "painless",
+                "source": "ctx.payload.count == 1"
+              }
+            },
+            "input": {
+              "simple": {
+                "count": 1
+              }
+            },
+            "trigger": {
+              "schedule": {
+                "cron": "0 0 0 1 * ? 2099"
+              }
+            }
+          }
+        },
+        {
+          "_id": "other",
+          "_primary_term": 1,
+          "_seq_no": 60,
+          "status": {
+            "actions": {
+              "test_index": {
+                "ack": {
+                  "state": "awaits_successful_execution",
+                  "timestamp": "2026-09-02T11:37:24.722Z"
+                }
+              }
+            },
+            "state": {
+              "active": true,
+              "timestamp": "2026-09-02T11:37:24.722Z"
+            },
+            "version": -1
+          },
+          "watch": {
+            "actions": {
+              "test_index": {
+                "index": {
+                  "index": "test"
+                }
+              }
+            },
+            "condition": {
+              "always": {
+              }
+            },
+            "input": {
+              "simple": {
+                "payload": {
+                  "send": "yes"
+                }
+              }
+            },
+            "trigger": {
+              "schedule": {
+                "hourly": {
+                  "minute": [
+                    0,
+                    5
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "_id": "watch_without_version_test",
+          "_primary_term": 1,
+          "_seq_no": 74,
+          "status": {
+            "actions": {
+              "logging": {
+                "ack": {
+                  "state": "awaits_successful_execution",
+                  "timestamp": "2026-09-02T11:37:36.277Z"
+                }
+              }
+            },
+            "state": {
+              "active": true,
+              "timestamp": "2026-09-02T11:37:36.277Z"
+            },
+            "version": -1
+          },
+          "watch": {
+            "actions": {
+              "logging": {
+                "logging": {
+                  "level": "info",
+                  "text": "Log me Amadeus!"
+                }
+              }
+            },
+            "condition": {
+              "always": {
+              }
+            },
+            "input": {
+              "http": {
+                "request": {
+                  "auth": {
+                    "basic": {
+                      "password": "::es_redacted::",
+                      "username": "user"
+                    }
+                  },
+                  "headers": {
+                  },
+                  "host": "host.domain",
+                  "method": "get",
+                  "params": {
+                  },
+                  "path": "/myservice",
+                  "port": 9200,
+                  "scheme": "http"
+                }
+              }
+            },
+            "trigger": {
+              "schedule": {
+                "cron": "0 0 0 1 * ? 2099"
+              }
+            }
+          }
+        },
+        {
+          "_id": "watch_with_password",
+          "_primary_term": 1,
+          "_seq_no": 73,
+          "status": {
+            "actions": {
+              "logging": {
+                "ack": {
+                  "state": "awaits_successful_execution",
+                  "timestamp": "2026-09-02T11:37:35.866Z"
+                }
+              }
+            },
+            "state": {
+              "active": true,
+              "timestamp": "2026-09-02T11:37:35.866Z"
+            },
+            "version": -1
+          },
+          "watch": {
+            "actions": {
+              "logging": {
+                "logging": {
+                  "level": "info",
+                  "text": "Log me Amadeus!"
+                }
+              }
+            },
+            "condition": {
+              "always": {
+              }
+            },
+            "input": {
+              "http": {
+                "request": {
+                  "auth": {
+                    "basic": {
+                      "password": "::es_redacted::",
+                      "username": "user"
+                    }
+                  },
+                  "headers": {
+                  },
+                  "host": "host.domain",
+                  "method": "get",
+                  "params": {
+                  },
+                  "path": "/myservice",
+                  "port": 9200,
+                  "scheme": "http"
+                }
+              }
+            },
+            "trigger": {
+              "schedule": {
+                "cron": "0 0 0 1 * ? 2099"
+              }
+            }
+          }
+        },
+        {
+          "_id": "watch_with_seq_no",
+          "_primary_term": 1,
+          "_seq_no": 76,
+          "status": {
+            "actions": {
+              "logging": {
+                "ack": {
+                  "state": "awaits_successful_execution",
+                  "timestamp": "2026-09-02T11:37:36.740Z"
+                }
+              }
+            },
+            "state": {
+              "active": true,
+              "timestamp": "2026-09-02T11:37:36.740Z"
+            },
+            "version": -1
+          },
+          "watch": {
+            "actions": {
+              "logging": {
+                "logging": {
+                  "level": "info",
+                  "text": "Log me Amadeus!"
+                }
+              }
+            },
+            "condition": {
+              "always": {
+              }
+            },
+            "input": {
+              "http": {
+                "request": {
+                  "auth": {
+                    "basic": {
+                      "password": "::es_redacted::",
+                      "username": "new_user"
+                    }
+                  },
+                  "headers": {
+                  },
+                  "host": "host.domain",
+                  "method": "get",
+                  "params": {
+                  },
+                  "path": "/myservice",
+                  "port": 9200,
+                  "scheme": "http"
+                }
+              }
+            },
+            "trigger": {
+              "schedule": {
+                "cron": "0 0 0 1 * ? 2099"
+              }
+            }
+          }
+        },
+        {
+          "_id": "test_watch",
+          "_primary_term": 1,
+          "_seq_no": 77,
+          "status": {
+            "actions": {
+              "indexme": {
+                "ack": {
+                  "state": "awaits_successful_execution",
+                  "timestamp": "2026-09-02T11:37:37.252Z"
+                }
+              }
+            },
+            "state": {
+              "active": true,
+              "timestamp": "2026-09-02T11:37:37.252Z"
+            },
+            "version": -1
+          },
+          "watch": {
+            "actions": {
+              "indexme": {
+                "index": {
+                  "doc_id": "my-id",
+                  "index": "my_test_index"
+                }
+              }
+            },
+            "condition": {
+              "always": {
+              }
+            },
+            "input": {
+              "simple": {
+                "foo": "bar"
+              }
+            },
+            "trigger": {
+              "schedule": {
+                "cron": "0 0 0 1 * ? 2099"
+              }
+            }
+          }
+        },
+        {
+          "_id": "my_watch",
+          "_primary_term": 1,
+          "_seq_no": 79,
+          "status": {
+            "actions": {
+              "logging": {
+                "ack": {
+                  "state": "awaits_successful_execution",
+                  "timestamp": "2026-09-02T11:37:37.824Z"
+                }
+              }
+            },
+            "state": {
+              "active": true,
+              "timestamp": "2026-09-02T11:37:37.824Z"
+            },
+            "version": -1
+          },
+          "watch": {
+            "actions": {
+              "logging": {
+                "logging": {
+                  "level": "info",
+                  "text": "yaml test"
+                }
+              }
+            },
+            "condition": {
+              "always": {
+              }
+            },
+            "input": {
+              "simple": {
+                "spam": "eggs"
+              }
+            },
+            "trigger": {
+              "schedule": {
+                "hourly": {
+                  "minute": [
+                    0,
+                    5
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "_id": "my_watch_with_reporting_interval",
+          "_primary_term": 1,
+          "_seq_no": 87,
+          "status": {
+            "actions": {
+              "email_admin": {
+                "ack": {
+                  "state": "awaits_successful_execution",
+                  "timestamp": "2026-09-02T11:37:44.376Z"
+                }
+              }
+            },
+            "state": {
+              "active": true,
+              "timestamp": "2026-09-02T11:37:44.376Z"
+            },
+            "version": -1
+          },
+          "watch": {
+            "actions": {
+              "email_admin": {
+                "email": {
+                  "attachments": {
+                    "report_csv": {
+                      "reporting": {
+                        "interval": "66s",
+                        "retries": 10,
+                        "url": "https://example.com"
+                      }
+                    }
+                  },
+                  "profile": "standard",
+                  "subject": "Monitoring Report",
+                  "to": [
+                    "example@example.com"
+                  ]
+                }
+              }
+            },
+            "condition": {
+              "always": {
+              }
+            },
+            "input": {
+              "none": {
+              }
+            },
+            "trigger": {
+              "schedule": {
+                "cron": "0 0 0 1 * ? 2099"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}
