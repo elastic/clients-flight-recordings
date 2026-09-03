@@ -1,0 +1,76 @@
+{
+  "api": "search",
+  "file": "/test/free/mapping/42_doc_values_on_failure.yml",
+  "name": "on_failure=ignore leading null with null_value (columnar)",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "term": {
+            "kw": "NULL"
+          }
+        }
+      },
+      "index": "test_on_failure_leading_null_value_columnar",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Thu, 03 Sep 2026 10:26:35 GMT",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=111"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_ignored": [
+              "kw"
+            ],
+            "_index": "test_on_failure_leading_null_value_columnar",
+            "_score": 1,
+            "_source": {
+              "kw": [
+                "NULL",
+                "val1"
+              ]
+            }
+          },
+          {
+            "_id": "2",
+            "_ignored": [
+              "kw"
+            ],
+            "_index": "test_on_failure_leading_null_value_columnar",
+            "_score": 1,
+            "_source": {
+              "kw": [
+                "NULL",
+                null
+              ]
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
