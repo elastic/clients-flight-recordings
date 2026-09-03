@@ -1,0 +1,51 @@
+{
+  "api": "transform.put_transform",
+  "file": "/test/platinum/multi_cluster/80_transform.yml",
+  "name": "Batch transform _start from remote cluster when the user is not authorized",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "dest": {
+          "index": "simple-remote-transform-unauthorized-start"
+        },
+        "pivot": {
+          "aggs": {
+            "avg_stars": {
+              "avg": {
+                "field": "stars"
+              }
+            }
+          },
+          "group_by": {
+            "user": {
+              "terms": {
+                "field": "user"
+              }
+            }
+          }
+        },
+        "source": {
+          "index": "my_remote_cluster:remote_test_index"
+        }
+      },
+      "defer_validation": true,
+      "transform_id": "simple-remote-transform-unauthorized-start"
+    },
+    "headers": {
+      "Authorization": "Basic Ym9iOnRyYW5zZm9ybS1wYXNzd29yZA=="
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "date": "Thu, 03 Sep 2026 11:13:51 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
