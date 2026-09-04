@@ -1,0 +1,48 @@
+{
+  "api": "cluster.put_component_template",
+  "file": "/test/free/cluster.component_template/10_basic.yml",
+  "name": "PUT component template with duplicate dynamic template names emits a warning",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "template": {
+          "mappings": {
+            "dynamic_templates": [
+              {
+                "my_template": {
+                  "mapping": {
+                    "type": "keyword"
+                  },
+                  "match": "foo_*"
+                }
+              },
+              {
+                "my_template": {
+                  "mapping": {
+                    "type": "text"
+                  },
+                  "match": "bar_*"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "name": "test-dup-dynamic-templates"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "date": "Fri, 04 Sep 2026 10:15:39 GMT",
+      "warning": "299 Elasticsearch-9.6.0-b4ac35af5ef6cdb38a36e9fd4eca0e770e458d81 \"Dynamic template [my_template] in template [test-dup-dynamic-templates] is defined more than once. It is not defined which of the duplicate definitions takes effect. Defining multiple dynamic templates with the same name will be rejected in a future version.\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
