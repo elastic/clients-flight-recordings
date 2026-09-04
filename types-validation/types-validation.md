@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `d71e7e165530f7a8087e7acca84bcccb13b6d0ba`
+Elasticsearch build hash: `b4ac35af5ef6cdb38a36e9fd4eca0e770e458d81`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -50,7 +50,7 @@ Elasticsearch build hash: `d71e7e165530f7a8087e7acca84bcccb13b6d0ba`
 | `indices.put_mapping` | :red_circle: | 173/175 | 178/178 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 141/141 | 35/140 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1632/1747 | 1747/1747 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 62/62 | 2/58 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 62/62 | 1/58 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 104/104 | 79/104 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 36/36 | 9/36 | stable | undefined |  |
 | `indices.put_alias` | :red_circle: | 67/67 | 22/67 | stable | undefined |  |
@@ -378,7 +378,7 @@ Elasticsearch build hash: `d71e7e165530f7a8087e7acca84bcccb13b6d0ba`
 | `get_view` | :green_circle: | 16/16 | 0/0 | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
 | `put_view` | :red_circle: | 37/38 | 0/0 | experimental | undefined |  |
-| `query` | :red_circle: | 543/550 | 0/0 | stable | undefined |  |
+| `query` | :red_circle: | 549/556 | 0/0 | stable | undefined |  |
 | **Summary** | :red_circle: | 98.7% | 0% | | | |
 
 [Back to top](#Summary)
@@ -1061,8 +1061,8 @@ Elasticsearch build hash: `d71e7e165530f7a8087e7acca84bcccb13b6d0ba`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 62/62 | 2/58 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 9.7% | | | |
+| `usage` | :red_circle: | 62/62 | 1/58 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 8.1% | | | |
 
 [Back to top](#Summary)
 
