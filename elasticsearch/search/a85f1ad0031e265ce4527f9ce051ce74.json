@@ -1,0 +1,98 @@
+{
+  "api": "search",
+  "file": "/test/free/suggest/30_context.yml",
+  "name": "Duplicate suggestions in different contexts",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "suggest": {
+          "result": {
+            "completion": {
+              "contexts": {
+                "color": "yellow"
+              },
+              "field": "suggest_context"
+            },
+            "text": "foo"
+          }
+        }
+      },
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 0
+        }
+      },
+      "suggest": {
+        "completion#result": [
+          {
+            "length": 3,
+            "offset": 0,
+            "options": [
+              {
+                "_id": "1",
+                "_index": "test",
+                "_score": 3,
+                "_source": {
+                  "suggest_context": [
+                    {
+                      "contexts": {
+                        "color": [
+                          "red",
+                          "yellow"
+                        ]
+                      },
+                      "input": "foox",
+                      "weight": 2
+                    },
+                    {
+                      "contexts": {
+                        "color": [
+                          "blue",
+                          "green",
+                          "yellow"
+                        ]
+                      },
+                      "input": "foox",
+                      "weight": 3
+                    }
+                  ]
+                },
+                "contexts": {
+                  "color": [
+                    "yellow"
+                  ]
+                },
+                "text": "foox"
+              }
+            ],
+            "text": "foo"
+          }
+        ]
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
