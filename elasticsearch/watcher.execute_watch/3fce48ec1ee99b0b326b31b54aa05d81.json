@@ -1,0 +1,137 @@
+{
+  "api": "watcher.execute_watch",
+  "file": "/test/platinum/painless/40_exception.yml",
+  "name": "Test painless exceptions are returned when logging a broken response",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "watch": {
+          "actions": {
+            "my-logging": {
+              "logging": {
+                "text": "{{ctx}}"
+              },
+              "transform": {
+                "script": {
+                  "source": "def x = [:] ; def y = [:] ; x.a = y ; y.a = x ; return x"
+                }
+              }
+            }
+          },
+          "input": {
+            "simple": {
+              "foo": "bar"
+            }
+          },
+          "trigger": {
+            "schedule": {
+              "interval": "1d"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1593",
+      "content-type": "application/json",
+      "date": "Sat, 05 Sep 2026 11:07:02 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "_inlined__206aa423-cc4b-40a6-ab60-385a16256ae4-2026-09-05T11:07:02.722785221Z",
+      "watch_record": {
+        "@timestamp": "2026-09-05T11:07:02.722770561Z",
+        "condition": {
+          "always": {
+          }
+        },
+        "input": {
+          "simple": {
+            "foo": "bar"
+          }
+        },
+        "messages": [
+        ],
+        "node": "ayKCY6QUSoSNdAt4Di5zLw",
+        "result": {
+          "actions": [
+            {
+              "id": "my-logging",
+              "reason": "Failed to transform payload",
+              "status": "failure",
+              "transform": {
+                "error": {
+                  "reason": "Iterable object is self-referencing itself (watcher action payload)",
+                  "root_cause": [
+                    {
+                      "reason": "Iterable object is self-referencing itself (watcher action payload)",
+                      "type": "illegal_argument_exception"
+                    }
+                  ],
+                  "type": "illegal_argument_exception"
+                },
+                "reason": "Iterable object is self-referencing itself (watcher action payload)",
+                "status": "failure",
+                "type": "script"
+              },
+              "type": "logging"
+            }
+          ],
+          "condition": {
+            "met": true,
+            "status": "success",
+            "type": "always"
+          },
+          "execution_duration": 1,
+          "execution_time": "2026-09-05T11:07:02.722Z",
+          "input": {
+            "payload": {
+              "foo": "bar"
+            },
+            "status": "success",
+            "type": "simple"
+          }
+        },
+        "state": "executed",
+        "status": {
+          "actions": {
+            "my-logging": {
+              "ack": {
+                "state": "awaits_successful_execution",
+                "timestamp": "2026-09-05T11:07:02.719Z"
+              },
+              "last_execution": {
+                "reason": "Failed to transform payload",
+                "successful": false,
+                "timestamp": "2026-09-05T11:07:02.722Z"
+              }
+            }
+          },
+          "execution_state": "executed",
+          "last_checked": "2026-09-05T11:07:02.722Z",
+          "last_met_condition": "2026-09-05T11:07:02.722Z",
+          "state": {
+            "active": true,
+            "timestamp": "2026-09-05T11:07:02.719Z"
+          },
+          "version": -1
+        },
+        "trigger_event": {
+          "manual": {
+            "schedule": {
+              "scheduled_time": "2026-09-05T11:07:02.722Z"
+            }
+          },
+          "triggered_time": "2026-09-05T11:07:02.722Z",
+          "type": "manual"
+        },
+        "user": "elastic",
+        "watch_id": "_inlined_"
+      }
+    },
+    "statusCode": 200
+  }
+}
