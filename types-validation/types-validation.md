@@ -383,7 +383,7 @@ Elasticsearch build hash: `undefined`
 | `async_query_delete` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `async_query_get` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `async_query_stop` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `delete_data_source` | :green_circle: | 2/2 | 0/0 | experimental | undefined |  |
+| `delete_data_source` | :green_circle: | 3/3 | 0/0 | experimental | undefined |  |
 | `delete_dataset` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
 | `delete_view` | :green_circle: | 6/6 | 0/0 | experimental | undefined |  |
 | `get_data_source` | :green_circle: | 3/3 | 0/0 | experimental | undefined |  |
@@ -391,10 +391,10 @@ Elasticsearch build hash: `undefined`
 | `get_query` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `get_view` | :green_circle: | 16/16 | 0/0 | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
-| `put_data_source` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
+| `put_data_source` | :green_circle: | 2/2 | 0/0 | experimental | undefined |  |
 | `put_dataset` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
 | `put_view` | :red_circle: | 37/38 | 0/0 | experimental | undefined |  |
-| `query` | :green_circle: | 564/564 | 0/0 | stable | undefined |  |
+| `query` | :green_circle: | 572/572 | 0/0 | stable | undefined |  |
 | **Summary** | :red_circle: | 99.8% | 0% | | | |
 
 [Back to top](#Summary)
