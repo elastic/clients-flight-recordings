@@ -1,0 +1,63 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/298_unmapped_load_all_columnar.yml",
+  "name": "standard leg loads unmapped from source, columnar leg yields null",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM unmapped-idx-std, unmapped-idx-col METADATA _index | SORT foo NULLS LAST, bar NULLS LAST | LIMIT 5"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 12 Sep 2026 11:05:42 GMT",
+      "took-nanos": "9560103",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 176,
+      "columns": [
+        {
+          "name": "bar",
+          "type": "keyword"
+        },
+        {
+          "name": "foo",
+          "type": "keyword"
+        },
+        {
+          "name": "_index",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1789211142095,
+      "cpu_nanos": 2892278,
+      "documents_found": 2,
+      "expiration_time_in_millis": 1789643142050,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 20,
+      "start_time_in_millis": 1789211142086,
+      "took": 9,
+      "values": [
+        [
+          "b1",
+          "a1",
+          "unmapped-idx-std"
+        ],
+        [
+          "b2",
+          null,
+          "unmapped-idx-col"
+        ]
+      ],
+      "values_loaded": 5
+    },
+    "statusCode": 200
+  }
+}
