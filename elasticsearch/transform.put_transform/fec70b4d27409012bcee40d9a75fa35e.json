@@ -1,0 +1,76 @@
+{
+  "api": "transform.put_transform",
+  "file": "/test/platinum/transform/transforms_authorization.yml",
+  "name": "Test get transform authorization for a user-managed service account",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "dest": {
+          "index": "airline-data-by-airline"
+        },
+        "pivot": {
+          "aggs": {
+            "avg_response": {
+              "avg": {
+                "field": "responsetime"
+              }
+            }
+          },
+          "group_by": {
+            "airline": {
+              "terms": {
+                "field": "airline"
+              }
+            }
+          }
+        },
+        "source": {
+          "index": "airline-data"
+        }
+      },
+      "transform_id": "service-account-transform"
+    },
+    "headers": {
+      "Authorization": "Bearer undefined"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "689",
+      "content-type": "application/json",
+      "date": "Sat, 12 Sep 2026 11:25:12 GMT",
+      "www-authenticate": "Basic realm=\"security\", charset=\"UTF-8\", Bearer realm=\"security\", ApiKey"
+    },
+    "payload": {
+      "error": {
+        "additional_unsuccessful_credentials": "oauth2 token: invalid token",
+        "header": {
+          "WWW-Authenticate": [
+            "Basic realm=\"security\", charset=\"UTF-8\"",
+            "Bearer realm=\"security\"",
+            "ApiKey"
+          ]
+        },
+        "reason": "unable to authenticate with provided credentials and anonymous access is not allowed for this request",
+        "root_cause": [
+          {
+            "additional_unsuccessful_credentials": "oauth2 token: invalid token",
+            "header": {
+              "WWW-Authenticate": [
+                "Basic realm=\"security\", charset=\"UTF-8\"",
+                "Bearer realm=\"security\"",
+                "ApiKey"
+              ]
+            },
+            "reason": "unable to authenticate with provided credentials and anonymous access is not allowed for this request",
+            "type": "security_exception"
+          }
+        ],
+        "type": "security_exception"
+      },
+      "status": 401
+    },
+    "statusCode": 401
+  }
+}

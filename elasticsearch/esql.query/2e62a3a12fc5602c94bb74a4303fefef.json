@@ -1,0 +1,91 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/295_unmapped_load_all_type_conflict.yml",
+  "name": "conflicting dotted leaves are reported as unsupported type conflicts under load_all",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM conflict_* | KEEP id, unmapped.foo, unmapped.bar, unmapped.deep.leaf | SORT id"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 12 Sep 2026 11:03:57 GMT",
+      "took-nanos": "11533288",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.6.0-b9704b5d99d2e6178ad34637944b1c12aa8badec \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 14,
+      "columns": [
+        {
+          "name": "id",
+          "type": "keyword"
+        },
+        {
+          "name": "unmapped.foo",
+          "original_types": [
+            "keyword",
+            "text"
+          ],
+          "suggested_cast": "keyword",
+          "type": "unsupported"
+        },
+        {
+          "name": "unmapped.bar",
+          "original_types": [
+            "keyword",
+            "version"
+          ],
+          "suggested_cast": "keyword",
+          "type": "unsupported"
+        },
+        {
+          "name": "unmapped.deep.leaf",
+          "original_types": [
+            "ip",
+            "keyword"
+          ],
+          "suggested_cast": "keyword",
+          "type": "unsupported"
+        }
+      ],
+      "completion_time_in_millis": 1789211037847,
+      "cpu_nanos": 1481677,
+      "documents_found": 3,
+      "expiration_time_in_millis": 1789643037753,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 30,
+      "start_time_in_millis": 1789211037836,
+      "took": 11,
+      "values": [
+        [
+          "1",
+          null,
+          null,
+          null
+        ],
+        [
+          "10",
+          null,
+          null,
+          null
+        ],
+        [
+          "8",
+          null,
+          null,
+          null
+        ]
+      ],
+      "values_loaded": 3
+    },
+    "statusCode": 200
+  }
+}
