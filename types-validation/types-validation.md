@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `8.19.22-SNAPSHOT`  
-Elasticsearch build hash: `241a3bc4a29a50b652ff0fdea76ab133190f161a`
+Elasticsearch build hash: `6f79513d6181ebbd9da6da1636d05e44786cd5b1`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -652,7 +652,7 @@ Elasticsearch build hash: `241a3bc4a29a50b652ff0fdea76ab133190f161a`
 | `put_datafeed` | :green_circle: | 30/30 | 30/30 | stable | undefined |  |
 | `put_filter` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `put_job` | :green_circle: | 65/65 | 65/65 | stable | undefined |  |
-| `put_trained_model` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
+| `put_trained_model` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `put_trained_model_alias` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
 | `put_trained_model_definition_part` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `put_trained_model_vocabulary` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
