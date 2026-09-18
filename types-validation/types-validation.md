@@ -34,7 +34,7 @@ Elasticsearch build hash: `undefined`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 3317/3398 | 3344/3398 | stable | undefined |  |
+| `search` | :red_circle: | 3317/3398 | 3343/3398 | stable | undefined |  |
 | `index` | :red_circle: | 2061/2069 | 2071/2071 | stable | undefined |  |
 | `get` | :red_circle: | 461/473 | 465/470 | stable | undefined |  |
 | `nodes.info` | :red_circle: | 125/125 | 29/125 | stable | undefined |  |
@@ -194,7 +194,7 @@ Elasticsearch build hash: `undefined`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 72/72 | 23/23 | stable | undefined |  |
-| `search` | :red_circle: | 3317/3398 | 3344/3398 | stable | undefined |  |
+| `search` | :red_circle: | 3317/3398 | 3343/3398 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -863,7 +863,7 @@ Elasticsearch build hash: `undefined`
 | `oidc_logout` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `oidc_prepare_authentication` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_privileges` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
-| `put_role` | :green_circle: | 41/41 | 40/40 | stable | undefined |  |
+| `put_role` | :green_circle: | 42/42 | 41/41 | stable | undefined |  |
 | `put_role_mapping` | :red_circle: | 2/11 | 11/11 | stable | undefined |  |
 | `put_user` | :green_circle: | 49/49 | 48/48 | stable | undefined |  |
 | `query_api_keys` | :green_circle: | 14/14 | 14/14 | stable | undefined |  |
