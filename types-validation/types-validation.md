@@ -1,7 +1,7 @@
 ## Summary
 
-Elasticsearch version: `undefined`  
-Elasticsearch build hash: `undefined`
+Elasticsearch version: `9.6.0-SNAPSHOT`  
+Elasticsearch build hash: `1206917580693748740f21970ee266dc819da220`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -51,7 +51,7 @@ Elasticsearch build hash: `undefined`
 | `indices.stats` | :red_circle: | 141/141 | 35/140 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1639/1756 | 1756/1756 | stable | undefined |  |
 | `open_point_in_time` | :red_circle: | 7/12 | 12/12 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 65/65 | 1/61 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 65/65 | 2/61 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 105/105 | 79/105 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 36/36 | 9/36 | stable | undefined |  |
 | **Summary** | :red_circle: | 97.3% | 94.7% | | | |
@@ -1061,8 +1061,8 @@ Elasticsearch build hash: `undefined`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 65/65 | 1/61 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 7.7% | | | |
+| `usage` | :red_circle: | 65/65 | 2/61 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 9.2% | | | |
 
 [Back to top](#Summary)
 
