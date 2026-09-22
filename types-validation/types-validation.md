@@ -1,18 +1,18 @@
 ## Summary
 
-Elasticsearch version: `undefined`  
-Elasticsearch build hash: `undefined`
+Elasticsearch version: `9.6.0-SNAPSHOT`  
+Elasticsearch build hash: `d88cc468b017f3848a435454df1bebb2a5639378`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 603 | 547 (90.7%) | 56 (9.3%) | 122 (20.2%) | 0 (0%) |
+| 603 | 545 (90.4%) | 58 (9.6%) | 122 (20.2%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 501 | 452 (90.2%) | 49 (9.8%) | 102 | 0 |
+| `stable` | 501 | 450 (89.8%) | 51 (10.2%) | 102 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 78 | 74 (94.9%) | 4 (5.1%) | 20 | 0 |
 
@@ -112,7 +112,7 @@ Elasticsearch build hash: `undefined`
 
 ## Report
 
-:construction: 34.8% namespaces have failures, and the namespace with the most failures is [`async_search`](#async_search) with 50% failures.
+:construction: 37% namespaces have failures, and the namespace with the most failures is [`async_search`](#async_search) with 50% failures.
 
 ### _internal
 
@@ -177,7 +177,7 @@ Elasticsearch build hash: `undefined`
 | `get_script_context` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_script_languages` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `get_source` | :green_circle: | 19/19 | 19/19 | stable | undefined |  |
-| `health_report` | :red_circle: | 7/7 | 5/7 | stable | undefined |  |
+| `health_report` | :red_circle: | 8/8 | 6/8 | stable | undefined |  |
 | `index` | :red_circle: | 2061/2069 | 2071/2071 | stable | undefined |  |
 | `info` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `knn_search` | :green_circle: | 4/4 | 4/4 | experimental | undefined | deprecated |
@@ -688,7 +688,7 @@ Elasticsearch build hash: `undefined`
 | `put_calendar` | :green_circle: | 22/22 | 22/22 | stable | undefined |  |
 | `put_calendar_job` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `put_data_frame_analytics` | :green_circle: | 33/33 | 33/33 | stable | undefined |  |
-| `put_datafeed` | :green_circle: | 30/30 | 30/30 | stable | undefined |  |
+| `put_datafeed` | :red_circle: | 30/31 | 31/31 | stable | undefined |  |
 | `put_filter` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `put_job` | :green_circle: | 64/64 | 64/64 | stable | undefined |  |
 | `put_trained_model` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
@@ -705,7 +705,7 @@ Elasticsearch build hash: `undefined`
 | `stop_datafeed` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `stop_trained_model_deployment` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `update_data_frame_analytics` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| `update_datafeed` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
+| `update_datafeed` | :red_circle: | 6/7 | 5/7 | stable | undefined |  |
 | `update_filter` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `update_job` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `update_model_snapshot` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
@@ -713,7 +713,7 @@ Elasticsearch build hash: `undefined`
 | `upgrade_job_snapshot` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `validate` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `validate_detector` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| **Summary** | :green_circle: | 100% | 100% | | | |
+| **Summary** | :red_circle: | 99.8% | 99.8% | | | |
 
 [Back to top](#Summary)
 
