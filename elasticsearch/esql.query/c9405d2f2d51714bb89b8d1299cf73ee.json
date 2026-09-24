@@ -1,0 +1,63 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/304_unmapped_load_all_logsdb.yml",
+  "name": "logsdb and logsdb_columnar in one pattern: the recoverable leg fills the column, the lossy leg is null",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM la_logsdb, la_logsdb_columnar METADATA _index | KEEP _index, level*, meta.* | SORT _index | LIMIT 5"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Thu, 24 Sep 2026 11:05:31 GMT",
+      "took-nanos": "9714812",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 216,
+      "columns": [
+        {
+          "name": "_index",
+          "type": "keyword"
+        },
+        {
+          "name": "level",
+          "type": "keyword"
+        },
+        {
+          "name": "meta.region",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1790247931094,
+      "cpu_nanos": 2045184,
+      "documents_found": 2,
+      "expiration_time_in_millis": 1790679930967,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 22,
+      "start_time_in_millis": 1790247931085,
+      "took": 9,
+      "values": [
+        [
+          "la_logsdb",
+          "warn",
+          "eu"
+        ],
+        [
+          "la_logsdb_columnar",
+          null,
+          null
+        ]
+      ],
+      "values_loaded": 3
+    },
+    "statusCode": 200
+  }
+}
