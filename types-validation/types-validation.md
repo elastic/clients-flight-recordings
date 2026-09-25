@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `8.19.23-SNAPSHOT`  
-Elasticsearch build hash: `19e442ab625beca7b5c7e42c3e0b8857152e2d3e`
+Elasticsearch build hash: `637372b808156fa5d1442b88d7edfba171d67197`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -649,7 +649,7 @@ Elasticsearch build hash: `19e442ab625beca7b5c7e42c3e0b8857152e2d3e`
 | `put_calendar` | :green_circle: | 22/22 | 22/22 | stable | undefined |  |
 | `put_calendar_job` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `put_data_frame_analytics` | :green_circle: | 33/33 | 33/33 | stable | undefined |  |
-| `put_datafeed` | :green_circle: | 30/30 | 30/30 | stable | undefined |  |
+| `put_datafeed` | :green_circle: | 31/31 | 31/31 | stable | undefined |  |
 | `put_filter` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `put_job` | :green_circle: | 65/65 | 65/65 | stable | undefined |  |
 | `put_trained_model` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
@@ -666,7 +666,7 @@ Elasticsearch build hash: `19e442ab625beca7b5c7e42c3e0b8857152e2d3e`
 | `stop_datafeed` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `stop_trained_model_deployment` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `update_data_frame_analytics` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| `update_datafeed` | :green_circle: | 6/6 | 6/6 | stable | undefined |  |
+| `update_datafeed` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
 | `update_filter` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `update_job` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `update_model_snapshot` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
@@ -674,7 +674,7 @@ Elasticsearch build hash: `19e442ab625beca7b5c7e42c3e0b8857152e2d3e`
 | `upgrade_job_snapshot` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `validate` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `validate_detector` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.9% | 97.2% | | | |
+| **Summary** | :red_circle: | 99.9% | 97.3% | | | |
 
 [Back to top](#Summary)
 

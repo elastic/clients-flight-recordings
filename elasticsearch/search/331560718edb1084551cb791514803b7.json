@@ -1,0 +1,650 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/100_knn_nested_search.yml",
+  "name": "nested kNN search inner_hits & profiling",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "fields": [
+          "name"
+        ],
+        "knn": {
+          "field": "nested.vector",
+          "inner_hits": {
+            "_source": false,
+            "fields": [
+              "nested.paragraph_id"
+            ],
+            "size": 1
+          },
+          "k": 3,
+          "num_candidates": 3,
+          "query_vector": [
+            -0.5,
+            90,
+            -10,
+            14.8,
+            -156
+          ]
+        },
+        "profile": true
+      },
+      "index": "test",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 2,
+        "total": 2
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "2",
+            "_index": "test",
+            "_score": 0.009090909,
+            "_source": {
+              "name": "moose.jpg",
+              "nested": [
+                {
+                  "paragraph_id": 0,
+                  "vector": [
+                    -0.5,
+                    100,
+                    -13,
+                    14.8,
+                    -156
+                  ]
+                },
+                {
+                  "paragraph_id": 2,
+                  "vector": [
+                    0,
+                    100,
+                    0,
+                    14.8,
+                    -156
+                  ]
+                },
+                {
+                  "paragraph_id": 3,
+                  "vector": [
+                    0,
+                    1,
+                    0,
+                    1.8,
+                    -15
+                  ]
+                }
+              ]
+            },
+            "fields": {
+              "name": [
+                "moose.jpg"
+              ]
+            },
+            "inner_hits": {
+              "nested": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "2",
+                      "_index": "test",
+                      "_nested": {
+                        "field": "nested",
+                        "offset": 0
+                      },
+                      "_score": 0.009090909,
+                      "fields": {
+                        "nested": [
+                          {
+                            "paragraph_id": [
+                              "0"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 0.009090909,
+                  "total": {
+                    "relation": "eq",
+                    "value": 3
+                  }
+                }
+              }
+            }
+          },
+          {
+            "_id": "3",
+            "_index": "test",
+            "_score": 0.0021519717,
+            "_source": {
+              "name": "rabbit.jpg",
+              "nested": [
+                {
+                  "paragraph_id": 0,
+                  "vector": [
+                    0.5,
+                    111.3,
+                    -13,
+                    14.8,
+                    -156
+                  ]
+                }
+              ]
+            },
+            "fields": {
+              "name": [
+                "rabbit.jpg"
+              ]
+            },
+            "inner_hits": {
+              "nested": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "3",
+                      "_index": "test",
+                      "_nested": {
+                        "field": "nested",
+                        "offset": 0
+                      },
+                      "_score": 0.0021519717,
+                      "fields": {
+                        "nested": [
+                          {
+                            "paragraph_id": [
+                              "0"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 0.0021519717,
+                  "total": {
+                    "relation": "eq",
+                    "value": 1
+                  }
+                }
+              }
+            }
+          },
+          {
+            "_id": "1",
+            "_index": "test",
+            "_score": 0.000010007358,
+            "_source": {
+              "name": "cow.jpg",
+              "nested": [
+                {
+                  "paragraph_id": 0,
+                  "vector": [
+                    230,
+                    300.33,
+                    -34.8988,
+                    15.555,
+                    -200
+                  ]
+                },
+                {
+                  "paragraph_id": 1,
+                  "vector": [
+                    240,
+                    300,
+                    -3,
+                    1,
+                    -20
+                  ]
+                }
+              ]
+            },
+            "fields": {
+              "name": [
+                "cow.jpg"
+              ]
+            },
+            "inner_hits": {
+              "nested": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "1",
+                      "_index": "test",
+                      "_nested": {
+                        "field": "nested",
+                        "offset": 0
+                      },
+                      "_score": 0.000010007358,
+                      "fields": {
+                        "nested": [
+                          {
+                            "paragraph_id": [
+                              "0"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "max_score": 0.000010007358,
+                  "total": {
+                    "relation": "eq",
+                    "value": 2
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "max_score": 0.009090909,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "profile": {
+        "shards": [
+          {
+            "aggregations": [
+            ],
+            "cluster": "(local)",
+            "dfs": {
+              "knn": [
+                {
+                  "collector": [
+                    {
+                      "name": "SimpleTopScoreDocCollector",
+                      "reason": "search_top_hits",
+                      "time_in_nanos": 10227
+                    }
+                  ],
+                  "query": [
+                    {
+                      "breakdown": {
+                        "advance": 0,
+                        "advance_count": 0,
+                        "build_scorer": 7311,
+                        "build_scorer_count": 2,
+                        "compute_max_score": 0,
+                        "compute_max_score_count": 0,
+                        "count_weight": 0,
+                        "count_weight_count": 0,
+                        "create_weight": 2746,
+                        "create_weight_count": 1,
+                        "match": 0,
+                        "match_count": 0,
+                        "next_doc": 1702,
+                        "next_doc_count": 4,
+                        "score": 729,
+                        "score_count": 3,
+                        "set_min_competitive_score": 0,
+                        "set_min_competitive_score_count": 0,
+                        "shallow_advance": 0,
+                        "shallow_advance_count": 0
+                      },
+                      "description": "DocAndScore[3]",
+                      "time_in_nanos": 12488,
+                      "type": "DocAndScoreQuery"
+                    },
+                    {
+                      "breakdown": {
+                        "advance": 0,
+                        "advance_count": 0,
+                        "build_scorer": 4874,
+                        "build_scorer_count": 2,
+                        "compute_max_score": 0,
+                        "compute_max_score_count": 0,
+                        "count_weight": 0,
+                        "count_weight_count": 0,
+                        "create_weight": 2112,
+                        "create_weight_count": 1,
+                        "match": 0,
+                        "match_count": 0,
+                        "next_doc": 1835,
+                        "next_doc_count": 4,
+                        "score": 1070,
+                        "score_count": 3,
+                        "set_min_competitive_score": 0,
+                        "set_min_competitive_score_count": 0,
+                        "shallow_advance": 0,
+                        "shallow_advance_count": 0
+                      },
+                      "description": "DocAndScoreQuery[0,...][1.0007358E-5,...],0.009090909",
+                      "time_in_nanos": 9891,
+                      "type": "KnnScoreDocQuery"
+                    }
+                  ],
+                  "rewrite_time": 468248,
+                  "vector_operations_count": 7
+                }
+              ],
+              "statistics": {
+                "breakdown": {
+                  "collection_statistics": 0,
+                  "collection_statistics_count": 0,
+                  "create_weight": 77555,
+                  "create_weight_count": 1,
+                  "rewrite": 0,
+                  "rewrite_count": 0,
+                  "term_statistics": 0,
+                  "term_statistics_count": 0
+                },
+                "description": "collect term statistics",
+                "time_in_nanos": 81874,
+                "type": "statistics"
+              }
+            },
+            "fetch": {
+              "breakdown": {
+                "load_source": 5866,
+                "load_source_count": 3,
+                "load_stored_fields": 124847,
+                "load_stored_fields_count": 3,
+                "next_reader": 98749,
+                "next_reader_count": 1
+              },
+              "children": [
+                {
+                  "breakdown": {
+                    "next_reader": 18144,
+                    "next_reader_count": 1,
+                    "process": 159641,
+                    "process_count": 3
+                  },
+                  "description": "",
+                  "time_in_nanos": 177785,
+                  "type": "FetchFieldsPhase"
+                },
+                {
+                  "breakdown": {
+                    "next_reader": 655,
+                    "next_reader_count": 1,
+                    "process": 10678,
+                    "process_count": 3
+                  },
+                  "debug": {
+                    "fast_path": 3
+                  },
+                  "description": "",
+                  "time_in_nanos": 11333,
+                  "type": "FetchSourcePhase"
+                },
+                {
+                  "breakdown": {
+                    "next_reader": 334,
+                    "next_reader_count": 1,
+                    "process": 1198543,
+                    "process_count": 3
+                  },
+                  "description": "",
+                  "time_in_nanos": 1198877,
+                  "type": "InnerHitsPhase"
+                },
+                {
+                  "breakdown": {
+                    "next_reader": 1007,
+                    "next_reader_count": 1,
+                    "process": 2056,
+                    "process_count": 3
+                  },
+                  "description": "",
+                  "time_in_nanos": 3063,
+                  "type": "StoredFieldsPhase"
+                }
+              ],
+              "debug": {
+                "stored_fields": [
+                  "_id",
+                  "_routing",
+                  "_source"
+                ]
+              },
+              "description": "",
+              "time_in_nanos": 1838249,
+              "type": "fetch"
+            },
+            "id": "[sQBxf00kQj2gi2igvzV5qQ][test][0]",
+            "index": "test",
+            "node_id": "sQBxf00kQj2gi2igvzV5qQ",
+            "searches": [
+              {
+                "collector": [
+                  {
+                    "children": [
+                      {
+                        "name": "SimpleTopScoreDocCollector",
+                        "reason": "search_top_hits",
+                        "time_in_nanos": 17288
+                      }
+                    ],
+                    "name": "QueryPhaseCollector",
+                    "reason": "search_query_phase",
+                    "time_in_nanos": 24423
+                  }
+                ],
+                "query": [
+                  {
+                    "breakdown": {
+                      "advance": 0,
+                      "advance_count": 0,
+                      "build_scorer": 146607,
+                      "build_scorer_count": 2,
+                      "compute_max_score": 0,
+                      "compute_max_score_count": 0,
+                      "count_weight": 0,
+                      "count_weight_count": 0,
+                      "create_weight": 22980,
+                      "create_weight_count": 1,
+                      "match": 0,
+                      "match_count": 0,
+                      "next_doc": 20834,
+                      "next_doc_count": 4,
+                      "score": 10268,
+                      "score_count": 3,
+                      "set_min_competitive_score": 0,
+                      "set_min_competitive_score_count": 0,
+                      "shallow_advance": 0,
+                      "shallow_advance_count": 0
+                    },
+                    "children": [
+                      {
+                        "breakdown": {
+                          "advance": 2070,
+                          "advance_count": 1,
+                          "build_scorer": 8831,
+                          "build_scorer_count": 3,
+                          "compute_max_score": 0,
+                          "compute_max_score_count": 0,
+                          "count_weight": 0,
+                          "count_weight_count": 0,
+                          "create_weight": 1968,
+                          "create_weight_count": 1,
+                          "match": 0,
+                          "match_count": 0,
+                          "next_doc": 900,
+                          "next_doc_count": 3,
+                          "score": 964,
+                          "score_count": 3,
+                          "set_min_competitive_score": 0,
+                          "set_min_competitive_score_count": 0,
+                          "shallow_advance": 0,
+                          "shallow_advance_count": 0
+                        },
+                        "description": "DocAndScoreQuery[0,...][1.0007358E-5,...],0.009090909",
+                        "time_in_nanos": 14733,
+                        "type": "KnnScoreDocQuery"
+                      },
+                      {
+                        "breakdown": {
+                          "advance": 2590,
+                          "advance_count": 4,
+                          "build_scorer": 58612,
+                          "build_scorer_count": 3,
+                          "compute_max_score": 0,
+                          "compute_max_score_count": 0,
+                          "count_weight": 0,
+                          "count_weight_count": 0,
+                          "create_weight": 5047,
+                          "create_weight_count": 1,
+                          "match": 0,
+                          "match_count": 0,
+                          "next_doc": 0,
+                          "next_doc_count": 0,
+                          "score": 0,
+                          "score_count": 0,
+                          "set_min_competitive_score": 0,
+                          "set_min_competitive_score_count": 0,
+                          "shallow_advance": 0,
+                          "shallow_advance_count": 0
+                        },
+                        "description": "_nested_path:nested",
+                        "time_in_nanos": 66249,
+                        "type": "TermQuery"
+                      }
+                    ],
+                    "description": "ToParentBlockJoinQuery (+DocAndScoreQuery[0,...][1.0007358E-5,...],0.009090909 #_nested_path:nested)",
+                    "time_in_nanos": 200689,
+                    "type": "ESToParentBlockJoinQuery"
+                  }
+                ],
+                "rewrite_time": 50459
+              }
+            ],
+            "shard_id": 0
+          },
+          {
+            "aggregations": [
+            ],
+            "cluster": "(local)",
+            "dfs": {
+              "knn": [
+                {
+                  "collector": [
+                    {
+                      "name": "SimpleTopScoreDocCollector",
+                      "reason": "search_top_hits",
+                      "time_in_nanos": 1747
+                    }
+                  ],
+                  "query": [
+                    {
+                      "breakdown": {
+                        "advance": 0,
+                        "advance_count": 0,
+                        "build_scorer": 0,
+                        "build_scorer_count": 0,
+                        "compute_max_score": 0,
+                        "compute_max_score_count": 0,
+                        "count_weight": 0,
+                        "count_weight_count": 0,
+                        "create_weight": 2173,
+                        "create_weight_count": 1,
+                        "match": 0,
+                        "match_count": 0,
+                        "next_doc": 0,
+                        "next_doc_count": 0,
+                        "score": 0,
+                        "score_count": 0,
+                        "set_min_competitive_score": 0,
+                        "set_min_competitive_score_count": 0,
+                        "shallow_advance": 0,
+                        "shallow_advance_count": 0
+                      },
+                      "description": "MatchNoDocsQuery(\"\")",
+                      "time_in_nanos": 2173,
+                      "type": "MatchNoDocsQuery"
+                    }
+                  ],
+                  "rewrite_time": 23221,
+                  "vector_operations_count": 0
+                }
+              ],
+              "statistics": {
+                "breakdown": {
+                  "collection_statistics": 0,
+                  "collection_statistics_count": 0,
+                  "create_weight": 59530,
+                  "create_weight_count": 1,
+                  "rewrite": 0,
+                  "rewrite_count": 0,
+                  "term_statistics": 0,
+                  "term_statistics_count": 0
+                },
+                "description": "collect term statistics",
+                "time_in_nanos": 64720,
+                "type": "statistics"
+              }
+            },
+            "id": "[sQBxf00kQj2gi2igvzV5qQ][test][1]",
+            "index": "test",
+            "node_id": "sQBxf00kQj2gi2igvzV5qQ",
+            "searches": [
+              {
+                "collector": [
+                  {
+                    "children": [
+                      {
+                        "name": "SimpleTopScoreDocCollector",
+                        "reason": "search_top_hits",
+                        "time_in_nanos": 1014
+                      }
+                    ],
+                    "name": "QueryPhaseCollector",
+                    "reason": "search_query_phase",
+                    "time_in_nanos": 2430
+                  }
+                ],
+                "query": [
+                  {
+                    "breakdown": {
+                      "advance": 0,
+                      "advance_count": 0,
+                      "build_scorer": 0,
+                      "build_scorer_count": 0,
+                      "compute_max_score": 0,
+                      "compute_max_score_count": 0,
+                      "count_weight": 0,
+                      "count_weight_count": 0,
+                      "create_weight": 5877,
+                      "create_weight_count": 1,
+                      "match": 0,
+                      "match_count": 0,
+                      "next_doc": 0,
+                      "next_doc_count": 0,
+                      "score": 0,
+                      "score_count": 0,
+                      "set_min_competitive_score": 0,
+                      "set_min_competitive_score_count": 0,
+                      "shallow_advance": 0,
+                      "shallow_advance_count": 0
+                    },
+                    "description": "ToParentBlockJoinQuery (MatchNoDocsQuery(\"The \"knn_score_doc\" query was rewritten to a \"match_none\" query.\"))",
+                    "time_in_nanos": 5877,
+                    "type": "ESToParentBlockJoinQuery"
+                  }
+                ],
+                "rewrite_time": 4876
+              }
+            ],
+            "shard_id": 1
+          }
+        ]
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}
