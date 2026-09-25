@@ -1,0 +1,50 @@
+{
+  "api": "transform.put_transform",
+  "file": "/test/platinum/transform/transforms_authorization.yml",
+  "name": "Test get transform authorization for a user-managed service account",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "dest": {
+          "index": "airline-data-by-airline"
+        },
+        "pivot": {
+          "aggs": {
+            "avg_response": {
+              "avg": {
+                "field": "responsetime"
+              }
+            }
+          },
+          "group_by": {
+            "airline": {
+              "terms": {
+                "field": "airline"
+              }
+            }
+          }
+        },
+        "source": {
+          "index": "airline-data"
+        }
+      },
+      "transform_id": "service-account-transform"
+    },
+    "headers": {
+      "Authorization": "Bearer AAEAAWFwcHMvdHJhbnNmb3JtX3dvcmtlci90cmFuc2Zvcm0tdG9rZW46OW4xbDV5OHRSclNrWTZtOFhxTkZSUQ"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "date": "Fri, 25 Sep 2026 11:33:46 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
