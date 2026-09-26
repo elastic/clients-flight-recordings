@@ -1,0 +1,75 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/299_unmapped_load_all_ignored_source_reasons.yml",
+  "name": "LOAD_ALL across two different _ignored_source reasons in one query",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM la_obj_disabled, la_inner_dyn_false METADATA _index | KEEP _index, payload*, inner.unknown* | SORT _index | LIMIT 5"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 26 Sep 2026 11:11:35 GMT",
+      "took-nanos": "9534234",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 128,
+      "columns": [
+        {
+          "name": "_index",
+          "type": "keyword"
+        },
+        {
+          "name": "payload.a",
+          "type": "keyword"
+        },
+        {
+          "name": "payload.b.c",
+          "type": "keyword"
+        },
+        {
+          "name": "payload.n",
+          "type": "keyword"
+        },
+        {
+          "name": "inner.unknown",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1790421095495,
+      "cpu_nanos": 1427329,
+      "documents_found": 2,
+      "expiration_time_in_millis": 1790853095474,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 22,
+      "start_time_in_millis": 1790421095486,
+      "took": 9,
+      "values": [
+        [
+          "la_inner_dyn_false",
+          null,
+          null,
+          null,
+          "u"
+        ],
+        [
+          "la_obj_disabled",
+          "x",
+          "y",
+          "5",
+          null
+        ]
+      ],
+      "values_loaded": 4
+    },
+    "statusCode": 200
+  }
+}
