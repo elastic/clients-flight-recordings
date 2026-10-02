@@ -1,0 +1,183 @@
+{
+  "api": "watcher.execute_watch",
+  "file": "/test/platinum/painless/60_chain_input_with_transform.yml",
+  "name": "Test chained input with transform",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "watch": {
+          "actions": {
+            "index": {
+              "index": {
+                "doc_id": "my-id",
+                "index": "my-index"
+              }
+            }
+          },
+          "input": {
+            "chain": {
+              "inputs": [
+                {
+                  "first": {
+                    "simple": {
+                      "foo": "bar"
+                    }
+                  }
+                },
+                {
+                  "second": {
+                    "transform": {
+                      "script": "def value = ctx.payload.first.foo + ' baz' ; return [ 'foo' : value ]"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "trigger": {
+            "schedule": {
+              "cron": "0 0 0 1 * ? 2099"
+            }
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1649",
+      "content-type": "application/json",
+      "date": "Fri, 02 Oct 2026 14:34:17 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "_inlined__4c8ae523-576d-4609-ab06-ff229c2e3dd1-2026-10-02T14:34:17.082179655Z",
+      "watch_record": {
+        "@timestamp": "2026-10-02T14:34:17.082165169Z",
+        "condition": {
+          "always": {
+          }
+        },
+        "input": {
+          "chain": {
+            "inputs": [
+              {
+                "first": {
+                  "simple": {
+                    "foo": "bar"
+                  }
+                }
+              },
+              {
+                "second": {
+                  "transform": {
+                    "script": {
+                      "lang": "painless",
+                      "source": "def value = ctx.payload.first.foo + ' baz' ; return [ 'foo' : value ]"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "messages": [
+        ],
+        "node": "AngHLiGsQ9OlKc1XXktWCw",
+        "result": {
+          "actions": [
+            {
+              "id": "index",
+              "index": {
+                "response": {
+                  "created": true,
+                  "id": "my-id",
+                  "index": "my-index",
+                  "result": "created",
+                  "version": 1
+                }
+              },
+              "status": "success",
+              "type": "index"
+            }
+          ],
+          "condition": {
+            "met": true,
+            "status": "success",
+            "type": "always"
+          },
+          "execution_duration": 126,
+          "execution_time": "2026-10-02T14:34:17.082Z",
+          "input": {
+            "chain": {
+              "first": {
+                "payload": {
+                  "foo": "bar"
+                },
+                "status": "success",
+                "type": "simple"
+              },
+              "second": {
+                "payload": {
+                  "foo": "bar baz"
+                },
+                "status": "success",
+                "type": "transform"
+              }
+            },
+            "payload": {
+              "first": {
+                "foo": "bar"
+              },
+              "second": {
+                "foo": "bar baz"
+              }
+            },
+            "status": "success",
+            "type": "chain"
+          }
+        },
+        "state": "executed",
+        "status": {
+          "actions": {
+            "index": {
+              "ack": {
+                "state": "ackable",
+                "timestamp": "2026-10-02T14:34:17.082Z"
+              },
+              "last_execution": {
+                "successful": true,
+                "timestamp": "2026-10-02T14:34:17.082Z"
+              },
+              "last_successful_execution": {
+                "successful": true,
+                "timestamp": "2026-10-02T14:34:17.082Z"
+              }
+            }
+          },
+          "execution_state": "executed",
+          "last_checked": "2026-10-02T14:34:17.082Z",
+          "last_met_condition": "2026-10-02T14:34:17.082Z",
+          "state": {
+            "active": true,
+            "timestamp": "2026-10-02T14:34:17.076Z"
+          },
+          "version": -1
+        },
+        "trigger_event": {
+          "manual": {
+            "schedule": {
+              "scheduled_time": "2026-10-02T14:34:17.082Z"
+            }
+          },
+          "triggered_time": "2026-10-02T14:34:17.082Z",
+          "type": "manual"
+        },
+        "user": "elastic",
+        "watch_id": "_inlined_"
+      }
+    },
+    "statusCode": 200
+  }
+}

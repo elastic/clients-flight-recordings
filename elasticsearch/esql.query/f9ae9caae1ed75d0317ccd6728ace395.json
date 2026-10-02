@@ -1,0 +1,62 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/298_unmapped_load_all_subquery_non_loadable.yml",
+  "name": "LOAD_ALL subquery date cast applies the query time zone to a zone-less source value",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; SET time_zone=\"America/New_York\"; FROM (FROM idx_date METADATA _index), (FROM idx_date_src METADATA _index) | KEEP _index, ts | SORT _index, ts"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Fri, 02 Oct 2026 14:19:05 GMT",
+      "took-nanos": "9561953",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.6.0-fc9001e01fbcbff7c8a6b26524a7a35acb024539 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 164,
+      "columns": [
+        {
+          "name": "_index",
+          "type": "keyword"
+        },
+        {
+          "name": "ts",
+          "type": "date"
+        }
+      ],
+      "completion_time_in_millis": 1790950745155,
+      "cpu_nanos": 1619498,
+      "documents_found": 3,
+      "expiration_time_in_millis": 1791382745000,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 25,
+      "start_time_in_millis": 1790950745146,
+      "took": 9,
+      "values": [
+        [
+          "idx_date",
+          "2024-10-23T08:15:03.360-04:00"
+        ],
+        [
+          "idx_date_src",
+          "2024-10-23T08:15:03.360-04:00"
+        ],
+        [
+          "idx_date_src",
+          "2024-10-23T12:15:03.360-04:00"
+        ]
+      ],
+      "values_loaded": 6
+    },
+    "statusCode": 200
+  }
+}
