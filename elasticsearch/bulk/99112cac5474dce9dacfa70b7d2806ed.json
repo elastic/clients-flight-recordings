@@ -1,0 +1,80 @@
+{
+  "api": "bulk",
+  "file": "/test/free/data_stream/150_tsdb.yml",
+  "name": "custom routing on one item only fails that item",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{ \"create\": { \"routing\": \"foo\" } }",
+        "{ \"@timestamp\": \"2023-09-01T13:03:08.138Z\", \"data\": 10, \"dim\": \"a\" }",
+        "{ \"create\": { } }",
+        "{ \"@timestamp\": \"2023-09-01T13:03:08.138Z\", \"data\": 20, \"dim\": \"b\" }",
+        "{ \"create\": { } }",
+        "{ \"@timestamp\": \"2023-09-01T13:03:08.138Z\", \"data\": 30, \"dim\": \"c\" }"
+      ],
+      "index": "k9s",
+      "refresh": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 03 Oct 2026 10:16:52 GMT",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "create": {
+            "_id": null,
+            "_index": "k9s",
+            "error": {
+              "reason": "index request targeting data stream [k9s] specifies a custom routing but the [allow_custom_routing] setting was not enabled in the data stream's template.",
+              "type": "illegal_argument_exception"
+            },
+            "status": 400
+          }
+        },
+        {
+          "create": {
+            "_id": "-L1s8Alc4UeLpVUgsuNF6n___nWvKOiVmNpi6g",
+            "_index": ".ds-k9s-2026.10.03-000001",
+            "_primary_term": 0,
+            "_seq_no": -2,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 1,
+            "forced_refresh": true,
+            "result": "created",
+            "status": 201
+          }
+        },
+        {
+          "create": {
+            "_id": "-NRPpllddhfkiW3ZKpfLsn___nWvKOiV4VELdg",
+            "_index": ".ds-k9s-2026.10.03-000001",
+            "_primary_term": 0,
+            "_seq_no": -2,
+            "_shards": {
+              "failed": 0,
+              "successful": 1,
+              "total": 2
+            },
+            "_version": 1,
+            "forced_refresh": true,
+            "result": "created",
+            "status": 201
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}
