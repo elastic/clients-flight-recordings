@@ -1,0 +1,61 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/298_unmapped_load_all_subquery_non_loadable.yml",
+  "name": "LOAD_ALL subquery still warns when another branch mentions the field and a third lacks it",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM (FROM idx1), (FROM idx2 | KEEP txt), (FROM idx2) | KEEP txt | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 03 Oct 2026 11:00:41 GMT",
+      "took-nanos": "9091273",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.6.0-8b2333e50ce86cf171d62f74d675991663a7eabc \"Field [txt] of type [text] is unmapped in some indices and has no implicit conversion from KEYWORD, so it will not be loaded from _source; values will be null in those indices\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 0,
+      "columns": [
+        {
+          "name": "txt",
+          "original_types": [
+            "keyword",
+            "text",
+            "text"
+          ],
+          "suggested_cast": "keyword",
+          "type": "unsupported"
+        }
+      ],
+      "completion_time_in_millis": 1791025241485,
+      "cpu_nanos": 763468,
+      "documents_found": 3,
+      "expiration_time_in_millis": 1791457241340,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 22,
+      "start_time_in_millis": 1791025241476,
+      "took": 9,
+      "values": [
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}
