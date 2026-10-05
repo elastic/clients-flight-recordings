@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `1f75e44c0da3026f2d672063d04f716ad0535c81`
+Elasticsearch build hash: `de9c1217416f7b9dd74687a379d6243283998574`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
