@@ -1,0 +1,58 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/298_unmapped_load_all_subquery_non_loadable.yml",
+  "name": "LOAD_ALL subquery warns and nulls when unmapped sibling has an aggregate_metric_double _source value",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM (FROM idx1 METADATA _index), (FROM idx2 METADATA _index) | KEEP _index, tx | SORT _index | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Mon, 05 Oct 2026 11:08:10 GMT",
+      "took-nanos": "12328220",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.6.0-de9c1217416f7b9dd74687a379d6243283998574 \"Field [tx] of type [aggregate_metric_double] is unmapped in some indices and has no implicit conversion from KEYWORD, so it will not be loaded from _source; values will be null in those indices\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 0,
+      "columns": [
+        {
+          "name": "_index",
+          "type": "keyword"
+        },
+        {
+          "name": "tx",
+          "type": "aggregate_metric_double"
+        }
+      ],
+      "completion_time_in_millis": 1791198490858,
+      "cpu_nanos": 4426062,
+      "documents_found": 2,
+      "expiration_time_in_millis": 1791630490781,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 15,
+      "start_time_in_millis": 1791198490846,
+      "took": 12,
+      "values": [
+        [
+          "idx1",
+          "{\"min\":1.0,\"max\":3.0,\"sum\":10.1,\"value_count\":5}"
+        ],
+        [
+          "idx2",
+          null
+        ]
+      ],
+      "values_loaded": 6
+    },
+    "statusCode": 200
+  }
+}
