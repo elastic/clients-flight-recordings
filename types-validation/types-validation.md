@@ -1,18 +1,18 @@
 ## Summary
 
-Elasticsearch version: `8.19.23-SNAPSHOT`  
-Elasticsearch build hash: `0b36d1905d2e8162f13d3fef07623413774206a2`
+Elasticsearch version: `8.19.24-SNAPSHOT`  
+Elasticsearch build hash: `c5d19ad155ffd2ba97dbc151537c52182e0d6f45`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 566 | 518 (91.5%) | 48 (8.5%) | 107 (18.9%) | 0 (0%) |
+| 566 | 515 (91%) | 51 (9%) | 107 (18.9%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 480 | 438 (91.3%) | 42 (8.8%) | 97 | 0 |
+| `stable` | 480 | 435 (90.6%) | 45 (9.4%) | 97 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 62 | 59 (95.2%) | 3 (4.8%) | 10 | 0 |
 
@@ -110,7 +110,7 @@ Elasticsearch build hash: `0b36d1905d2e8162f13d3fef07623413774206a2`
 
 ## Report
 
-:construction: 25% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
+:construction: 27.3% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
 
 ### _internal
 
@@ -666,7 +666,7 @@ Elasticsearch build hash: `0b36d1905d2e8162f13d3fef07623413774206a2`
 | `stop_datafeed` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | `stop_trained_model_deployment` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
 | `update_data_frame_analytics` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| `update_datafeed` | :red_circle: | 6/7 | 7/7 | stable | undefined |  |
+| `update_datafeed` | :red_circle: | 6/7 | 6/7 | stable | undefined |  |
 | `update_filter` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `update_job` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `update_model_snapshot` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
@@ -674,7 +674,7 @@ Elasticsearch build hash: `0b36d1905d2e8162f13d3fef07623413774206a2`
 | `upgrade_job_snapshot` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `validate` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `validate_detector` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
-| **Summary** | :red_circle: | 99.6% | 97.3% | | | |
+| **Summary** | :red_circle: | 99.6% | 97.1% | | | |
 
 [Back to top](#Summary)
 
@@ -984,18 +984,18 @@ Elasticsearch build hash: `0b36d1905d2e8162f13d3fef07623413774206a2`
 | --- | --- | --- | --- | --- | --- | --- |
 | `delete_transform` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
 | `get_node_stats` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `get_transform` | :green_circle: | 26/26 | 26/26 | stable | undefined |  |
+| `get_transform` | :red_circle: | 27/27 | 26/27 | stable | undefined |  |
 | `get_transform_stats` | :green_circle: | 34/34 | 34/34 | stable | undefined |  |
 | `preview_transform` | :green_circle: | 24/24 | 24/24 | stable | undefined |  |
-| `put_transform` | :green_circle: | 28/28 | 28/28 | stable | undefined |  |
+| `put_transform` | :red_circle: | 28/29 | 29/29 | stable | undefined |  |
 | `reset_transform` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `schedule_now_transform` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `set_upgrade_mode` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `start_transform` | :green_circle: | 29/29 | 29/29 | stable | undefined |  |
 | `stop_transform` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
-| `update_transform` | :green_circle: | 14/14 | 14/14 | stable | undefined |  |
+| `update_transform` | :red_circle: | 14/16 | 14/16 | stable | undefined |  |
 | `upgrade_transforms` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| **Summary** | :green_circle: | 100% | 100% | | | |
+| **Summary** | :red_circle: | 98.5% | 98.5% | | | |
 
 [Back to top](#Summary)
 
