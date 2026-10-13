@@ -1,0 +1,68 @@
+{
+  "api": "search",
+  "file": "/test/free/data_stream/150_tsdb.yml",
+  "name": "TSDB documents for write blocked backing index go to failure store",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "term": {
+            "error.type": "timestamp_error"
+          }
+        }
+      },
+      "index": ".fs-tsdb-write-blocked-*",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Tue, 13 Oct 2026 10:17:44 GMT",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=817"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "JVDENKEBCv84q3AGoQ0f",
+            "_index": ".fs-tsdb-write-blocked-2026.10.13-000003",
+            "_score": 0.6931471,
+            "_source": {
+              "@timestamp": "2026-10-13T10:17:43.680Z",
+              "document": {
+                "index": "tsdb-write-blocked",
+                "source": {
+                  "@timestamp": "2000-04-28T01:00:00Z",
+                  "metricset": "pod"
+                }
+              },
+              "error": {
+                "message": "the document timestamp [2000-04-28T01:00:00.000Z] is outside of ranges of currently writable indices [[2026-10-13T08:17:43.000Z,2026-10-13T10:26:43.000Z][2026-10-13T10:26:43.000Z,2026-10-13T10:35:43.000Z]]",
+                "stack_trace": "o.e.c.m.DataStream$TimestampError: the document timestamp [2000-04-28T01:00:00.000Z] is outside of ranges of currently writable indices [[2026-10-13T08:17:43.000Z,2026-10-13T10:26:43.000Z][2026-10-13T10:26:43.000Z,2026-10-13T10:35:43.000Z]]\n\tat o.e.c.m.DataStream.getWriteIndex(DataStream.java:1932)\n\tat o.e.a.i.IndexRequest.getConcreteWriteIndex(IndexRequest.java:907)\n\t... 16 more\n",
+                "type": "timestamp_error"
+              }
+            }
+          }
+        ],
+        "max_score": 0.6931471,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
