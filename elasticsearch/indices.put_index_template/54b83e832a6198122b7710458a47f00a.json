@@ -1,0 +1,52 @@
+{
+  "api": "indices.put_index_template",
+  "file": "/test/free/data_stream/291_columnar_collapse.yml",
+  "name": "collapse across backing indices written with different binary framings",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "data_stream": {
+        },
+        "index_patterns": [
+          "columnar-collapse-logs*"
+        ],
+        "template": {
+          "mappings": {
+            "properties": {
+              "@timestamp": {
+                "type": "date"
+              },
+              "host.name": {
+                "type": "keyword"
+              }
+            }
+          },
+          "settings": {
+            "index": {
+              "columnar_codec": {
+                "enabled": false
+              },
+              "mode": "columnar",
+              "number_of_replicas": 1,
+              "number_of_shards": 1
+            }
+          }
+        }
+      },
+      "name": "columnar-collapse-template"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "date": "Wed, 14 Oct 2026 10:21:09 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
