@@ -1,0 +1,63 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/304_unmapped_load_all_logsdb.yml",
+  "name": "logsdb_columnar drops the unmapped fields at ingest, so LOAD_ALL finds nothing to expand",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM la_logsdb_columnar | KEEP id, host.name, * | LIMIT 5"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Fri, 16 Oct 2026 11:03:43 GMT",
+      "took-nanos": "10588065",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 44,
+      "columns": [
+        {
+          "name": "id",
+          "type": "keyword"
+        },
+        {
+          "name": "host.name",
+          "type": "keyword"
+        },
+        {
+          "name": "@timestamp",
+          "type": "date"
+        },
+        {
+          "name": "_unmapped_fields",
+          "type": "_source"
+        }
+      ],
+      "completion_time_in_millis": 1792148623313,
+      "cpu_nanos": 780586,
+      "documents_found": 1,
+      "expiration_time_in_millis": 1792580623187,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 7,
+      "start_time_in_millis": 1792148623303,
+      "took": 10,
+      "values": [
+        [
+          "1",
+          "h1",
+          "2024-01-01T00:00:00.000Z",
+          null
+        ]
+      ],
+      "values_loaded": 3
+    },
+    "statusCode": 200
+  }
+}
