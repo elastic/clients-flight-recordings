@@ -1,0 +1,58 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/315_unmapped_load_all_column_name_collisions.yml",
+  "name": "a column named _unmapped_fields by EVAL replaces the discovered fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM la_name | EVAL _unmapped_fields = \"mine\" | SORT id | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Fri, 16 Oct 2026 11:06:57 GMT",
+      "took-nanos": "10277871",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.6.0-aaf1f687a6286fe4b00570fdba656567e3056383 \"The query has a column named [_unmapped_fields], so the unmapped fields are not returned in a column of that name; rename that column to get them\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 4,
+      "columns": [
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "_unmapped_fields",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1792148817138,
+      "cpu_nanos": 865338,
+      "documents_found": 2,
+      "expiration_time_in_millis": 1792580816990,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 18,
+      "start_time_in_millis": 1792148817128,
+      "took": 10,
+      "values": [
+        [
+          1,
+          "mine"
+        ],
+        [
+          2,
+          "mine"
+        ]
+      ],
+      "values_loaded": 2
+    },
+    "statusCode": 200
+  }
+}
