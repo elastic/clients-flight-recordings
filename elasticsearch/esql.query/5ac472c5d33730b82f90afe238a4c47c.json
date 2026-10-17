@@ -1,0 +1,66 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/295_fillnull.yml",
+  "name": "fillnull on a union typed field cast to keyword is allowed",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM events_ip,events_keyword,events_extra_keyword | EVAL client_ip = client_ip::keyword | FILLNULL \"missing\" ON client_ip | KEEP event_id, client_ip | SORT event_id | LIMIT 100"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 17 Oct 2026 11:00:37 GMT",
+      "took-nanos": "10473051",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 45,
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "integer"
+        },
+        {
+          "name": "client_ip",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1792234837333,
+      "cpu_nanos": 1651398,
+      "documents_found": 4,
+      "driver_nanos": 1658578,
+      "expiration_time_in_millis": 1792666837287,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 44,
+      "start_time_in_millis": 1792234837323,
+      "took": 10,
+      "values": [
+        [
+          1,
+          "10.0.0.1"
+        ],
+        [
+          2,
+          "10.0.0.2"
+        ],
+        [
+          3,
+          "10.0.0.3"
+        ],
+        [
+          4,
+          "missing"
+        ]
+      ],
+      "values_loaded": 7
+    },
+    "statusCode": 200
+  }
+}
