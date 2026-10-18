@@ -1,0 +1,69 @@
+{
+  "api": "search",
+  "file": "/test/free/data_stream/150_tsdb.yml",
+  "name": "TSDB documents for write blocked backing index go to failure store",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "term": {
+            "error.type": "cluster_block_exception"
+          }
+        }
+      },
+      "index": ".fs-tsdb-write-blocked-*",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sun, 18 Oct 2026 10:17:12 GMT",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=617"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "vR6DTqEBQ-VgQ1nN8xoQ",
+            "_index": ".fs-tsdb-write-blocked-2026.10.18-000003",
+            "_score": 0.6931471,
+            "_source": {
+              "@timestamp": "2026-10-18T10:17:12.575Z",
+              "document": {
+                "index": "tsdb-write-blocked",
+                "routing": "PGbeog",
+                "source": {
+                  "@timestamp": "2026-10-18T10:17:12.710377461Z",
+                  "metricset": "pod"
+                }
+              },
+              "error": {
+                "message": "index [.ds-tsdb-write-blocked-2026.10.18-000001] blocked by: [FORBIDDEN/8/index write (api)];",
+                "stack_trace": "o.e.c.b.ClusterBlockException: index [.ds-tsdb-write-blocked-2026.10.18-000001] blocked by: [FORBIDDEN/8/index write (api)];\n",
+                "type": "cluster_block_exception"
+              }
+            }
+          }
+        ],
+        "max_score": 0.6931471,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}
