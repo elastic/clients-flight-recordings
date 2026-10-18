@@ -1,0 +1,59 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/100_bug_fix.yml",
+  "name": "Coalesce and to_ip functions",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM test | sort emp_no | eval ip = to_ip(coalesce(ip1.keyword, \"255.255.255.255\")) | keep emp_no, ip"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sun, 18 Oct 2026 10:58:03 GMT",
+      "took-nanos": "82390691",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.6.0-08f55f478565f4c0256f73079ede10f34625b462 \"No limit defined, adding default limit of [1000]\", 299 Elasticsearch-9.6.0-08f55f478565f4c0256f73079ede10f34625b462 \"Line 1:37: evaluation of [to_ip(coalesce(ip1.keyword, \\\"255.255.255.255\\\"))] failed, treating result as null. Only first 20 failures recorded.\", 299 Elasticsearch-9.6.0-08f55f478565f4c0256f73079ede10f34625b462 \"Line 1:37: java.lang.IllegalArgumentException: '127.0' is not an IP string literal.\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 16,
+      "columns": [
+        {
+          "name": "emp_no",
+          "type": "long"
+        },
+        {
+          "name": "ip",
+          "type": "ip"
+        }
+      ],
+      "completion_time_in_millis": 1792321083169,
+      "cpu_nanos": 6092293,
+      "documents_found": 2,
+      "driver_nanos": 6093745,
+      "expiration_time_in_millis": 1792753083018,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 22,
+      "start_time_in_millis": 1792321083087,
+      "took": 82,
+      "values": [
+        [
+          10,
+          null
+        ],
+        [
+          20,
+          "255.255.255.255"
+        ]
+      ],
+      "values_loaded": 3
+    },
+    "statusCode": 200
+  }
+}
