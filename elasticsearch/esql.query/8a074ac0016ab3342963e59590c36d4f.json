@@ -1,0 +1,65 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/295_fillnull.yml",
+  "name": "fillnull all-fields under SET unmapped_fields nullify is safe with null typed columns",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"nullify\"; FROM events_partial | KEEP event_id, message, extra_tag | FILLNULL \"missing\" ON * | SORT event_id | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Mon, 19 Oct 2026 10:58:42 GMT",
+      "took-nanos": "9825366",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.6.0-7c9490b80a3d7c4ede40d163496fd411b3867996 \"Line 1:90: [FILLNULL] the fill value could not be applied to the following fields, which were left unchanged: [event_id, extra_tag]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 21,
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "integer"
+        },
+        {
+          "name": "message",
+          "type": "keyword"
+        },
+        {
+          "name": "extra_tag",
+          "type": "null"
+        }
+      ],
+      "completion_time_in_millis": 1792407522423,
+      "cpu_nanos": 882834,
+      "documents_found": 2,
+      "driver_nanos": 889987,
+      "expiration_time_in_millis": 1792839522275,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 18,
+      "start_time_in_millis": 1792407522414,
+      "took": 9,
+      "values": [
+        [
+          10,
+          "first",
+          null
+        ],
+        [
+          11,
+          "second",
+          null
+        ]
+      ],
+      "values_loaded": 4
+    },
+    "statusCode": 200
+  }
+}
