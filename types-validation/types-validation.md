@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `08f55f478565f4c0256f73079ede10f34625b462`
+Elasticsearch build hash: `7c9490b80a3d7c4ede40d163496fd411b3867996`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -406,7 +406,7 @@ Elasticsearch build hash: `08f55f478565f4c0256f73079ede10f34625b462`
 | `put_data_source` | :green_circle: | 4/4 | 0/0 | experimental | undefined |  |
 | `put_dataset` | :green_circle: | 2/2 | 0/0 | experimental | undefined |  |
 | `put_view` | :green_circle: | 37/37 | 0/0 | experimental | undefined |  |
-| `query` | :green_circle: | 713/713 | 0/0 | stable | undefined |  |
+| `query` | :green_circle: | 715/715 | 0/0 | stable | undefined |  |
 | `test_data_source_connection` | :green_circle: | 3/3 | 0/0 | experimental | undefined |  |
 | **Summary** | :red_circle: | 99.4% | 0% | | | |
 
