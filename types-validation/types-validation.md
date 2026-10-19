@@ -1,7 +1,7 @@
 ## Summary
 
-Elasticsearch version: `undefined`  
-Elasticsearch build hash: `undefined`
+Elasticsearch version: `9.6.0-SNAPSHOT`  
+Elasticsearch build hash: `7c9490b80a3d7c4ede40d163496fd411b3867996`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -378,7 +378,7 @@ Elasticsearch build hash: `undefined`
 | `get_view` | :red_circle: | 11/16 | 0/0 | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
 | `put_view` | :red_circle: | 36/37 | 0/0 | experimental | undefined |  |
-| `query` | :red_circle: | 706/713 | 0/0 | stable | undefined |  |
+| `query` | :red_circle: | 708/715 | 0/0 | stable | undefined |  |
 | **Summary** | :red_circle: | 98.3% | 0% | | | |
 
 [Back to top](#Summary)
@@ -1061,8 +1061,8 @@ Elasticsearch build hash: `undefined`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :red_circle: | 8/8 | 1/4 | stable | undefined |  |
-| `usage` | :red_circle: | 93/93 | 2/89 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 3.2% | | | |
+| `usage` | :red_circle: | 93/93 | 1/89 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 2.2% | | | |
 
 [Back to top](#Summary)
 
