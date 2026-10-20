@@ -1,0 +1,81 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/316_unmapped_load_all_flattened_type_conflict.yml",
+  "name": "a flattened subfield is not surfaced from _source under load_all on the shard where the parent is flattened",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM tc_flat,tc_keyword,tc_unmapped | KEEP id, note*, bar* | SORT id | LIMIT 100"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 11:10:12 GMT",
+      "took-nanos": "10442023",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 225,
+      "columns": [
+        {
+          "name": "id",
+          "type": "keyword"
+        },
+        {
+          "name": "bar",
+          "original_types": [
+            "flattened",
+            "keyword"
+          ],
+          "suggested_cast": "keyword",
+          "type": "unsupported"
+        },
+        {
+          "name": "_unmapped_fields",
+          "type": "_source"
+        }
+      ],
+      "completion_time_in_millis": 1792494612461,
+      "cpu_nanos": 1741989,
+      "documents_found": 3,
+      "driver_nanos": 1633181,
+      "expiration_time_in_millis": 1792926612418,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 30,
+      "start_time_in_millis": 1792494612451,
+      "took": 10,
+      "values": [
+        [
+          "a",
+          null,
+          {
+            "note": "na"
+          }
+        ],
+        [
+          "b",
+          null,
+          {
+            "note": "nb"
+          }
+        ],
+        [
+          "c",
+          null,
+          {
+            "bar.baz": "uc",
+            "note": "nc"
+          }
+        ]
+      ],
+      "values_loaded": 6
+    },
+    "statusCode": 200
+  }
+}
