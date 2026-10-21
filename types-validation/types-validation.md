@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `e770a8ab37c1d404118552c172a452b77014882e`
+Elasticsearch build hash: `ac973c1c0dbc3264e43e8bd373f75183695289ac`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ Elasticsearch build hash: `e770a8ab37c1d404118552c172a452b77014882e`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 3375/3461 | 3408/3461 | stable | undefined |  |
+| `search` | :red_circle: | 3375/3461 | 3407/3461 | stable | undefined |  |
 | `index` | :red_circle: | 2091/2112 | 2114/2114 | stable | undefined |  |
 | `get` | :red_circle: | 461/478 | 459/475 | stable | undefined |  |
 | `update_by_query` | :red_circle: | 43/47 | 46/46 | stable | undefined |  |
@@ -194,7 +194,7 @@ Elasticsearch build hash: `e770a8ab37c1d404118552c172a452b77014882e`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 72/72 | 23/23 | stable | undefined |  |
-| `search` | :red_circle: | 3375/3461 | 3408/3461 | stable | undefined |  |
+| `search` | :red_circle: | 3375/3461 | 3407/3461 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -203,7 +203,7 @@ Elasticsearch build hash: `e770a8ab37c1d404118552c172a452b77014882e`
 | `update` | :red_circle: | 45/47 | 47/47 | stable | undefined |  |
 | `update_by_query` | :red_circle: | 43/47 | 46/46 | stable | undefined |  |
 | `update_by_query_rethrottle` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| **Summary** | :red_circle: | 98% | 98.3% | | | |
+| **Summary** | :red_circle: | 98% | 98.2% | | | |
 
 [Back to top](#Summary)
 
