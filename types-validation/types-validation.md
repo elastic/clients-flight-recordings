@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `8.19.24-SNAPSHOT`  
-Elasticsearch build hash: `911ddcd002a2fbe8f2ae3ad9ee6f1273d84e5c81`
+Elasticsearch build hash: `1bca2c9dcc462b64c1460b6003929db0058bf461`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -43,8 +43,8 @@ Elasticsearch build hash: `911ddcd002a2fbe8f2ae3ad9ee6f1273d84e5c81`
 | `indices.put_mapping` | :red_circle: | 126/143 | 143/143 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 115/115 | 36/114 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1257/1320 | 1320/1320 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
-| `indices.put_index_template` | :red_circle: | 133/140 | 140/140 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
+| `indices.put_index_template` | :red_circle: | 135/142 | 142/142 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 90/90 | 71/90 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 36/36 | 9/36 | stable | undefined |  |
 | `indices.put_alias` | :red_circle: | 61/61 | 20/61 | stable | undefined |  |
@@ -53,7 +53,7 @@ Elasticsearch build hash: `911ddcd002a2fbe8f2ae3ad9ee6f1273d84e5c81`
 | `indices.put_template` | :red_circle: | 45/46 | 46/46 | stable | undefined | deprecated |
 | `nodes.stats` | :red_circle: | 47/47 | 17/47 | stable | undefined |  |
 | `put_script` | :red_circle: | 47/49 | 49/49 | stable | undefined |  |
-| `indices.get_data_stream` | :red_circle: | 116/116 | 17/116 | stable | undefined |  |
+| `indices.get_data_stream` | :red_circle: | 118/118 | 17/118 | stable | undefined |  |
 | **Summary** | :red_circle: | 97.2% | 92.8% | | | |
 
 </details>
@@ -436,7 +436,7 @@ Elasticsearch build hash: `911ddcd002a2fbe8f2ae3ad9ee6f1273d84e5c81`
 | `clone` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `close` | :green_circle: | 53/53 | 53/53 | stable | undefined |  |
 | `create` | :red_circle: | 1257/1320 | 1320/1320 | stable | undefined |  |
-| `create_data_stream` | :green_circle: | 119/119 | 119/119 | stable | undefined |  |
+| `create_data_stream` | :green_circle: | 120/120 | 120/120 | stable | undefined |  |
 | `create_from` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `data_streams_stats` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `delete` | :green_circle: | 115/115 | 115/115 | stable | undefined |  |
@@ -460,7 +460,7 @@ Elasticsearch build hash: `911ddcd002a2fbe8f2ae3ad9ee6f1273d84e5c81`
 | `get_alias` | :red_circle: | 94/94 | 82/94 | stable | undefined |  |
 | `get_data_lifecycle` | :red_circle: | 14/14 | 13/14 | stable | undefined |  |
 | `get_data_lifecycle_stats` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `get_data_stream` | :red_circle: | 116/116 | 17/116 | stable | undefined |  |
+| `get_data_stream` | :red_circle: | 118/118 | 17/118 | stable | undefined |  |
 | `get_data_stream_options` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |
 | `get_data_stream_settings` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `get_field_mapping` | :green_circle: | 18/18 | 18/18 | stable | undefined |  |
@@ -478,7 +478,7 @@ Elasticsearch build hash: `911ddcd002a2fbe8f2ae3ad9ee6f1273d84e5c81`
 | `put_data_lifecycle` | :red_circle: | 5/6 | 6/6 | stable | undefined |  |
 | `put_data_stream_options` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `put_data_stream_settings` | :red_circle: | 6/8 | 8/8 | stable | undefined |  |
-| `put_index_template` | :red_circle: | 133/140 | 140/140 | stable | undefined |  |
+| `put_index_template` | :red_circle: | 135/142 | 142/142 | stable | undefined |  |
 | `put_mapping` | :red_circle: | 126/143 | 143/143 | stable | undefined |  |
 | `put_settings` | :red_circle: | 81/83 | 83/83 | stable | undefined |  |
 | `put_template` | :red_circle: | 45/46 | 46/46 | stable | undefined | deprecated |
@@ -1025,8 +1025,8 @@ Elasticsearch build hash: `911ddcd002a2fbe8f2ae3ad9ee6f1273d84e5c81`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 11.9% | | | |
+| `usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 14.3% | | | |
 
 [Back to top](#Summary)
 
