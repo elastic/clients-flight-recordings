@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.7.0-SNAPSHOT`  
-Elasticsearch build hash: `492ff7a148f0e26a58cd425d0dd0f2c8a6c84b45`
+Elasticsearch build hash: `7acf1229e7b5fd083b24f19066a4d4b4c1d287f0`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ Elasticsearch build hash: `492ff7a148f0e26a58cd425d0dd0f2c8a6c84b45`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 3383/3463 | 3409/3463 | stable | undefined |  |
+| `search` | :red_circle: | 3383/3463 | 3410/3463 | stable | undefined |  |
 | `get` | :red_circle: | 481/481 | 462/478 | stable | undefined |  |
 | `update_by_query` | :red_circle: | 46/47 | 46/46 | stable | undefined |  |
 | `nodes.info` | :red_circle: | 125/125 | 29/125 | stable | undefined |  |
@@ -47,7 +47,7 @@ Elasticsearch build hash: `492ff7a148f0e26a58cd425d0dd0f2c8a6c84b45`
 | `watcher.put_watch` | :red_circle: | 56/60 | 60/60 | stable | undefined |  |
 | `indices.put_mapping` | :red_circle: | 174/179 | 182/182 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 142/143 | 58/142 | stable | undefined |  |
-| `indices.create` | :red_circle: | 1716/1835 | 1835/1835 | stable | undefined |  |
+| `indices.create` | :red_circle: | 1719/1838 | 1838/1838 | stable | undefined |  |
 | `open_point_in_time` | :red_circle: | 7/12 | 12/12 | stable | undefined |  |
 | `xpack.usage` | :red_circle: | 97/97 | 2/93 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 105/105 | 79/105 | stable | undefined |  |
@@ -157,7 +157,7 @@ Elasticsearch build hash: `492ff7a148f0e26a58cd425d0dd0f2c8a6c84b45`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `bulk` | :green_circle: | 731/731 | 749/749 | stable | undefined |  |
+| `bulk` | :green_circle: | 733/733 | 751/751 | stable | undefined |  |
 | `cancel_reindex` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `capabilities` | :green_circle: | 2/2 | 2/2 | experimental | undefined |  |
 | `clear_scroll` | :green_circle: | 17/17 | 17/17 | stable | undefined |  |
@@ -196,7 +196,7 @@ Elasticsearch build hash: `492ff7a148f0e26a58cd425d0dd0f2c8a6c84b45`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 72/72 | 23/23 | stable | undefined |  |
-| `search` | :red_circle: | 3383/3463 | 3409/3463 | stable | undefined |  |
+| `search` | :red_circle: | 3383/3463 | 3410/3463 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -406,8 +406,8 @@ Elasticsearch build hash: `492ff7a148f0e26a58cd425d0dd0f2c8a6c84b45`
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
 | `put_data_source` | :green_circle: | 4/4 | 0/0 | experimental | undefined |  |
 | `put_dataset` | :green_circle: | 2/2 | 0/0 | experimental | undefined |  |
-| `put_view` | :green_circle: | 38/38 | 0/0 | experimental | undefined |  |
-| `query` | :green_circle: | 710/710 | 0/0 | stable | undefined |  |
+| `put_view` | :green_circle: | 45/45 | 0/0 | experimental | undefined |  |
+| `query` | :green_circle: | 726/726 | 0/0 | stable | undefined |  |
 | `test_data_source_connection` | :green_circle: | 3/3 | 0/0 | experimental | undefined |  |
 | **Summary** | :red_circle: | 99.4% | 0% | | | |
 
@@ -475,7 +475,7 @@ Elasticsearch build hash: `492ff7a148f0e26a58cd425d0dd0f2c8a6c84b45`
 | `clear_cache` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `clone` | :green_circle: | 5/5 | 5/5 | stable | undefined |  |
 | `close` | :green_circle: | 52/52 | 52/52 | stable | undefined |  |
-| `create` | :red_circle: | 1716/1835 | 1835/1835 | stable | undefined |  |
+| `create` | :red_circle: | 1719/1838 | 1838/1838 | stable | undefined |  |
 | `create_data_stream` | :green_circle: | 152/152 | 152/152 | stable | undefined |  |
 | `create_from` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `data_streams_stats` | :green_circle: | 9/9 | 9/9 | stable | undefined |  |

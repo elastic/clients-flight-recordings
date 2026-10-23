@@ -1,0 +1,65 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/307_unmapped_load_all_copy_to_and_multifields.yml",
+  "name": "multi-fields: a partially mapped text parent is not loadable, and t.kw never is",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"load\"; FROM la_multifield, la_copyto_absent | KEEP id, t, t.kw | SORT id | LIMIT 5"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Fri, 23 Oct 2026 11:08:42 GMT",
+      "took-nanos": "10015198",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-7acf1229e7b5fd083b24f19066a4d4b4c1d287f0 \"Field [t] is unmapped in some indices and has no implicit conversion from KEYWORD; it is null in those indices\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 83,
+      "columns": [
+        {
+          "name": "id",
+          "type": "keyword"
+        },
+        {
+          "name": "t",
+          "type": "text"
+        },
+        {
+          "name": "t.kw",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1792753722064,
+      "cpu_nanos": 1673353,
+      "documents_found": 2,
+      "driver_nanos": 1521869,
+      "expiration_time_in_millis": 1793185721903,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 20,
+      "start_time_in_millis": 1792753722054,
+      "took": 10,
+      "values": [
+        [
+          "1",
+          "some text",
+          "some text"
+        ],
+        [
+          "a1",
+          null,
+          null
+        ]
+      ],
+      "values_loaded": 4
+    },
+    "statusCode": 200
+  }
+}

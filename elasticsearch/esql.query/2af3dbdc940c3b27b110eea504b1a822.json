@@ -1,0 +1,87 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/26_aggs_bucket.yml",
+  "name": "BUCKET column metadata coexists with approximation metadata",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET approximation={\"rows\":10000}; SET column_metadata=true; FROM test_dates | STATS c=COUNT(*) BY bucket=BUCKET(date, 1 month)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Fri, 23 Oct 2026 11:06:13 GMT",
+      "took-nanos": "57836878",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-7acf1229e7b5fd083b24f19066a4d4b4c1d287f0 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "approximation_applied": false,
+      "bytes_read": 0,
+      "columns": [
+        {
+          "name": "c",
+          "type": "long"
+        },
+        {
+          "_meta": {
+            "bucket": {
+              "interval": 1,
+              "unit": "month"
+            }
+          },
+          "name": "bucket",
+          "type": "date"
+        },
+        {
+          "_meta": {
+            "approximation": {
+              "column": "c",
+              "type": "confidence_interval"
+            }
+          },
+          "name": "_approximation_confidence_interval(c)",
+          "type": "long"
+        },
+        {
+          "_meta": {
+            "approximation": {
+              "column": "c",
+              "type": "certified"
+            }
+          },
+          "name": "_approximation_certified(c)",
+          "type": "boolean"
+        }
+      ],
+      "completion_time_in_millis": 1792753573556,
+      "cpu_nanos": 2020364,
+      "documents_found": 2,
+      "driver_nanos": 1917787,
+      "expiration_time_in_millis": 1793185573401,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 18,
+      "start_time_in_millis": 1792753573499,
+      "took": 57,
+      "values": [
+        [
+          1,
+          "1985-07-01T00:00:00.000Z",
+          [
+            1,
+            1
+          ],
+          true
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}
