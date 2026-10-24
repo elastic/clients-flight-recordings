@@ -1,0 +1,69 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/281_unmapped_load_subqueries_views.yml",
+  "name": "loading an unmapped field in a subquery does not cross-pollinate a sibling view",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"load\"; FROM v_plain_a, (FROM idx2 METADATA _index | KEEP id, color, note, _index) | KEEP id, note, _index | SORT id | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 24 Oct 2026 11:06:39 GMT",
+      "took-nanos": "17004206",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 102,
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer"
+        },
+        {
+          "name": "note",
+          "type": "keyword"
+        },
+        {
+          "name": "_index",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1792839999045,
+      "cpu_nanos": 1754481,
+      "documents_found": 3,
+      "driver_nanos": 1597293,
+      "expiration_time_in_millis": 1793271998853,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 23,
+      "start_time_in_millis": 1792839999028,
+      "took": 17,
+      "values": [
+        [
+          1,
+          null,
+          "idx1"
+        ],
+        [
+          2,
+          null,
+          "idx1"
+        ],
+        [
+          3,
+          "n3",
+          "idx2"
+        ]
+      ],
+      "values_loaded": 10
+    },
+    "statusCode": 200
+  }
+}
