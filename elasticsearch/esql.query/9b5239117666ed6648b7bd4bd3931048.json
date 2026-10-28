@@ -1,0 +1,93 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/319_unmapped_load_all_fillnull.yml",
+  "name": "FILLNULL ON * after a subquery next to a view",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM la_fill_src_view, (FROM la_fill_source METADATA _index | FILLNULL DEFAULT ON *) METADATA _index | KEEP * | EVAL x = other | SORT id, _index | LIMIT 10 | FILLNULL \"nothing\" ON *"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Wed, 28 Oct 2026 11:02:45 GMT",
+      "took-nanos": "14177470",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-8a7200d73a9bc231ae26b17a8e22df14a11ca9c4 \"SET unmapped_fields=\\\"load_all\\\" does not affect the contents of view [la_fill_src_view], so field [other] is null in its rows; to load such fields, the view definition must SET unmapped_fields=\\\"load\\\" and reference them itself\", 299 Elasticsearch-9.7.0-8a7200d73a9bc231ae26b17a8e22df14a11ca9c4 \"Line 1:191: [FILLNULL] the fill value could not be applied to the following fields, which were left unchanged: [id]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 272,
+      "columns": [
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "_index",
+          "type": "keyword"
+        },
+        {
+          "name": "other",
+          "type": "keyword"
+        },
+        {
+          "name": "_unmapped_fields",
+          "type": "_source"
+        },
+        {
+          "name": "x",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1793185365491,
+      "cpu_nanos": 1729927,
+      "documents_found": 4,
+      "driver_nanos": 1590876,
+      "expiration_time_in_millis": 1793617365411,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 52,
+      "start_time_in_millis": 1793185365477,
+      "took": 14,
+      "values": [
+        [
+          1,
+          "la_fill_source",
+          "o",
+          {
+            "_unmapped_fields": "src"
+          },
+          "o"
+        ],
+        [
+          1,
+          "nothing",
+          "nothing",
+          null,
+          "nothing"
+        ],
+        [
+          2,
+          "la_fill_source",
+          "p",
+          null,
+          "p"
+        ],
+        [
+          2,
+          "nothing",
+          "nothing",
+          null,
+          "nothing"
+        ]
+      ],
+      "values_loaded": 9
+    },
+    "statusCode": 200
+  }
+}
