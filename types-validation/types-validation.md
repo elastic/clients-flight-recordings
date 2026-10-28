@@ -1,18 +1,18 @@
 ## Summary
 
 Elasticsearch version: `8.19.24-SNAPSHOT`  
-Elasticsearch build hash: `1bca2c9dcc462b64c1460b6003929db0058bf461`
+Elasticsearch build hash: `dbd901a464a3c79e513aa4359c72ec776a66a26f`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 566 | 515 (91%) | 51 (9%) | 107 (18.9%) | 0 (0%) |
+| 566 | 517 (91.3%) | 49 (8.7%) | 107 (18.9%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 480 | 435 (90.6%) | 45 (9.4%) | 97 | 0 |
+| `stable` | 480 | 437 (91%) | 43 (9%) | 97 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 62 | 59 (95.2%) | 3 (4.8%) | 10 | 0 |
 
@@ -43,7 +43,7 @@ Elasticsearch build hash: `1bca2c9dcc462b64c1460b6003929db0058bf461`
 | `indices.put_mapping` | :red_circle: | 126/143 | 143/143 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 115/115 | 36/114 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1257/1320 | 1320/1320 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 135/142 | 142/142 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 90/90 | 71/90 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 36/36 | 9/36 | stable | undefined |  |
@@ -54,7 +54,7 @@ Elasticsearch build hash: `1bca2c9dcc462b64c1460b6003929db0058bf461`
 | `nodes.stats` | :red_circle: | 47/47 | 17/47 | stable | undefined |  |
 | `put_script` | :red_circle: | 47/49 | 49/49 | stable | undefined |  |
 | `indices.get_data_stream` | :red_circle: | 118/118 | 17/118 | stable | undefined |  |
-| **Summary** | :red_circle: | 97.2% | 92.8% | | | |
+| **Summary** | :red_circle: | 97.2% | 92.7% | | | |
 
 </details>
 
@@ -984,18 +984,18 @@ Elasticsearch build hash: `1bca2c9dcc462b64c1460b6003929db0058bf461`
 | --- | --- | --- | --- | --- | --- | --- |
 | `delete_transform` | :green_circle: | 10/10 | 10/10 | stable | undefined |  |
 | `get_node_stats` | :white_circle: | Missing test | Missing test | stable | undefined |  |
-| `get_transform` | :red_circle: | 27/27 | 26/27 | stable | undefined |  |
+| `get_transform` | :green_circle: | 27/27 | 27/27 | stable | undefined |  |
 | `get_transform_stats` | :green_circle: | 34/34 | 34/34 | stable | undefined |  |
 | `preview_transform` | :green_circle: | 24/24 | 24/24 | stable | undefined |  |
-| `put_transform` | :red_circle: | 28/29 | 29/29 | stable | undefined |  |
+| `put_transform` | :green_circle: | 29/29 | 29/29 | stable | undefined |  |
 | `reset_transform` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `schedule_now_transform` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `set_upgrade_mode` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `start_transform` | :green_circle: | 29/29 | 29/29 | stable | undefined |  |
 | `stop_transform` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
-| `update_transform` | :red_circle: | 14/16 | 14/16 | stable | undefined |  |
+| `update_transform` | :red_circle: | 15/16 | 14/16 | stable | undefined |  |
 | `upgrade_transforms` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
-| **Summary** | :red_circle: | 98.5% | 98.5% | | | |
+| **Summary** | :red_circle: | 99.5% | 99% | | | |
 
 [Back to top](#Summary)
 
@@ -1025,8 +1025,8 @@ Elasticsearch build hash: `1bca2c9dcc462b64c1460b6003929db0058bf461`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 14.3% | | | |
+| `usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 11.9% | | | |
 
 [Back to top](#Summary)
 
