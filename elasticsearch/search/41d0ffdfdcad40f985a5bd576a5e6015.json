@@ -1,0 +1,84 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/time_series.yml",
+  "name": "Size test",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "ts": {
+            "time_series": {
+              "keyed": false,
+              "size": 3
+            }
+          }
+        },
+        "query": {
+          "range": {
+            "@timestamp": {
+              "gte": "2019-01-01T00:10:00Z"
+            }
+          }
+        },
+        "size": 0
+      },
+      "index": "tsdb",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Fri, 30 Oct 2026 10:10:26 GMT",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-ff447c2f4ad3094294de481dcfbe9deda19ce93d \"The [time_series] aggregation, and the aggregations that rely on it (such as [rate] on counter fields and [geo_line] inside a [time_series] aggregation), are deprecated and will be removed in a future version. Use the ES|QL [TS] command instead.\"",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=3744"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "time_series#ts": {
+          "buckets": [
+            {
+              "doc_count": 4,
+              "key": {
+                "key": "bar"
+              }
+            },
+            {
+              "doc_count": 1,
+              "key": {
+                "key": "baz"
+              }
+            },
+            {
+              "doc_count": 2,
+              "key": {
+                "key": "foo"
+              }
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 7
+        }
+      },
+      "timed_out": false,
+      "took": 2
+    },
+    "statusCode": 200
+  }
+}
