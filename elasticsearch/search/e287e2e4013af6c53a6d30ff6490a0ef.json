@@ -1,0 +1,216 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/132_knn_filter_nested_levels.yml",
+  "name": "Filters on the vector's own level",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "_source": false,
+        "knn": {
+          "field": "chapters.paragraphs.vector",
+          "filter": {
+            "exists": {
+              "field": "chapters.paragraphs.kind"
+            }
+          },
+          "inner_hits": {
+            "_source": true,
+            "name": "inner",
+            "size": 10
+          },
+          "k": 10,
+          "query_vector": [
+            0,
+            0
+          ]
+        }
+      },
+      "index": "books",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 31 Oct 2026 10:40:23 GMT",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=3614"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "books",
+            "_score": 0.5,
+            "inner_hits": {
+              "inner": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "1",
+                      "_index": "books",
+                      "_nested": {
+                        "_nested": {
+                          "field": "paragraphs",
+                          "offset": 0
+                        },
+                        "field": "chapters",
+                        "offset": 0
+                      },
+                      "_score": 0.5,
+                      "_source": {
+                        "body": "red green",
+                        "kind": "a",
+                        "pid": "p1",
+                        "score": 1,
+                        "text": "alpha"
+                      }
+                    },
+                    {
+                      "_id": "1",
+                      "_index": "books",
+                      "_nested": {
+                        "_nested": {
+                          "field": "paragraphs",
+                          "offset": 1
+                        },
+                        "field": "chapters",
+                        "offset": 0
+                      },
+                      "_score": 0.33333334,
+                      "_source": {
+                        "body": "blue sky",
+                        "kind": "b",
+                        "pid": "p2",
+                        "score": 2,
+                        "text": "beta"
+                      }
+                    }
+                  ],
+                  "max_score": 0.5,
+                  "total": {
+                    "relation": "eq",
+                    "value": 2
+                  }
+                }
+              }
+            }
+          },
+          {
+            "_id": "2",
+            "_index": "books",
+            "_score": 0.16666667,
+            "inner_hits": {
+              "inner": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "2",
+                      "_index": "books",
+                      "_nested": {
+                        "_nested": {
+                          "field": "paragraphs",
+                          "offset": 0
+                        },
+                        "field": "chapters",
+                        "offset": 0
+                      },
+                      "_score": 0.16666667,
+                      "_source": {
+                        "body": "red green",
+                        "kind": "b",
+                        "pid": "p4",
+                        "score": 4,
+                        "text": "alpha"
+                      }
+                    },
+                    {
+                      "_id": "2",
+                      "_index": "books",
+                      "_nested": {
+                        "_nested": {
+                          "field": "paragraphs",
+                          "offset": 0
+                        },
+                        "field": "chapters",
+                        "offset": 1
+                      },
+                      "_score": 0.11111111,
+                      "_source": {
+                        "body": "red blue",
+                        "kind": "a",
+                        "pid": "p5",
+                        "score": 5,
+                        "text": "beta"
+                      }
+                    }
+                  ],
+                  "max_score": 0.16666667,
+                  "total": {
+                    "relation": "eq",
+                    "value": 2
+                  }
+                }
+              }
+            }
+          },
+          {
+            "_id": "3",
+            "_index": "books",
+            "_score": 0.1,
+            "inner_hits": {
+              "inner": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "3",
+                      "_index": "books",
+                      "_nested": {
+                        "_nested": {
+                          "field": "paragraphs",
+                          "offset": 0
+                        },
+                        "field": "chapters",
+                        "offset": 0
+                      },
+                      "_score": 0.1,
+                      "_source": {
+                        "body": "green green",
+                        "kind": "a",
+                        "pid": "p6",
+                        "score": 6,
+                        "text": "alpha"
+                      }
+                    }
+                  ],
+                  "max_score": 0.1,
+                  "total": {
+                    "relation": "eq",
+                    "value": 1
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "max_score": 0.5,
+        "total": {
+          "relation": "eq",
+          "value": 3
+        }
+      },
+      "timed_out": false,
+      "took": 5
+    },
+    "statusCode": 200
+  }
+}
