@@ -1,0 +1,100 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/280_unmapped_load_fork.yml",
+  "name": "two-branches-multi-index-wildcard",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"load\"; FROM ind* METADATA _index | FORK (WHERE NOT BYTE_LENGTH(lambda) < 11) (WHERE true) | KEEP lambda, _fork, _index | SORT _fork, lambda"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 31 Oct 2026 11:05:06 GMT",
+      "took-nanos": "15520714",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-5355932644ed12e15fb1d5ed4a91f4de36f044a0 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 492,
+      "columns": [
+        {
+          "name": "lambda",
+          "type": "keyword"
+        },
+        {
+          "name": "_fork",
+          "type": "keyword"
+        },
+        {
+          "name": "_index",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1793444706252,
+      "cpu_nanos": 4151686,
+      "documents_found": 12,
+      "driver_nanos": 4156265,
+      "expiration_time_in_millis": 1793876706249,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 144,
+      "start_time_in_millis": 1793444706237,
+      "took": 15,
+      "values": [
+        [
+          "elasticsearch",
+          "fork1",
+          "index1"
+        ],
+        [
+          "index3_lambda",
+          "fork1",
+          "index3"
+        ],
+        [
+          "observability",
+          "fork1",
+          "index2"
+        ],
+        [
+          "elasticsearch",
+          "fork2",
+          "index1"
+        ],
+        [
+          "index3_lambda",
+          "fork2",
+          "index3"
+        ],
+        [
+          "observability",
+          "fork2",
+          "index2"
+        ],
+        [
+          "short",
+          "fork2",
+          "index1"
+        ],
+        [
+          "sm",
+          "fork2",
+          "index3"
+        ],
+        [
+          "tiny",
+          "fork2",
+          "index2"
+        ]
+      ],
+      "values_loaded": 21
+    },
+    "statusCode": 200
+  }
+}

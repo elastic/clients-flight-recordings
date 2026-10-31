@@ -1,0 +1,202 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/132_knn_filter_nested_levels.yml",
+  "name": "Knn filter on the root vector",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "_source": false,
+        "query": {
+          "nested": {
+            "inner_hits": {
+              "_source": true,
+              "name": "inner",
+              "size": 10
+            },
+            "path": "chapters",
+            "query": {
+              "knn": {
+                "field": "chapters.vector",
+                "filter": {
+                  "knn": {
+                    "field": "vector",
+                    "filter": {
+                      "term": {
+                        "genre": "nature"
+                      }
+                    },
+                    "k": 10,
+                    "query_vector": [
+                      0,
+                      0
+                    ]
+                  }
+                },
+                "k": 10,
+                "query_vector": [
+                  0,
+                  0
+                ]
+              }
+            }
+          }
+        }
+      },
+      "index": "books",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 31 Oct 2026 10:39:12 GMT",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=2425"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_index": "books",
+            "_score": 0.5,
+            "inner_hits": {
+              "inner": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "1",
+                      "_index": "books",
+                      "_nested": {
+                        "field": "chapters",
+                        "offset": 0
+                      },
+                      "_score": 0.5,
+                      "_source": {
+                        "body": "le debut",
+                        "cid": "c1",
+                        "language": "fr",
+                        "meta": {
+                          "level": "easy"
+                        },
+                        "paragraphs": [
+                          {
+                            "body": "red green",
+                            "kind": "a",
+                            "pid": "p1",
+                            "score": 1,
+                            "text": "alpha"
+                          },
+                          {
+                            "body": "blue sky",
+                            "kind": "b",
+                            "pid": "p2",
+                            "score": 2,
+                            "text": "beta"
+                          }
+                        ],
+                        "title": "intro"
+                      }
+                    },
+                    {
+                      "_id": "1",
+                      "_index": "books",
+                      "_nested": {
+                        "field": "chapters",
+                        "offset": 1
+                      },
+                      "_score": 0.2,
+                      "_source": {
+                        "body": "the middle",
+                        "cid": "c2",
+                        "language": "en",
+                        "meta": {
+                          "level": "hard"
+                        },
+                        "paragraphs": [
+                          {
+                            "body": "green red",
+                            "pid": "p3",
+                            "score": 3,
+                            "text": "gamma"
+                          }
+                        ],
+                        "title": "middle"
+                      }
+                    }
+                  ],
+                  "max_score": 0.5,
+                  "total": {
+                    "relation": "eq",
+                    "value": 2
+                  }
+                }
+              }
+            }
+          },
+          {
+            "_id": "3",
+            "_index": "books",
+            "_score": 0.03846154,
+            "inner_hits": {
+              "inner": {
+                "hits": {
+                  "hits": [
+                    {
+                      "_id": "3",
+                      "_index": "books",
+                      "_nested": {
+                        "field": "chapters",
+                        "offset": 0
+                      },
+                      "_score": 0.03846154,
+                      "_source": {
+                        "body": "un debut",
+                        "cid": "c5",
+                        "language": "en",
+                        "meta": {
+                          "level": "easy"
+                        },
+                        "paragraphs": [
+                          {
+                            "body": "green green",
+                            "kind": "a",
+                            "pid": "p6",
+                            "score": 6,
+                            "text": "alpha"
+                          }
+                        ],
+                        "title": "intro"
+                      }
+                    }
+                  ],
+                  "max_score": 0.03846154,
+                  "total": {
+                    "relation": "eq",
+                    "value": 1
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "max_score": 0.5,
+        "total": {
+          "relation": "eq",
+          "value": 2
+        }
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}
