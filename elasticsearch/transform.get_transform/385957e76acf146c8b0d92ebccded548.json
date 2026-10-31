@@ -1,0 +1,65 @@
+{
+  "api": "transform.get_transform",
+  "file": "/test/platinum/transform/transforms_update.yml",
+  "name": "Test update indexer_request_timeout",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "transform_id": "indexer-timeout-transform"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "421",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "count": 1,
+      "transforms": [
+        {
+          "authorization": {
+            "roles": [
+              "superuser"
+            ]
+          },
+          "create_time": 1793444736173,
+          "dest": {
+            "index": "airline-data-timeout"
+          },
+          "id": "indexer-timeout-transform",
+          "pivot": {
+            "aggregations": {
+              "avg_response": {
+                "avg": {
+                  "field": "responsetime"
+                }
+              }
+            },
+            "group_by": {
+              "airline": {
+                "terms": {
+                  "field": "airline"
+                }
+              }
+            }
+          },
+          "settings": {
+            "indexer_request_timeout": "5m"
+          },
+          "source": {
+            "index": [
+              "airline-data"
+            ],
+            "query": {
+              "match_all": {
+              }
+            }
+          },
+          "version": "10.0.0"
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}
