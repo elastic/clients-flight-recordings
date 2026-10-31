@@ -1,0 +1,67 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/316_unmapped_load_all_flattened_type_conflict.yml",
+  "name": "a flattened field in conflict with a keyword field is unsupported under load_all",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM tc_flat,tc_keyword,tc_unmapped | KEEP id, bar | SORT id | LIMIT 100"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 31 Oct 2026 11:04:59 GMT",
+      "took-nanos": "7279856",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 12,
+      "columns": [
+        {
+          "name": "id",
+          "type": "keyword"
+        },
+        {
+          "name": "bar",
+          "original_types": [
+            "flattened",
+            "keyword"
+          ],
+          "suggested_cast": "keyword",
+          "type": "unsupported"
+        }
+      ],
+      "completion_time_in_millis": 1793444699717,
+      "cpu_nanos": 1143213,
+      "documents_found": 3,
+      "driver_nanos": 1069578,
+      "expiration_time_in_millis": 1793876699582,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 30,
+      "start_time_in_millis": 1793444699710,
+      "took": 7,
+      "values": [
+        [
+          "a",
+          null
+        ],
+        [
+          "b",
+          null
+        ],
+        [
+          "c",
+          null
+        ]
+      ],
+      "values_loaded": 3
+    },
+    "statusCode": 200
+  }
+}
