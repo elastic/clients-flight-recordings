@@ -1,7 +1,7 @@
 ## Summary
 
-Elasticsearch version: `9.7.0-SNAPSHOT`  
-Elasticsearch build hash: `f83b87bcfd3c2c6f9f1956b33ba76c1bcdd9bbdd`
+Elasticsearch version: `undefined`  
+Elasticsearch build hash: `undefined`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -1061,8 +1061,8 @@ Elasticsearch build hash: `f83b87bcfd3c2c6f9f1956b33ba76c1bcdd9bbdd`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :red_circle: | 8/8 | 1/4 | stable | undefined |  |
-| `usage` | :red_circle: | 97/97 | 2/93 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 3.1% | | | |
+| `usage` | :red_circle: | 97/97 | 1/93 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 2.1% | | | |
 
 [Back to top](#Summary)
 
