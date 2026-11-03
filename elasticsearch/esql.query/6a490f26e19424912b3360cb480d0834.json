@@ -1,0 +1,67 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/319_unmapped_load_all_fillnull.yml",
+  "name": "FILLNULL ON * after a subquery whose branch fills a late-loaded column",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM la_fill_source, (FROM la_fill_source | FILLNULL DEFAULT ON *) | KEEP id, no_such | SORT id, no_such | FILLNULL \"none\" ON * | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Tue, 03 Nov 2026 11:09:55 GMT",
+      "took-nanos": "9633607",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-7ee47605ad0d4389f5d5e0e9c2d9a5d414abb423 \"Line 1:140: [FILLNULL] the fill value could not be applied to the following fields, which were left unchanged: [id]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 272,
+      "columns": [
+        {
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "name": "no_such",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1793704195441,
+      "cpu_nanos": 1491591,
+      "documents_found": 4,
+      "driver_nanos": 1389627,
+      "expiration_time_in_millis": 1794136195303,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 40,
+      "start_time_in_millis": 1793704195432,
+      "took": 9,
+      "values": [
+        [
+          1,
+          ""
+        ],
+        [
+          1,
+          "none"
+        ],
+        [
+          2,
+          ""
+        ],
+        [
+          2,
+          "none"
+        ]
+      ],
+      "values_loaded": 4
+    },
+    "statusCode": 200
+  }
+}
