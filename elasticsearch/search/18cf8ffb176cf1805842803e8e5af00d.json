@@ -1,0 +1,220 @@
+{
+  "api": "search",
+  "file": "/test/free/aggregations/histogram.yml",
+  "name": "histogram profiler",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aggs": {
+          "histo": {
+            "histogram": {
+              "field": "n",
+              "interval": 5
+            }
+          }
+        },
+        "profile": true,
+        "size": 0
+      },
+      "index": "test_2",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Thu, 05 Nov 2026 10:07:10 GMT",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=4"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "aggregations": {
+        "histogram#histo": {
+          "buckets": [
+            {
+              "doc_count": 2,
+              "key": 0
+            },
+            {
+              "doc_count": 0,
+              "key": 5
+            },
+            {
+              "doc_count": 1,
+              "key": 10
+            },
+            {
+              "doc_count": 1,
+              "key": 15
+            }
+          ]
+        }
+      },
+      "hits": {
+        "hits": [
+        ],
+        "max_score": null,
+        "total": {
+          "relation": "eq",
+          "value": 4
+        }
+      },
+      "profile": {
+        "request": {
+          "indices": [
+            "test_2"
+          ],
+          "source": {
+            "aggregations": {
+              "histo": {
+                "histogram": {
+                  "field": "n",
+                  "interval": 5,
+                  "keyed": false,
+                  "min_doc_count": 0,
+                  "offset": 0,
+                  "order": {
+                    "_key": "asc"
+                  }
+                }
+              }
+            },
+            "profile": true,
+            "size": 0
+          }
+        },
+        "shards": [
+          {
+            "aggregations": [
+              {
+                "breakdown": {
+                  "build_aggregation": 80372,
+                  "build_aggregation_count": 1,
+                  "build_leaf_collector": 86102,
+                  "build_leaf_collector_count": 1,
+                  "collect": 60853,
+                  "collect_count": 4,
+                  "initialize": 3957,
+                  "initialize_count": 1,
+                  "post_collection": 2428,
+                  "post_collection_count": 1,
+                  "reduce": 0,
+                  "reduce_count": 0
+                },
+                "debug": {
+                  "built_buckets": 1,
+                  "total_buckets": 3
+                },
+                "description": "histo",
+                "time_in_nanos": 233712,
+                "type": "NumericHistogramAggregator"
+              }
+            ],
+            "cluster": "(local)",
+            "id": "[4dBV_K8hQYu0WM0y7PblSw][test_2][0]",
+            "index": "test_2",
+            "node_id": "4dBV_K8hQYu0WM0y7PblSw",
+            "searches": [
+              {
+                "collector": [
+                  {
+                    "children": [
+                      {
+                        "name": "PartialHitCountCollector",
+                        "reason": "search_count",
+                        "time_in_nanos": 44184
+                      },
+                      {
+                        "name": "AggregatorCollector: [histo]",
+                        "reason": "aggregation",
+                        "time_in_nanos": 164903
+                      }
+                    ],
+                    "name": "QueryPhaseCollector",
+                    "reason": "search_query_phase",
+                    "time_in_nanos": 210963
+                  }
+                ],
+                "query": [
+                  {
+                    "breakdown": {
+                      "advance": 0,
+                      "advance_count": 0,
+                      "build_scorer": 30421,
+                      "build_scorer_count": 2,
+                      "compute_max_score": 0,
+                      "compute_max_score_count": 0,
+                      "count_weight": 7387,
+                      "count_weight_count": 1,
+                      "create_weight": 91293,
+                      "create_weight_count": 1,
+                      "into_bit_set": 0,
+                      "into_bit_set_count": 0,
+                      "match": 0,
+                      "match_count": 0,
+                      "next_doc": 2854,
+                      "next_doc_count": 5,
+                      "score": 0,
+                      "score_count": 0,
+                      "set_min_competitive_score": 0,
+                      "set_min_competitive_score_count": 0,
+                      "shallow_advance": 0,
+                      "shallow_advance_count": 0
+                    },
+                    "children": [
+                      {
+                        "breakdown": {
+                          "advance": 0,
+                          "advance_count": 0,
+                          "build_scorer": 22844,
+                          "build_scorer_count": 2,
+                          "compute_max_score": 0,
+                          "compute_max_score_count": 0,
+                          "count_weight": 6447,
+                          "count_weight_count": 1,
+                          "create_weight": 1310,
+                          "create_weight_count": 1,
+                          "into_bit_set": 0,
+                          "into_bit_set_count": 0,
+                          "match": 0,
+                          "match_count": 0,
+                          "next_doc": 1294,
+                          "next_doc_count": 5,
+                          "score": 0,
+                          "score_count": 0,
+                          "set_min_competitive_score": 0,
+                          "set_min_competitive_score_count": 0,
+                          "shallow_advance": 0,
+                          "shallow_advance_count": 0
+                        },
+                        "description": "*:*",
+                        "time_in_nanos": 31895,
+                        "type": "MatchAllDocsQuery"
+                      }
+                    ],
+                    "description": "ConstantScore(*:*)",
+                    "time_in_nanos": 131955,
+                    "type": "ConstantScoreQuery"
+                  }
+                ],
+                "rewrite_time": 27493
+              }
+            ],
+            "shard_id": 0
+          }
+        ]
+      },
+      "timed_out": false,
+      "took": 4
+    },
+    "statusCode": 200
+  }
+}
