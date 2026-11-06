@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.7.0-SNAPSHOT`  
-Elasticsearch build hash: `71a835cd2e5542e9f032651d25dc5b89643e94ea`
+Elasticsearch build hash: `a55c1727946af2ff45a3d5a6800ca26feff2cbf6`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -39,7 +39,7 @@ Elasticsearch build hash: `71a835cd2e5542e9f032651d25dc5b89643e94ea`
 | `watcher.get_watch` | :red_circle: | 42/42 | 39/42 | stable | undefined |  |
 | `watcher.put_watch` | :red_circle: | 56/60 | 60/60 | stable | undefined |  |
 | `indices.put_mapping` | :red_circle: | 174/179 | 182/182 | stable | undefined |  |
-| `indices.stats` | :red_circle: | 142/143 | 58/142 | stable | undefined |  |
+| `indices.stats` | :red_circle: | 143/143 | 58/142 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1730/1855 | 1855/1855 | stable | undefined |  |
 | `xpack.usage` | :red_circle: | 97/97 | 2/93 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 193/194 | 194/194 | stable | undefined |  |
@@ -539,7 +539,7 @@ Elasticsearch build hash: `71a835cd2e5542e9f032651d25dc5b89643e94ea`
 | `simulate_index_template` | :red_circle: | 11/11 | 6/11 | stable | undefined |  |
 | `simulate_template` | :red_circle: | 6/6 | 4/6 | stable | undefined |  |
 | `split` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
-| `stats` | :red_circle: | 142/143 | 58/142 | stable | undefined |  |
+| `stats` | :red_circle: | 143/143 | 58/142 | stable | undefined |  |
 | `update_aliases` | :green_circle: | 36/36 | 36/36 | stable | undefined |  |
 | `validate_query` | :green_circle: | 12/12 | 12/12 | stable | undefined |  |
 | **Summary** | :red_circle: | 97.3% | 94.3% | | | |
