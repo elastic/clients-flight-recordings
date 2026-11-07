@@ -1,7 +1,7 @@
 ## Summary
 
-Elasticsearch version: `undefined`  
-Elasticsearch build hash: `undefined`
+Elasticsearch version: `9.7.0-SNAPSHOT`  
+Elasticsearch build hash: `6a4760b6fecfdf986bbc6737c2bb5828bb590674`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ Elasticsearch build hash: `undefined`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 3430/3510 | 3451/3510 | stable | undefined |  |
+| `search` | :red_circle: | 3430/3510 | 3452/3510 | stable | undefined |  |
 | `get` | :red_circle: | 483/483 | 464/480 | stable | undefined |  |
 | `update_by_query` | :red_circle: | 46/47 | 46/46 | stable | undefined |  |
 | `nodes.info` | :red_circle: | 125/125 | 29/125 | stable | undefined |  |
@@ -195,7 +195,7 @@ Elasticsearch build hash: `undefined`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 72/72 | 23/23 | stable | undefined |  |
-| `search` | :red_circle: | 3430/3510 | 3451/3510 | stable | undefined |  |
+| `search` | :red_circle: | 3430/3510 | 3452/3510 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -394,7 +394,7 @@ Elasticsearch build hash: `undefined`
 | `put_data_source` | :green_circle: | 4/4 | 0/0 | experimental | undefined |  |
 | `put_dataset` | :green_circle: | 2/2 | 0/0 | experimental | undefined |  |
 | `put_view` | :red_circle: | 45/49 | 0/0 | experimental | undefined |  |
-| `query` | :green_circle: | 829/829 | 0/0 | stable | undefined |  |
+| `query` | :green_circle: | 836/836 | 0/0 | stable | undefined |  |
 | **Summary** | :red_circle: | 99.6% | 0% | | | |
 
 [Back to top](#Summary)

@@ -1,0 +1,53 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/264_unmapped_fields_resolved_by_shard.yml",
+  "name": "a multi-valued field read from _source warns as it does after loading",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"load\"; FROM mapped,mv_unmapped METADATA _id | WHERE k == \"a\" | KEEP _id | SORT _id | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 07 Nov 2026 11:01:34 GMT",
+      "took-nanos": "16466198",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-6a4760b6fecfdf986bbc6737c2bb5828bb590674 \"Line 1:74: evaluation of [k == \\\"a\\\"] failed, treating result as null. Only first 20 failures recorded.\", 299 Elasticsearch-9.7.0-6a4760b6fecfdf986bbc6737c2bb5828bb590674 \"Line 1:74: java.lang.IllegalArgumentException: single-value function encountered multi-value\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 254,
+      "columns": [
+        {
+          "name": "_id",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1794049294501,
+      "cpu_nanos": 2135640,
+      "documents_found": 3,
+      "driver_nanos": 2992516,
+      "expiration_time_in_millis": 1794481294408,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 26,
+      "start_time_in_millis": 1794049294485,
+      "took": 16,
+      "values": [
+        [
+          "m1"
+        ],
+        [
+          "v2"
+        ]
+      ],
+      "values_loaded": 6
+    },
+    "statusCode": 200
+  }
+}
