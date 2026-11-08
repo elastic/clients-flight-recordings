@@ -1,0 +1,59 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/264_unmapped_fields_resolved_by_shard.yml",
+  "name": "a shard runs the filter on the container of its unmapped fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"load\"; FROM numbers, sink METADATA _id | EVAL n = k::long | WHERE n > 1 | KEEP _id, n | SORT _id | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sun, 08 Nov 2026 11:11:59 GMT",
+      "took-nanos": "11392613",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-87860ac45d16e216fe893a558684f478736cbabe \"Line 1:29: evaluation of [FROM numbers, sink METADATA _id] failed, treating result as null. Only first 20 failures recorded.\", 299 Elasticsearch-9.7.0-87860ac45d16e216fe893a558684f478736cbabe \"Line 1:29: org.elasticsearch.xpack.esql.core.InvalidArgumentException: Cannot parse number [a]\", 299 Elasticsearch-9.7.0-87860ac45d16e216fe893a558684f478736cbabe \"Line 1:29: org.elasticsearch.xpack.esql.core.InvalidArgumentException: Cannot parse number [b]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 144,
+      "columns": [
+        {
+          "name": "_id",
+          "type": "keyword"
+        },
+        {
+          "name": "n",
+          "type": "long"
+        }
+      ],
+      "completion_time_in_millis": 1794136319259,
+      "cpu_nanos": 2831594,
+      "documents_found": 5,
+      "driver_nanos": 2689520,
+      "expiration_time_in_millis": 1794568319199,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 30,
+      "start_time_in_millis": 1794136319248,
+      "took": 11,
+      "values": [
+        [
+          "c4",
+          2
+        ],
+        [
+          "n1",
+          3
+        ]
+      ],
+      "values_loaded": 4
+    },
+    "statusCode": 200
+  }
+}
