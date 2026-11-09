@@ -1,0 +1,52 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/264_unmapped_fields_resolved_by_shard.yml",
+  "name": "fillnull fills what the filter after it reads under load_all",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"load_all\"; FROM mapped,unmapped,strict METADATA _id | WHERE k == \"a\" | STATS ids = VALUES(_id) | EVAL ids = MV_SORT(ids) | LIMIT 1"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Mon, 09 Nov 2026 11:11:21 GMT",
+      "took-nanos": "13323469",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 291,
+      "columns": [
+        {
+          "name": "ids",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1794222681328,
+      "cpu_nanos": 2175521,
+      "documents_found": 4,
+      "driver_nanos": 2100023,
+      "expiration_time_in_millis": 1794654681150,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 20,
+      "start_time_in_millis": 1794222681315,
+      "took": 13,
+      "values": [
+        [
+          [
+            "m1",
+            "s1"
+          ]
+        ]
+      ],
+      "values_loaded": 5
+    },
+    "statusCode": 200
+  }
+}

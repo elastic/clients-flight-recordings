@@ -1,11 +1,11 @@
 ## Summary
 
 Elasticsearch version: `9.7.0-SNAPSHOT`  
-Elasticsearch build hash: `87860ac45d16e216fe893a558684f478736cbabe`
+Elasticsearch build hash: `9150cde26e38e288d37a0bf901583a9c6545b518`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 603 | 539 (89.4%) | 64 (10.6%) | 122 (20.2%) | 0 (0%) |
+| 603 | 540 (89.6%) | 63 (10.4%) | 122 (20.2%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
@@ -14,7 +14,7 @@ Elasticsearch build hash: `87860ac45d16e216fe893a558684f478736cbabe`
 | --- | --- | --- | --- | --- | --- |
 | `stable` | 501 | 445 (88.8%) | 56 (11.2%) | 102 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 78 | 73 (93.6%) | 5 (6.4%) | 20 | 0 |
+| `experimental` | 78 | 74 (94.9%) | 4 (5.1%) | 20 | 0 |
 
 </details>
 
@@ -34,7 +34,7 @@ Elasticsearch build hash: `87860ac45d16e216fe893a558684f478736cbabe`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 3430/3510 | 3452/3510 | stable | undefined |  |
+| `search` | :red_circle: | 3430/3510 | 3451/3510 | stable | undefined |  |
 | `get` | :red_circle: | 483/483 | 464/480 | stable | undefined |  |
 | `update_by_query` | :red_circle: | 46/47 | 46/46 | stable | undefined |  |
 | `nodes.info` | :red_circle: | 125/125 | 29/125 | stable | undefined |  |
@@ -50,7 +50,7 @@ Elasticsearch build hash: `87860ac45d16e216fe893a558684f478736cbabe`
 | `indices.stats` | :red_circle: | 142/143 | 58/142 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1731/1856 | 1856/1856 | stable | undefined |  |
 | `open_point_in_time` | :red_circle: | 7/12 | 12/12 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 97/97 | 1/93 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 97/97 | 2/93 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 193/194 | 194/194 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 105/105 | 80/105 | stable | undefined |  |
 | `security.get_token` | :red_circle: | 27/28 | 27/27 | stable | undefined |  |
@@ -122,9 +122,9 @@ Elasticsearch build hash: `87860ac45d16e216fe893a558684f478736cbabe`
 | `delete_desired_nodes` | :green_circle: | 1/1 | 1/1 | experimental | undefined |  |
 | `get_desired_balance` | :green_circle: | 10/10 | 10/10 | experimental | undefined |  |
 | `get_desired_nodes` | :green_circle: | 17/17 | 17/17 | experimental | undefined |  |
-| `prevalidate_node_removal` | :red_circle: | 0/2 | 2/2 | experimental | undefined |  |
+| `prevalidate_node_removal` | :green_circle: | 2/2 | 2/2 | experimental | undefined |  |
 | `update_desired_nodes` | :red_circle: | 16/17 | 17/17 | experimental | undefined |  |
-| **Summary** | :red_circle: | 93.8% | 100% | | | |
+| **Summary** | :red_circle: | 97.9% | 100% | | | |
 
 [Back to top](#Summary)
 
@@ -195,7 +195,7 @@ Elasticsearch build hash: `87860ac45d16e216fe893a558684f478736cbabe`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 72/72 | 23/23 | stable | undefined |  |
-| `search` | :red_circle: | 3430/3510 | 3452/3510 | stable | undefined |  |
+| `search` | :red_circle: | 3430/3510 | 3451/3510 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -1080,8 +1080,8 @@ Elasticsearch build hash: `87860ac45d16e216fe893a558684f478736cbabe`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :red_circle: | 8/8 | 1/4 | stable | undefined |  |
-| `usage` | :red_circle: | 97/97 | 1/93 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 2.1% | | | |
+| `usage` | :red_circle: | 97/97 | 2/93 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 3.1% | | | |
 
 [Back to top](#Summary)
 
