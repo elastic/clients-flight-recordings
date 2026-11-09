@@ -1,11 +1,11 @@
 ## Summary
 
 Elasticsearch version: `9.7.0-SNAPSHOT`  
-Elasticsearch build hash: `87860ac45d16e216fe893a558684f478736cbabe`
+Elasticsearch build hash: `9150cde26e38e288d37a0bf901583a9c6545b518`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 617 | 580 (94%) | 37 (6%) | 132 (21.4%) | 0 (0%) |
+| 617 | 581 (94.2%) | 36 (5.8%) | 132 (21.4%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
@@ -14,7 +14,7 @@ Elasticsearch build hash: `87860ac45d16e216fe893a558684f478736cbabe`
 | --- | --- | --- | --- | --- | --- |
 | `stable` | 513 | 482 (94%) | 31 (6%) | 109 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
-| `experimental` | 80 | 77 (96.3%) | 3 (3.8%) | 23 | 0 |
+| `experimental` | 80 | 78 (97.5%) | 2 (2.5%) | 23 | 0 |
 
 </details>
 
@@ -122,9 +122,9 @@ Elasticsearch build hash: `87860ac45d16e216fe893a558684f478736cbabe`
 | `delete_desired_nodes` | :green_circle: | 1/1 | 1/1 | experimental | undefined |  |
 | `get_desired_balance` | :green_circle: | 10/10 | 10/10 | experimental | undefined |  |
 | `get_desired_nodes` | :green_circle: | 17/17 | 17/17 | experimental | undefined |  |
-| `prevalidate_node_removal` | :red_circle: | 0/2 | 2/2 | experimental | undefined |  |
+| `prevalidate_node_removal` | :green_circle: | 2/2 | 2/2 | experimental | undefined |  |
 | `update_desired_nodes` | :red_circle: | 16/17 | 17/17 | experimental | undefined |  |
-| **Summary** | :red_circle: | 93.8% | 100% | | | |
+| **Summary** | :red_circle: | 97.9% | 100% | | | |
 
 [Back to top](#Summary)
 
