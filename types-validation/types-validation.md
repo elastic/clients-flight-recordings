@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `8.19.25-SNAPSHOT`  
-Elasticsearch build hash: `12009700f980cb9c50b3ebedd5fc5d2bb4c6a988`
+Elasticsearch build hash: `edcee9773b35c4a1d0b86dae6a270c9cff3e5450`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ Elasticsearch build hash: `12009700f980cb9c50b3ebedd5fc5d2bb4c6a988`
 | `indices.put_mapping` | :red_circle: | 126/143 | 143/143 | stable | undefined |  |
 | `indices.stats` | :red_circle: | 115/115 | 36/114 | stable | undefined |  |
 | `indices.create` | :red_circle: | 1258/1320 | 1320/1320 | stable | undefined |  |
-| `xpack.usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
+| `xpack.usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
 | `indices.put_index_template` | :red_circle: | 135/142 | 142/142 | stable | undefined |  |
 | `indices.get_settings` | :red_circle: | 90/90 | 71/90 | stable | undefined |  |
 | `indices.update_aliases` | :red_circle: | 36/36 | 9/36 | stable | undefined |  |
@@ -54,7 +54,7 @@ Elasticsearch build hash: `12009700f980cb9c50b3ebedd5fc5d2bb4c6a988`
 | `nodes.stats` | :red_circle: | 47/47 | 17/47 | stable | undefined |  |
 | `put_script` | :red_circle: | 47/49 | 49/49 | stable | undefined |  |
 | `indices.get_data_stream` | :red_circle: | 118/118 | 17/118 | stable | undefined |  |
-| **Summary** | :red_circle: | 97.2% | 92.8% | | | |
+| **Summary** | :red_circle: | 97.2% | 92.7% | | | |
 
 </details>
 
@@ -1025,8 +1025,8 @@ Elasticsearch build hash: `12009700f980cb9c50b3ebedd5fc5d2bb4c6a988`
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
 | `info` | :green_circle: | 8/8 | 4/4 | stable | undefined |  |
-| `usage` | :red_circle: | 42/42 | 2/38 | stable | undefined |  |
-| **Summary** | :red_circle: | 100% | 14.3% | | | |
+| `usage` | :red_circle: | 42/42 | 1/38 | stable | undefined |  |
+| **Summary** | :red_circle: | 100% | 11.9% | | | |
 
 [Back to top](#Summary)
 

@@ -1,0 +1,62 @@
+{
+  "api": "watcher.put_watch",
+  "file": "/test/platinum/watcher/usage/10_basic.yml",
+  "name": "Test watcher usage stats output",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "actions": {
+          "logging": {
+            "logging": {
+              "text": "Successfully ran my_watch to test for search input"
+            }
+          }
+        },
+        "condition": {
+          "compare": {
+            "ctx.payload.hits.total": {
+              "gte": 1
+            }
+          }
+        },
+        "input": {
+          "search": {
+            "request": {
+              "body": {
+                "query": {
+                  "match_all": {
+                  }
+                }
+              },
+              "indices": [
+                "my_test_index"
+              ]
+            }
+          }
+        },
+        "trigger": {
+          "schedule": {
+            "cron": "0 0 0 1 * ? 2099"
+          }
+        }
+      },
+      "id": "usage_stats_watch"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "86",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "_id": "usage_stats_watch",
+      "_primary_term": 1,
+      "_seq_no": 94,
+      "_version": 2,
+      "created": true
+    },
+    "statusCode": 201
+  }
+}
