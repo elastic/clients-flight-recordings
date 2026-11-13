@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.7.0-SNAPSHOT`  
-Elasticsearch build hash: `a732d2933eb20b287bc973328e706330571324ee`
+Elasticsearch build hash: `12d450583f0553000d81d4a1b6559ff704e7cf5a`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ Elasticsearch build hash: `a732d2933eb20b287bc973328e706330571324ee`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 3433/3519 | 3461/3519 | stable | undefined |  |
+| `search` | :red_circle: | 3445/3531 | 3473/3531 | stable | undefined |  |
 | `index` | :red_circle: | 2116/2137 | 2139/2139 | stable | undefined |  |
 | `get` | :red_circle: | 468/485 | 466/482 | stable | undefined |  |
 | `update_by_query` | :red_circle: | 43/47 | 46/46 | stable | undefined |  |
@@ -194,7 +194,7 @@ Elasticsearch build hash: `a732d2933eb20b287bc973328e706330571324ee`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 72/72 | 23/23 | stable | undefined |  |
-| `search` | :red_circle: | 3433/3519 | 3461/3519 | stable | undefined |  |
+| `search` | :red_circle: | 3445/3531 | 3473/3531 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -378,7 +378,7 @@ Elasticsearch build hash: `a732d2933eb20b287bc973328e706330571324ee`
 | `get_view` | :green_circle: | 19/19 | 0/0 | experimental | undefined |  |
 | `list_queries` | :green_circle: | 1/1 | 0/0 | experimental | undefined |  |
 | `put_view` | :red_circle: | 45/49 | 0/0 | experimental | undefined |  |
-| `query` | :red_circle: | 872/879 | 0/0 | stable | undefined |  |
+| `query` | :red_circle: | 874/881 | 0/0 | stable | undefined |  |
 | **Summary** | :red_circle: | 98.8% | 0% | | | |
 
 [Back to top](#Summary)
