@@ -1,0 +1,53 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/264_unmapped_fields_resolved_by_shard.yml",
+  "name": "a multi-valued field read from _source warns as it does after loading",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"load\"; FROM mapped,mv_unmapped METADATA _id | EVAL k = CONCAT(k, \"\") | WHERE k == \"a\" | KEEP _id | SORT _id | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Fri, 13 Nov 2026 11:16:55 GMT",
+      "took-nanos": "10982911",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-12d450583f0553000d81d4a1b6559ff704e7cf5a \"Line 1:77: evaluation of [CONCAT(k, \\\"\\\")] failed, treating result as null. Only first 20 failures recorded.\", 299 Elasticsearch-9.7.0-12d450583f0553000d81d4a1b6559ff704e7cf5a \"Line 1:77: java.lang.IllegalArgumentException: single-value function encountered multi-value\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 193,
+      "columns": [
+        {
+          "name": "_id",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1794568615610,
+      "cpu_nanos": 1719769,
+      "documents_found": 5,
+      "driver_nanos": 1612743,
+      "expiration_time_in_millis": 1795000615482,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 35,
+      "start_time_in_millis": 1794568615600,
+      "took": 10,
+      "values": [
+        [
+          "m1"
+        ],
+        [
+          "v2"
+        ]
+      ],
+      "values_loaded": 7
+    },
+    "statusCode": 200
+  }
+}
