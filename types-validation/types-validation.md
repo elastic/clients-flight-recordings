@@ -1,18 +1,18 @@
 ## Summary
 
-Elasticsearch version: `undefined`  
-Elasticsearch build hash: `undefined`
+Elasticsearch version: `9.7.0-SNAPSHOT`  
+Elasticsearch build hash: `12d450583f0553000d81d4a1b6559ff704e7cf5a`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 617 | 583 (94.5%) | 34 (5.5%) | 132 (21.4%) | 0 (0%) |
+| 619 | 585 (94.5%) | 34 (5.5%) | 134 (21.6%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
 
 |  | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- | --- |
-| `stable` | 513 | 484 (94.3%) | 29 (5.7%) | 109 | 0 |
+| `stable` | 514 | 485 (94.4%) | 29 (5.6%) | 110 | 0 |
 | `beta` | 24 | 21 (87.5%) | 3 (12.5%) | 0 | 0 |
 | `experimental` | 80 | 78 (97.5%) | 2 (2.5%) | 23 | 0 |
 
@@ -34,7 +34,7 @@ Elasticsearch build hash: `undefined`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 3498/3519 | 3512/3519 | stable | undefined |  |
+| `search` | :red_circle: | 3510/3531 | 3524/3531 | stable | undefined |  |
 | `indices.get_mapping` | :red_circle: | 295/295 | 247/295 | stable | undefined |  |
 | `watcher.get_watch` | :red_circle: | 42/42 | 39/42 | stable | undefined |  |
 | `watcher.put_watch` | :red_circle: | 56/60 | 60/60 | stable | undefined |  |
@@ -90,6 +90,7 @@ Elasticsearch build hash: `undefined`
 - [`nodes`](#nodes)
 - [`profiling`](#profiling)
 - [`project`](#project)
+- [`prometheus`](#prometheus)
 - [`query_rules`](#query_rules)
 - [`rollup`](#rollup)
 - [`search_application`](#search_application)
@@ -113,7 +114,7 @@ Elasticsearch build hash: `undefined`
 
 ## Report
 
-:construction: 21.3% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
+:construction: 20.8% namespaces have failures, and the namespace with the most failures is [`xpack`](#xpack) with 50% failures.
 
 ### _internal
 
@@ -197,7 +198,7 @@ Elasticsearch build hash: `undefined`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 72/72 | 23/23 | stable | undefined |  |
-| `search` | :red_circle: | 3498/3519 | 3512/3519 | stable | undefined |  |
+| `search` | :red_circle: | 3510/3531 | 3524/3531 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
@@ -410,7 +411,7 @@ Elasticsearch build hash: `undefined`
 | `put_data_source` | :green_circle: | 4/4 | 0/0 | experimental | undefined |  |
 | `put_dataset` | :green_circle: | 2/2 | 0/0 | experimental | undefined |  |
 | `put_view` | :green_circle: | 49/49 | 0/0 | stable | undefined |  |
-| `query` | :green_circle: | 879/879 | 0/0 | stable | undefined |  |
+| `query` | :green_circle: | 881/881 | 0/0 | stable | undefined |  |
 | `test_data_source_connection` | :green_circle: | 3/3 | 0/0 | experimental | undefined |  |
 | **Summary** | :green_circle: | 100% | 0% | | | |
 
@@ -551,7 +552,9 @@ Elasticsearch build hash: `undefined`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `chat_completion_unified` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| `chat_completion` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| `chat_completion_streaming` | :white_circle: | Missing test | Missing test | stable | undefined |  |
+| `chat_completion_unified` | :white_circle: | Missing test | Missing test | stable | undefined | deprecated |
 | `completion` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `decision` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `delete` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
@@ -561,7 +564,6 @@ Elasticsearch build hash: `undefined`
 | `get` | :green_circle: | 2/2 | 2/2 | stable | undefined |  |
 | `get_region_policy` | :green_circle: | 4/4 | 4/4 | stable | undefined |  |
 | `inference` | :red_circle: | 0/3 | 0/3 | stable | undefined |  |
-| `non_streaming_chat_completion` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
 | `put_ai21` | :white_circle: | Missing test | Missing test | stable | undefined |  |
 | `put_alibabacloud` | :white_circle: | Missing test | Missing test | stable | undefined |  |
@@ -783,6 +785,15 @@ Elasticsearch build hash: `undefined`
 | `get_many_routing` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `get_routing` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
 | `tags` | :white_circle: | Missing test | Missing test | experimental | undefined |  |
+| **Summary** | :white_circle: | 0% | 0% | | | |
+
+[Back to top](#Summary)
+
+### prometheus
+
+| API | Status | Request | Response | Stability | Visibility | Meta |
+| --- | --- | --- | --- | --- | --- | --- |
+| `status_buildinfo` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
 | **Summary** | :white_circle: | 0% | 0% | | | |
 
 [Back to top](#Summary)
