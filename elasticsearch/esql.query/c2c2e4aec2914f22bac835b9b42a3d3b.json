@@ -1,0 +1,64 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/40_tsdb.yml",
+  "name": "TS null filtering through expressions over metrics",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "TS test-metric-casts | EVAL computed = a + plain | STATS a = max(a), absent = max(absent_over_time(computed)) BY host | SORT host"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 14 Nov 2026 11:12:09 GMT",
+      "took-nanos": "25531357",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 420,
+      "columns": [
+        {
+          "name": "a",
+          "type": "long"
+        },
+        {
+          "name": "absent",
+          "type": "boolean"
+        },
+        {
+          "name": "host",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1794654729881,
+      "cpu_nanos": 4379056,
+      "documents_found": 2,
+      "driver_nanos": 4275000,
+      "expiration_time_in_millis": 1795086729713,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 34,
+      "start_time_in_millis": 1794654729856,
+      "took": 25,
+      "values": [
+        [
+          1,
+          true,
+          "h1"
+        ],
+        [
+          null,
+          true,
+          "h2"
+        ]
+      ],
+      "values_loaded": 8
+    },
+    "statusCode": 200
+  }
+}
