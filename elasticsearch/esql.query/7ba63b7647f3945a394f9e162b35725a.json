@@ -1,0 +1,58 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/240_timezone.yml",
+  "name": "identical time_zone at top level and under settings is accepted",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM tzs\n| EVAL hour=DATE_EXTRACT(\"hour_of_day\", @timestamp)\n| SORT @timestamp ASC\n| LIMIT 1\n",
+        "settings": {
+          "time_zone": "Europe/Paris"
+        },
+        "time_zone": "Europe/Paris"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 14 Nov 2026 11:07:09 GMT",
+      "took-nanos": "10295817",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 6,
+      "columns": [
+        {
+          "name": "@timestamp",
+          "type": "date"
+        },
+        {
+          "name": "hour",
+          "type": "long"
+        }
+      ],
+      "completion_time_in_millis": 1794654429443,
+      "cpu_nanos": 1380459,
+      "documents_found": 1,
+      "driver_nanos": 1212399,
+      "expiration_time_in_millis": 1795086429304,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 9,
+      "start_time_in_millis": 1794654429433,
+      "took": 10,
+      "values": [
+        [
+          "2025-05-31T02:00:00.000+02:00",
+          2
+        ]
+      ],
+      "values_loaded": 1
+    },
+    "statusCode": 200
+  }
+}
