@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `9.7.0-SNAPSHOT`  
-Elasticsearch build hash: `0979af68041b0264764b846fadaf518716b3e9bd`
+Elasticsearch build hash: `b7d3b22b36b514d2ef002872b5dba6622bce5080`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -34,7 +34,7 @@ Elasticsearch build hash: `0979af68041b0264764b846fadaf518716b3e9bd`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
-| `search` | :red_circle: | 3446/3532 | 3473/3532 | stable | undefined |  |
+| `search` | :red_circle: | 3446/3532 | 3474/3532 | stable | undefined |  |
 | `index` | :red_circle: | 2117/2138 | 2140/2140 | stable | undefined |  |
 | `get` | :red_circle: | 468/485 | 466/482 | stable | undefined |  |
 | `update_by_query` | :red_circle: | 43/47 | 46/46 | stable | undefined |  |
@@ -194,7 +194,7 @@ Elasticsearch build hash: `0979af68041b0264764b846fadaf518716b3e9bd`
 | `render_search_template` | :green_circle: | 1/1 | 1/1 | stable | undefined |  |
 | `scripts_painless_execute` | :green_circle: | 4/4 | 4/4 | experimental | undefined |  |
 | `scroll` | :green_circle: | 72/72 | 23/23 | stable | undefined |  |
-| `search` | :red_circle: | 3446/3532 | 3473/3532 | stable | undefined |  |
+| `search` | :red_circle: | 3446/3532 | 3474/3532 | stable | undefined |  |
 | `search_mvt` | :green_circle: | 34/34 | 0/0 | stable | undefined |  |
 | `search_shards` | :green_circle: | 8/8 | 8/8 | stable | undefined |  |
 | `search_template` | :green_circle: | 2/2 | 1/1 | stable | undefined |  |
