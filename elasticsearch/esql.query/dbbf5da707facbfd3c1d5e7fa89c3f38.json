@@ -1,0 +1,59 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/295_fillnull.yml",
+  "name": "fillnull all-fields under SET unmapped_fields load fills the loaded keyword column",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"load\"; FROM events_partial_nulls | FILLNULL \"filled\" ON * | KEEP event_id, extra_tag | SORT event_id | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Tue, 17 Nov 2026 11:36:05 GMT",
+      "took-nanos": "9148256",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-ed1b26be12c8ed00ae30a870de958fdd6b978d8e \"Line 1:57: [FILLNULL] the fill value could not be applied to the following fields, which were left unchanged: [event_id]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 204,
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "integer"
+        },
+        {
+          "name": "extra_tag",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1794915365704,
+      "cpu_nanos": 1423681,
+      "documents_found": 2,
+      "driver_nanos": 1305547,
+      "expiration_time_in_millis": 1795347365579,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 22,
+      "start_time_in_millis": 1794915365695,
+      "took": 9,
+      "values": [
+        [
+          20,
+          "gamma"
+        ],
+        [
+          21,
+          "filled"
+        ]
+      ],
+      "values_loaded": 3
+    },
+    "statusCode": 200
+  }
+}
