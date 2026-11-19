@@ -1,0 +1,115 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/220_explain.yml",
+  "name": "explainQuery",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "EXPLAIN (from test | where color == \"red\" | eval b = 20)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Thu, 19 Nov 2026 11:04:59 GMT",
+      "took-nanos": "12545191",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-21fe91c2c0ba31e92e7ca5e12376b2555bc77371 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 0,
+      "columns": [
+        {
+          "name": "cluster",
+          "type": "keyword"
+        },
+        {
+          "name": "node",
+          "type": "keyword"
+        },
+        {
+          "name": "role",
+          "type": "keyword"
+        },
+        {
+          "name": "type",
+          "type": "keyword"
+        },
+        {
+          "name": "plan",
+          "type": "keyword"
+        },
+        {
+          "name": "plan_json",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1795086299292,
+      "cpu_nanos": 50005,
+      "documents_found": 0,
+      "driver_nanos": 28459,
+      "expiration_time_in_millis": 1795518299229,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 0,
+      "start_time_in_millis": 1795086299280,
+      "took": 12,
+      "values": [
+        [
+          "",
+          "localhost",
+          "coordinator",
+          "parsedPlan",
+          "Eval[[20[INTEGER] AS b#2958]]\n\\_Filter[?color == red[KEYWORD]]\n  \\_UnresolvedRelation[test]",
+          "{\"id\":\"18221\",\"type\":\"Eval\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[],\"properties\":{\"fields\":[{\"type\":\"Alias\",\"source\":{\"line\":1,\"column\":50,\"text\":\"b = 20\",\"view\":null},\"repr\":\"20[INTEGER] AS b#2958\",\"args\":[{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":54,\"text\":\"20\",\"view\":null},\"repr\":\"20[INTEGER]\"}]}]},\"children\":[{\"id\":\"18220\",\"type\":\"Filter\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":22,\"text\":\"where color == \\\"red\\\"\",\"view\":null},\"origin\":[],\"properties\":{\"condition\":{\"type\":\"Equals\",\"source\":{\"line\":1,\"column\":28,\"text\":\"color == \\\"red\\\"\",\"view\":null},\"repr\":\"?color == red[KEYWORD]\",\"args\":[{\"type\":\"UnresolvedAttribute\",\"source\":{\"line\":1,\"column\":28,\"text\":\"color\",\"view\":null},\"repr\":\"?color\"},{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":37,\"text\":\"\\\"red\\\"\",\"view\":null},\"repr\":\"red[KEYWORD]\"}]}},\"children\":[{\"id\":\"18219\",\"type\":\"UnresolvedRelation\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"origin\":[],\"properties\":{\"indexPattern\":\"test\"},\"children\":[]}]}]}"
+        ],
+        [
+          "",
+          "localhost",
+          "coordinator",
+          "optimizedLogicalPlan",
+          "Eval[[20[INTEGER] AS b#2958]]\n\\_Limit[1000[INTEGER],false,false]\n  \\_Filter[color{f}#2959 == red[KEYWORD]]\n    \\_EsRelation[test][color{f}#2959, color.keyword{f}#2960, description{f..]",
+          "{\"id\":\"18230\",\"type\":\"Eval\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[],\"properties\":{\"fields\":[{\"type\":\"Alias\",\"source\":{\"line\":1,\"column\":50,\"text\":\"b = 20\",\"view\":null},\"repr\":\"20[INTEGER] AS b#2958\",\"args\":[{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":54,\"text\":\"20\",\"view\":null},\"repr\":\"20[INTEGER]\"}]}]},\"children\":[{\"id\":\"18229\",\"type\":\"Limit\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[],\"properties\":{\"limit\":{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"repr\":\"1000[INTEGER]\"},\"duplicated\":false,\"local\":false},\"children\":[{\"id\":\"18220\",\"type\":\"Filter\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":22,\"text\":\"where color == \\\"red\\\"\",\"view\":null},\"origin\":[],\"properties\":{\"condition\":{\"type\":\"Equals\",\"source\":{\"line\":1,\"column\":28,\"text\":\"color == \\\"red\\\"\",\"view\":null},\"repr\":\"color{f}#2959 == red[KEYWORD]\",\"args\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":28,\"text\":\"color\",\"view\":null},\"repr\":\"color{f}#2959\"},{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":37,\"text\":\"\\\"red\\\"\",\"view\":null},\"repr\":\"red[KEYWORD]\"}]}},\"children\":[{\"id\":\"18223\",\"type\":\"EsRelation\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"origin\":[],\"properties\":{\"indexPattern\":\"test\",\"indexMode\":\"STANDARD\",\"originalIndices\":{\"\":[\"test\"]},\"concreteIndices\":{\"\":[\"test\"]},\"indexProperties\":{\"test\":\"IndexProperties[indexMode=standard, numberOfShards=1, createdVersion=9133000]\"},\"p0\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color{f}#2959\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color.keyword{f}#2960\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description{f}#2961\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description.keyword{f}#2962\"}],\"slices\":\"SliceSelection[kind=UNSPECIFIED, names=[]]\"},\"children\":[]}]}]}]}"
+        ],
+        [
+          "",
+          "localhost",
+          "coordinator",
+          "optimizedPhysicalPlan",
+          "EvalExec[[20[INTEGER] AS b#2958]]\n\\_LimitExec[1000[INTEGER],2148]\n  \\_ExchangeExec[[color{f}#2959, color.keyword{f}#2960, description{f}#2961, description.keyword{f}#2962],false]\n    \\_FragmentExec[filter=null, estimatedRowSize=4, reducer=[], fragment=[<>\nProject[[color{f}#2959, color.keyword{f}#2960, description{f}#2961, description.keyword{f}#2962]]\n\\_Limit[1000[INTEGER],false,false]\n  \\_Filter[color{f}#2959 == red[KEYWORD]]\n    \\_EsRelation[test][color{f}#2959, color.keyword{f}#2960, description{f..]<>]]",
+          "{\"id\":\"18236\",\"type\":\"EvalExec\",\"role\":\"physical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[\"18230\"],\"properties\":{\"fields\":[{\"type\":\"Alias\",\"source\":{\"line\":1,\"column\":50,\"text\":\"b = 20\",\"view\":null},\"repr\":\"20[INTEGER] AS b#2958\",\"args\":[{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":54,\"text\":\"20\",\"view\":null},\"repr\":\"20[INTEGER]\"}]}]},\"children\":[{\"id\":\"18235\",\"type\":\"LimitExec\",\"role\":\"physical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[\"18229\"],\"properties\":{\"limit\":{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"repr\":\"1000[INTEGER]\"},\"estimatedRowSize\":2148},\"children\":[{\"id\":\"18234\",\"type\":\"ExchangeExec\",\"role\":\"physical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[],\"exchange_id\":\"ex-814d99-486\",\"properties\":{\"p0\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color{f}#2959\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color.keyword{f}#2960\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description{f}#2961\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description.keyword{f}#2962\"}],\"inBetweenAggs\":false},\"children\":[{\"id\":\"18238\",\"type\":\"FragmentExec\",\"role\":\"physical\",\"source\":{\"line\":null,\"column\":null,\"text\":null,\"view\":null},\"origin\":[],\"properties\":{\"estimatedRowSize\":4,\"fromViewBranch\":false},\"children\":[{\"id\":\"18237\",\"type\":\"Project\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[],\"properties\":{\"projections\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color{f}#2959\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color.keyword{f}#2960\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description{f}#2961\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description.keyword{f}#2962\"}]},\"children\":[{\"id\":\"18229\",\"type\":\"Limit\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[],\"properties\":{\"limit\":{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"repr\":\"1000[INTEGER]\"},\"duplicated\":false,\"local\":false},\"children\":[{\"id\":\"18220\",\"type\":\"Filter\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":22,\"text\":\"where color == \\\"red\\\"\",\"view\":null},\"origin\":[],\"properties\":{\"condition\":{\"type\":\"Equals\",\"source\":{\"line\":1,\"column\":28,\"text\":\"color == \\\"red\\\"\",\"view\":null},\"repr\":\"color{f}#2959 == red[KEYWORD]\",\"args\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":28,\"text\":\"color\",\"view\":null},\"repr\":\"color{f}#2959\"},{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":37,\"text\":\"\\\"red\\\"\",\"view\":null},\"repr\":\"red[KEYWORD]\"}]}},\"children\":[{\"id\":\"18223\",\"type\":\"EsRelation\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"origin\":[],\"properties\":{\"indexPattern\":\"test\",\"indexMode\":\"STANDARD\",\"originalIndices\":{\"\":[\"test\"]},\"concreteIndices\":{\"\":[\"test\"]},\"indexProperties\":{\"test\":\"IndexProperties[indexMode=standard, numberOfShards=1, createdVersion=9133000]\"},\"p0\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color{f}#2959\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color.keyword{f}#2960\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description{f}#2961\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description.keyword{f}#2962\"}],\"slices\":\"SliceSelection[kind=UNSPECIFIED, names=[]]\"},\"children\":[]}]}]}]}]}]}]}]}"
+        ],
+        [
+          "elasticsearch-x86-64-rest-test",
+          "localhost",
+          "data",
+          "optimizedLocalLogicalPlan",
+          "Project[[color{f}#2959, color.keyword{f}#2960, description{f}#2961, description.keyword{f}#2962]]\n\\_Limit[1000[INTEGER],false,false]\n  \\_Filter[color{f}#2959 == red[KEYWORD]]\n    \\_EsRelation[test][color{f}#2959, color.keyword{f}#2960, description{f..]",
+          "{\"id\":\"18237\",\"type\":\"Project\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[],\"properties\":{\"projections\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color{f}#2959\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color.keyword{f}#2960\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description{f}#2961\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description.keyword{f}#2962\"}]},\"children\":[{\"id\":\"18229\",\"type\":\"Limit\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[],\"properties\":{\"limit\":{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"repr\":\"1000[INTEGER]\"},\"duplicated\":false,\"local\":false},\"children\":[{\"id\":\"18220\",\"type\":\"Filter\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":22,\"text\":\"where color == \\\"red\\\"\",\"view\":null},\"origin\":[],\"properties\":{\"condition\":{\"type\":\"Equals\",\"source\":{\"line\":1,\"column\":28,\"text\":\"color == \\\"red\\\"\",\"view\":null},\"repr\":\"color{f}#2959 == red[KEYWORD]\",\"args\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":28,\"text\":\"color\",\"view\":null},\"repr\":\"color{f}#2959\"},{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":37,\"text\":\"\\\"red\\\"\",\"view\":null},\"repr\":\"red[KEYWORD]\"}]}},\"children\":[{\"id\":\"18223\",\"type\":\"EsRelation\",\"role\":\"logical\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"origin\":[],\"properties\":{\"indexPattern\":\"test\",\"indexMode\":\"STANDARD\",\"originalIndices\":{\"\":[\"test\"]},\"concreteIndices\":{\"\":[\"test\"]},\"indexProperties\":{\"test\":\"IndexProperties[indexMode=standard, numberOfShards=1, createdVersion=9133000]\"},\"p0\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color{f}#2959\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color.keyword{f}#2960\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description{f}#2961\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description.keyword{f}#2962\"}],\"slices\":\"SliceSelection[kind=UNSPECIFIED, names=[]]\"},\"children\":[]}]}]}]}"
+        ],
+        [
+          "elasticsearch-x86-64-rest-test",
+          "localhost",
+          "data",
+          "localPhysicalPlan",
+          "ExchangeSinkExec[[color{f}#2959, color.keyword{f}#2960, description{f}#2961, description.keyword{f}#2962],false]\n\\_ProjectExec[[color{f}#2959, color.keyword{f}#2960, description{f}#2961, description.keyword{f}#2962]]\n  \\_FieldExtractExec[[color{f}#2959, color.keyword{f}#2960, description{f..]<[],[],[]>,_doc{f}#2963]\n    \\_EsQueryExec[test], indexMode[standard], [_doc{f}#2963], limit[1000], sort[] estimatedRowSize[2156] queryBuilderAndTags [[QueryBuilderAndTags[query={\n  \"esql_single_value\" : {\n    \"field\" : \"color:synthetic_source_delegate\",\n    \"next\" : {\n      \"equals_synthetic_source_delegate\" : {\n        \"color\" : {\n          \"value\" : \"red\",\n          \"boost\" : 0.0\n        }\n      }\n    },\n    \"source\" : \"color == \\\"red\\\"@1:28\"\n  }\n}, tags=[]]]]",
+          "{\"id\":\"18249\",\"type\":\"ExchangeSinkExec\",\"role\":\"physical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[],\"exchange_id\":\"ex-814d99-486\",\"properties\":{\"p0\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color{f}#2959\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color.keyword{f}#2960\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description{f}#2961\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description.keyword{f}#2962\"}],\"intermediateAgg\":false},\"children\":[{\"id\":\"18263\",\"type\":\"ProjectExec\",\"role\":\"physical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[\"18237\"],\"properties\":{\"projections\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color{f}#2959\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color.keyword{f}#2960\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description{f}#2961\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description.keyword{f}#2962\"}]},\"children\":[{\"id\":\"18273\",\"type\":\"FieldExtractExec\",\"role\":\"physical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[],\"properties\":{\"attributesToExtract\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color{f}#2959\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color.keyword{f}#2960\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description{f}#2961\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description.keyword{f}#2962\"}],\"p0\":\"NONE\"},\"children\":[{\"id\":\"18264\",\"type\":\"EsQueryExec\",\"role\":\"physical\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"origin\":[\"18260\"],\"properties\":{\"indexPattern\":\"test\",\"indexMode\":\"STANDARD\",\"attrs\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"_doc{f}#2963\"}],\"limit\":{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"repr\":\"1000[INTEGER]\"},\"estimatedRowSize\":2156,\"detail\":{\"query\":\"{\\n  \\\"esql_single_value\\\" : {\\n    \\\"field\\\" : \\\"color:synthetic_source_delegate\\\",\\n    \\\"next\\\" : {\\n      \\\"equals_synthetic_source_delegate\\\" : {\\n        \\\"color\\\" : {\\n          \\\"value\\\" : \\\"red\\\",\\n          \\\"boost\\\" : 0.0\\n        }\\n      }\\n    },\\n    \\\"source\\\" : \\\"color == \\\\\\\"red\\\\\\\"@1:28\\\"\\n  }\\n}\"}},\"children\":[]}]}]}]}"
+        ],
+        [
+          "elasticsearch-x86-64-rest-test",
+          "localhost",
+          "final",
+          "physicalPlan",
+          "OutputExec[org.elasticsearch.xpack.esql.plugin.BoundedPageCollector@362ee69c]\n\\_EvalExec[[20[INTEGER] AS b#2958]]\n  \\_LimitExec[1000[INTEGER],2148]\n    \\_ExchangeSourceExec[[color{f}#2959, color.keyword{f}#2960, description{f}#2961, description.keyword{f}#2962],false]",
+          "{\"id\":\"18253\",\"type\":\"OutputExec\",\"role\":\"physical\",\"source\":{\"line\":null,\"column\":null,\"text\":null,\"view\":null},\"origin\":[],\"properties\":{\"pageConsumer\":\"org.elasticsearch.xpack.esql.plugin.BoundedPageCollector@362ee69c\"},\"children\":[{\"id\":\"18236\",\"type\":\"EvalExec\",\"role\":\"physical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[\"18230\"],\"properties\":{\"fields\":[{\"type\":\"Alias\",\"source\":{\"line\":1,\"column\":50,\"text\":\"b = 20\",\"view\":null},\"repr\":\"20[INTEGER] AS b#2958\",\"args\":[{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":54,\"text\":\"20\",\"view\":null},\"repr\":\"20[INTEGER]\"}]}]},\"children\":[{\"id\":\"18235\",\"type\":\"LimitExec\",\"role\":\"physical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[\"18229\"],\"properties\":{\"limit\":{\"type\":\"Literal\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"repr\":\"1000[INTEGER]\"},\"estimatedRowSize\":2148},\"children\":[{\"id\":\"18250\",\"type\":\"ExchangeSourceExec\",\"role\":\"physical\",\"source\":{\"line\":1,\"column\":45,\"text\":\"eval b = 20\",\"view\":null},\"origin\":[],\"exchange_id\":\"ex-814d99-486\",\"properties\":{\"p0\":[{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color{f}#2959\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"color.keyword{f}#2960\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description{f}#2961\"},{\"type\":\"FieldAttribute\",\"source\":{\"line\":1,\"column\":10,\"text\":\"from test\",\"view\":null},\"repr\":\"description.keyword{f}#2962\"}],\"intermediateAgg\":false},\"children\":[]}]}]}]}"
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}
