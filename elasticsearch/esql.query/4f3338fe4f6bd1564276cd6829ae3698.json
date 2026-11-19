@@ -1,0 +1,1459 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/120_profile.yml",
+  "name": "avg 8.14 or after",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "columnar": true,
+        "profile": true,
+        "query": "FROM test | STATS AVG(data) | LIMIT 1"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Thu, 19 Nov 2026 10:59:52 GMT",
+      "took-nanos": "31647744",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 40,
+      "columns": [
+        {
+          "name": "AVG(data)",
+          "type": "double"
+        }
+      ],
+      "completion_time_in_millis": 1795085992712,
+      "cpu_nanos": 1419248,
+      "documents_found": 40,
+      "driver_nanos": 1225299,
+      "expiration_time_in_millis": 1795517992572,
+      "is_partial": false,
+      "profile": {
+        "analysis": {
+          "start_millis": 1795085992685,
+          "stop_millis": 1795085992686,
+          "took_millis": 1,
+          "took_nanos": 1073108
+        },
+        "dataset_resolution": {
+          "start_millis": 1795085992682,
+          "stop_millis": 1795085992682,
+          "took_millis": 0,
+          "took_nanos": 12371
+        },
+        "drivers": [
+          {
+            "bytes_read": 40,
+            "cluster_name": "elasticsearch-x86-64-rest-test",
+            "cpu_nanos": 870690,
+            "description": "data",
+            "documents_found": 40,
+            "driver_nanos": 829693,
+            "iterations": 2,
+            "kind": "data",
+            "node_name": "localhost",
+            "operators": [
+              {
+                "operator": "LuceneSourceOperator[shards = [test:0], maxPageSize = 13107, remainingDocs = 2147483607]",
+                "plan_node_id": "6367",
+                "status": {
+                  "bytes_read": 0,
+                  "current": 2147483647,
+                  "pages_emitted": 1,
+                  "partitioning_strategies": {
+                    "test:0": "SHARD"
+                  },
+                  "process_nanos": 203828,
+                  "processed_queries": [
+                    "*:*"
+                  ],
+                  "processed_shards": [
+                    "test:0"
+                  ],
+                  "processed_slices": 1,
+                  "rows_emitted": 40,
+                  "slice_index": 0,
+                  "slice_max": 0,
+                  "slice_min": 0,
+                  "total_slices": 1
+                }
+              },
+              {
+                "operator": "ValuesSourceReaderOperator[fields = [data]]",
+                "plan_node_id": "6374",
+                "status": {
+                  "bytes_decoded": 320,
+                  "bytes_read": 40,
+                  "pages_emitted": 1,
+                  "pages_received": 1,
+                  "process_nanos": 172094,
+                  "readers_built": {
+                    "data:column_at_a_time:LongsFromDocValues.Singleton": 1
+                  },
+                  "rows_emitted": 40,
+                  "rows_received": 40,
+                  "source_bytes_loaded": 0,
+                  "source_docs_loaded": 0,
+                  "source_field_reads": 0,
+                  "values_loaded": 40
+                }
+              },
+              {
+                "operator": "EvalOperator[evaluator=ToDoubleFromLongEvaluator[l=Attribute[channel=1]]]",
+                "plan_node_id": "6365",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 49147,
+                  "rows_emitted": 40,
+                  "rows_received": 40
+                }
+              },
+              {
+                "operator": "AggregationOperator[aggregators=[Aggregator[aggregatorFunction=SumDoubleAggregatorFunction[channels=[2]], mode=INITIAL], Aggregator[aggregatorFunction=CountAggregatorFunction[channels=[1]], mode=INITIAL]]]",
+                "plan_node_id": "6366",
+                "status": {
+                  "aggregation_finish_nanos": 43656,
+                  "aggregation_nanos": 65913,
+                  "pages_processed": 1,
+                  "rows_emitted": 1,
+                  "rows_received": 40
+                }
+              },
+              {
+                "exchange_id": "ex-887c9a-143",
+                "operator": "ExchangeSinkOperator",
+                "plan_node_id": "6339",
+                "status": {
+                  "pages_received": 1,
+                  "rows_received": 1
+                }
+              }
+            ],
+            "read_cpu_nanos": 0,
+            "read_nanos": 0,
+            "rows_emitted": 121,
+            "sleeps": {
+              "counts": {
+              },
+              "first": [
+              ],
+              "last": [
+              ]
+            },
+            "start_millis": 1795085992706,
+            "stop_millis": 1795085992709,
+            "took_nanos": 2641857,
+            "values_loaded": 40
+          },
+          {
+            "bytes_read": 0,
+            "cluster_name": "elasticsearch-x86-64-rest-test",
+            "cpu_nanos": 548558,
+            "description": "final",
+            "documents_found": 0,
+            "driver_nanos": 395606,
+            "iterations": 4,
+            "kind": "final",
+            "node_name": "localhost",
+            "operators": [
+              {
+                "exchange_id": "ex-887c9a-143",
+                "operator": "ExchangeSourceOperator",
+                "plan_node_id": "6340",
+                "status": {
+                  "pages_emitted": 1,
+                  "pages_waiting": 0,
+                  "rows_emitted": 1
+                }
+              },
+              {
+                "operator": "AggregationOperator[aggregators=[Aggregator[aggregatorFunction=SumDoubleAggregatorFunction[channels=[0, 1, 2]], mode=FINAL], Aggregator[aggregatorFunction=CountAggregatorFunction[channels=[3, 4]], mode=FINAL]]]",
+                "plan_node_id": "6330",
+                "status": {
+                  "aggregation_finish_nanos": 49012,
+                  "aggregation_nanos": 30506,
+                  "pages_processed": 1,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "ProjectOperator[projection = [0, 1]]",
+                "plan_node_id": "6330",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 5671,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "LimitOperator[limit = 0/1]",
+                "plan_node_id": "6331",
+                "status": {
+                  "limit": 1,
+                  "limit_remaining": 0,
+                  "pages_processed": 1,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "EvalOperator[evaluator=DivDoublesEvaluator[lhs=Attribute[channel=0], rhs=CastLongToDoubleEvaluator[v=Attribute[channel=1]]]]",
+                "plan_node_id": "6332",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 36837,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "ProjectOperator[projection = [2]]",
+                "plan_node_id": "6333",
+                "status": {
+                  "pages_processed": 1,
+                  "process_nanos": 3034,
+                  "rows_emitted": 1,
+                  "rows_received": 1
+                }
+              },
+              {
+                "operator": "OutputOperator[columns = [AVG(data)]]",
+                "plan_node_id": "6345"
+              }
+            ],
+            "read_cpu_nanos": 0,
+            "read_nanos": 0,
+            "rows_emitted": 6,
+            "sleeps": {
+              "counts": {
+                "exchange empty": 2
+              },
+              "first": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1795085992695,
+                  "thread_name": "elasticsearch[localhost][esql_worker][T#4]",
+                  "wake_millis": 1795085992709
+                },
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1795085992709,
+                  "thread_name": "elasticsearch[localhost][esql_worker][T#1]",
+                  "wake_millis": 1795085992712
+                }
+              ],
+              "last": [
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1795085992695,
+                  "thread_name": "elasticsearch[localhost][esql_worker][T#4]",
+                  "wake_millis": 1795085992709
+                },
+                {
+                  "reason": "exchange empty",
+                  "sleep_millis": 1795085992709,
+                  "thread_name": "elasticsearch[localhost][esql_worker][T#1]",
+                  "wake_millis": 1795085992712
+                }
+              ]
+            },
+            "start_millis": 1795085992689,
+            "stop_millis": 1795085992713,
+            "took_nanos": 23172098,
+            "values_loaded": 0
+          }
+        ],
+        "enrich_resolution": {
+          "start_millis": 1795085992685,
+          "stop_millis": 1795085992685,
+          "took_millis": 0,
+          "took_nanos": 8357
+        },
+        "field_caps_calls": 1,
+        "indices_resolution": {
+          "start_millis": 1795085992683,
+          "stop_millis": 1795085992685,
+          "took_millis": 2,
+          "took_nanos": 2162894
+        },
+        "inference_resolution": {
+          "start_millis": 1795085992685,
+          "stop_millis": 1795085992685,
+          "took_millis": 0,
+          "took_nanos": 5185
+        },
+        "minimumTransportVersion": 9647000,
+        "parsing": {
+          "start_millis": 1795085992681,
+          "stop_millis": 1795085992682,
+          "took_millis": 1,
+          "took_nanos": 780713
+        },
+        "planning": {
+          "start_millis": 1795085992681,
+          "stop_millis": 1795085992688,
+          "took_millis": 7,
+          "took_nanos": 6410073
+        },
+        "planning_cpu_nanos": 4647233,
+        "plans": [
+          {
+            "cluster_name": "elasticsearch-x86-64-rest-test",
+            "description": "data",
+            "kind": "data",
+            "logical_optimization_nanos": 8677199,
+            "logical_plan": "Aggregate[[],[SUM($$AVG(data)$SUM$0{r$}#1110,true[BOOLEAN],PT0S[TIME_DURATION],compensated[KEYWORD],long_overflow_warn[K\nEYWORD]) AS $$SUM$AVG(data)$0#1108, COUNT(data{f}#1107,true[BOOLEAN],PT0S[TIME_DURATION]) AS $$COUNT$AVG(data)\n$1#1109]]\n\\_Eval[[TODOUBLE(data{f}#1107) AS $$AVG(data)$SUM$0#1110]]\n  \\_Filter[ISNOTNULL(data{f}#1107)]\n    \\_EsRelation[test][data{f}#1107]",
+            "logical_plan_json": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                          ],
+                          "id": "6295",
+                          "origin": [
+                          ],
+                          "properties": {
+                            "concreteIndices": {
+                              "": [
+                                "test"
+                              ]
+                            },
+                            "indexMode": "STANDARD",
+                            "indexPattern": "test",
+                            "indexProperties": {
+                              "test": "IndexProperties[indexMode=standard, numberOfShards=1, createdVersion=9133000]"
+                            },
+                            "originalIndices": {
+                              "": [
+                                "test"
+                              ]
+                            },
+                            "p0": [
+                              {
+                                "repr": "data{f}#1107",
+                                "source": {
+                                  "column": 1,
+                                  "line": 1,
+                                  "text": "FROM test",
+                                  "view": null
+                                },
+                                "type": "FieldAttribute"
+                              }
+                            ],
+                            "slices": "SliceSelection[kind=UNSPECIFIED, names=[]]"
+                          },
+                          "role": "logical",
+                          "source": {
+                            "column": 1,
+                            "line": 1,
+                            "text": "FROM test",
+                            "view": null
+                          },
+                          "type": "EsRelation"
+                        }
+                      ],
+                      "id": "6360",
+                      "origin": [
+                      ],
+                      "properties": {
+                        "condition": {
+                          "args": [
+                            {
+                              "repr": "data{f}#1107",
+                              "source": {
+                                "column": 23,
+                                "line": 1,
+                                "text": "data",
+                                "view": null
+                              },
+                              "type": "FieldAttribute"
+                            }
+                          ],
+                          "repr": "ISNOTNULL(data{f}#1107)",
+                          "source": {
+                            "column": 13,
+                            "line": 1,
+                            "text": "STATS AVG(data)",
+                            "view": null
+                          },
+                          "type": "IsNotNull"
+                        }
+                      },
+                      "role": "logical",
+                      "source": {
+                        "column": 13,
+                        "line": 1,
+                        "text": "STATS AVG(data)",
+                        "view": null
+                      },
+                      "type": "Filter"
+                    }
+                  ],
+                  "id": "6361",
+                  "origin": [
+                  ],
+                  "properties": {
+                    "fields": [
+                      {
+                        "args": [
+                          {
+                            "args": [
+                              {
+                                "repr": "data{f}#1107",
+                                "source": {
+                                  "column": 23,
+                                  "line": 1,
+                                  "text": "data",
+                                  "view": null
+                                },
+                                "type": "FieldAttribute"
+                              }
+                            ],
+                            "repr": "TODOUBLE(data{f}#1107)",
+                            "source": {
+                              "column": 19,
+                              "line": 1,
+                              "text": "AVG(data)",
+                              "view": null
+                            },
+                            "type": "ToDouble"
+                          }
+                        ],
+                        "repr": "TODOUBLE(data{f}#1107) AS $$AVG(data)$SUM$0#1110",
+                        "source": {
+                          "column": 19,
+                          "line": 1,
+                          "text": "AVG(data)",
+                          "view": null
+                        },
+                        "type": "Alias"
+                      }
+                    ]
+                  },
+                  "role": "logical",
+                  "source": {
+                    "column": 13,
+                    "line": 1,
+                    "text": "STATS AVG(data)",
+                    "view": null
+                  },
+                  "type": "Eval"
+                }
+              ],
+              "id": "6304",
+              "origin": [
+              ],
+              "properties": {
+                "aggregates": [
+                  {
+                    "args": [
+                      {
+                        "args": [
+                          {
+                            "repr": "$$AVG(data)$SUM$0{r$}#1110",
+                            "source": {
+                              "column": 19,
+                              "line": 1,
+                              "text": "AVG(data)",
+                              "view": null
+                            },
+                            "type": "ReferenceAttribute"
+                          },
+                          {
+                            "repr": "true[BOOLEAN]",
+                            "source": {
+                              "column": null,
+                              "line": null,
+                              "text": null,
+                              "view": null
+                            },
+                            "type": "Literal"
+                          },
+                          {
+                            "repr": "PT0S[TIME_DURATION]",
+                            "source": {
+                              "column": null,
+                              "line": null,
+                              "text": null,
+                              "view": null
+                            },
+                            "type": "Literal"
+                          },
+                          {
+                            "repr": "compensated[KEYWORD]",
+                            "source": {
+                              "column": null,
+                              "line": null,
+                              "text": null,
+                              "view": null
+                            },
+                            "type": "Literal"
+                          },
+                          {
+                            "repr": "long_overflow_warn[KEYWORD]",
+                            "source": {
+                              "column": null,
+                              "line": null,
+                              "text": null,
+                              "view": null
+                            },
+                            "type": "Literal"
+                          }
+                        ],
+                        "repr": "SUM($$AVG(data)$SUM$0{r$}#1110,true[BOOLEAN],PT0S[TIME_DURATION],compensated[KEYWORD],long_overflow_warn[KEYWORD])",
+                        "source": {
+                          "column": 19,
+                          "line": 1,
+                          "text": "AVG(data)",
+                          "view": null
+                        },
+                        "type": "Sum"
+                      }
+                    ],
+                    "repr": "SUM($$AVG(data)$SUM$0{r$}#1110,true[BOOLEAN],PT0S[TIME_DURATION],compensated[KEYWORD],long_overflow_warn[KEYWORD]) AS $$SUM$AVG(data)$0#1108",
+                    "source": {
+                      "column": 19,
+                      "line": 1,
+                      "text": "AVG(data)",
+                      "view": null
+                    },
+                    "type": "Alias"
+                  },
+                  {
+                    "args": [
+                      {
+                        "args": [
+                          {
+                            "repr": "data{f}#1107",
+                            "source": {
+                              "column": 23,
+                              "line": 1,
+                              "text": "data",
+                              "view": null
+                            },
+                            "type": "FieldAttribute"
+                          },
+                          {
+                            "repr": "true[BOOLEAN]",
+                            "source": {
+                              "column": null,
+                              "line": null,
+                              "text": null,
+                              "view": null
+                            },
+                            "type": "Literal"
+                          },
+                          {
+                            "repr": "PT0S[TIME_DURATION]",
+                            "source": {
+                              "column": null,
+                              "line": null,
+                              "text": null,
+                              "view": null
+                            },
+                            "type": "Literal"
+                          }
+                        ],
+                        "repr": "COUNT(data{f}#1107,true[BOOLEAN],PT0S[TIME_DURATION])",
+                        "source": {
+                          "column": 19,
+                          "line": 1,
+                          "text": "AVG(data)",
+                          "view": null
+                        },
+                        "type": "Count"
+                      }
+                    ],
+                    "repr": "COUNT(data{f}#1107,true[BOOLEAN],PT0S[TIME_DURATION]) AS $$COUNT$AVG(data)$1#1109",
+                    "source": {
+                      "column": 19,
+                      "line": 1,
+                      "text": "AVG(data)",
+                      "view": null
+                    },
+                    "type": "Alias"
+                  }
+                ],
+                "groupings": [
+                ]
+              },
+              "role": "logical",
+              "source": {
+                "column": 13,
+                "line": 1,
+                "text": "STATS AVG(data)",
+                "view": null
+              },
+              "type": "Aggregate"
+            },
+            "node_name": "localhost",
+            "physical_optimization_nanos": 502883,
+            "plan": "ExchangeSinkExec[[$$SUM$AVG(data)$0$value{r}#1111, $$SUM$AVG(data)$0$delta{r}#1112, $$SUM$AVG(data)$0$seen{r}#1113, $$COUNT$AVG\n(data)$1$count{r}#1114, $$COUNT$AVG(data)$1$seen{r}#1115],true]\n\\_AggregateExec[[],[SUM($$AVG(data)$SUM$0{r$}#1110,true[BOOLEAN],PT0S[TIME_DURATION],compensated[KEYWORD],long_overflow_warn[K\nEYWORD]) AS $$SUM$AVG(data)$0#1108, COUNT(data{f}#1107,true[BOOLEAN],PT0S[TIME_DURATION]) AS $$COUNT$AVG(data)\n$1#1109],INITIAL,[$$SUM$AVG(data)$0$value{r}#1121, $$SUM$AVG(data)$0$delta{r}#1122, $$SUM$AVG(data)$0$seen{r}#\n1123, $$COUNT$AVG(data)$1$count{r}#1124, $$COUNT$AVG(data)$1$seen{r}#1125],16]\n  \\_EvalExec[[TODOUBLE(data{f}#1107) AS $$AVG(data)$SUM$0#1110]]\n    \\_FieldExtractExec[[data{f}#1107]<[],[],[]>,_doc{f}#1126]\n      \\_EsQueryExec[test], indexMode[standard], [_doc{f}#1126], limit[], sort[] estimatedRowSize[20] queryBuilderAndTags [[QueryBuilderAndTags[query={\n  \"exists\" : {\n    \"field\" : \"data\",\n    \"boost\" : 0.0\n  }\n}, tags=[]]]]",
+            "plan_json": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                              ],
+                              "id": "6367",
+                              "origin": [
+                                "6363"
+                              ],
+                              "properties": {
+                                "attrs": [
+                                  {
+                                    "repr": "_doc{f}#1126",
+                                    "source": {
+                                      "column": 1,
+                                      "line": 1,
+                                      "text": "FROM test",
+                                      "view": null
+                                    },
+                                    "type": "FieldAttribute"
+                                  }
+                                ],
+                                "detail": {
+                                  "query": "{\n  \"exists\" : {\n    \"field\" : \"data\",\n    \"boost\" : 0.0\n  }\n}"
+                                },
+                                "estimatedRowSize": 20,
+                                "indexMode": "STANDARD",
+                                "indexPattern": "test"
+                              },
+                              "role": "physical",
+                              "source": {
+                                "column": 1,
+                                "line": 1,
+                                "text": "FROM test",
+                                "view": null
+                              },
+                              "type": "EsQueryExec"
+                            }
+                          ],
+                          "id": "6374",
+                          "origin": [
+                          ],
+                          "properties": {
+                            "attributesToExtract": [
+                              {
+                                "repr": "data{f}#1107",
+                                "source": {
+                                  "column": 23,
+                                  "line": 1,
+                                  "text": "data",
+                                  "view": null
+                                },
+                                "type": "FieldAttribute"
+                              }
+                            ],
+                            "p0": "NONE"
+                          },
+                          "role": "physical",
+                          "source": {
+                            "column": 13,
+                            "line": 1,
+                            "text": "STATS AVG(data)",
+                            "view": null
+                          },
+                          "type": "FieldExtractExec"
+                        }
+                      ],
+                      "id": "6365",
+                      "origin": [
+                        "6361"
+                      ],
+                      "properties": {
+                        "fields": [
+                          {
+                            "args": [
+                              {
+                                "args": [
+                                  {
+                                    "repr": "data{f}#1107",
+                                    "source": {
+                                      "column": 23,
+                                      "line": 1,
+                                      "text": "data",
+                                      "view": null
+                                    },
+                                    "type": "FieldAttribute"
+                                  }
+                                ],
+                                "repr": "TODOUBLE(data{f}#1107)",
+                                "source": {
+                                  "column": 19,
+                                  "line": 1,
+                                  "text": "AVG(data)",
+                                  "view": null
+                                },
+                                "type": "ToDouble"
+                              }
+                            ],
+                            "repr": "TODOUBLE(data{f}#1107) AS $$AVG(data)$SUM$0#1110",
+                            "source": {
+                              "column": 19,
+                              "line": 1,
+                              "text": "AVG(data)",
+                              "view": null
+                            },
+                            "type": "Alias"
+                          }
+                        ]
+                      },
+                      "role": "physical",
+                      "source": {
+                        "column": 13,
+                        "line": 1,
+                        "text": "STATS AVG(data)",
+                        "view": null
+                      },
+                      "type": "EvalExec"
+                    }
+                  ],
+                  "id": "6366",
+                  "origin": [
+                    "6304"
+                  ],
+                  "properties": {
+                    "aggregates": [
+                      {
+                        "args": [
+                          {
+                            "args": [
+                              {
+                                "repr": "$$AVG(data)$SUM$0{r$}#1110",
+                                "source": {
+                                  "column": 19,
+                                  "line": 1,
+                                  "text": "AVG(data)",
+                                  "view": null
+                                },
+                                "type": "ReferenceAttribute"
+                              },
+                              {
+                                "repr": "true[BOOLEAN]",
+                                "source": {
+                                  "column": null,
+                                  "line": null,
+                                  "text": null,
+                                  "view": null
+                                },
+                                "type": "Literal"
+                              },
+                              {
+                                "repr": "PT0S[TIME_DURATION]",
+                                "source": {
+                                  "column": null,
+                                  "line": null,
+                                  "text": null,
+                                  "view": null
+                                },
+                                "type": "Literal"
+                              },
+                              {
+                                "repr": "compensated[KEYWORD]",
+                                "source": {
+                                  "column": null,
+                                  "line": null,
+                                  "text": null,
+                                  "view": null
+                                },
+                                "type": "Literal"
+                              },
+                              {
+                                "repr": "long_overflow_warn[KEYWORD]",
+                                "source": {
+                                  "column": null,
+                                  "line": null,
+                                  "text": null,
+                                  "view": null
+                                },
+                                "type": "Literal"
+                              }
+                            ],
+                            "repr": "SUM($$AVG(data)$SUM$0{r$}#1110,true[BOOLEAN],PT0S[TIME_DURATION],compensated[KEYWORD],long_overflow_warn[KEYWORD])",
+                            "source": {
+                              "column": 19,
+                              "line": 1,
+                              "text": "AVG(data)",
+                              "view": null
+                            },
+                            "type": "Sum"
+                          }
+                        ],
+                        "repr": "SUM($$AVG(data)$SUM$0{r$}#1110,true[BOOLEAN],PT0S[TIME_DURATION],compensated[KEYWORD],long_overflow_warn[KEYWORD]) AS $$SUM$AVG(data)$0#1108",
+                        "source": {
+                          "column": 19,
+                          "line": 1,
+                          "text": "AVG(data)",
+                          "view": null
+                        },
+                        "type": "Alias"
+                      },
+                      {
+                        "args": [
+                          {
+                            "args": [
+                              {
+                                "repr": "data{f}#1107",
+                                "source": {
+                                  "column": 23,
+                                  "line": 1,
+                                  "text": "data",
+                                  "view": null
+                                },
+                                "type": "FieldAttribute"
+                              },
+                              {
+                                "repr": "true[BOOLEAN]",
+                                "source": {
+                                  "column": null,
+                                  "line": null,
+                                  "text": null,
+                                  "view": null
+                                },
+                                "type": "Literal"
+                              },
+                              {
+                                "repr": "PT0S[TIME_DURATION]",
+                                "source": {
+                                  "column": null,
+                                  "line": null,
+                                  "text": null,
+                                  "view": null
+                                },
+                                "type": "Literal"
+                              }
+                            ],
+                            "repr": "COUNT(data{f}#1107,true[BOOLEAN],PT0S[TIME_DURATION])",
+                            "source": {
+                              "column": 19,
+                              "line": 1,
+                              "text": "AVG(data)",
+                              "view": null
+                            },
+                            "type": "Count"
+                          }
+                        ],
+                        "repr": "COUNT(data{f}#1107,true[BOOLEAN],PT0S[TIME_DURATION]) AS $$COUNT$AVG(data)$1#1109",
+                        "source": {
+                          "column": 19,
+                          "line": 1,
+                          "text": "AVG(data)",
+                          "view": null
+                        },
+                        "type": "Alias"
+                      }
+                    ],
+                    "estimatedRowSize": 16,
+                    "groupings": [
+                    ],
+                    "intermediateAttributes": [
+                      {
+                        "repr": "$$SUM$AVG(data)$0$value{r}#1121",
+                        "source": {
+                          "column": null,
+                          "line": null,
+                          "text": null,
+                          "view": null
+                        },
+                        "type": "ReferenceAttribute"
+                      },
+                      {
+                        "repr": "$$SUM$AVG(data)$0$delta{r}#1122",
+                        "source": {
+                          "column": null,
+                          "line": null,
+                          "text": null,
+                          "view": null
+                        },
+                        "type": "ReferenceAttribute"
+                      },
+                      {
+                        "repr": "$$SUM$AVG(data)$0$seen{r}#1123",
+                        "source": {
+                          "column": null,
+                          "line": null,
+                          "text": null,
+                          "view": null
+                        },
+                        "type": "ReferenceAttribute"
+                      },
+                      {
+                        "repr": "$$COUNT$AVG(data)$1$count{r}#1124",
+                        "source": {
+                          "column": null,
+                          "line": null,
+                          "text": null,
+                          "view": null
+                        },
+                        "type": "ReferenceAttribute"
+                      },
+                      {
+                        "repr": "$$COUNT$AVG(data)$1$seen{r}#1125",
+                        "source": {
+                          "column": null,
+                          "line": null,
+                          "text": null,
+                          "view": null
+                        },
+                        "type": "ReferenceAttribute"
+                      }
+                    ],
+                    "mode": "INITIAL"
+                  },
+                  "role": "physical",
+                  "source": {
+                    "column": 13,
+                    "line": 1,
+                    "text": "STATS AVG(data)",
+                    "view": null
+                  },
+                  "type": "AggregateExec"
+                }
+              ],
+              "exchange_id": "ex-887c9a-143",
+              "id": "6339",
+              "origin": [
+              ],
+              "properties": {
+                "intermediateAgg": true,
+                "p0": [
+                  {
+                    "repr": "$$SUM$AVG(data)$0$value{r}#1111",
+                    "source": {
+                      "column": null,
+                      "line": null,
+                      "text": null,
+                      "view": null
+                    },
+                    "type": "ReferenceAttribute"
+                  },
+                  {
+                    "repr": "$$SUM$AVG(data)$0$delta{r}#1112",
+                    "source": {
+                      "column": null,
+                      "line": null,
+                      "text": null,
+                      "view": null
+                    },
+                    "type": "ReferenceAttribute"
+                  },
+                  {
+                    "repr": "$$SUM$AVG(data)$0$seen{r}#1113",
+                    "source": {
+                      "column": null,
+                      "line": null,
+                      "text": null,
+                      "view": null
+                    },
+                    "type": "ReferenceAttribute"
+                  },
+                  {
+                    "repr": "$$COUNT$AVG(data)$1$count{r}#1114",
+                    "source": {
+                      "column": null,
+                      "line": null,
+                      "text": null,
+                      "view": null
+                    },
+                    "type": "ReferenceAttribute"
+                  },
+                  {
+                    "repr": "$$COUNT$AVG(data)$1$seen{r}#1115",
+                    "source": {
+                      "column": null,
+                      "line": null,
+                      "text": null,
+                      "view": null
+                    },
+                    "type": "ReferenceAttribute"
+                  }
+                ]
+              },
+              "role": "physical",
+              "source": {
+                "column": 13,
+                "line": 1,
+                "text": "STATS AVG(data)",
+                "view": null
+              },
+              "type": "ExchangeSinkExec"
+            }
+          },
+          {
+            "cluster_name": "elasticsearch-x86-64-rest-test",
+            "description": "final",
+            "kind": "final",
+            "logical_optimization_nanos": 1568426,
+            "node_name": "localhost",
+            "physical_optimization_nanos": 333452,
+            "plan": "OutputExec[org.elasticsearch.xpack.esql.plugin.BoundedPageCollector@e5ab68c]\n\\_ProjectExec[[AVG(data){r}#1106]]\n  \\_EvalExec[[$$SUM$AVG(data)$0{r$}#1108 / $$COUNT$AVG(data)$1{r$}#1109 AS AVG(data)#1106]]\n    \\_LimitExec[1[INTEGER],16]\n      \\_AggregateExec[[],[SUM($$AVG(data)$SUM$0{r$}#1110,true[BOOLEAN],PT0S[TIME_DURATION],compensated[KEYWORD],long_overflow_warn[K\nEYWORD]) AS $$SUM$AVG(data)$0#1108, COUNT(data{f}#1107,true[BOOLEAN],PT0S[TIME_DURATION]) AS $$COUNT$AVG(data)\n$1#1109],FINAL,[$$SUM$AVG(data)$0$value{r}#1111, $$SUM$AVG(data)$0$delta{r}#1112, $$SUM$AVG(data)$0$seen{r}#11\n13, $$COUNT$AVG(data)$1$count{r}#1114, $$COUNT$AVG(data)$1$seen{r}#1115],24]\n        \\_ExchangeSourceExec[[$$SUM$AVG(data)$0$value{r}#1111, $$SUM$AVG(data)$0$delta{r}#1112, $$SUM$AVG(data)$0$seen{r}#1113, $$COUNT$AVG\n(data)$1$count{r}#1114, $$COUNT$AVG(data)$1$seen{r}#1115],true]",
+            "plan_json": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                  ],
+                                  "exchange_id": "ex-887c9a-143",
+                                  "id": "6340",
+                                  "origin": [
+                                  ],
+                                  "properties": {
+                                    "intermediateAgg": true,
+                                    "p0": [
+                                      {
+                                        "repr": "$$SUM$AVG(data)$0$value{r}#1111",
+                                        "source": {
+                                          "column": null,
+                                          "line": null,
+                                          "text": null,
+                                          "view": null
+                                        },
+                                        "type": "ReferenceAttribute"
+                                      },
+                                      {
+                                        "repr": "$$SUM$AVG(data)$0$delta{r}#1112",
+                                        "source": {
+                                          "column": null,
+                                          "line": null,
+                                          "text": null,
+                                          "view": null
+                                        },
+                                        "type": "ReferenceAttribute"
+                                      },
+                                      {
+                                        "repr": "$$SUM$AVG(data)$0$seen{r}#1113",
+                                        "source": {
+                                          "column": null,
+                                          "line": null,
+                                          "text": null,
+                                          "view": null
+                                        },
+                                        "type": "ReferenceAttribute"
+                                      },
+                                      {
+                                        "repr": "$$COUNT$AVG(data)$1$count{r}#1114",
+                                        "source": {
+                                          "column": null,
+                                          "line": null,
+                                          "text": null,
+                                          "view": null
+                                        },
+                                        "type": "ReferenceAttribute"
+                                      },
+                                      {
+                                        "repr": "$$COUNT$AVG(data)$1$seen{r}#1115",
+                                        "source": {
+                                          "column": null,
+                                          "line": null,
+                                          "text": null,
+                                          "view": null
+                                        },
+                                        "type": "ReferenceAttribute"
+                                      }
+                                    ]
+                                  },
+                                  "role": "physical",
+                                  "source": {
+                                    "column": 13,
+                                    "line": 1,
+                                    "text": "STATS AVG(data)",
+                                    "view": null
+                                  },
+                                  "type": "ExchangeSourceExec"
+                                }
+                              ],
+                              "id": "6330",
+                              "origin": [
+                                "6304"
+                              ],
+                              "properties": {
+                                "aggregates": [
+                                  {
+                                    "args": [
+                                      {
+                                        "args": [
+                                          {
+                                            "repr": "$$AVG(data)$SUM$0{r$}#1110",
+                                            "source": {
+                                              "column": 19,
+                                              "line": 1,
+                                              "text": "AVG(data)",
+                                              "view": null
+                                            },
+                                            "type": "ReferenceAttribute"
+                                          },
+                                          {
+                                            "repr": "true[BOOLEAN]",
+                                            "source": {
+                                              "column": null,
+                                              "line": null,
+                                              "text": null,
+                                              "view": null
+                                            },
+                                            "type": "Literal"
+                                          },
+                                          {
+                                            "repr": "PT0S[TIME_DURATION]",
+                                            "source": {
+                                              "column": null,
+                                              "line": null,
+                                              "text": null,
+                                              "view": null
+                                            },
+                                            "type": "Literal"
+                                          },
+                                          {
+                                            "repr": "compensated[KEYWORD]",
+                                            "source": {
+                                              "column": null,
+                                              "line": null,
+                                              "text": null,
+                                              "view": null
+                                            },
+                                            "type": "Literal"
+                                          },
+                                          {
+                                            "repr": "long_overflow_warn[KEYWORD]",
+                                            "source": {
+                                              "column": null,
+                                              "line": null,
+                                              "text": null,
+                                              "view": null
+                                            },
+                                            "type": "Literal"
+                                          }
+                                        ],
+                                        "repr": "SUM($$AVG(data)$SUM$0{r$}#1110,true[BOOLEAN],PT0S[TIME_DURATION],compensated[KEYWORD],long_overflow_warn[KEYWORD])",
+                                        "source": {
+                                          "column": 19,
+                                          "line": 1,
+                                          "text": "AVG(data)",
+                                          "view": null
+                                        },
+                                        "type": "Sum"
+                                      }
+                                    ],
+                                    "repr": "SUM($$AVG(data)$SUM$0{r$}#1110,true[BOOLEAN],PT0S[TIME_DURATION],compensated[KEYWORD],long_overflow_warn[KEYWORD]) AS $$SUM$AVG(data)$0#1108",
+                                    "source": {
+                                      "column": 19,
+                                      "line": 1,
+                                      "text": "AVG(data)",
+                                      "view": null
+                                    },
+                                    "type": "Alias"
+                                  },
+                                  {
+                                    "args": [
+                                      {
+                                        "args": [
+                                          {
+                                            "repr": "data{f}#1107",
+                                            "source": {
+                                              "column": 23,
+                                              "line": 1,
+                                              "text": "data",
+                                              "view": null
+                                            },
+                                            "type": "FieldAttribute"
+                                          },
+                                          {
+                                            "repr": "true[BOOLEAN]",
+                                            "source": {
+                                              "column": null,
+                                              "line": null,
+                                              "text": null,
+                                              "view": null
+                                            },
+                                            "type": "Literal"
+                                          },
+                                          {
+                                            "repr": "PT0S[TIME_DURATION]",
+                                            "source": {
+                                              "column": null,
+                                              "line": null,
+                                              "text": null,
+                                              "view": null
+                                            },
+                                            "type": "Literal"
+                                          }
+                                        ],
+                                        "repr": "COUNT(data{f}#1107,true[BOOLEAN],PT0S[TIME_DURATION])",
+                                        "source": {
+                                          "column": 19,
+                                          "line": 1,
+                                          "text": "AVG(data)",
+                                          "view": null
+                                        },
+                                        "type": "Count"
+                                      }
+                                    ],
+                                    "repr": "COUNT(data{f}#1107,true[BOOLEAN],PT0S[TIME_DURATION]) AS $$COUNT$AVG(data)$1#1109",
+                                    "source": {
+                                      "column": 19,
+                                      "line": 1,
+                                      "text": "AVG(data)",
+                                      "view": null
+                                    },
+                                    "type": "Alias"
+                                  }
+                                ],
+                                "estimatedRowSize": 24,
+                                "groupings": [
+                                ],
+                                "intermediateAttributes": [
+                                  {
+                                    "repr": "$$SUM$AVG(data)$0$value{r}#1111",
+                                    "source": {
+                                      "column": null,
+                                      "line": null,
+                                      "text": null,
+                                      "view": null
+                                    },
+                                    "type": "ReferenceAttribute"
+                                  },
+                                  {
+                                    "repr": "$$SUM$AVG(data)$0$delta{r}#1112",
+                                    "source": {
+                                      "column": null,
+                                      "line": null,
+                                      "text": null,
+                                      "view": null
+                                    },
+                                    "type": "ReferenceAttribute"
+                                  },
+                                  {
+                                    "repr": "$$SUM$AVG(data)$0$seen{r}#1113",
+                                    "source": {
+                                      "column": null,
+                                      "line": null,
+                                      "text": null,
+                                      "view": null
+                                    },
+                                    "type": "ReferenceAttribute"
+                                  },
+                                  {
+                                    "repr": "$$COUNT$AVG(data)$1$count{r}#1114",
+                                    "source": {
+                                      "column": null,
+                                      "line": null,
+                                      "text": null,
+                                      "view": null
+                                    },
+                                    "type": "ReferenceAttribute"
+                                  },
+                                  {
+                                    "repr": "$$COUNT$AVG(data)$1$seen{r}#1115",
+                                    "source": {
+                                      "column": null,
+                                      "line": null,
+                                      "text": null,
+                                      "view": null
+                                    },
+                                    "type": "ReferenceAttribute"
+                                  }
+                                ],
+                                "mode": "FINAL"
+                              },
+                              "role": "physical",
+                              "source": {
+                                "column": 13,
+                                "line": 1,
+                                "text": "STATS AVG(data)",
+                                "view": null
+                              },
+                              "type": "AggregateExec"
+                            }
+                          ],
+                          "id": "6331",
+                          "origin": [
+                            "6322"
+                          ],
+                          "properties": {
+                            "estimatedRowSize": 16,
+                            "limit": {
+                              "repr": "1[INTEGER]",
+                              "source": {
+                                "column": 31,
+                                "line": 1,
+                                "text": "LIMIT 1",
+                                "view": null
+                              },
+                              "type": "Literal"
+                            }
+                          },
+                          "role": "physical",
+                          "source": {
+                            "column": 31,
+                            "line": 1,
+                            "text": "LIMIT 1",
+                            "view": null
+                          },
+                          "type": "LimitExec"
+                        }
+                      ],
+                      "id": "6332",
+                      "origin": [
+                        "6323"
+                      ],
+                      "properties": {
+                        "fields": [
+                          {
+                            "args": [
+                              {
+                                "args": [
+                                  {
+                                    "repr": "$$SUM$AVG(data)$0{r$}#1108",
+                                    "source": {
+                                      "column": 19,
+                                      "line": 1,
+                                      "text": "AVG(data)",
+                                      "view": null
+                                    },
+                                    "type": "ReferenceAttribute"
+                                  },
+                                  {
+                                    "repr": "$$COUNT$AVG(data)$1{r$}#1109",
+                                    "source": {
+                                      "column": 19,
+                                      "line": 1,
+                                      "text": "AVG(data)",
+                                      "view": null
+                                    },
+                                    "type": "ReferenceAttribute"
+                                  }
+                                ],
+                                "repr": "$$SUM$AVG(data)$0{r$}#1108 / $$COUNT$AVG(data)$1{r$}#1109",
+                                "source": {
+                                  "column": 19,
+                                  "line": 1,
+                                  "text": "AVG(data)",
+                                  "view": null
+                                },
+                                "type": "Div"
+                              }
+                            ],
+                            "repr": "$$SUM$AVG(data)$0{r$}#1108 / $$COUNT$AVG(data)$1{r$}#1109 AS AVG(data)#1106",
+                            "source": {
+                              "column": 19,
+                              "line": 1,
+                              "text": "AVG(data)",
+                              "view": null
+                            },
+                            "type": "Alias"
+                          }
+                        ]
+                      },
+                      "role": "physical",
+                      "source": {
+                        "column": 13,
+                        "line": 1,
+                        "text": "STATS AVG(data)",
+                        "view": null
+                      },
+                      "type": "EvalExec"
+                    }
+                  ],
+                  "id": "6333",
+                  "origin": [
+                    "6321"
+                  ],
+                  "properties": {
+                    "projections": [
+                      {
+                        "repr": "AVG(data){r}#1106",
+                        "source": {
+                          "column": 19,
+                          "line": 1,
+                          "text": "AVG(data)",
+                          "view": null
+                        },
+                        "type": "ReferenceAttribute"
+                      }
+                    ]
+                  },
+                  "role": "physical",
+                  "source": {
+                    "column": 13,
+                    "line": 1,
+                    "text": "STATS AVG(data)",
+                    "view": null
+                  },
+                  "type": "ProjectExec"
+                }
+              ],
+              "id": "6345",
+              "origin": [
+              ],
+              "properties": {
+                "pageConsumer": "org.elasticsearch.xpack.esql.plugin.BoundedPageCollector@e5ab68c"
+              },
+              "role": "physical",
+              "source": {
+                "column": null,
+                "line": null,
+                "text": null,
+                "view": null
+              },
+              "type": "OutputExec"
+            }
+          }
+        ],
+        "preanalysis": {
+          "start_millis": 1795085992683,
+          "stop_millis": 1795085992683,
+          "took_millis": 0,
+          "took_nanos": 58387
+        },
+        "query": {
+          "start_millis": 1795085992681,
+          "stop_millis": 1795085992713,
+          "took_millis": 32,
+          "took_nanos": 31647744
+        },
+        "unmapped_fields": "default",
+        "view_resolution": {
+          "start_millis": 1795085992682,
+          "stop_millis": 1795085992682,
+          "took_millis": 0,
+          "took_nanos": 94125
+        }
+      },
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 127,
+      "start_time_in_millis": 1795085992681,
+      "took": 31,
+      "values": [
+        [
+          1.5
+        ]
+      ],
+      "values_loaded": 40
+    },
+    "statusCode": 200
+  }
+}
