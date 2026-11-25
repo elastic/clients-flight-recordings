@@ -1,0 +1,62 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/esql/295_nested_expand.yml",
+  "name": "A source-only runtime field under a nested name reads the parent's synthetic source",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "items": {
+              "dynamic": false,
+              "properties": {
+                "qty": {
+                  "type": "long"
+                }
+              },
+              "type": "nested"
+            }
+          },
+          "runtime": {
+            "items": {
+              "calc": {
+                "type": "long"
+              }
+            }
+          }
+        },
+        "settings": {
+          "number_of_shards": 1
+        }
+      },
+      "index": "ne_runtime_stored"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "347",
+      "content-type": "application/json",
+      "date": "Wed, 25 Nov 2026 11:06:41 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "caused_by": {
+          "reason": "No type specified for runtime field [items]",
+          "type": "mapper_parsing_exception"
+        },
+        "reason": "Failed to parse mapping: No type specified for runtime field [items]",
+        "root_cause": [
+          {
+            "reason": "No type specified for runtime field [items]",
+            "type": "mapper_parsing_exception"
+          }
+        ],
+        "type": "mapper_parsing_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

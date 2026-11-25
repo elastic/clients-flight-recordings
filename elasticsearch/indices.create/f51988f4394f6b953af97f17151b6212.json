@@ -1,0 +1,58 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/esql/295_nested_expand.yml",
+  "name": "Children of an index with synthetic source read the values the source rebuilds",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "id": {
+              "type": "keyword"
+            },
+            "items": {
+              "properties": {
+                "q": {
+                  "type": "long"
+                },
+                "sku": {
+                  "doc_values": false,
+                  "synthetic_source_keep": "all",
+                  "type": "keyword"
+                }
+              },
+              "synthetic_source_keep": "all",
+              "type": "nested"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mapping": {
+              "source": {
+                "mode": "synthetic"
+              }
+            }
+          },
+          "number_of_shards": 1
+        }
+      },
+      "index": "ne_syn_nested"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "72",
+      "content-type": "application/json",
+      "date": "Wed, 25 Nov 2026 11:07:00 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "ne_syn_nested",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
