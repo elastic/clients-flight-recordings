@@ -1,0 +1,71 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/308_nested_any_pushdown.yml",
+  "name": "a parent with more children than one page matches wherever its matching child is",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "allow_partial_results": false,
+      "body": {
+        "query": "FROM na_big | EVAL at_start = NESTED_ANY(items.price + 0 == 1), at_end = NESTED_ANY(items.price + 0 == 3000), nowhere = NESTED_ANY(items.price + 0 == 99999) | KEEP id, at_start, at_end, nowhere | SORT id | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Wed, 25 Nov 2026 11:10:48 GMT",
+      "took-nanos": "16080563",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 58,
+      "columns": [
+        {
+          "name": "id",
+          "type": "keyword"
+        },
+        {
+          "name": "at_start",
+          "type": "boolean"
+        },
+        {
+          "name": "at_end",
+          "type": "boolean"
+        },
+        {
+          "name": "nowhere",
+          "type": "boolean"
+        }
+      ],
+      "completion_time_in_millis": 1795605048061,
+      "cpu_nanos": 2772220,
+      "documents_found": 2,
+      "driver_nanos": 2719493,
+      "expiration_time_in_millis": 1796037047911,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 24,
+      "start_time_in_millis": 1795605048045,
+      "took": 16,
+      "values": [
+        [
+          "big",
+          true,
+          true,
+          false
+        ],
+        [
+          "small",
+          false,
+          false,
+          false
+        ]
+      ],
+      "values_loaded": 2
+    },
+    "statusCode": 200
+  }
+}

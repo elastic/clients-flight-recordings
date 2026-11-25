@@ -1,0 +1,50 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/308_nested_any_pushdown.yml",
+  "name": "a pushed predicate that needs a recheck is pushed once and still filtered",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "allow_partial_results": false,
+      "body": {
+        "query": "FROM na_recheck | WHERE NESTED_ANY(MV_GREATER(items.dbl, 1.5)) AND NESTED_ANY(items.sku == \"x\") | KEEP id | SORT id | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Wed, 25 Nov 2026 11:10:43 GMT",
+      "took-nanos": "7866924",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 195,
+      "columns": [
+        {
+          "name": "id",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1795605043879,
+      "cpu_nanos": 1033159,
+      "documents_found": 2,
+      "driver_nanos": 932044,
+      "expiration_time_in_millis": 1796037043708,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 12,
+      "start_time_in_millis": 1795605043872,
+      "took": 7,
+      "values": [
+        [
+          "above"
+        ]
+      ],
+      "values_loaded": 1
+    },
+    "statusCode": 200
+  }
+}

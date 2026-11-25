@@ -1,0 +1,58 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/295_nested_expand.yml",
+  "name": "A column of the query named _doc does not replace the document NESTED_EXPAND reads",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM ne_orders_items | LOOKUP JOIN ne_lookup_note ON id | RENAME note AS _doc | NESTED_EXPAND items | KEEP _doc, items.qty | SORT items.qty | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Wed, 25 Nov 2026 11:08:15 GMT",
+      "took-nanos": "12285313",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 42,
+      "columns": [
+        {
+          "name": "_doc",
+          "type": "keyword"
+        },
+        {
+          "name": "items.qty",
+          "type": "long"
+        }
+      ],
+      "completion_time_in_millis": 1795604895226,
+      "cpu_nanos": 1465827,
+      "documents_found": 1,
+      "driver_nanos": 1326644,
+      "expiration_time_in_millis": 1796036895211,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 16,
+      "start_time_in_millis": 1795604895214,
+      "took": 12,
+      "values": [
+        [
+          "n",
+          1
+        ],
+        [
+          "n",
+          2
+        ]
+      ],
+      "values_loaded": 1
+    },
+    "statusCode": 200
+  }
+}
