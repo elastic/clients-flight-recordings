@@ -1,0 +1,58 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/308_nested_any_pushdown.yml",
+  "name": "a nested predicate in EVAL still reads the children when the shards cannot query them",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "allow_partial_results": false,
+      "body": {
+        "query": "FROM na_push_normalized_eval | EVAL h = NESTED_ANY(items.sku == \"A\") | KEEP id, h | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Thu, 26 Nov 2026 11:09:08 GMT",
+      "took-nanos": "6806902",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 21,
+      "columns": [
+        {
+          "name": "id",
+          "type": "keyword"
+        },
+        {
+          "name": "h",
+          "type": "boolean"
+        }
+      ],
+      "completion_time_in_millis": 1795691348762,
+      "cpu_nanos": 738122,
+      "documents_found": 1,
+      "driver_nanos": 654528,
+      "expiration_time_in_millis": 1796123348591,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 7,
+      "search_cpu_nanos": 1509313,
+      "search_load_nanos": 1743962,
+      "search_waiting_nanos": 84809,
+      "start_time_in_millis": 1795691348756,
+      "took": 6,
+      "values": [
+        [
+          "n1",
+          false
+        ]
+      ],
+      "values_loaded": 1
+    },
+    "statusCode": 200
+  }
+}

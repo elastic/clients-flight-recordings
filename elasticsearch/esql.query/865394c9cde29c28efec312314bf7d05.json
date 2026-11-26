@@ -1,0 +1,70 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/48_column_semantics.yml",
+  "name": "DESCRIBE a bucket count bounded by the request filter",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "filter": {
+          "range": {
+            "@timestamp": {
+              "gte": "2026-11-01T00:00:00Z",
+              "lt": "2026-11-30T00:00:00Z"
+            }
+          }
+        },
+        "query": "TS test_semantics | STATS avg = AVG(AVG_OVER_TIME(latency)) BY b = TBUCKET(20) | DESCRIBE | WHERE name == \"b\" | KEEP name, role, interval"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Thu, 26 Nov 2026 11:11:20 GMT",
+      "took-nanos": "12502275",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 0,
+      "columns": [
+        {
+          "name": "name",
+          "type": "keyword"
+        },
+        {
+          "name": "role",
+          "type": "keyword"
+        },
+        {
+          "name": "interval",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1795691480716,
+      "cpu_nanos": 148916,
+      "documents_found": 0,
+      "driver_nanos": 133820,
+      "expiration_time_in_millis": 1796123480691,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 3,
+      "search_cpu_nanos": 0,
+      "search_load_nanos": 0,
+      "search_waiting_nanos": 0,
+      "start_time_in_millis": 1795691480704,
+      "took": 12,
+      "values": [
+        [
+          "b",
+          "time",
+          "1 week"
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "api": "search",
+  "file": "/test/free/mapping/90_columnar_ignore_dynamic_beyond_limit.yml",
+  "name": "columnar: dynamic field beyond the limit is dropped and recorded in _ignored with ignore_dynamic_beyond_limit",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": {
+          "exists": {
+            "field": "_ignored"
+          }
+        }
+      },
+      "index": "test_columnar_beyond_limit",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Thu, 26 Nov 2026 10:30:05 GMT",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=71,search_cpu_nanos=1152800,search_waiting_nanos=60429,search_load_nanos=1152800"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "1",
+            "_ignored": [
+              "beyond_limit",
+              "beyond_object.nested"
+            ],
+            "_index": "test_columnar_beyond_limit",
+            "_score": 1,
+            "_source": {
+              "known": "a",
+              "other": "b"
+            }
+          }
+        ],
+        "max_score": 1,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 1
+    },
+    "statusCode": 200
+  }
+}

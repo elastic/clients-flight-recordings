@@ -1,0 +1,75 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/298_unmapped_load_all_columnar.yml",
+  "name": "standard leg loads unmapped from source, columnar leg yields null",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM unmapped-idx-std, unmapped-idx-col METADATA _index | SORT foo NULLS LAST, bar NULLS LAST | LIMIT 5"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Thu, 26 Nov 2026 11:07:14 GMT",
+      "took-nanos": "9878640",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 128,
+      "columns": [
+        {
+          "name": "bar",
+          "type": "keyword"
+        },
+        {
+          "name": "foo",
+          "type": "keyword"
+        },
+        {
+          "name": "_index",
+          "type": "keyword"
+        },
+        {
+          "name": "_unmapped_fields",
+          "type": "_source"
+        }
+      ],
+      "completion_time_in_millis": 1795691234958,
+      "cpu_nanos": 2802544,
+      "documents_found": 2,
+      "driver_nanos": 2634350,
+      "expiration_time_in_millis": 1796123234917,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 20,
+      "search_cpu_nanos": 4007740,
+      "search_load_nanos": 4681658,
+      "search_waiting_nanos": 388808,
+      "start_time_in_millis": 1795691234949,
+      "took": 9,
+      "values": [
+        [
+          "b1",
+          "a1",
+          "unmapped-idx-std",
+          {
+            "bar": "b1"
+          }
+        ],
+        [
+          "b2",
+          null,
+          "unmapped-idx-col",
+          null
+        ]
+      ],
+      "values_loaded": 6
+    },
+    "statusCode": 200
+  }
+}

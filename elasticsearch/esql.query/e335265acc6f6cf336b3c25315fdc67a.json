@@ -1,0 +1,61 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/308_unmapped_load_all_subqueries.yml",
+  "name": "LOAD_ALL runs a sub-query union whose conversion resolves on a later analyzer pass",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM (FROM la_sub_ip), (FROM la_sub_ip) | WHERE TO_STRING(ip) == \"172.21.3.15\" OR does_not_exist IS NOT NULL | EVAL x = TO_STRING(ip) | KEEP ip, x | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Thu, 26 Nov 2026 11:09:12 GMT",
+      "took-nanos": "15231038",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 34,
+      "columns": [
+        {
+          "name": "ip",
+          "type": "ip"
+        },
+        {
+          "name": "x",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1795691352155,
+      "cpu_nanos": 1064141,
+      "documents_found": 2,
+      "driver_nanos": 906827,
+      "expiration_time_in_millis": 1796123351993,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 20,
+      "search_cpu_nanos": 3189758,
+      "search_load_nanos": 4217801,
+      "search_waiting_nanos": 1803033,
+      "start_time_in_millis": 1795691352140,
+      "took": 15,
+      "values": [
+        [
+          "172.21.3.15",
+          "172.21.3.15"
+        ],
+        [
+          "172.21.3.15",
+          "172.21.3.15"
+        ]
+      ],
+      "values_loaded": 2
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/264_unmapped_fields_resolved_by_shard.yml",
+  "name": "a filter pushed to each shard scores nothing",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"load\"; FROM scored_mapped, scored_unmapped METADATA _index, _score | WHERE MATCH(msg, \"x\") AND k == \"a\" | EVAL score = _score | KEEP _index, score | SORT _index | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Thu, 26 Nov 2026 11:04:52 GMT",
+      "took-nanos": "23684495",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 134,
+      "columns": [
+        {
+          "name": "_index",
+          "type": "keyword"
+        },
+        {
+          "name": "score",
+          "type": "double"
+        }
+      ],
+      "completion_time_in_millis": 1795691092068,
+      "cpu_nanos": 2556383,
+      "documents_found": 2,
+      "driver_nanos": 2411428,
+      "expiration_time_in_millis": 1796123092008,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 26,
+      "search_cpu_nanos": 14334133,
+      "search_load_nanos": 15235228,
+      "search_waiting_nanos": 286818,
+      "start_time_in_millis": 1795691092045,
+      "took": 23,
+      "values": [
+        [
+          "scored_mapped",
+          0.28768208622932434
+        ],
+        [
+          "scored_unmapped",
+          0.28768208622932434
+        ]
+      ],
+      "values_loaded": 4
+    },
+    "statusCode": 200
+  }
+}

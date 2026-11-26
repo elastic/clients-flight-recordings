@@ -1,0 +1,35 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/295_nested_expand.yml",
+  "name": "A source-only runtime field under a nested name reads the parent's synthetic source",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM ne_runtime_synthetic | NESTED_EXPAND items | KEEP items.qty, items.calc | SORT items.qty | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "299",
+      "content-type": "application/json",
+      "date": "Thu, 26 Nov 2026 11:06:39 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "Found 1 problem\nline 1:43: NESTED_EXPAND requires a mapped nested field, not [items]",
+        "root_cause": [
+          {
+            "reason": "Found 1 problem\nline 1:43: NESTED_EXPAND requires a mapped nested field, not [items]",
+            "type": "verification_exception"
+          }
+        ],
+        "type": "verification_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}
