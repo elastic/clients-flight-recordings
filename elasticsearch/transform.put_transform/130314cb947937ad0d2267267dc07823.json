@@ -1,0 +1,57 @@
+{
+  "api": "transform.put_transform",
+  "file": "/test/platinum/transform/transforms_crud.yml",
+  "name": "Test basic transform crud",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "description": "yaml test transform on airline-data",
+        "dest": {
+          "index": "airline-data-by-airline"
+        },
+        "pivot": {
+          "aggs": {
+            "avg_response": {
+              "avg": {
+                "field": "responsetime"
+              }
+            }
+          },
+          "group_by": {
+            "airline": {
+              "terms": {
+                "field": "airline"
+              }
+            }
+          }
+        },
+        "source": {
+          "index": "airline-data"
+        }
+      },
+      "transform_id": "airline-transform"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "255",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "Transform with id [airline-transform] already exists",
+        "root_cause": [
+          {
+            "reason": "Transform with id [airline-transform] already exists",
+            "type": "resource_already_exists_exception"
+          }
+        ],
+        "type": "resource_already_exists_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

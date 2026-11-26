@@ -1,0 +1,54 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/cluster.stats/20_analysis_stats_synonyms.yml",
+  "name": "get cluster stats returns multiple synonym graph filter stats",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "settings": {
+          "analysis": {
+            "analyzer": {
+              "double_inline_analyzer": {
+                "filter": [
+                  "inline_sg_1",
+                  "inline_sg_2"
+                ],
+                "tokenizer": "standard",
+                "type": "custom"
+              }
+            },
+            "filter": {
+              "inline_sg_1": {
+                "synonyms": [
+                  "foo, bar"
+                ],
+                "type": "synonym_graph"
+              },
+              "inline_sg_2": {
+                "synonyms": [
+                  "baz, qux"
+                ],
+                "type": "synonym_graph"
+              }
+            }
+          }
+        }
+      },
+      "index": "test-inline-graph"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "76",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test-inline-graph",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

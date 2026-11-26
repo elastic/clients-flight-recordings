@@ -1,0 +1,87 @@
+{
+  "api": "ml.preview_datafeed",
+  "file": "/test/platinum/ml/preview_datafeed.yml",
+  "name": "Test preview aggregation datafeed with doc_count",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "job_config": {
+          "analysis_config": {
+            "bucket_span": "1h",
+            "detectors": [
+              {
+                "by_field_name": "airline",
+                "field_name": "responsetime",
+                "function": "sum"
+              }
+            ],
+            "summary_count_field_name": "doc_count"
+          },
+          "data_description": {
+            "time_field": "time"
+          },
+          "datafeed_config": {
+            "aggregations": {
+              "buckets": {
+                "aggregations": {
+                  "airline": {
+                    "aggregations": {
+                      "responsetime": {
+                        "sum": {
+                          "field": "responsetime"
+                        }
+                      }
+                    },
+                    "terms": {
+                      "field": "airline",
+                      "size": 100
+                    }
+                  },
+                  "time": {
+                    "max": {
+                      "field": "time"
+                    }
+                  }
+                },
+                "histogram": {
+                  "field": "time",
+                  "interval": 3600000
+                }
+              }
+            },
+            "indexes": "airline-data"
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "219",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": [
+      {
+        "airline": "foo",
+        "doc_count": 2,
+        "responsetime": 2,
+        "time": 1487377800000
+      },
+      {
+        "airline": "bar",
+        "doc_count": 1,
+        "responsetime": 42,
+        "time": 1487379660000
+      },
+      {
+        "airline": "foo",
+        "doc_count": 1,
+        "responsetime": 42,
+        "time": 1487379660000
+      }
+    ],
+    "statusCode": 200
+  }
+}

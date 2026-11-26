@@ -1,0 +1,71 @@
+{
+  "api": "indices.update_aliases",
+  "file": "/test/free/data_stream/140_data_stream_aliases.yml",
+  "name": "Action Results with multiple matching aliases",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "actions": [
+          {
+            "add": {
+              "aliases": "test_alias1",
+              "index": "log-foobar"
+            }
+          },
+          {
+            "remove": {
+              "aliases": "test_non_existing",
+              "index": "log-foobar",
+              "must_exist": false
+            }
+          }
+        ]
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "397",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "action_results": [
+        {
+          "action": {
+            "aliases": [
+              "test_alias1"
+            ],
+            "indices": [
+              "log-foobar"
+            ],
+            "type": "add"
+          },
+          "status": 200
+        },
+        {
+          "action": {
+            "aliases": [
+              "test_non_existing"
+            ],
+            "indices": [
+              "log-foobar"
+            ],
+            "type": "remove"
+          },
+          "error": {
+            "reason": "aliases [test_non_existing] missing",
+            "resource.id": "test_non_existing",
+            "resource.type": "aliases",
+            "type": "aliases_not_found_exception"
+          },
+          "status": 404
+        }
+      ],
+      "errors": true
+    },
+    "statusCode": 200
+  }
+}

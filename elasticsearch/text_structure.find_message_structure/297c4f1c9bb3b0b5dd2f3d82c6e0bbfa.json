@@ -1,0 +1,146 @@
+{
+  "api": "text_structure.find_message_structure",
+  "file": "/test/platinum/text_structure/find_message_structure.yml",
+  "name": "Messages structure finder with log messages",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "messages": [
+          "2019-05-16 16:56:14 line 1 abcdefghijklmnopqrstuvwxyz",
+          "2019-05-16 16:56:14 line 2 abcdefghijklmnopqrstuvwxyz\ncontinuation...\ncontinuation...\n",
+          "2019-05-16 16:56:14 line 3 abcdefghijklmnopqrstuvwxyz"
+        ]
+      },
+      "timeout": "10s"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1782",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "charset": "UTF-8",
+      "ecs_compatibility": "disabled",
+      "field_stats": {
+        "field": {
+          "cardinality": 3,
+          "count": 3,
+          "max_value": 3,
+          "mean_value": 2,
+          "median_value": 2,
+          "min_value": 1,
+          "top_hits": [
+            {
+              "count": 1,
+              "value": 1
+            },
+            {
+              "count": 1,
+              "value": 2
+            },
+            {
+              "count": 1,
+              "value": 3
+            }
+          ]
+        },
+        "message": {
+          "cardinality": 3,
+          "count": 3,
+          "top_hits": [
+            {
+              "count": 1,
+              "value": "2019-05-16 16:56:14 line 1 abcdefghijklmnopqrstuvwxyz"
+            },
+            {
+              "count": 1,
+              "value": "2019-05-16 16:56:14 line 2 abcdefghijklmnopqrstuvwxyz\ncontinuation...\ncontinuation...\n"
+            },
+            {
+              "count": 1,
+              "value": "2019-05-16 16:56:14 line 3 abcdefghijklmnopqrstuvwxyz"
+            }
+          ]
+        },
+        "timestamp": {
+          "cardinality": 1,
+          "count": 3,
+          "earliest": "2019-05-16 16:56:14",
+          "latest": "2019-05-16 16:56:14",
+          "top_hits": [
+            {
+              "count": 3,
+              "value": "2019-05-16 16:56:14"
+            }
+          ]
+        }
+      },
+      "format": "semi_structured_text",
+      "grok_pattern": "%{TIMESTAMP_ISO8601:timestamp} .*? %{INT:field} .*",
+      "ingest_pipeline": {
+        "description": "Ingest pipeline created by text structure finder",
+        "processors": [
+          {
+            "grok": {
+              "ecs_compatibility": "disabled",
+              "field": "message",
+              "patterns": [
+                "%{TIMESTAMP_ISO8601:timestamp} .*? %{INT:field} .*"
+              ]
+            }
+          },
+          {
+            "date": {
+              "field": "timestamp",
+              "formats": [
+                "yyyy-MM-dd HH:mm:ss"
+              ],
+              "timezone": "{{ event.timezone }}"
+            }
+          },
+          {
+            "convert": {
+              "field": "field",
+              "ignore_missing": true,
+              "type": "long"
+            }
+          },
+          {
+            "remove": {
+              "field": "timestamp"
+            }
+          }
+        ]
+      },
+      "java_timestamp_formats": [
+        "yyyy-MM-dd HH:mm:ss"
+      ],
+      "joda_timestamp_formats": [
+        "YYYY-MM-dd HH:mm:ss"
+      ],
+      "mappings": {
+        "properties": {
+          "@timestamp": {
+            "type": "date"
+          },
+          "field": {
+            "type": "long"
+          },
+          "message": {
+            "type": "text"
+          }
+        }
+      },
+      "multiline_start_pattern": "^\\d{4}-\\d{2}-\\d{2}[T ]\\d{2}:\\d{2}",
+      "need_client_timezone": true,
+      "num_lines_analyzed": 3,
+      "num_messages_analyzed": 3,
+      "sample_start": "2019-05-16 16:56:14 line 1 abcdefghijklmnopqrstuvwxyz\n2019-05-16 16:56:14 line 2 abcdefghijklmnopqrstuvwxyz\ncontinuation...\ncontinuation...\n\n",
+      "timestamp_field": "timestamp"
+    },
+    "statusCode": 200
+  }
+}

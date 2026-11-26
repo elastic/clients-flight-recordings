@@ -1,0 +1,55 @@
+{
+  "api": "bulk",
+  "file": "/test/platinum/security/authz/13_index_datemath.yml",
+  "name": "Test indexing documents with datemath, when forbidden",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": [
+        "{\"index\": {\"_index\": \"<read-{now/M{YYYY.MM}}>\", \"_id\": \"5\"}}",
+        "{\"name\": \"doc5\"}",
+        "{\"index\": {\"_index\": \"<read-{now/d}>\", \"_id\": \"6\"}}",
+        "{\"name\": \"doc6\"}"
+      ]
+    },
+    "headers": {
+      "Authorization": "Basic dGVzdF91c2VyOngtcGFjay10ZXN0LXBhc3N3b3Jk"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "errors": true,
+      "items": [
+        {
+          "index": {
+            "_id": "5",
+            "_index": "<read-{now/M{YYYY.MM}}>",
+            "error": {
+              "reason": "action [indices:admin/auto_create] is unauthorized for user [test_user] with effective roles [mixed_role] on indices [<read-{now/M{YYYY.MM}}>], this action is granted by the index privileges [auto_configure,create_index,manage,all]",
+              "type": "security_exception"
+            },
+            "status": 403
+          }
+        },
+        {
+          "index": {
+            "_id": "6",
+            "_index": "<read-{now/d}>",
+            "error": {
+              "reason": "action [indices:admin/auto_create] is unauthorized for user [test_user] with effective roles [mixed_role] on indices [<read-{now/d}>], this action is granted by the index privileges [auto_configure,create_index,manage,all]",
+              "type": "security_exception"
+            },
+            "status": 403
+          }
+        }
+      ],
+      "took": 0
+    },
+    "statusCode": 200
+  }
+}

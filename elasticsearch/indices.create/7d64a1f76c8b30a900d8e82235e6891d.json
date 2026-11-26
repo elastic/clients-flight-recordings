@@ -1,0 +1,53 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/security/authz_api_keys/30_field_level_security_synthetic_source.yml",
+  "name": "Fields with copy_to and skip_ignored_source_read workaround",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "catch_all": {
+              "type": "keyword"
+            },
+            "domain": {
+              "copy_to": "catch_all",
+              "type": "keyword"
+            },
+            "user": {
+              "copy_to": "catch_all",
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mapping": {
+              "source": {
+                "mode": "synthetic"
+              },
+              "synthetic_source": {
+                "skip_ignored_source_read": true
+              }
+            }
+          }
+        }
+      },
+      "index": "test-fls-copy-to-skip-ignored"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "88",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test-fls-copy-to-skip-ignored",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

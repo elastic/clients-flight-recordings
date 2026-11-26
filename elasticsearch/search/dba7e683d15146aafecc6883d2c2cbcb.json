@@ -1,0 +1,46 @@
+{
+  "api": "search",
+  "file": "/test/free/search.vectors/260_knn_lookup_query_builder.yml",
+  "name": "Test error when document not found",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "knn": {
+          "field": "my_vector_float",
+          "query_vector_builder": {
+            "lookup": {
+              "id": "missing_id",
+              "index": "knn_lookup_query_vector_builder_index",
+              "path": "my_vector_float"
+            }
+          }
+        },
+        "size": 1
+      },
+      "index": "knn_lookup_query_vector_builder_index",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "359",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "Document with id [missing_id] not found in index [knn_lookup_query_vector_builder_index] for lookup query vector builder.",
+        "root_cause": [
+          {
+            "reason": "Document with id [missing_id] not found in index [knn_lookup_query_vector_builder_index] for lookup query vector builder.",
+            "type": "status_exception"
+          }
+        ],
+        "type": "status_exception"
+      },
+      "status": 404
+    },
+    "statusCode": 404
+  }
+}

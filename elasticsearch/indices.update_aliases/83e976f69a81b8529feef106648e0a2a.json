@@ -1,0 +1,73 @@
+{
+  "api": "indices.update_aliases",
+  "file": "/test/free/data_stream/140_data_stream_aliases.yml",
+  "name": "Single action result per action",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "actions": [
+          {
+            "add": {
+              "aliases": "test_alias1",
+              "index": "log-test-*"
+            }
+          },
+          {
+            "remove": {
+              "aliases": "test_non_existing",
+              "index": "log-test-*",
+              "must_exist": false
+            }
+          }
+        ]
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "423",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "action_results": [
+        {
+          "action": {
+            "aliases": [
+              "test_alias1"
+            ],
+            "indices": [
+              "log-test-1",
+              "log-test-2"
+            ],
+            "type": "add"
+          },
+          "status": 200
+        },
+        {
+          "action": {
+            "aliases": [
+              "test_non_existing"
+            ],
+            "indices": [
+              "log-test-1",
+              "log-test-2"
+            ],
+            "type": "remove"
+          },
+          "error": {
+            "reason": "aliases [test_non_existing] missing",
+            "resource.id": "test_non_existing",
+            "resource.type": "aliases",
+            "type": "aliases_not_found_exception"
+          },
+          "status": 404
+        }
+      ],
+      "errors": true
+    },
+    "statusCode": 200
+  }
+}

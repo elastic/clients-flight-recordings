@@ -1,0 +1,49 @@
+{
+  "api": "indices.get_mapping",
+  "file": "/test/platinum/spatial/130_geo_shape_runtime.yml",
+  "name": "get mapping",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "index": "geometries"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "geometries": {
+        "mappings": {
+          "properties": {
+            "geometry": {
+              "type": "geo_shape"
+            },
+            "timestamp": {
+              "type": "date"
+            }
+          },
+          "runtime": {
+            "geometry_from_doc_value": {
+              "script": {
+                "lang": "painless",
+                "source": "GeoBoundingBox bbox = doc[\"geometry\"].getBoundingBox();\nemit(\"BBOX(\" + bbox.topLeft().getLon() + \",\" + bbox.topLeft().getLat() + \",\" + bbox.bottomRight().getLon() + \",\" + bbox.bottomRight().getLat() + \")\");\n"
+              },
+              "type": "geo_shape"
+            },
+            "geometry_from_source": {
+              "script": {
+                "lang": "painless",
+                "source": "emit(params._source.geometry);\n"
+              },
+              "type": "geo_shape"
+            }
+          }
+        }
+      }
+    },
+    "statusCode": 200
+  }
+}

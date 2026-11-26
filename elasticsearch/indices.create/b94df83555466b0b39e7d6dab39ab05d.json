@@ -1,0 +1,74 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/downsample/90_multi_fields.yml",
+  "name": "Downsample index with multi-fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "dimension": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            },
+            "label-dimension": {
+              "fields": {
+                "dimension": {
+                  "time_series_dimension": true,
+                  "type": "keyword"
+                }
+              },
+              "type": "keyword"
+            },
+            "label-text": {
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                },
+                "other-keyword": {
+                  "type": "keyword"
+                }
+              },
+              "type": "text"
+            },
+            "metric": {
+              "time_series_metric": "gauge",
+              "type": "long"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "routing_path": [
+              "dimension"
+            ],
+            "time_series": {
+              "end_time": "2021-04-29T00:00:00Z",
+              "start_time": "2021-04-28T00:00:00Z"
+            }
+          },
+          "number_of_shards": 1
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "63",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

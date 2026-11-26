@@ -1,0 +1,38 @@
+{
+  "api": "index",
+  "file": "/test/platinum/security/authz/13_index_datemath.yml",
+  "name": "Test indexing documents with datemath, when forbidden",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "name": "doc4"
+      },
+      "id": "4",
+      "index": "<read-{now/M}>"
+    },
+    "headers": {
+      "Authorization": "Basic dGVzdF91c2VyOngtcGFjay10ZXN0LXBhc3N3b3Jk"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "565",
+      "content-type": "application/json"
+    },
+    "payload": {
+      "error": {
+        "reason": "action [indices:admin/auto_create] is unauthorized for user [test_user] with effective roles [mixed_role] on indices [<read-{now/M}>], this action is granted by the index privileges [auto_configure,create_index,manage,all]",
+        "root_cause": [
+          {
+            "reason": "action [indices:admin/auto_create] is unauthorized for user [test_user] with effective roles [mixed_role] on indices [<read-{now/M}>], this action is granted by the index privileges [auto_configure,create_index,manage,all]",
+            "type": "security_exception"
+          }
+        ],
+        "type": "security_exception"
+      },
+      "status": 403
+    },
+    "statusCode": 403
+  }
+}

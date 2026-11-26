@@ -1,0 +1,38 @@
+{
+  "api": "cat.indices",
+  "file": "/test/platinum/security/authz/14_cat_indices.yml",
+  "name": "Test explicit request while multiple authorized indices",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "format": "json",
+      "index": [
+        "this_*",
+        "index2"
+      ]
+    },
+    "headers": {
+      "Authorization": "Basic Y2F0X3VzZXI6Y2F0X3NlY3JldF9wYXNzd29yZA=="
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "575",
+      "content-type": "application/json"
+    },
+    "payload": {
+      "error": {
+        "reason": "action [indices:monitor/settings/get] is unauthorized for user [cat_user] with effective roles [cat_some_indices_role] on indices [index2], this action is granted by the index privileges [monitor,view_index_metadata,manage,all]",
+        "root_cause": [
+          {
+            "reason": "action [indices:monitor/settings/get] is unauthorized for user [cat_user] with effective roles [cat_some_indices_role] on indices [index2], this action is granted by the index privileges [monitor,view_index_metadata,manage,all]",
+            "type": "security_exception"
+          }
+        ],
+        "type": "security_exception"
+      },
+      "status": 403
+    },
+    "statusCode": 403
+  }
+}

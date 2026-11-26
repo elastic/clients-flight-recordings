@@ -1,0 +1,53 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/aggregate-metrics/90_tsdb_mappings.yml",
+  "name": "Field caps with tsdb",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "field1": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            },
+            "field2": {
+              "time_series_metric": "gauge",
+              "type": "long"
+            },
+            "field3": {
+              "scaling_factor": 100,
+              "time_series_metric": "gauge",
+              "type": "scaled_float"
+            }
+          }
+        },
+        "settings": {
+          "mode": "time_series",
+          "routing_path": [
+            "field1"
+          ],
+          "time_series": {
+            "end_time": "2099-12-31T23:59:59Z",
+            "start_time": "2000-01-01T00:00:00Z"
+          }
+        }
+      },
+      "index": "tsdb-fieldcap"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "72",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "tsdb-fieldcap",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

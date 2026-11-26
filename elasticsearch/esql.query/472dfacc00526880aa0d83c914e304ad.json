@@ -1,0 +1,34 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/230_folding.yml",
+  "name": "Foldable query using KNN on image_vector",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM employees\n| WHERE KNN(image_vector, [0.4, 0.5, 0.9], 1 + 1)\n| KEEP hire_date, salary, salary_change, salary_change_long, name, image_vector\n| SORT name\n| LIMIT 2\n"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "391",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "Found 1 problem\nline 2:9: third argument of [KNN(image_vector, [0.4, 0.5, 0.9], 1 + 1)] must be a map expression, received [1 + 1]",
+        "root_cause": [
+          {
+            "reason": "Found 1 problem\nline 2:9: third argument of [KNN(image_vector, [0.4, 0.5, 0.9], 1 + 1)] must be a map expression, received [1 + 1]",
+            "type": "verification_exception"
+          }
+        ],
+        "type": "verification_exception"
+      },
+      "status": 400
+    },
+    "statusCode": 400
+  }
+}

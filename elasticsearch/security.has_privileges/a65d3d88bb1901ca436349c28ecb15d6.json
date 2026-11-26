@@ -1,0 +1,116 @@
+{
+  "api": "security.has_privileges",
+  "file": "/test/platinum/privileges/30_superuser.yml",
+  "name": "Test superuser has all application-privileges",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "application": [
+          {
+            "application": "app01",
+            "privileges": [
+              "action:login",
+              "data:read/secrets"
+            ],
+            "resources": [
+              "*"
+            ]
+          },
+          {
+            "application": "app02",
+            "privileges": [
+              "data:write/thing"
+            ],
+            "resources": [
+              "thing/1"
+            ]
+          },
+          {
+            "application": "app01",
+            "privileges": [
+              "dne",
+              "data:dne"
+            ],
+            "resources": [
+              "foo"
+            ]
+          },
+          {
+            "application": "app-dne",
+            "privileges": [
+              "anything",
+              "action:anything"
+            ],
+            "resources": [
+              "bar"
+            ]
+          }
+        ],
+        "cluster": [
+          "manage"
+        ],
+        "index": [
+          {
+            "names": [
+              "*"
+            ],
+            "privileges": [
+              "read",
+              "index",
+              "write"
+            ]
+          }
+        ]
+      }
+    },
+    "headers": {
+      "Authorization": "Basic bXlfYWRtaW46YWRtaW4wMS1wYXNzd29yZA=="
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "345",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "application": {
+        "app-dne": {
+          "bar": {
+            "action:anything": true,
+            "anything": true
+          }
+        },
+        "app01": {
+          "*": {
+            "action:login": true,
+            "data:read/secrets": true
+          },
+          "foo": {
+            "data:dne": true,
+            "dne": true
+          }
+        },
+        "app02": {
+          "thing/1": {
+            "data:write/thing": true
+          }
+        }
+      },
+      "cluster": {
+        "manage": true
+      },
+      "has_all_requested": true,
+      "index": {
+        "*": {
+          "index": true,
+          "read": true,
+          "write": true
+        }
+      },
+      "username": "my_admin"
+    },
+    "statusCode": 200
+  }
+}

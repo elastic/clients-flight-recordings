@@ -1,0 +1,62 @@
+{
+  "api": "transform.put_transform",
+  "file": "/test/platinum/transform/preview_transforms.yml",
+  "name": "Test preview transform by id",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "dest": {
+          "index": "dest-airline-data-by-airline-and-hour"
+        },
+        "pivot": {
+          "aggs": {
+            "avg_response": {
+              "avg": {
+                "field": "responsetime"
+              }
+            },
+            "time.max": {
+              "max": {
+                "field": "time"
+              }
+            },
+            "time.min": {
+              "min": {
+                "field": "time"
+              }
+            }
+          },
+          "group_by": {
+            "airline": {
+              "terms": {
+                "field": "airline"
+              }
+            },
+            "by-hour": {
+              "date_histogram": {
+                "field": "time",
+                "fixed_interval": "1h"
+              }
+            }
+          }
+        },
+        "source": {
+          "index": "airline-data"
+        }
+      },
+      "transform_id": "airline-transform"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

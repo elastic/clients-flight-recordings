@@ -1,0 +1,85 @@
+{
+  "api": "security.has_privileges",
+  "file": "/test/platinum/privileges/20_has_application_privs.yml",
+  "name": "Test has_privileges with application-privileges",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "application": [
+          {
+            "application": "yourapp-v1",
+            "privileges": [
+              "data:read/settings",
+              "data:write/settings",
+              "read",
+              "write"
+            ],
+            "resources": [
+              "settings/host",
+              "settings/port",
+              "system/key"
+            ]
+          },
+          {
+            "application": "yourapp-v2",
+            "privileges": [
+              "data:read/settings",
+              "data:write/settings"
+            ],
+            "resources": [
+              "settings/host"
+            ]
+          }
+        ]
+      }
+    },
+    "headers": {
+      "Authorization": "Basic eW91cl9yZWFkOnMzY3IzdC1wQHNzdzByZA=="
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "485",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "application": {
+        "yourapp-v1": {
+          "settings/host": {
+            "data:read/settings": true,
+            "data:write/settings": false,
+            "read": true,
+            "write": false
+          },
+          "settings/port": {
+            "data:read/settings": true,
+            "data:write/settings": false,
+            "read": true,
+            "write": false
+          },
+          "system/key": {
+            "data:read/settings": false,
+            "data:write/settings": false,
+            "read": false,
+            "write": false
+          }
+        },
+        "yourapp-v2": {
+          "settings/host": {
+            "data:read/settings": true,
+            "data:write/settings": false
+          }
+        }
+      },
+      "cluster": {
+      },
+      "has_all_requested": false,
+      "index": {
+      },
+      "username": "your_read"
+    },
+    "statusCode": 200
+  }
+}

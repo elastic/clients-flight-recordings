@@ -1,0 +1,66 @@
+{
+  "api": "indices.create",
+  "file": "/test/free/indices.create/20_synthetic_source.yml",
+  "name": "synthetic_source with copy_to inside nested object",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "dummy": {
+              "type": "keyword"
+            },
+            "my_values": {
+              "properties": {
+                "copy": {
+                  "type": "keyword"
+                },
+                "k": {
+                  "copy_to": "my_values.copy",
+                  "type": "keyword"
+                },
+                "second_level": {
+                  "properties": {
+                    "k2": {
+                      "copy_to": "my_values.copy",
+                      "type": "keyword"
+                    }
+                  },
+                  "type": "nested"
+                }
+              },
+              "type": "nested"
+            },
+            "name": {
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mapping": {
+              "source": {
+                "mode": "synthetic"
+              }
+            }
+          }
+        }
+      },
+      "index": "test"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "63",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "api": "indices.put_index_template",
+  "file": "/test/free/data_stream/270_small_retention.yml",
+  "name": "Test failure store rollover with tiny retention",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "data_stream": {
+        },
+        "index_patterns": [
+          "tiny-retention-*"
+        ],
+        "template": {
+          "data_stream_options": {
+            "failure_store": {
+              "enabled": true,
+              "lifecycle": {
+                "data_retention": "12h"
+              }
+            }
+          },
+          "lifecycle": {
+            "data_retention": "1d"
+          },
+          "settings": {
+            "index": {
+              "number_of_replicas": 0
+            }
+          }
+        }
+      },
+      "name": "tiny-retention-template"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "api": "query_rules.put_ruleset",
+  "file": "/test/platinum/entsearch/rules/10_query_ruleset_put.yml",
+  "name": "Create Query Ruleset - Insufficient privilege",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "rules": {
+          "actions": {
+            "ids": [
+              "id1",
+              "id2"
+            ]
+          },
+          "criteria": {
+            "metadata": "query_string",
+            "type": "exact",
+            "values": [
+              "elastic"
+            ]
+          },
+          "rule_id": "test-rule-1",
+          "type": "pinned"
+        }
+      },
+      "ruleset_id": "forbidden-query-ruleset"
+    },
+    "headers": {
+      "Authorization": "Basic ZW50c2VhcmNoLXVzZXI6ZW50c2VhcmNoLXVzZXItcGFzc3dvcmQ="
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "527",
+      "content-type": "application/json"
+    },
+    "payload": {
+      "error": {
+        "reason": "action [cluster:admin/xpack/query_rules/put] is unauthorized for user [entsearch-user] with effective roles [user], this action is granted by the cluster privileges [manage_search_query_rules,manage,all]",
+        "root_cause": [
+          {
+            "reason": "action [cluster:admin/xpack/query_rules/put] is unauthorized for user [entsearch-user] with effective roles [user], this action is granted by the cluster privileges [manage_search_query_rules,manage,all]",
+            "type": "security_exception"
+          }
+        ],
+        "type": "security_exception"
+      },
+      "status": 403
+    },
+    "statusCode": 403
+  }
+}

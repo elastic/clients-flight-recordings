@@ -1,0 +1,54 @@
+{
+  "api": "search",
+  "file": "/test/platinum/entsearch/rules/81_query_rules_retriever_no_rulesets.yml",
+  "name": "query rules retriever when the .query-rules system index is missing",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "explain": true,
+        "retriever": {
+          "rule": {
+            "match_criteria": {
+              "bar": "bar",
+              "foo": "foo"
+            },
+            "retriever": {
+              "standard": {
+                "query": {
+                  "query_string": {
+                    "query": "bar"
+                  }
+                }
+              }
+            },
+            "ruleset_ids": "abc"
+          }
+        }
+      },
+      "index": "test-index1",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "195",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "query ruleset abc not found",
+        "root_cause": [
+          {
+            "reason": "query ruleset abc not found",
+            "type": "resource_not_found_exception"
+          }
+        ],
+        "type": "resource_not_found_exception"
+      },
+      "status": 404
+    },
+    "statusCode": 404
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "api": "security.get_user_privileges",
+  "file": "/test/platinum/privileges/40_get_user_privs.yml",
+  "name": "Test get_user_privileges for merged roles",
+  "origin": "yaml",
+  "request": {
+    "args": {
+    },
+    "headers": {
+      "Authorization": "Basic dGVzdC0zOnRlc3QtdXNlci1wYXNzd29yZA=="
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "1354",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "applications": [
+        {
+          "application": "app-dne",
+          "privileges": [
+            "all"
+          ],
+          "resources": [
+            "*"
+          ]
+        },
+        {
+          "application": "test-app",
+          "privileges": [
+            "read"
+          ],
+          "resources": [
+            "object/1",
+            "object/2"
+          ]
+        },
+        {
+          "application": "test-app",
+          "privileges": [
+            "dne",
+            "user"
+          ],
+          "resources": [
+            "*"
+          ]
+        }
+      ],
+      "cluster": [
+        "manage",
+        "manage_security",
+        "monitor"
+      ],
+      "global": [
+        {
+          "application": {
+            "manage": {
+              "applications": [
+                "test-*"
+              ]
+            }
+          }
+        },
+        {
+          "application": {
+            "manage": {
+              "applications": [
+                "apps-*"
+              ]
+            }
+          }
+        }
+      ],
+      "indices": [
+        {
+          "allow_restricted_indices": false,
+          "names": [
+            "test-1-*"
+          ],
+          "privileges": [
+            "read"
+          ]
+        },
+        {
+          "allow_restricted_indices": false,
+          "names": [
+            "test-6-*",
+            "test-7-*"
+          ],
+          "privileges": [
+            "read"
+          ],
+          "query": [
+            "{\"term\":{\"test\":true}}"
+          ]
+        },
+        {
+          "allow_restricted_indices": false,
+          "field_security": [
+            {
+              "except": [
+                "private-*"
+              ],
+              "grant": [
+                "*"
+              ]
+            }
+          ],
+          "names": [
+            "test-4-*"
+          ],
+          "privileges": [
+            "read"
+          ]
+        },
+        {
+          "allow_restricted_indices": false,
+          "field_security": [
+            {
+              "except": [
+                "secret-*",
+                "private-*"
+              ],
+              "grant": [
+                "*"
+              ]
+            },
+            {
+              "grant": [
+                "apps-*"
+              ]
+            }
+          ],
+          "names": [
+            "test-2-*"
+          ],
+          "privileges": [
+            "read"
+          ],
+          "query": [
+            "{\"term\":{\"test\":true}}",
+            "{\"term\":{\"apps\":true}}"
+          ]
+        },
+        {
+          "allow_restricted_indices": false,
+          "names": [
+            "test-3-*",
+            "test-6-*"
+          ],
+          "privileges": [
+            "read",
+            "write"
+          ]
+        },
+        {
+          "allow_restricted_indices": false,
+          "field_security": [
+            {
+              "grant": [
+                "test-*"
+              ]
+            }
+          ],
+          "names": [
+            "test-3-*",
+            "test-4-*",
+            "test-5-*"
+          ],
+          "privileges": [
+            "read"
+          ]
+        },
+        {
+          "allow_restricted_indices": false,
+          "names": [
+            "test-1-*",
+            "test-9-*"
+          ],
+          "privileges": [
+            "all"
+          ]
+        }
+      ],
+      "run_as": [
+        "app-*",
+        "test-*"
+      ]
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/esql/40_tsdb.yml",
+  "name": "TS Command grouping on text field",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "k8s": {
+              "properties": {
+                "pod": {
+                  "properties": {
+                    "ip": {
+                      "type": "ip"
+                    },
+                    "name": {
+                      "type": "keyword"
+                    },
+                    "network": {
+                      "properties": {
+                        "rx": {
+                          "type": "integer"
+                        },
+                        "tx": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "uid": {
+                      "time_series_dimension": true,
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            },
+            "text_field": {
+              "type": "text"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "routing_path": [
+              "metricset",
+              "k8s.pod.uid"
+            ],
+            "time_series": {
+              "end_time": "2021-04-29T00:00:00Z",
+              "start_time": "2021-04-28T00:00:00Z"
+            }
+          }
+        }
+      },
+      "index": "test-text-field"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "74",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "test-text-field",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

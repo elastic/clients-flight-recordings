@@ -1,0 +1,60 @@
+{
+  "api": "ml.preview_datafeed",
+  "file": "/test/platinum/ml/preview_datafeed.yml",
+  "name": "Test preview datafeed where time field is data_nanos",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "datafeed_config": {
+          "indexes": "index-airline-data-date-nanos"
+        },
+        "job_config": {
+          "analysis_config": {
+            "bucket_span": "1h",
+            "detectors": [
+              {
+                "by_field_name": "airline",
+                "field_name": "responsetime",
+                "function": "sum"
+              }
+            ]
+          },
+          "data_description": {
+            "time_field": "time"
+          }
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "235",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": [
+      {
+        "airline": "foo",
+        "responsetime": 1,
+        "time": 1487376000000
+      },
+      {
+        "airline": "foo",
+        "responsetime": 1,
+        "time": 1487377800000
+      },
+      {
+        "airline": "bar",
+        "responsetime": 42,
+        "time": 1487379600000
+      },
+      {
+        "airline": "foo",
+        "responsetime": 42,
+        "time": 1487379660000
+      }
+    ],
+    "statusCode": 200
+  }
+}

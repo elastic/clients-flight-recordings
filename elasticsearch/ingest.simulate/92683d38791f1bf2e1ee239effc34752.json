@@ -1,0 +1,57 @@
+{
+  "api": "ingest.simulate",
+  "file": "/test/platinum/redact/10_redact_processor.yml",
+  "name": "Test ignore missing",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "docs": [
+          {
+            "_source": {
+              "wrong_field": "will error"
+            }
+          }
+        ],
+        "pipeline": {
+          "processors": [
+            {
+              "redact": {
+                "field": "to_redact",
+                "ignore_missing": false,
+                "patterns": [
+                  "%{EMAILADDRESS:EMAIL}",
+                  "%{IP:IP_ADDRESS}"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "207",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "docs": [
+        {
+          "error": {
+            "reason": "field [to_redact] is null or missing",
+            "root_cause": [
+              {
+                "reason": "field [to_redact] is null or missing",
+                "type": "illegal_argument_exception"
+              }
+            ],
+            "type": "illegal_argument_exception"
+          }
+        }
+      ]
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "api": "search_application.put",
+  "file": "/test/platinum/entsearch/search/20_search_application_put.yml",
+  "name": "Create Search Application with string encoded template script",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "indices": [
+          "test-index1",
+          "test-index2"
+        ],
+        "template": {
+          "dictionary": {
+            "properties": {
+              "another_query_string": {
+                "type": "string"
+              }
+            }
+          },
+          "script": {
+            "lang": "mustache",
+            "params": {
+              "query_string": "elastic"
+            },
+            "source": "{ \"query\": { \"query_string\":{ \"query\": \"{{query_string}}\", \"default_field\": \"_all\" } } }"
+          }
+        }
+      },
+      "name": "another-test-search-application"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "20",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "result": "created"
+    },
+    "statusCode": 201
+  }
+}

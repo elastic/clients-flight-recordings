@@ -1,0 +1,95 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/downsample/40_runtime_fields.yml",
+  "name": "Runtime field accessing label fields in downsample target index",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "k8s": {
+              "properties": {
+                "pod": {
+                  "properties": {
+                    "network": {
+                      "properties": {
+                        "received": {
+                          "time_series_metric": "counter",
+                          "type": "long"
+                        },
+                        "rx": {
+                          "time_series_metric": "gauge",
+                          "type": "long"
+                        },
+                        "sent": {
+                          "time_series_metric": "counter",
+                          "type": "long"
+                        },
+                        "tx": {
+                          "time_series_metric": "gauge",
+                          "type": "long"
+                        }
+                      }
+                    },
+                    "uid": {
+                      "time_series_dimension": true,
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "label_1": {
+              "type": "keyword"
+            },
+            "label_2": {
+              "type": "long"
+            },
+            "metricset": {
+              "time_series_dimension": true,
+              "type": "keyword"
+            }
+          },
+          "runtime": {
+            "labels": {
+              "script": "emit(doc['label_1'].value + '-' + doc['label_2'].value);\n",
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "index": {
+            "mode": "time_series",
+            "routing_path": [
+              "metricset",
+              "k8s.pod.uid"
+            ],
+            "time_series": {
+              "end_time": "2021-04-29T00:00:00Z",
+              "start_time": "2021-04-28T00:00:00Z"
+            }
+          },
+          "number_of_shards": 1
+        }
+      },
+      "index": "source"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "65",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "source",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

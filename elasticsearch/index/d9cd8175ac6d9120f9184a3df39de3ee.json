@@ -1,0 +1,40 @@
+{
+  "api": "index",
+  "file": "/test/platinum/security/authz/50_data_streams.yml",
+  "name": "auto_configure privilege permits auto-create of data streams",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "@timestamp": "2020-12-12",
+        "foo": "bar"
+      },
+      "id": "1",
+      "index": "simple-data-stream1",
+      "op_type": "create"
+    },
+    "headers": {
+      "Authorization": "Basic dGVzdF91c2VyOngtcGFjay10ZXN0LXBhc3N3b3Jk"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "635",
+      "content-type": "application/json"
+    },
+    "payload": {
+      "error": {
+        "reason": "action [indices:admin/auto_create] is unauthorized for user [test_user] with effective roles [data_stream_ingest_role,data_stream_role] on indices [simple-data-stream1], this action is granted by the index privileges [auto_configure,create_index,manage,all]",
+        "root_cause": [
+          {
+            "reason": "action [indices:admin/auto_create] is unauthorized for user [test_user] with effective roles [data_stream_ingest_role,data_stream_role] on indices [simple-data-stream1], this action is granted by the index privileges [auto_configure,create_index,manage,all]",
+            "type": "security_exception"
+          }
+        ],
+        "type": "security_exception"
+      },
+      "status": 403
+    },
+    "statusCode": 403
+  }
+}

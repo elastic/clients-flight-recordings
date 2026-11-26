@@ -1,0 +1,56 @@
+{
+  "api": "ingest.put_pipeline",
+  "file": "/test/platinum/spatial/100_geo_grid_ingest.yml",
+  "name": "Test geo_grid on geohash with advanced pipeline and cell hierarchy using WKT",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "description": "_description",
+        "processors": [
+          {
+            "geo_grid": {
+              "children_field": "children",
+              "field": "geocell",
+              "parent_field": "parent",
+              "precision_field": "precision",
+              "target_field": "shape",
+              "target_format": "wkt",
+              "tile_type": "geohash"
+            }
+          },
+          {
+            "set": {
+              "copy_from": "children",
+              "field": "childrenShapes"
+            }
+          },
+          {
+            "foreach": {
+              "field": "childrenShapes",
+              "processor": {
+                "geo_grid": {
+                  "field": "_ingest._value",
+                  "target_format": "wkt",
+                  "tile_type": "geohash"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "id": "my_pipeline"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

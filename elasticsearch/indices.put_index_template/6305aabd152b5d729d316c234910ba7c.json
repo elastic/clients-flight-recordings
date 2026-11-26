@@ -1,0 +1,55 @@
+{
+  "api": "indices.put_index_template",
+  "file": "/test/free/data_stream/150_tsdb.yml",
+  "name": "subobject in passthrough object auto flatten",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "data_stream": {
+        },
+        "index_patterns": [
+          "k9s*"
+        ],
+        "template": {
+          "mappings": {
+            "properties": {
+              "attributes": {
+                "priority": 0,
+                "properties": {
+                  "subcategory": {
+                    "properties": {
+                      "dim": {
+                        "type": "keyword"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "time_series_dimension": true,
+                "type": "passthrough"
+              }
+            }
+          },
+          "settings": {
+            "index": {
+              "mode": "time_series"
+            }
+          }
+        }
+      },
+      "name": "my-passthrough-template"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

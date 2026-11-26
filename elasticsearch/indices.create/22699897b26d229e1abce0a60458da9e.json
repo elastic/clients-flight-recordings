@@ -1,0 +1,60 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/search-business-rules/10_pinned_query.yml",
+  "name": "Test pinned query with knn query",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "aliases": {
+          "my_alias": {
+            "filter": {
+              "term": {
+                "my_name": "v2"
+              }
+            }
+          },
+          "my_alias1": {
+            "filter": {
+              "term": {
+                "my_name": "v1"
+              }
+            }
+          }
+        },
+        "mappings": {
+          "dynamic": false,
+          "properties": {
+            "my_name": {
+              "store": true,
+              "type": "keyword"
+            },
+            "my_vector": {
+              "dims": 4,
+              "index": true,
+              "similarity": "l2_norm",
+              "type": "dense_vector"
+            }
+          }
+        },
+        "settings": {
+          "number_of_shards": 1
+        }
+      },
+      "index": "my_index"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "67",
+      "content-type": "application/json",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "my_index",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}
