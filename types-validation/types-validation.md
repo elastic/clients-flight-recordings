@@ -1,11 +1,11 @@
 ## Summary
 
 Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `eb55ee89a5cd65fc424ce4acb55880dd8043b984`
+Elasticsearch build hash: `24e6a873df175891d87f1cc15dbd124c6da2593f`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 618 | 586 (94.8%) | 32 (5.2%) | 133 (21.5%) | 0 (0%) |
+| 624 | 592 (94.9%) | 32 (5.1%) | 139 (22.3%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
@@ -787,6 +787,12 @@ Elasticsearch build hash: `eb55ee89a5cd65fc424ce4acb55880dd8043b984`
 
 | API | Status | Request | Response | Stability | Visibility | Meta |
 | --- | --- | --- | --- | --- | --- | --- |
+| `label_values` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
+| `labels` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
+| `metadata` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
+| `query` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
+| `query_range` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
+| `series` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
 | `status_buildinfo` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
 | **Summary** | :white_circle: | 0% | 0% | | | |
 
