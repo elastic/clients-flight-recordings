@@ -1,7 +1,7 @@
 ## Summary
 
 Elasticsearch version: `8.19.27-SNAPSHOT`  
-Elasticsearch build hash: `5df8807a4a15fdf96eb3b4d3e7d79fb2553e465e`
+Elasticsearch build hash: `661a92eaa5d79bf816f98a2def6fd45c4226b64e`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
@@ -455,7 +455,7 @@ Elasticsearch build hash: `5df8807a4a15fdf96eb3b4d3e7d79fb2553e465e`
 | `explain_data_lifecycle` | :green_circle: | 3/3 | 3/3 | stable | undefined |  |
 | `field_usage_stats` | :green_circle: | 5/5 | 5/5 | experimental | undefined |  |
 | `flush` | :green_circle: | 47/47 | 47/47 | stable | undefined |  |
-| `forcemerge` | :green_circle: | 13/13 | 13/13 | stable | undefined |  |
+| `forcemerge` | :green_circle: | 14/14 | 14/14 | stable | undefined |  |
 | `get` | :green_circle: | 68/68 | 68/68 | stable | undefined |  |
 | `get_alias` | :red_circle: | 94/94 | 82/94 | stable | undefined |  |
 | `get_data_lifecycle` | :red_circle: | 14/14 | 13/14 | stable | undefined |  |
