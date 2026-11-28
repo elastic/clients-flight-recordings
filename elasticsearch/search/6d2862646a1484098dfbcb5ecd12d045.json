@@ -1,0 +1,72 @@
+{
+  "api": "search",
+  "file": "/test/platinum/inference/90_semantic_text_highlighter.yml",
+  "name": "Default highlighter for fields",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "highlight": {
+          "fields": {
+            "body": {
+              "number_of_fragments": 2,
+              "order": "score"
+            }
+          }
+        },
+        "query": {
+          "match": {
+            "body": "What is Elasticsearch?"
+          }
+        }
+      },
+      "index": "test-dense-index",
+      "typed_keys": true
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch",
+      "x-elasticsearch-search-metrics": "store_bytes_read=978"
+    },
+    "payload": {
+      "_shards": {
+        "failed": 0,
+        "skipped": 0,
+        "successful": 1,
+        "total": 1
+      },
+      "hits": {
+        "hits": [
+          {
+            "_id": "doc_1",
+            "_index": "test-dense-index",
+            "_score": 0.68324494,
+            "_source": {
+              "body": [
+                "ElasticSearch is an open source, distributed, RESTful, search engine which is built on top of Lucene internally and enjoys all the features it provides.",
+                "You Know, for Search!"
+              ],
+              "title": "Elasticsearch"
+            },
+            "highlight": {
+              "body": [
+                "<em>ElasticSearch</em> <em>is</em> an open source, distributed, RESTful, search engine which <em>is</em> built on top of Lucene"
+              ]
+            }
+          }
+        ],
+        "max_score": 0.68324494,
+        "total": {
+          "relation": "eq",
+          "value": 1
+        }
+      },
+      "timed_out": false,
+      "took": 3
+    },
+    "statusCode": 200
+  }
+}

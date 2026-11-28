@@ -5,7 +5,7 @@ Elasticsearch build hash: `ff2abbaccfc053de670b08ea46f0f026b344fca7`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 610 | 575 (94.3%) | 35 (5.7%) | 132 (21.6%) | 0 (0%) |
+| 611 | 576 (94.3%) | 35 (5.7%) | 133 (21.8%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
@@ -775,6 +775,7 @@ Elasticsearch build hash: `ff2abbaccfc053de670b08ea46f0f026b344fca7`
 | `metadata` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
 | `query` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
 | `query_range` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
+| `remote_write` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
 | `series` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
 | `status_buildinfo` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
 | **Summary** | :white_circle: | 0% | 0% | | | |
