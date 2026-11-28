@@ -1,0 +1,70 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/26_aggs_bucket.yml",
+  "name": "TBUCKET column metadata in REST response",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET column_metadata=true; TS ts_metrics | STATS max(metric) BY tb = TBUCKET(30 minutes)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 11:04:02 GMT",
+      "took-nanos": "31773985",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 177,
+      "columns": [
+        {
+          "_meta": {
+            "origin": "computed"
+          },
+          "name": "max(metric)",
+          "type": "long"
+        },
+        {
+          "_meta": {
+            "bucket": {
+              "interval": 30,
+              "unit": "minute"
+            },
+            "interval": "30 minutes",
+            "origin": "computed",
+            "role": "time",
+            "time_zone": "UTC"
+          },
+          "name": "tb",
+          "type": "date"
+        }
+      ],
+      "completion_time_in_millis": 1795863842194,
+      "cpu_nanos": 3422026,
+      "documents_found": 1,
+      "driver_nanos": 3307919,
+      "expiration_time_in_millis": 1796295842010,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 11,
+      "search_cpu_nanos": 8313330,
+      "search_load_nanos": 8668926,
+      "search_waiting_nanos": 84528,
+      "start_time_in_millis": 1795863842163,
+      "took": 31,
+      "values": [
+        [
+          42,
+          "2024-06-01T12:00:00.000Z"
+        ]
+      ],
+      "values_loaded": 3
+    },
+    "statusCode": 200
+  }
+}

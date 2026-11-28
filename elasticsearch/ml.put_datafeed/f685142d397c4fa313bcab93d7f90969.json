@@ -1,0 +1,44 @@
+{
+  "api": "ml.put_datafeed",
+  "file": "/test/platinum/ml/datafeeds_esql_validation.yml",
+  "name": "Test update ES|QL datafeed to a frequency that is not a multiple of the time bucket",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "delayed_data_check_config": {
+          "enabled": false
+        },
+        "esql_query": "FROM esql-feed-data | EVAL @timestamp = DATE_TRUNC(15 minutes, @timestamp) | KEEP @timestamp",
+        "frequency": "30m",
+        "job_id": "esql-feed-job"
+      },
+      "datafeed_id": "esql-feed-update-frequency"
+    },
+    "headers": {
+      "Authorization": "Basic eF9wYWNrX3Jlc3RfdXNlcjp4LXBhY2stdGVzdC1wYXNzd29yZA=="
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "253",
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 11:18:46 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "error": {
+        "reason": "A datafeed [esql-feed-mapped] already exists for job [esql-feed-job]",
+        "root_cause": [
+          {
+            "reason": "A datafeed [esql-feed-mapped] already exists for job [esql-feed-job]",
+            "type": "status_exception"
+          }
+        ],
+        "type": "status_exception"
+      },
+      "status": 409
+    },
+    "statusCode": 409
+  }
+}

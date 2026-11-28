@@ -1,0 +1,91 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/48_column_semantics.yml",
+  "name": "Field semantics in column metadata",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET column_metadata=true; FROM test_semantics | KEEP host, latency, message | RENAME latency AS lat | EVAL doubled = lat * 2, lat_s = lat / 1000 | LIMIT 0"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 11:10:33 GMT",
+      "took-nanos": "6014045",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 0,
+      "columns": [
+        {
+          "_meta": {
+            "field": "host",
+            "origin": "mapped",
+            "role": "dimension"
+          },
+          "name": "host",
+          "type": "keyword"
+        },
+        {
+          "_meta": {
+            "description": "Request latency",
+            "field": "latency",
+            "metric_type": "gauge",
+            "origin": "renamed",
+            "role": "metric",
+            "unit": "ms"
+          },
+          "name": "lat",
+          "type": "double"
+        },
+        {
+          "_meta": {
+            "field": "message",
+            "origin": "mapped",
+            "role": "text"
+          },
+          "name": "message",
+          "type": "text"
+        },
+        {
+          "_meta": {
+            "origin": "computed",
+            "unit": "ms*2"
+          },
+          "name": "doubled",
+          "type": "double"
+        },
+        {
+          "_meta": {
+            "origin": "computed",
+            "unit": "s"
+          },
+          "name": "lat_s",
+          "type": "double"
+        }
+      ],
+      "completion_time_in_millis": 1795864233838,
+      "cpu_nanos": 60559,
+      "documents_found": 0,
+      "driver_nanos": 37091,
+      "expiration_time_in_millis": 1796296233700,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 0,
+      "search_cpu_nanos": 0,
+      "search_load_nanos": 0,
+      "search_waiting_nanos": 0,
+      "start_time_in_millis": 1795864233832,
+      "took": 6,
+      "values": [
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}

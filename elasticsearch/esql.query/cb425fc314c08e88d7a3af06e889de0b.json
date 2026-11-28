@@ -1,0 +1,62 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/160_union_types.yml",
+  "name": "load two indexes, convert a keyword and an ip with leading zeros",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM leading_zeros_* METADATA _index | EVAL x = TO_IP(addr, {\"leading_zeros\": \"octal\"}) | SORT _index ASC | KEEP _index, x"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 10:59:35 GMT",
+      "took-nanos": "13411202",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-4c2ca9ea6e3ed7d649327d94297960dd3d60b594 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 27,
+      "columns": [
+        {
+          "name": "_index",
+          "type": "keyword"
+        },
+        {
+          "name": "x",
+          "type": "ip"
+        }
+      ],
+      "completion_time_in_millis": 1795863575806,
+      "cpu_nanos": 2320515,
+      "documents_found": 2,
+      "driver_nanos": 2141032,
+      "expiration_time_in_millis": 1796295575612,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 22,
+      "search_cpu_nanos": 4170826,
+      "search_load_nanos": 6487222,
+      "search_waiting_nanos": 119230,
+      "start_time_in_millis": 1795863575793,
+      "took": 13,
+      "values": [
+        [
+          "leading_zeros_ip",
+          "10.0.0.1"
+        ],
+        [
+          "leading_zeros_keyword",
+          "1.1.8.1"
+        ]
+      ],
+      "values_loaded": 4
+    },
+    "statusCode": 200
+  }
+}

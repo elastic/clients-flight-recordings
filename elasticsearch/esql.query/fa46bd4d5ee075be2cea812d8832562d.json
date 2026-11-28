@@ -1,0 +1,78 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/308_nested_any_pushdown.yml",
+  "name": "a nested predicate in EVAL flags the parents that the same predicate in WHERE keeps",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "allow_partial_results": false,
+      "body": {
+        "query": "FROM na_push | EVAL h = NESTED_ANY(items.price > 10), s = NESTED_ANY(items.sku == \"pen\") | KEEP id, h, s | SORT id | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 11:08:07 GMT",
+      "took-nanos": "8292729",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 70,
+      "columns": [
+        {
+          "name": "id",
+          "type": "keyword"
+        },
+        {
+          "name": "h",
+          "type": "boolean"
+        },
+        {
+          "name": "s",
+          "type": "boolean"
+        }
+      ],
+      "completion_time_in_millis": 1795864087699,
+      "cpu_nanos": 1610909,
+      "documents_found": 4,
+      "driver_nanos": 1492204,
+      "expiration_time_in_millis": 1796296087610,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 44,
+      "search_cpu_nanos": 2871417,
+      "search_load_nanos": 3326148,
+      "search_waiting_nanos": 101412,
+      "start_time_in_millis": 1795864087691,
+      "took": 8,
+      "values": [
+        [
+          "a",
+          true,
+          true
+        ],
+        [
+          "b",
+          false,
+          false
+        ],
+        [
+          "c",
+          false,
+          false
+        ],
+        [
+          "d",
+          true,
+          false
+        ]
+      ],
+      "values_loaded": 4
+    },
+    "statusCode": 200
+  }
+}

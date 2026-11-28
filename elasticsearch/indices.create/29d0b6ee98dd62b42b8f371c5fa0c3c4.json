@@ -1,0 +1,49 @@
+{
+  "api": "indices.create",
+  "file": "/test/platinum/esql/340_index_sort_computed_key.yml",
+  "name": "Index sorted on a key computed by an ES|QL function",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "mappings": {
+          "properties": {
+            "@timestamp": {
+              "type": "date"
+            },
+            "host": {
+              "type": "keyword"
+            }
+          }
+        },
+        "settings": {
+          "auto_expand_replicas": "0-1",
+          "index": {
+            "sort": "DATE_TRUNC(1 hour, @timestamp) DESC, host"
+          },
+          "number_of_shards": 1,
+          "routing": {
+            "rebalance": {
+              "enable": "none"
+            }
+          }
+        }
+      },
+      "index": "computed_sort"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "72",
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 11:09:16 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true,
+      "index": "computed_sort",
+      "shards_acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

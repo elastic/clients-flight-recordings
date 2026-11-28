@@ -1,0 +1,65 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/295_nested_expand.yml",
+  "name": "A column of the query named _doc does not replace the document NESTED_EXPAND reads",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM nested_expand | EVAL _doc = CONCAT(id, \"-user\") | NESTED_EXPAND items | KEEP _doc, items.qty | SORT items.qty | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 11:05:41 GMT",
+      "took-nanos": "10073731",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 30,
+      "columns": [
+        {
+          "name": "_doc",
+          "type": "keyword"
+        },
+        {
+          "name": "items.qty",
+          "type": "long"
+        }
+      ],
+      "completion_time_in_millis": 1795863941598,
+      "cpu_nanos": 1397922,
+      "documents_found": 2,
+      "driver_nanos": 1308720,
+      "expiration_time_in_millis": 1796295941484,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 26,
+      "search_cpu_nanos": 2648824,
+      "search_load_nanos": 3161078,
+      "search_waiting_nanos": 63646,
+      "start_time_in_millis": 1795863941588,
+      "took": 10,
+      "values": [
+        [
+          "1-user",
+          1
+        ],
+        [
+          "1-user",
+          2
+        ],
+        [
+          "2-user",
+          null
+        ]
+      ],
+      "values_loaded": 2
+    },
+    "statusCode": 200
+  }
+}

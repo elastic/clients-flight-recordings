@@ -1,0 +1,74 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/26_aggs_bucket.yml",
+  "name": "BUCKET column metadata in columnar response",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "columnar": true,
+        "query": "SET column_metadata=true; FROM test_dates | STATS c=COUNT(*) BY bucket=BUCKET(date, 1 month)"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 11:04:01 GMT",
+      "took-nanos": "12762860",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-4c2ca9ea6e3ed7d649327d94297960dd3d60b594 \"No limit defined, adding default limit of [1000]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 0,
+      "columns": [
+        {
+          "_meta": {
+            "origin": "computed",
+            "unit": "1"
+          },
+          "name": "c",
+          "type": "long"
+        },
+        {
+          "_meta": {
+            "bucket": {
+              "interval": 1,
+              "unit": "month"
+            },
+            "interval": "1 month",
+            "origin": "computed",
+            "time_zone": "UTC"
+          },
+          "name": "bucket",
+          "type": "date"
+        }
+      ],
+      "completion_time_in_millis": 1795863841001,
+      "cpu_nanos": 873709,
+      "documents_found": 1,
+      "driver_nanos": 744295,
+      "expiration_time_in_millis": 1796295840809,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 6,
+      "search_cpu_nanos": 1839430,
+      "search_load_nanos": 2171558,
+      "search_waiting_nanos": 54338,
+      "start_time_in_millis": 1795863840989,
+      "took": 12,
+      "values": [
+        [
+          1
+        ],
+        [
+          "1985-07-01T00:00:00.000Z"
+        ]
+      ],
+      "values_loaded": 0
+    },
+    "statusCode": 200
+  }
+}

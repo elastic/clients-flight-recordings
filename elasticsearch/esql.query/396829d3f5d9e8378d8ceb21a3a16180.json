@@ -1,0 +1,67 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/295_nested_expand.yml",
+  "name": "A child mapped with different types in two indices converts through the cast the query settles it with",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM ne_price_a, ne_price_b | NESTED_EXPAND items | EVAL p = items.price::long | STATS total = SUM(p), n = COUNT(*) BY id | SORT id | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 11:05:52 GMT",
+      "took-nanos": "16941446",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 42,
+      "columns": [
+        {
+          "name": "total",
+          "type": "long"
+        },
+        {
+          "name": "n",
+          "type": "long"
+        },
+        {
+          "name": "id",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1795863952969,
+      "cpu_nanos": 4285462,
+      "documents_found": 2,
+      "driver_nanos": 8492563,
+      "expiration_time_in_millis": 1796295952893,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 20,
+      "search_cpu_nanos": 4562374,
+      "search_load_nanos": 9220761,
+      "search_waiting_nanos": 82710,
+      "start_time_in_millis": 1795863952953,
+      "took": 16,
+      "values": [
+        [
+          3,
+          2,
+          "a1"
+        ],
+        [
+          70,
+          2,
+          "b1"
+        ]
+      ],
+      "values_loaded": 4
+    },
+    "statusCode": 200
+  }
+}

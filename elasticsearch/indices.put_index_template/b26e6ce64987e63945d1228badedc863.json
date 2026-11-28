@@ -1,0 +1,51 @@
+{
+  "api": "indices.put_index_template",
+  "file": "/test/free/simulate.ingest/20_template_index_mode.yml",
+  "name": "Simulate with a time_series data stream template and a timestamp outside the time range",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "data_stream": {
+        },
+        "index_patterns": [
+          "tsds-sim*"
+        ],
+        "template": {
+          "mappings": {
+            "properties": {
+              "@timestamp": {
+                "type": "date"
+              },
+              "dim": {
+                "time_series_dimension": true,
+                "type": "keyword"
+              }
+            }
+          },
+          "settings": {
+            "index": {
+              "mode": "time_series",
+              "routing_path": [
+                "dim"
+              ]
+            }
+          }
+        }
+      },
+      "name": "tsds-sim-template"
+    }
+  },
+  "response": {
+    "headers": {
+      "content-length": "21",
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 10:42:13 GMT",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "acknowledged": true
+    },
+    "statusCode": 200
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/48_column_semantics.yml",
+  "name": "Grouping keys keep the semantics of the field they read",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET column_metadata=true; TS test_semantics | STATS avg = AVG(AVG_OVER_TIME(latency)) BY node = host, r = region"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 11:10:39 GMT",
+      "took-nanos": "12825756",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 122,
+      "columns": [
+        {
+          "_meta": {
+            "origin": "computed",
+            "unit": "ms"
+          },
+          "name": "avg",
+          "type": "double"
+        },
+        {
+          "_meta": {
+            "field": "host",
+            "origin": "renamed",
+            "role": "dimension"
+          },
+          "name": "node",
+          "type": "keyword"
+        },
+        {
+          "_meta": {
+            "description": "Deployment region",
+            "field": "region",
+            "origin": "renamed",
+            "role": "attribute"
+          },
+          "name": "r",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1795864239019,
+      "cpu_nanos": 1806900,
+      "documents_found": 1,
+      "driver_nanos": 1659453,
+      "expiration_time_in_millis": 1796296238903,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 17,
+      "search_cpu_nanos": 2385099,
+      "search_load_nanos": 2812330,
+      "search_waiting_nanos": 120606,
+      "start_time_in_millis": 1795864239007,
+      "took": 12,
+      "values": [
+        [
+          12.5,
+          "a",
+          "eu"
+        ]
+      ],
+      "values_loaded": 4
+    },
+    "statusCode": 200
+  }
+}

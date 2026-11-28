@@ -1,0 +1,66 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/295_nested_expand.yml",
+  "name": "A cast of an expanded child after an earlier KEEP reads the converted column through the projection",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "FROM ne_keep_a, ne_keep_b | NESTED_EXPAND items | KEEP id, items.qty, items.price | CHANGE_POINT items.qty ON items.qty | EVAL p = TO_LONG(items.price) | KEEP id, p | SORT p | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 11:05:59 GMT",
+      "took-nanos": "23626330",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.7.0-4c2ca9ea6e3ed7d649327d94297960dd3d60b594 \"Line 1:85: evaluation of [CHANGE_POINT items.qty ON items.qty] failed, treating result as null. Only first 20 failures recorded.\", 299 Elasticsearch-9.7.0-4c2ca9ea6e3ed7d649327d94297960dd3d60b594 \"Line 1:85: java.lang.IllegalArgumentException: not enough buckets to calculate change_point. Requires at least [22]; found [3]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 42,
+      "columns": [
+        {
+          "name": "id",
+          "type": "keyword"
+        },
+        {
+          "name": "p",
+          "type": "long"
+        }
+      ],
+      "completion_time_in_millis": 1795863959766,
+      "cpu_nanos": 7590820,
+      "documents_found": 2,
+      "driver_nanos": 7570242,
+      "expiration_time_in_millis": 1796295959697,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 41,
+      "search_cpu_nanos": 3060553,
+      "search_load_nanos": 3938971,
+      "search_waiting_nanos": 235119,
+      "start_time_in_millis": 1795863959743,
+      "took": 23,
+      "values": [
+        [
+          "a1",
+          1
+        ],
+        [
+          "a1",
+          2
+        ],
+        [
+          "b1",
+          30
+        ]
+      ],
+      "values_loaded": 3
+    },
+    "statusCode": 200
+  }
+}
