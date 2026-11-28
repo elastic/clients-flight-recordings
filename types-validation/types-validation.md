@@ -1,11 +1,11 @@
 ## Summary
 
 Elasticsearch version: `9.6.0-SNAPSHOT`  
-Elasticsearch build hash: `24e6a873df175891d87f1cc15dbd124c6da2593f`
+Elasticsearch build hash: `6cd94d0e9cc926bda647799bf6f10afc4c354a42`
 
 | Total types | Validated | Failing | Missing test | Missing types |
 | --- | --- | --- | --- | --- |
-| 624 | 592 (94.9%) | 32 (5.1%) | 139 (22.3%) | 0 (0%) |
+| 625 | 593 (94.9%) | 32 (5.1%) | 140 (22.4%) | 0 (0%) |
 
 <details>
 <summary>Breakdown by stability</summary>
@@ -494,7 +494,7 @@ Elasticsearch build hash: `24e6a873df175891d87f1cc15dbd124c6da2593f`
 | `explain_data_lifecycle` | :green_circle: | 7/7 | 7/7 | stable | undefined |  |
 | `field_usage_stats` | :green_circle: | 7/7 | 7/7 | experimental | undefined |  |
 | `flush` | :green_circle: | 68/68 | 68/68 | stable | undefined |  |
-| `forcemerge` | :green_circle: | 36/36 | 36/36 | stable | undefined |  |
+| `forcemerge` | :green_circle: | 37/37 | 37/37 | stable | undefined |  |
 | `get` | :green_circle: | 69/69 | 69/69 | stable | undefined |  |
 | `get_alias` | :green_circle: | 76/76 | 76/76 | stable | undefined |  |
 | `get_data_lifecycle` | :green_circle: | 16/16 | 16/16 | stable | undefined |  |
@@ -792,6 +792,7 @@ Elasticsearch build hash: `24e6a873df175891d87f1cc15dbd124c6da2593f`
 | `metadata` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
 | `query` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
 | `query_range` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
+| `remote_write` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
 | `series` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
 | `status_buildinfo` | :white_circle: | Missing test | Missing test | tech_preview | undefined |  |
 | **Summary** | :white_circle: | 0% | 0% | | | |

@@ -1,0 +1,58 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/308_unmapped_load_all_subqueries.yml",
+  "name": "LOAD_ALL runs a sub-query union whose conversion resolves on a later analyzer pass",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"LOAD_ALL\"; FROM (FROM la_sub_ip), (FROM la_sub_ip) | WHERE TO_STRING(ip) == \"172.21.3.15\" OR does_not_exist IS NOT NULL | EVAL x = TO_STRING(ip) | KEEP ip, x | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 11:06:24 GMT",
+      "took-nanos": "15324905",
+      "transfer-encoding": "chunked",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 34,
+      "columns": [
+        {
+          "name": "ip",
+          "type": "ip"
+        },
+        {
+          "name": "x",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1795863984029,
+      "cpu_nanos": 1024873,
+      "documents_found": 2,
+      "driver_nanos": 885724,
+      "expiration_time_in_millis": 1796295983927,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 20,
+      "start_time_in_millis": 1795863984014,
+      "took": 15,
+      "values": [
+        [
+          "172.21.3.15",
+          "172.21.3.15"
+        ],
+        [
+          "172.21.3.15",
+          "172.21.3.15"
+        ]
+      ],
+      "values_loaded": 2
+    },
+    "statusCode": 200
+  }
+}

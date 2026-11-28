@@ -1,0 +1,59 @@
+{
+  "api": "esql.query",
+  "file": "/test/platinum/esql/281_unmapped_load_subqueries_views.yml",
+  "name": "load warns when a view's output null-fills a field the view would have loaded",
+  "origin": "yaml",
+  "request": {
+    "args": {
+      "body": {
+        "query": "SET unmapped_fields=\"load\"; FROM v_pass_through | KEEP id, note | SORT id | LIMIT 10"
+      }
+    }
+  },
+  "response": {
+    "headers": {
+      "content-type": "application/json",
+      "date": "Sat, 28 Nov 2026 11:04:39 GMT",
+      "took-nanos": "12745340",
+      "transfer-encoding": "chunked",
+      "warning": "299 Elasticsearch-9.6.0-6cd94d0e9cc926bda647799bf6f10afc4c354a42 \"SET unmapped_fields does not affect the contents of a view, so this field is null in its rows; to load it, the view definition must reference it under SET unmapped_fields=\\\"load\\\": [note] in view [v_pass_through]\"",
+      "x-elastic-product": "Elasticsearch"
+    },
+    "payload": {
+      "bytes_read": 2,
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer"
+        },
+        {
+          "name": "note",
+          "type": "keyword"
+        }
+      ],
+      "completion_time_in_millis": 1795863879126,
+      "cpu_nanos": 766061,
+      "documents_found": 2,
+      "driver_nanos": 667991,
+      "expiration_time_in_millis": 1796295879050,
+      "is_partial": false,
+      "read_cpu_nanos": 0,
+      "read_nanos": 0,
+      "rows_emitted": 16,
+      "start_time_in_millis": 1795863879114,
+      "took": 12,
+      "values": [
+        [
+          1,
+          null
+        ],
+        [
+          2,
+          null
+        ]
+      ],
+      "values_loaded": 2
+    },
+    "statusCode": 200
+  }
+}
